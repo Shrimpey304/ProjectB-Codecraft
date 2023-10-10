@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "datastorage", "dataStorage\datastorage.csproj", "{AFE577E6-6627-4E89-8488-E107E8467520}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "systemlogic", "reseverenlogica\systemlogic.csproj", "{A01687F9-C579-4815-BFBB-806DA67C51FC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "userside", "userside\userside.csproj", "{1513E61B-1DEE-42DF-BED0-9999E83FC496}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{AFE577E6-6627-4E89-8488-E107E8467520}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AFE577E6-6627-4E89-8488-E107E8467520}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AFE577E6-6627-4E89-8488-E107E8467520}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AFE577E6-6627-4E89-8488-E107E8467520}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A01687F9-C579-4815-BFBB-806DA67C51FC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A01687F9-C579-4815-BFBB-806DA67C51FC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A01687F9-C579-4815-BFBB-806DA67C51FC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A01687F9-C579-4815-BFBB-806DA67C51FC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1513E61B-1DEE-42DF-BED0-9999E83FC496}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1513E61B-1DEE-42DF-BED0-9999E83FC496}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1513E61B-1DEE-42DF-BED0-9999E83FC496}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1513E61B-1DEE-42DF-BED0-9999E83FC496}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
