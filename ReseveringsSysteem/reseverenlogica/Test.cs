@@ -1,3 +1,7 @@
+using System;
+using System.Collections.Generic;
+
+
 public static class Test
 {
     public static void Main()
@@ -20,11 +24,7 @@ public static class Test
         //     System.Console.WriteLine($"{table.ID}|{table.Status}|{table.Type}");
         // }
         
-        TableManager manager = new();
-        System.Console.WriteLine(manager.ToString());
-        
-
-        
-        
+        // TableManager manager = new();
+        // System.Console.WriteLine(manager.ToString());
     }
 }

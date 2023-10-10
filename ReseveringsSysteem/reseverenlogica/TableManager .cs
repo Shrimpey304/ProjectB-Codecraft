@@ -20,7 +20,7 @@ public class TableManager
             };
             TableCsvUtil.UploadToCsv(ReservedTable);
             return true;
-        }else if (CheckAvalabilaty(date, id))
+        }else if (CheckAvailability(date, id))
         {
             ReservedTable[date].Add(id);
             TableCsvUtil.UploadToCsv(ReservedTable);
@@ -34,7 +34,7 @@ public class TableManager
         if (ReservedTable is null)
         {
             return false;
-        }else if (CheckAvalabilaty(date, id))
+        }else if (CheckAvailability(date, id))
         {
             ReservedTable[date].Remove(id);
             return true;
@@ -91,7 +91,7 @@ public class TableManager
         return true;
     }
 
-    private bool CheckAvalabilaty(DateOnly date, int id)
+    private bool CheckAvailability(DateOnly date, int id)
     {
         List<int> tableIds = ReservedTable[date];
         if (tableIds.Contains(id))
@@ -99,5 +99,10 @@ public class TableManager
             return false;
         }
         return true;
+    }
+
+    public override string ToString()
+    {
+        return $"table amount {Tables.Count}, resvered dates count {ReservedTable.Count}";
     }
 }

@@ -1,6 +1,6 @@
 public static class TableCsvUtil
 {
-    private static string fileName {get;set;} = "Reservations.csv";
+    private static string fileName {get;set;} = @"C:dataStorage\Reservations.csv";
     public static void UploadToCsv(Dictionary<DateOnly,List<int>> reservations)
     {
         StreamWriter writer = new(fileName);

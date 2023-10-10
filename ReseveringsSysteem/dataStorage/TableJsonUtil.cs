@@ -2,7 +2,7 @@ using Newtonsoft.Json;
 
 public static class TableJsonUtil
 {
-    private static string fileName {get;set;} = @"C:Tables.json";
+    private static string fileName {get;set;} = @"C:dataStorage\Tables.json";
     private static readonly JsonSerializerSettings _options
         = new() { NullValueHandling = NullValueHandling.Ignore, Formatting = Formatting.Indented };
     public static void UploadToJson(List<Table> tables)
