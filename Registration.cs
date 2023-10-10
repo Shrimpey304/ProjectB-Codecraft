@@ -2,13 +2,26 @@ using System.Text.RegularExpressions;
 using Newtonsoft.Json;
 using System.Globalization;
 
+namespace LogReg{
 public class Registration{
 
-    public bool CheckPasswordFormat(string Password){
+    public static bool CheckPasswordSimilar(string password, string retypePassword){
+
+        if(password == retypePassword){
+            return true;
+        }else{
+            return false;
+        }
+
+    }
+
+
+    public static bool CheckPasswordFormat(string Password){
 
         string PassIssue;
 
-        if(Password.Length >= 6 && Password.Length <= 18 
+        if(Password.Length >= 6 
+            && Password.Length <= 18 
             && Password.Any(char.IsUpper) 
             && Password.Any(char.IsLower) 
             && Password.Any(char.IsNumber) 
@@ -28,11 +41,15 @@ public class Registration{
                     PassIssue = "Password is too long";
                     return false;
                 default:
-                    if (!Password.Any(char.IsUpper) || !Password.Any(char.IsLower) || !Password.Any(char.IsNumber) || !Password.Any(char.IsSymbol))
+                    if (!Password.Any(char.IsUpper) 
+                    || !Password.Any(char.IsLower) 
+                    || !Password.Any(char.IsNumber) 
+                    || !Password.Any(char.IsSymbol))
                     {
                         PassIssue = "Password does not meet the criteria";
                         return false;
                     }
+                    Console.WriteLine("unkown issue");
                 return false;
             }
         }
@@ -89,4 +106,5 @@ public class Registration{
         
 
     }
+}
 }
