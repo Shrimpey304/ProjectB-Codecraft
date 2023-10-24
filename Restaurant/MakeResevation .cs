@@ -1,6 +1,6 @@
 namespace Restaurant;
 
-public class MakeResevation 
+public class MakeReservation 
 {
     private TableManager tableManager = new();
     
@@ -10,14 +10,18 @@ public class MakeResevation
         int inp = int.Parse(Console.ReadLine()!);
         switch (inp)
         {
-            
+            case 1:
+                _MakeReservation();
+                break;
+            case 2:
+
             default:
                 Display();
                 break;
         }
     }
 
-    private void MakeReservation()
+    private void _MakeReservation()
     {
         System.Console.WriteLine("enter your party size");
         int partySize = int.Parse(Console.ReadLine()!);
@@ -27,7 +31,16 @@ public class MakeResevation
             partySize = int.Parse(Console.ReadLine()!);
         }
 
-        System.Console.WriteLine("enter your reservation date");
+        System.Console.WriteLine("enter your reservation date\n(dd-mm-yyyy)");
+        try
+        {
+            DateOnly date = DateOnly.Parse(Console.ReadLine()!);
+        }
+        catch (System.Exception)
+        {
+            
+            throw;
+        }
         
     }
 }

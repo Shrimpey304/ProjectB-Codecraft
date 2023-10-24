@@ -4,7 +4,7 @@ public class TableManager
 {
     public List<Table> Tables {get;set;}
     public Dictionary<DateOnly, List<int>>? ReservedTable {get; private set;}
-
+    public User? User {get;set;}
     public TableManager()
     {
         Tables = Table_init_.LoadFromJson()!;
