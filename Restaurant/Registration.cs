@@ -24,10 +24,11 @@ public class Registration{
 
         if(Password.Length >= 6 
             && Password.Length <= 18 
-            && Password.Any(char.IsUpper) 
+            && Password.Any(char.IsUpper)
             && Password.Any(char.IsLower) 
             && Password.Any(char.IsNumber) 
-            && Password.Any(char.IsSymbol)){
+            && Password.Any(char.IsSymbol))
+            {
 
             return true; //password is accepted
 
