@@ -25,7 +25,7 @@ public class RegisterProcess{
         string ?RetypePW = Console.ReadLine();
         bool PWSimilar = Registration.CheckPasswordSimilar(GivenPW!, RetypePW!);
         if(PWSimilar == true){
-            Console.WriteLine("registratie succesvol")
+            Console.WriteLine("registratie succesvol");
         }
     }
 

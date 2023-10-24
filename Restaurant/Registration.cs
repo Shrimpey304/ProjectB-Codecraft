@@ -59,7 +59,7 @@ public class Registration{
     }
 
 
-    public bool CheckEmailTaken(User Email){
+    public static bool CheckEmailTaken(User Email){
 
         //Open the accounts json as a list
 
@@ -76,7 +76,7 @@ public class Registration{
     }
 
 
-    public bool CheckEmailRegEx(string Email){
+    public static bool CheckEmailRegEx(string Email){
 
         //regex for Email
         string RegEx = "^[a-zA-Z0-9]+(?:\\.[a-zA-Z0-9]+)*@[a-zA-Z0-9]+(?:\\.[a-zA-Z0-9]+)*$";
