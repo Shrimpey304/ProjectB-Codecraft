@@ -6,6 +6,6 @@ public class User{
     public string ?Password {get; set;}
     public string ?PhoneNumber {get; set;}
     public bool HasRervering {get; set;}
-    public List<Table> TableRes {get; set;}
+    public List<Table> ?TableRes {get; set;}
 
 }

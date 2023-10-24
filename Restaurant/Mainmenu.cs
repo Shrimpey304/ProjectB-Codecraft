@@ -5,7 +5,7 @@ public class MainMenu
     public static void DisplayMainMenu()
     {
         Console.WriteLine("[M] Menu");
-        Console.WriteLine("[R] Restaurant information");
+        Console.WriteLine("[R] Reservation");
         Console.WriteLine("[I] Log in");
         Console.WriteLine("[Q] Quit");
 
@@ -20,7 +20,7 @@ public class MainMenu
                     break;
 
                 case "R":
-                    RestaurantInfoTest.DisplayRestaurantInfo();
+                    MakeReservation.Display();
                     break;
 
                 case "I":
