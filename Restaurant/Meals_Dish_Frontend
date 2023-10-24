@@ -1,0 +1,50 @@
+using System;
+
+namespace Restaurant
+{
+    class MealsDishFrontend
+    {
+        static void frontEnd(string[] args)
+        {
+            Console.WriteLine("Welcome to the Restaurant App!");
+            Meals meals = new Meals();
+            Dish dish = new Dish();
+            while (true)
+            {
+                Console.WriteLine("1. Select a Course");
+                Console.WriteLine("2. Select dishes");
+                Console.WriteLine("3. Exit");
+                Console.Write("Enter your choice: ");
+
+                string choice = Console.ReadLine()
+
+                switch (choice)
+                {
+                    case "1":
+                        Console.WriteLine("Enter your choice (3, 4, or 5): ");
+                        string courseChoice = Console.ReadLine();
+
+                        // Call the PickCourse method and store the result
+                        string result = meals.PickCourse(courseChoice);
+                        Console.WriteLine(result);
+                        break;
+
+                    case "2":
+                        Console.WriteLine("Pick the dish that you would like to try: ")
+                        string dishChoice = Console.ReadLine();
+
+                        string resultDish = dish.PickMeal(dishChoice);
+                        Console.WriteLine(resultDish);
+                        break;
+
+                    case "3":
+                        System.Console.WriteLine("Exiting the program, have a nice day!");
+                        break;
+
+                    default:
+                        System.Console.WriteLine("Invalid value, try again");
+                }
+            }
+
+        }
+    }

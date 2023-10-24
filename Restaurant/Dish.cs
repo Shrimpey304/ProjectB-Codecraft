@@ -24,8 +24,9 @@ public class Dish
             Console.WriteLine($"{i + 1}. {dishes[i].Name} - €{dishes[i].Price} ({dishes[i].Allergens})"); // loop om alle dishes in de dishes array te laten zien
         }
     }
-    public string PickMeal(string choice)
+    public static List<Dish> PickMeal()
     {
+        List<Dish> selectedDishes = new List<Dish>();
         Dish[] dishes = new Dish[] // array of possible dishes
         {
         new Dish("Spanish Iberian Ham served on Densuke Watermelons.", 21.99m, ""),
@@ -38,10 +39,27 @@ public class Dish
         };
         DisplayMenu(dishes); // uses DisplayMenu() to display the dishes
 
-        Console.WriteLine("Please enter the number of the dish you would like to try: ");
-        choice = Console.ReadLine();
+        string choice = "";
+        while (true)
+        {
+            Console.WriteLine("Enter the number of the dish you would like to try (or 'done' to finish): ");
+            choice = Console.ReadLine();
 
-        return $"you have picked {choice}, good choice!"; // returns choice picked
+            if (choice.ToLower() == "done")
+            {
+                break;
+            }
+
+            if (int.TryParse(choice, out int dishIndex) && dishIndex >= 1 && dishIndex <= dishes.Length)
+            {
+                selectedDishes.Add(dishes[dishIndex - 1]);
+                Console.WriteLine($"Added: {dishes[dishIndex - 1].Name}");
+            }
+            else
+            {
+                Console.WriteLine("Invalid choice. Please enter a valid dish number or 'done' to finish.");
+            }
+        }
 
     }
 
