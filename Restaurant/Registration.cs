@@ -24,10 +24,11 @@ public class Registration{
 
         if(Password.Length >= 6 
             && Password.Length <= 18 
-            && Password.Any(char.IsUpper) 
+            && Password.Any(char.IsUpper)
             && Password.Any(char.IsLower) 
             && Password.Any(char.IsNumber) 
-            && Password.Any(char.IsSymbol)){
+            && Password.Any(char.IsSymbol))
+            {
 
             return true; //password is accepted
 
@@ -58,7 +59,7 @@ public class Registration{
     }
 
 
-    public bool CheckEmailTaken(User Email){
+    public static bool CheckEmailTaken(User Email){
 
         //Open the accounts json as a list
 
@@ -75,7 +76,7 @@ public class Registration{
     }
 
 
-    public bool CheckEmailRegEx(string Email){
+    public static bool CheckEmailRegEx(string Email){
 
         //regex for Email
         string RegEx = "^[a-zA-Z0-9]+(?:\\.[a-zA-Z0-9]+)*@[a-zA-Z0-9]+(?:\\.[a-zA-Z0-9]+)*$";
