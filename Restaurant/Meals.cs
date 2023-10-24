@@ -1,4 +1,4 @@
-namespace Restaurant
+namespace Restaurant;
 
 public class Meals
 {
@@ -40,20 +40,18 @@ public class Meals
     public decimal CalculateTotalPrice(Meals meal)
     {
         decimal total = 0;
-        foreach meal
-        {
-            total += meal.Price; // calculates total price
-        }
+
+        total += meal.Price; // calculates total price
+
         return total;
     }
 
     public void ShowReceipt(Meals meal)
     {
         Console.WriteLine("Here's your receipt:");
-        foreach meal
-        {
-            Console.WriteLine($"{meal.MealName} - {meal.Price}");
-        }
+
+        Console.WriteLine($"{meal.MealName} - {meal.Price}");
+
         decimal totalPrice = CalculateTotalPrice(meal);
         Console.WriteLine($"Total price: {totalPrice}");
     }

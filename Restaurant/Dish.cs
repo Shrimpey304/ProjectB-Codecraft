@@ -24,18 +24,18 @@ public class Dish
             Console.WriteLine($"{i + 1}. {dishes[i].Name} - €{dishes[i].Price} ({dishes[i].Allergens})"); // loop om alle dishes in de dishes array te laten zien
         }
     }
-    public static List<Dish> PickMeal()
+    public List<Dish> PickMeal()
     {
         List<Dish> selectedDishes = new List<Dish>();
         Dish[] dishes = new Dish[] // array of possible dishes
         {
-        new Dish("Spanish Iberian Ham served on Densuke Watermelons.", 21.99m, ""),
-        new Dish("Beluga Caviar.", 27.99m, ""),
-        new Dish("Tuna Empanadillas.", 20.99m, "gluten, lactose"),
-        new Dish("Butter chicken vol-au-vents.", 15.99m, "gluten, lactose"),
-        new Dish("Fresh Spaghettoni with Italian White Alba Truffle.", 32.99m, "gluten, egg, lactose"),
-        new Dish("Crab stuffed Filet Mignon with Whiskey Peppercorn sauce.", 39.99m, "lactose"),
-        new Dish("Wagyu Beef.", 89.99m, "")
+            new Dish("Spanish Iberian Ham served on Densuke Watermelons.", 21.99m, ""),
+            new Dish("Beluga Caviar.", 27.99m, ""),
+            new Dish("Tuna Empanadillas.", 20.99m, "gluten, lactose"),
+            new Dish("Butter chicken vol-au-vents.", 15.99m, "gluten, lactose"),
+            new Dish("Fresh Spaghettoni with Italian White Alba Truffle.", 32.99m, "gluten, egg, lactose"),
+            new Dish("Crab stuffed Filet Mignon with Whiskey Peppercorn sauce.", 39.99m, "lactose"),
+            new Dish("Wagyu Beef.", 89.99m, "")
         };
         DisplayMenu(dishes); // uses DisplayMenu() to display the dishes
 
@@ -60,7 +60,7 @@ public class Dish
                 Console.WriteLine("Invalid choice. Please enter a valid dish number or 'done' to finish.");
             }
         }
-
+        return selectedDishes;
     }
 
     public decimal CalculatePrice(Dish[] dishes, string choice)
