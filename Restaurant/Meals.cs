@@ -1,4 +1,4 @@
-namespace Restaurant;
+namespace Restaurant
 
 public class Meals
 {
