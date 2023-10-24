@@ -1,6 +1,6 @@
 
 using System;
-public class Program
+public class Progra
 {
     public void Main()
     {
@@ -19,7 +19,7 @@ public class Program
         else if (choice == "2")
         {
             Dish dish = new Dish();
-            Console.WriteLine(dish.PickMeal(choice));
+            Console.WriteLine(dish.PickMeal());
         }
         else
         {

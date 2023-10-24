@@ -16,7 +16,7 @@ public class MainMenu
             switch (option)
             {
                 case "M":
-                    MenuTest.DisplayMenu();
+                    MenuChoice.ChooseMenu();
                     break;
 
                 case "R":
