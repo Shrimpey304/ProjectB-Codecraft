@@ -69,6 +69,20 @@ public class TableManager
         return false;
     }
 
+    public List<int> CheckDateAvailability(DateOnly date)
+    {
+        List<int> availability = new();
+        if (ReservedTable.ContainsKey(date))
+        {
+            foreach (int item in ReservedTable[date])
+            {
+                availability.Add(item);
+            }
+            return availability;
+        }
+        return availability;
+    }
+
     private void UpdateResevations(int id)
     {
         foreach (var item in ReservedTable.Values)

@@ -17,7 +17,7 @@ public class LoginRegistrationMenu{
         string ?choise = Console.ReadLine();
         switch(choise){
             case "1":
-                RegisterProcess.RegisterProcessText();
+                RegisterProcess.RegisterProcessView();
             break;
             case "2":
                 LoginProcess.LoginProcessText();

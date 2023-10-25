@@ -11,4 +11,9 @@ public class Table
         ID = id;
         Type = type;
     }
+
+    public override string ToString()
+    {
+        return $"Table id:{ID}, Status:{Status}, Table type:{Type}";
+    }
 }

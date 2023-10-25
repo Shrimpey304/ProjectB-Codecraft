@@ -17,7 +17,6 @@ public class Registration{
 
     }
 
-
     public static bool CheckPasswordFormat(string Password){
 
         string PassIssue;
@@ -107,6 +106,5 @@ public class Registration{
         accounts.Add(account);
         File.WriteAllText("accounts.json", JsonConvert.SerializeObject(accounts, Formatting.Indented) ?? string.Empty);
         
-
     }
 }

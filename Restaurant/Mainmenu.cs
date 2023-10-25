@@ -5,9 +5,10 @@ public class MainMenu
     public static void DisplayMainMenu()
     {
         Console.WriteLine("[M] Menu");
-        Console.WriteLine("[R] Restaurant information");
+        Console.WriteLine("[R] Reservation");
         Console.WriteLine("[I] Log in");
         Console.WriteLine("[Q] Quit");
+        Console.WriteLine("register");
 
         while (true)
         {
@@ -16,15 +17,20 @@ public class MainMenu
             switch (option)
             {
                 case "M":
-                    MenuChoice.ChooseMenu();
+                    MenuMain MM = new MenuMain();
+                    MM.MenuMainFunc();
                     break;
 
                 case "R":
-                    RestaurantInfoTest.DisplayRestaurantInfo();
+                    MakeReservation.Display();
                     break;
 
                 case "I":
                     Ingelogdmenu.DisplayIngelogdMenu();
+                    break;
+                
+                case "REGISTER":
+                    RegisterProcess.RegisterProcessView();
                     break;
 
                 case "Q":
