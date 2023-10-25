@@ -1,9 +1,11 @@
 namespace Restaurant;
 
 using System;
+
 public class MenuMain
 {
     public void MenuMainFunc()
+
     {
         Console.WriteLine("Welcome to CodeCraft Cuisine!");
         Console.WriteLine("What would you like to order?");
@@ -14,7 +16,7 @@ public class MenuMain
 
         if (choice == "1")
         {
-            Console.WriteLine("Select a full-course meal(only write the number of the course you want so 3, 4 or 5): ");
+            Console.WriteLine("Select a full-course meal:");
             Console.WriteLine("3. 3-course meal");
             Console.WriteLine("4. 4-course meal");
             Console.WriteLine("5. 5-course meal");
