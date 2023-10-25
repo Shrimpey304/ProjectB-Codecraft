@@ -8,6 +8,7 @@ public class MainMenu
         Console.WriteLine("[R] Reservation");
         Console.WriteLine("[I] Log in");
         Console.WriteLine("[Q] Quit");
+        Console.WriteLine("register");
 
         while (true)
         {
@@ -16,7 +17,8 @@ public class MainMenu
             switch (option)
             {
                 case "M":
-                    MenuChoice.ChooseMenu();
+                    MenuMain MM = new MenuMain();
+                    MM.MenuMainFunc();
                     break;
 
                 case "R":
@@ -25,6 +27,10 @@ public class MainMenu
 
                 case "I":
                     Ingelogdmenu.DisplayIngelogdMenu();
+                    break;
+                
+                case "REGISTER":
+                    RegisterProcess.RegisterProcessView();
                     break;
 
                 case "Q":

@@ -26,7 +26,7 @@ public class Ingelogdmenu
                     break;
 
                 case "R":
-                    ReservationTest.DisplayReservation();
+                    MakeReservation.Display();
                     break;
 
                 case "H":

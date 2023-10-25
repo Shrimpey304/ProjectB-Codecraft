@@ -17,7 +17,8 @@ public static class MakeReservation
                 int partySize = ValidatePartySize();
                 System.Console.WriteLine("enter your reservation date\n(yyyy-mm-dd)");
                 DateOnly reservationDate = (DateOnly)ValidateDate()!;
-                MenuChoice.ChooseMenu();
+                MenuMain MM = new MenuMain();
+                MM.MenuMainFunc();
                 tableManager.AddReservation(reservationDate, partySize);
                 break;
             case 2:
