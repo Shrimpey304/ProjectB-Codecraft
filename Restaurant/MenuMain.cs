@@ -1,9 +1,9 @@
 namespace Restaurant;
 
 using System;
-public class MenuChoice
+public class MenuMain
 {
-    public void ChooseMenu()
+    public void MenuMainFunc()
     {
         Console.WriteLine("Welcome to CodeCraft Cuisine!");
         Console.WriteLine("What would you like to order?");
@@ -14,13 +14,27 @@ public class MenuChoice
 
         if (choice == "1")
         {
+            Console.WriteLine("Select a full-course meal(only write the number of the course you want so 3, 4 or 5): ");
+            Console.WriteLine("3. 3-course meal");
+            Console.WriteLine("4. 4-course meal");
+            Console.WriteLine("5. 5-course meal");
+
+            string courseChoice = Console.ReadLine();
             Meals meals = new Meals();
-            Console.WriteLine(meals.PickCourse(choice));
+            string result = meals.PickCourse(courseChoice);
+            Console.WriteLine(result);
         }
         else if (choice == "2")
         {
             Dish dish = new Dish();
-            Console.WriteLine(dish.PickMeal(choice));
+            List<Dish> selectedDishes = dish.PickMeal();
+
+            Console.WriteLine("You have selected the following dishes:");
+            foreach (Dish selectedDish in selectedDishes)
+            {
+                Console.WriteLine(selectedDish.Name);
+            }
+
         }
         else
         {
