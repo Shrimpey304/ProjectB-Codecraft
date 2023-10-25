@@ -2,12 +2,13 @@ namespace Restaurant;
 
 public class MainMenu
 {
-    public static void DisplayMainMenu()
+    public static void MainMenuDisplay()
     {
         Console.WriteLine("[M] Menu");
         Console.WriteLine("[R] Restaurant information");
         Console.WriteLine("[I] Log in");
         Console.WriteLine("[Q] Quit");
+        Console.WriteLine("Register");
 
         while (true)
         {
@@ -16,7 +17,8 @@ public class MainMenu
             switch (option)
             {
                 case "M":
-                    MenuTest.DisplayMenu();
+                    MenuMain MM = new MenuMain();
+                    MM.MenuMainFunc();
                     break;
 
                 case "R":
@@ -25,6 +27,10 @@ public class MainMenu
 
                 case "I":
                     Ingelogdmenu.DisplayIngelogdMenu();
+                    break;
+
+                case "REGISTER":
+                    LoginRegistrationMenu.Menu();
                     break;
 
                 case "Q":

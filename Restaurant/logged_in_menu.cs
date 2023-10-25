@@ -18,7 +18,8 @@ public class Ingelogdmenu
             switch (option)
             {
                 case "M":
-                    MenuTest.DisplayMenu();
+                    MenuMain MM = new MenuMain();
+                    MM.MenuMainFunc();
                     break;
 
                 case "RI":

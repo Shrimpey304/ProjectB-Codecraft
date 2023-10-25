@@ -1,0 +1,23 @@
+[
+  {
+    "Email": "kimo.edelbroek@gmail.com",
+    "Password": "Kimo1234!",
+    "PhoneNumber": "06123456",
+    "HasRervering": false,
+    "TableRes": null
+  },
+  {
+    "Email": "Kimo.edelbroek@icloud.com",
+    "Password": "Kimo1234!",
+    "PhoneNumber": "06123456",
+    "HasRervering": false,
+    "TableRes": null
+  },
+  {
+    "Email": "ka.ae@abc.nonono",
+    "Password": "Kimo1234!",
+    "PhoneNumber": "06123456",
+    "HasRervering": false,
+    "TableRes": null
+  }
+]

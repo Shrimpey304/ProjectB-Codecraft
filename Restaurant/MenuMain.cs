@@ -1,9 +1,9 @@
 namespace Restaurant;
 
 using System;
-public class Program
+public class MenuMain
 {
-    public void Main()
+    public void MenuMainFunc()
     {
         Console.WriteLine("Welcome to CodeCraft Cuisine!");
         Console.WriteLine("What would you like to order?");
