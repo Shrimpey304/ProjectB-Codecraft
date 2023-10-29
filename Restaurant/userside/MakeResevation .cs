@@ -31,8 +31,8 @@ public static class MakeReservation
             case 3:
                 System.Console.WriteLine("what date do you want to check");
                 DateOnly date1 = (DateOnly)ValidateDate()!;
-                List<int> tables = tableManager.CheckDateAvailability(date1);
-                foreach (int item in tables)
+                List<string> tables = tableManager.CheckDateAvailability(date1);
+                foreach (string item in tables)
                 {
                     System.Console.WriteLine(item);
                 }
