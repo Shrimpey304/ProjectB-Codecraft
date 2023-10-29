@@ -1,0 +1,17 @@
+[
+  {
+    "ReservationDate": "2010-02-10",
+    "TablesList": [
+      {
+        "ID": 2,
+        "Status": true,
+        "Type": 2
+      },
+      {
+        "ID": 1,
+        "Status": true,
+        "Type": 2
+      }
+    ]
+  }
+]
