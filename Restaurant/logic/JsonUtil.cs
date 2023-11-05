@@ -12,7 +12,7 @@ uses:
     *filename = @"C:dataStorage\filname"
     =>returns a list<T> where T is the given class 
 */
-public static class TableJsonUtil
+public static class JsonUtil
 {
     private static readonly JsonSerializerSettings _options
         = new() { NullValueHandling = NullValueHandling.Ignore, Formatting = Formatting.Indented };
@@ -36,7 +36,8 @@ public static class TableJsonUtil
         catch (Exception)
         {
             
-            throw new Exception();
+            return null;
+            
         }
     }
 }

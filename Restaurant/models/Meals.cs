@@ -1,59 +1,33 @@
 namespace Restaurant;
 
-public class Meals
+public class Meals : IFoodItems
 {
+    public int ID {get;set;}
+    public int CourseType{get;set;}
+    public string MealType{get;set;}
     public string MealName { get; set; }
-    public int Price { get; set; }
-    public string FoodDescription { get; set; }
+    //public List<Dish> Dishes {get;set;}
+    public decimal Price { get; set; }
+    public string CourseDescription { get; set; }
 
-    public Meals(string mealName = "", int price = 0, string foodDescription = "")
+    public Meals(int id, int coursetype, string mealtype, string mealname, decimal price, string coursedescription)
     {
-        MealName = mealName;
+        ID = id;
+        CourseType = coursetype;
+        MealType = mealtype;
+        MealName = mealname;
+        //Dishes = dishes;
         Price = price;
-        FoodDescription = foodDescription;
+        CourseDescription = coursedescription;
     }
 
-    public string PickCourse(string choice)
+    public decimal GetPrice() => Price;
+    public string GetString(bool itemType=false)
     {
-        new Meals("3-course meal.", 100, "This consists of a starter dish of Garlic & Herb Olive Oil Bread Dip or Caesar Salad, a main dish of Million Dollar Spaghetti Casserole, a side of Roasted Broccolini and for dessert Ricotta Cookies.");
-        new Meals("4-course meal.", 140, "This consists of an appetizer of Spinach Artichoke Stuffed Mushrooms, then a refreshing Perfect French Onion Soup, an entrée of Port Braised Short Ribs and for dessert Flourless Chocolate Espresso Torte.");
-        new Meals("5-course meal.", 160, "This consists of an Hors D'Oeuvre of Italian Meatballs cooked by our best chef, then a refreshing appetizer of Rosemary Focaccia, a calorie low rich tasting Garden Salad, a Chicken Parmigiana as an entrée and a delicious Sfogliatelle for dessert.");
-        Console.WriteLine("Hello! Which full-course meal would you like to try? We have a three, four and five-course meal! ");
-        choice = Console.ReadLine(); // 3 = 3 course, 4 = 4 course, 5 = 5 course
-        if (choice == "3")
+        if (itemType)
         {
-            return "You have picked the three course meal!\n Your total price will be €100,- (excluding drinks)";
+            return $"{MealType}";
         }
-        else if (choice == "4")
-        {
-            return "You have picked the luxurious four course meal!\n Your total price will be €140,- (including drinks)";
-        }
-        else if (choice == "5")
-        {
-            return "You have picked the mega-luxurious five course meal!\n Your total price will be €160,- (including drinks)";
-        }
-        else
-        {
-            return "Not a valid option, please choose between 3, 4 and 5";
-        }
+        return $"{ID} | {CourseType}-course {MealType} meal €{Price}\n  {CourseDescription}";
     }
-    public decimal CalculateTotalPrice(Meals meal)
-    {
-        decimal total = 0;
-
-        total += meal.Price; // calculates total price
-
-        return total;
-    }
-
-    public void ShowReceipt(Meals meal)
-    {
-        Console.WriteLine("Here's your receipt:");
-
-        Console.WriteLine($"{meal.MealName} - {meal.Price}");
-
-        decimal totalPrice = CalculateTotalPrice(meal);
-        Console.WriteLine($"Total price: {totalPrice}");
-    }
-
 }

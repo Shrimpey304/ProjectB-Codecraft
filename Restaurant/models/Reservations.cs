@@ -13,6 +13,6 @@ public class Reservations
 
     public override string ToString()
     {
-        return $"Date:{ReservationDate} Tables:{TablesList}";
+        return $"Date:{ReservationDate} Tables:{TablesList.Count}";
     }
 }

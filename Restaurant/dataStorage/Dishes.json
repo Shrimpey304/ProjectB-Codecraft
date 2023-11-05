@@ -1,0 +1,10 @@
+[
+  {
+    "ID": 1,
+    "DishType": "Chicken",
+    "DishName": "chicken nuggies",
+    "Description": "sum gas nugs",
+    "Price": 12.90,
+    "Allergens": "RS"
+  }
+]

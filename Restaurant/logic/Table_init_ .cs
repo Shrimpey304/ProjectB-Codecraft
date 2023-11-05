@@ -13,7 +13,7 @@ public static class Table_init_
         List<Table> tables;
         try
         {
-            tables = TableJsonUtil.ReadFromJson<Table>(fileName);
+            tables = JsonUtil.ReadFromJson<Table>(fileName);
             if (tables is null)
             {
                 throw new NullReferenceException();
@@ -23,7 +23,7 @@ public static class Table_init_
         catch (NullReferenceException)
         {
             tables = PopulateTables();
-            TableJsonUtil.UploadToJson<Table>(tables, fileName);
+            JsonUtil.UploadToJson<Table>(tables, fileName);
             return tables;
         }
     }
@@ -33,7 +33,7 @@ public static class Table_init_
         List<Reservations> reservations;
         try
         {
-            reservations = TableJsonUtil.ReadFromJson<Reservations>(fileName)!;
+            reservations = JsonUtil.ReadFromJson<Reservations>(fileName)!;
             return reservations;
         }
         catch (Exception)
@@ -42,7 +42,7 @@ public static class Table_init_
         }
     }
 
-    private static List<Table> PopulateTables()
+    internal static List<Table> PopulateTables()
     {
         List<Table> tables = new(){
             new Table(1, 2),

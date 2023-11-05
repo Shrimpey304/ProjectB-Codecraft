@@ -25,10 +25,14 @@ class Program
         // }
 
 
-        TableManager manager = new();
-        //DateOnly date = DateOnly.Parse(Console.ReadLine());
-        //manager.AddReservation(date, 1);
-        System.Console.WriteLine($"{manager}");
+        MainMenu.DisplayMainMenu();
+
+
+        // FoodManager manager = new();
+        // string oo = manager.Meals[0].MealType;
+        // System.Console.WriteLine("fish Course");
+        // manager.GetMeals(oo);
+
     }
 }
 

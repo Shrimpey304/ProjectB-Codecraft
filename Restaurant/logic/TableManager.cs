@@ -43,7 +43,7 @@ public class TableManager
 
     public bool AddReservation(DateOnly date, int id)
     {
-        if (ReservedTable.Count == 0 || ReservedTable.Exists(item => item.ReservationDate != date))
+        if (ReservedTable.Count == 0 || !ReservedTable.Exists(item => item.ReservationDate == date))
         {
             Reservations reservations = new(date);
             Table table = Tables.Find(item => item.ID == id)!;
@@ -52,14 +52,14 @@ public class TableManager
                 table
             };
             ReservedTable.Add(reservations);
-            TableJsonUtil.UploadToJson<Reservations>(ReservedTable, fileNames[1]);
+            JsonUtil.UploadToJson<Reservations>(ReservedTable, fileNames[1]);
             return true;
-        } else if (ReservedTable.Exists(item => item.ReservationDate == date) && ReservedTable.Exists(item => item.TablesList.Exists( Id => Id.ID != id)))
+        } else if (ReservedTable.Exists(item => item.ReservationDate == date) && !ReservedTable.Exists(item => item.TablesList.Exists( Id => Id.ID == id)))
         {
-            Reservations reservations = ReservedTable.Find(item => item.ReservationDate == date);
+            Reservations reservations = ReservedTable.Find(item => item.ReservationDate == date)!;
             Table table = Tables.Find(item => item.ID == id)!;
             reservations.TablesList.Add(table);
-            TableJsonUtil.UploadToJson<Reservations>(ReservedTable, fileNames[1]);
+            JsonUtil.UploadToJson<Reservations>(ReservedTable, fileNames[1]);
             return true;
         }
         return false;
@@ -69,7 +69,10 @@ public class TableManager
     {
         if (ReservedTable.Exists(item => item.ReservationDate == date) && ReservedTable.Exists(item => item.TablesList.Exists(Id => Id.ID == id)))
         {
-            TableJsonUtil.UploadToJson<Reservations>(ReservedTable, fileNames[1]);
+            Reservations reservations = ReservedTable.Find(item => item.ReservationDate == date)!;
+            Table table = reservations.TablesList.Find(item => item.ID == id)!;
+            reservations.TablesList.Remove(table);
+            JsonUtil.UploadToJson<Reservations>(ReservedTable, fileNames[1]);
             return true;
         }
         return false;
@@ -80,7 +83,7 @@ public class TableManager
         if (Tables.Exists(item => item.ID != id))
         {
             Tables.Add(new Table(id, type));
-            TableJsonUtil.UploadToJson<Table>(Tables, fileNames[0]);
+            JsonUtil.UploadToJson<Table>(Tables, fileNames[0]);
             return true;
         }
         return false;
@@ -128,7 +131,7 @@ public class TableManager
                 item.TablesList.Remove(table);
             }
         }
-        TableJsonUtil.UploadToJson<Reservations>(ReservedTable, fileNames[1]);
+        JsonUtil.UploadToJson<Reservations>(ReservedTable, fileNames[1]);
     }
     public override string ToString()
     {
