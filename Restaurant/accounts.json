@@ -12,5 +12,26 @@
     "PhoneNumber": "0143q54",
     "HasRervering": false,
     "TableRes": null
+  },
+  {
+    "Email": "kimo.edelbroek@gmail.com",
+    "Password": "Kimo2004!",
+    "PhoneNumber": "012343246",
+    "HasRervering": false,
+    "TableRes": null
+  },
+  {
+    "Email": "a@a.a",
+    "Password": "pw123",
+    "PhoneNumber": "",
+    "HasRervering": false,
+    "TableRes": null
+  },
+  {
+    "Email": "a.aa.a@a.a",
+    "Password": "ab123ab123ab123Ab123",
+    "PhoneNumber": "",
+    "HasRervering": false,
+    "TableRes": null
   }
 ]
