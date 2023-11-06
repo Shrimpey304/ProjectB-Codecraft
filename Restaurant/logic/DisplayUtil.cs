@@ -10,12 +10,12 @@ public static class DisplayUtil
     private static string _decorator;
     public static string Decorator{
         get=>_decorator;
-        set=> _decorator = value is not null ? $"{value}" : "";
+        set=> _decorator = value == "" ? $"{value}" : "\u001B[35m";
     }
     private static string _optionColor;
     public static string OptionColor{
         get=>_optionColor;
-        set=>_optionColor = value is not null ? value : "";
+        set=>_optionColor = value == "" ? $"{value}" : "\u001B[32m";
     }
     public static int Display(List<string> options)
     {

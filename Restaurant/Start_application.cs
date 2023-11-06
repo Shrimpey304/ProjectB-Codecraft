@@ -24,7 +24,7 @@ class Program
         //     System.Console.WriteLine(item.ToString());
         // }
 
-
+        //DisplayUtil.CostumizeDisplay();
         MainMenu.DisplayMainMenu();
 
 
@@ -34,7 +34,6 @@ class Program
         // manager.GetMeals(oo);
 
 
-        // DisplayUtil.CostumizeDisplay();
         
     }
 }
