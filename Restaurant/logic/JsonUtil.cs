@@ -35,9 +35,7 @@ public static class JsonUtil
         }
         catch (Exception)
         {
-            
             return null;
-            
         }
     }
 }

@@ -48,5 +48,15 @@
         "Type": 4
       }
     ]
+  },
+  {
+    "ReservationDate": "2023-09-11",
+    "TablesList": [
+      {
+        "ID": 4,
+        "Status": true,
+        "Type": 4
+      }
+    ]
   }
 ]
