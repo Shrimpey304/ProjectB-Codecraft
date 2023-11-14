@@ -16,12 +16,11 @@ public class RegisterProcess{
         Console.WriteLine(GivenEmail);
 
         Console.WriteLine("please enter your password"); 
-        Console.WriteLine("Capital, lower, number, token");
+        Console.WriteLine("Capital, lower, number");
         string ?GivenPW = "";
-        while(GivenPW.Length < 4){ //Registration.CheckPasswordFormat(GivenPW!) == false
+        while(Registration.CheckPasswordFormat(GivenPW!) == false){
             string pass = Console.ReadLine()!;
             GivenPW += pass + "";
-            Console.WriteLine("initial pw");
         }
         Console.WriteLine(GivenPW);
         

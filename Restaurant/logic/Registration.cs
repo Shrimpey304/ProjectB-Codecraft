@@ -19,42 +19,67 @@ public class Registration{
 
     public static bool CheckPasswordFormat(string Password){
 
-        string PassIssue;
+        if (Password.Length < 8)
+        {
+            Console.WriteLine("Password must be at least 8 characters long.");
+            return false;
+        }
 
-        if(Password.Length >= 6 
-            && Password.Length <= 18 
-            && Password.Any(char.IsUpper)
-            && Password.Any(char.IsLower) 
-            && Password.Any(char.IsNumber) 
-            && Password.Any(char.IsSymbol))
+        if (!ContainsUpperCase(Password))
+        {
+            Console.WriteLine("Password must contain at least one uppercase letter.");
+            return false;
+        }
+
+        if (!ContainsLowerCase(Password))
+        {
+            Console.WriteLine("Password must contain at least one lowercase letter.");
+            return false;
+        }
+
+        if (!ContainsDigit(Password))
+        {
+            Console.WriteLine("Password must contain at least one digit.");
+            return false;
+        }
+
+        return true;
+    }
+
+    static bool ContainsUpperCase(string password)
+    {
+        foreach (char c in password)
+        {
+            if (char.IsUpper(c))
             {
-
-            return true; //password is accepted
-
-        }else{
-
-            int passwordLength = Password.Length;
-            switch (passwordLength)
-            {
-                case int n when n < 6:
-                    PassIssue = "Password is too short";
-                    return false;
-                case int n when n > 18:
-                    PassIssue = "Password is too long";
-                    return false;
-                default:
-                    if (!Password.Any(char.IsUpper) 
-                    || !Password.Any(char.IsLower) 
-                    || !Password.Any(char.IsNumber) 
-                    || !Password.Any(char.IsSymbol))
-                    {
-                        PassIssue = "Password does not meet the criteria";
-                        return false;
-                    }
-                    Console.WriteLine("unkown issue");
-                return false;
+                return true;
             }
         }
+        return false;
+    }
+
+    static bool ContainsLowerCase(string password)
+    {
+        foreach (char c in password)
+        {
+            if (char.IsLower(c))
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    static bool ContainsDigit(string password)
+    {
+        foreach (char c in password)
+        {
+            if (char.IsDigit(c))
+            {
+                return true;
+            }
+        }
+        return false;
     }
 
 

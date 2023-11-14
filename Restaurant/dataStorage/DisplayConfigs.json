@@ -1,0 +1,10 @@
+[
+    {
+        "Decorator": "\u001B[31m",
+        "OptionColor": "\u001B[34m"
+    },
+    {
+        "Decorator": "\u001B[32m",
+        "OptionColor": "\u001B[36m"
+    }
+]

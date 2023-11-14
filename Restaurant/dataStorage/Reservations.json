@@ -1,0 +1,72 @@
+[
+  {
+    "ReservationDate": "2010-02-10",
+    "TablesList": [
+      {
+        "ID": 2,
+        "Status": true,
+        "Type": 2
+      },
+      {
+        "ID": 1,
+        "Status": true,
+        "Type": 2
+      }
+    ]
+  },
+  {
+    "ReservationDate": "2023-10-30",
+    "TablesList": [
+      {
+        "ID": 4,
+        "Status": true,
+        "Type": 4
+      }
+    ]
+  },
+  {
+    "ReservationDate": "2020-09-02",
+    "TablesList": [
+      {
+        "ID": 3,
+        "Status": true,
+        "Type": 8
+      }
+    ]
+  },
+  {
+    "ReservationDate": "2001-09-11",
+    "TablesList": [
+      {
+        "ID": 4,
+        "Status": true,
+        "Type": 4
+      },
+      {
+        "ID": 5,
+        "Status": true,
+        "Type": 4
+      }
+    ]
+  },
+  {
+    "ReservationDate": "2023-09-11",
+    "TablesList": [
+      {
+        "ID": 4,
+        "Status": true,
+        "Type": 4
+      }
+    ]
+  },
+  {
+    "ReservationDate": "2023-08-14",
+    "TablesList": [
+      {
+        "ID": 4,
+        "Status": true,
+        "Type": 4
+      }
+    ]
+  }
+]
