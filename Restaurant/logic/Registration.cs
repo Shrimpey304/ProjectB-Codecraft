@@ -81,14 +81,14 @@ public class Registration{
         }
         return false;
     }
-
+    private static string accountPath = @".\dataStorage\account.json";
 
     public static bool CheckEmailTaken(User Email){
 
         //Open the accounts json as a list
 
-        List<User> accounts = File.Exists("accounts.json") 
-        ? JsonConvert.DeserializeObject<List<User>>(File.ReadAllText("accounts.json") ?? string.Empty) ?? new List<User>()
+        List<User> accounts = File.Exists(accountPath) 
+        ? JsonConvert.DeserializeObject<List<User>>(File.ReadAllText(accountPath) ?? string.Empty) ?? new List<User>()
         : new List<User>(); 
 
         if(accounts.Contains(Email)){
@@ -123,13 +123,13 @@ public class Registration{
         string password = Password;
         string phonenumber = PhoneNumber;
 
-        List<User> accounts = File.Exists("accounts.json") 
-        ? JsonConvert.DeserializeObject<List<User>>(File.ReadAllText("accounts.json") ?? string.Empty) ?? new List<User>()
+        List<User> accounts = File.Exists(accountPath) 
+        ? JsonConvert.DeserializeObject<List<User>>(File.ReadAllText(accountPath) ?? string.Empty) ?? new List<User>()
         : new List<User>();
 
         var account = new User { Email = email, Password = password, PhoneNumber = phonenumber};
         accounts.Add(account);
-        File.WriteAllText("accounts.json", JsonConvert.SerializeObject(accounts, Formatting.Indented) ?? string.Empty);
+        File.WriteAllText(accountPath, JsonConvert.SerializeObject(accounts, Formatting.Indented) ?? string.Empty);
         
     }
 }

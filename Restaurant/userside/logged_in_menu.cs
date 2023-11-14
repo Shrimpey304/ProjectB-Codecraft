@@ -4,12 +4,22 @@ public class Ingelogdmenu
 {
     public static void DisplayIngelogdMenu()
     {
-        Console.WriteLine("[M] Menu (food)");
-        Console.WriteLine("[RI] Restaurant informatie");
-        Console.WriteLine("[R] Make reservation");
-        Console.WriteLine("[H] Order history");
-        Console.WriteLine("[P] Personal information");
-        Console.WriteLine("[Q] Quit");
+
+        List<string> LogedInMenuOptions = new(){
+            "Menu (food)",
+            "Restaurant informatie",
+            "Make reservation",
+            "Order history",
+            "Personal information",
+        };
+        List<Action> actions = new(){
+            MenuCard.FromMain,
+            RestaurantInfoTest.DisplayRestaurantInfo,
+            MakeReservation.Display,
+            OrderHistoryTest.DisplayOrderHistory,
+            PersonalInfoTest.DisplayPersonalInfo,
+        };
+        DisplayUtil.Display(LogedInMenuOptions);
 
         while (true)
         {
