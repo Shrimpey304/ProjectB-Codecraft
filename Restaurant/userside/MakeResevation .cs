@@ -5,7 +5,7 @@ namespace Restaurant;
 public static class MakeReservation 
 {
     private static TableManager tableManager = new();
-    public static List<IFoodItems> foodItems;
+    public static IEnumerable<IFoodItems> foodItems;
     public static void Display()
     {
         List<string> options = new(){
@@ -61,16 +61,16 @@ public static class MakeReservation
         }
     }
 
-    private static void CheckOut(int partySize, DateOnly date, List<IFoodItems> order)
+    private static void CheckOut(int partySize, DateOnly date, IEnumerable<IFoodItems> order)
     {
         ConsoleKeyInfo key;
         do
         {
             Console.Clear();
             System.Console.WriteLine($"Your reservation is set on {date}\nwith a party size of {partySize} people.\nYour order:");
-            for (int i = 0; i < order.Count; i++)
+            foreach (var item in order)
             {
-                System.Console.WriteLine($"{i}. {order[i].GetString()}");
+                System.Console.WriteLine(item.GetString());
             }
             System.Console.WriteLine($"Your Total: {FoodManager.GetTotal(order)}\nPress ENTER to go back to home menu.");
             key = Console.ReadKey(false);

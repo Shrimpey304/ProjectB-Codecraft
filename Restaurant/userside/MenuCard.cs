@@ -7,7 +7,7 @@ public static class MenuCard
     private static FoodManager manager = new();
 
     public static void FromMain(){Display();}
-    public static List<IFoodItems>? Display()
+    public static IEnumerable<IFoodItems>? Display()
     {
         List<string> options = new(){
             "Full-Course Meal",

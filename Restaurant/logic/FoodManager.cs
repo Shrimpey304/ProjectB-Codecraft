@@ -88,7 +88,7 @@ public class FoodManager
         Cart.Add(foodItems);
     }
 
-    public static decimal GetTotal(List<IFoodItems> cart)
+    public static decimal GetTotal(IEnumerable<IFoodItems> cart)
     {
         decimal total = 0.0m;
         foreach (var item in cart)
