@@ -33,17 +33,6 @@ public static class MenuCard
 
     private static void DishesOptions()
     {
-        Console.WriteLine("Are there any allergens you would like to remove? ");
-        string answer = Console.ReadLine();
-        string allergy = null;
-        if (answer.ToLower() == "yes")
-        {
-            Console.WriteLine("Input allergy you want to remove: ");
-            allergy = Console.ReadLine();
-            FoodManager.RemoveAllergens(allergy);
-            Console.WriteLine($"We have removed {allergy} from your meal(s)");
-        }
-
         List<string> option1 = OptionString<Dish>(manager.Dishes);
         int selectedOption = DisplayUtil.Display(option1);
         if (selectedOption < (option1.Count - 1))
@@ -62,6 +51,16 @@ public static class MenuCard
         int selectedOption = DisplayUtil.Display(option1);
         if (selectedOption < (option1.Count - 1))
         {
+            Console.WriteLine("Are there any allergens you would like to remove? ");
+            string answer = Console.ReadLine();
+            string allergy = null;
+            if (answer.ToLower() == "yes")
+            {
+                Console.WriteLine("Input allergy you want to remove: ");
+                allergy = Console.ReadLine();
+                FoodManager.RemoveAllergens(allergy);
+                Console.WriteLine($"We have removed {allergy} from your meal(s)");
+            }
             Menu(option1[selectedOption]);
         }
         else
@@ -79,7 +78,17 @@ public static class MenuCard
             int selectedOption1 = DisplayUtil.Display(option3);
             if (selectedOption1 < (option3.Count - 1))
             {
-                System.Console.WriteLine("Item added to cart. $_$");
+                Console.WriteLine("Are there any allergens you would like to remove? ");
+                string answer = Console.ReadLine();
+                string allergy = null;
+                if (answer.ToLower() == "yes")
+                {
+                    Console.WriteLine("Input allergy you want to remove: ");
+                    allergy = Console.ReadLine();
+                    FoodManager.RemoveAllergens(allergy);
+                    Console.WriteLine($"We have removed {allergy} from your meal(s)");
+                }
+                System.Console.WriteLine("Item added to cart.");
                 manager.AddToCart(dishes[selectedOption1]);
                 DishesOptions();
             }
