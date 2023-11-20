@@ -27,19 +27,28 @@ public static class MakeReservation
 
     public static void MakeReserve()
     {
-        Console.Clear();
-        System.Console.WriteLine("enter your party size");
-        int partySize = int.Parse(Console.ReadLine()!);
-        while (partySize < 2 || partySize > 8)
-        {
-            System.Console.WriteLine("Invalide party size...\nPlease re-enter your party size");
-            partySize = int.Parse(Console.ReadLine()!);
-        }
-        DateOnly reservationDate = (DateOnly)ValidateDate()!;
         
+        bool partyCheck = false;
+        int partySize = 0;
+        DateOnly? reservationDate = null;
+        while (!partyCheck)
+        {
+            Console.Clear();
+            System.Console.WriteLine("enter your party size");
+            partySize = int.Parse(Console.ReadLine()!);
+            partyCheck = TableManager.ValidatePartySize(partySize);
+        }
+
+        while (reservationDate is null)
+        {
+            Console.Clear();
+            System.Console.WriteLine("enter your reservation date\n(yyyy-mm-dd)");
+            string dateSrting = Console.ReadLine();
+            reservationDate = TableManager.ValidateDate(dateSrting);
+        }
+
         if (!tableManager.AddReservation(reservationDate, partySize))
         {
-
             System.Console.WriteLine("Reservation unavailable. Please try again.");
             MakeReserve();
             
@@ -61,7 +70,7 @@ public static class MakeReservation
         }
     }
 
-    private static void CheckOut(int partySize, DateOnly date, IEnumerable<IFoodItems> order)
+    private static void CheckOut(int partySize, DateOnly? date, IEnumerable<IFoodItems> order)
     {
         ConsoleKeyInfo key;
         do
