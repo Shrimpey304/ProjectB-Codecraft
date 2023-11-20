@@ -1,0 +1,21 @@
+{
+  "Email": "a",
+  "Naam": "a",
+  "ID": "a",
+  "Password": "a",
+  "PhoneNumber": "a"
+}
+{
+  "Email": "b",
+  "Naam": "b",
+  "ID": "b",
+  "Password": "b",
+  "PhoneNumber": "b"
+}
+{
+  "Email": "",
+  "Naam": "",
+  "ID": "",
+  "Password": "",
+  "PhoneNumber": ""
+}
