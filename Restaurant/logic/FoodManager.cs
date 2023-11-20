@@ -3,11 +3,11 @@ namespace Restaurant;
 
 public class FoodManager
 {
-    public List<Dish> Dishes {get;set;}
-    public List<Meals> Meals {get;set;}
+    public List<Dish> Dishes { get; set; }
+    public List<Meals> Meals { get; set; }
     public List<IFoodItems> Cart = new();
-    public User? User {get;set;}
-    private readonly string[] fileNames = {@"C:dataStorage\Dishes.json", @"C:dataStorage\Meals.json"};
+    public User? User { get; set; }
+    private readonly string[] fileNames = { @"C:dataStorage\Dishes.json", @"C:dataStorage\Meals.json" };
 
     public FoodManager()
     {
@@ -81,6 +81,15 @@ public class FoodManager
         }
         System.Console.WriteLine(type);
         return meals;
+    }
+
+    public static string RemoveAllergens(string allergy)
+    {
+        if (Allergen.allergenList.Contains(allergy))
+        {
+            return $"We have removed {allergy} from your meal(s)";
+        }
+        return "This allergy is nowhere to be found in any of our meals";
     }
 
     public void AddToCart(IFoodItems foodItems)
