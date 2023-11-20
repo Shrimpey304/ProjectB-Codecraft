@@ -30,6 +30,7 @@ public class Login
         List<User> accounts = JsonUtil.ReadFromJson<User>(accountPath)!;
 
         User account = accounts.FirstOrDefault(acc => acc.Email == mail && acc.Password == password)!;
+        Console.WriteLine(account);
 
         if(account != null){
             return true;

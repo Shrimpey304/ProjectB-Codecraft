@@ -8,7 +8,7 @@ public class LoginProcess{
 
         Console.WriteLine("welcome to Logging in (alpha version)");    
         Console.WriteLine("please enter your Email");
-        GivenEmail = Console.ReadLine();
+        GivenEmail = Console.ReadLine()!;
         if(!Login.MailMatches(GivenEmail)){
             Console.Clear();
             Console.WriteLine("this email is not valid or is not registered yet");
@@ -18,16 +18,16 @@ public class LoginProcess{
 
     public static void LoginProcessPasswordView(string email){
         Console.WriteLine("please enter your password"); 
+        Console.Clear();
         string ?GivenPW = "";
-        if(!Login.AccountExists(GivenPW, email)){
-            Console.Clear();
+        if(Login.AccountExists(GivenPW, email)){
+            Console.WriteLine("Login is succesfull heading to mainscreen");
+            Thread.Sleep(2);
+            Ingelogdmenu.DisplayIngelogdMenu();
+        }else{
             Console.WriteLine("incorrect password email combination");
-            LoginProcessPasswordView(GivenEmail);
+            LoginProcessPasswordView(email);
         }
-
-        Console.WriteLine("Login is succesfull heading to mainscreen");
-        Thread.Sleep(2);
-        Ingelogdmenu.DisplayIngelogdMenu();
     }
 
 }

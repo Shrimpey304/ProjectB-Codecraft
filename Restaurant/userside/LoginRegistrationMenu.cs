@@ -20,7 +20,7 @@ public class LoginRegistrationMenu{
                 RegisterProcess.RegisterProcessView();
             break;
             case "2":
-                LoginProcess.LoginProcessText();
+                LoginProcess.LoginProcessMailView();
             break;
             default:
                 Console.WriteLine("not a valid input");

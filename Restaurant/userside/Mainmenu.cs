@@ -14,7 +14,7 @@ public class MainMenu
         List<Action> actions = new(){
             MenuCard.FromMain,
             MakeReservation.Display,
-            Ingelogdmenu.DisplayIngelogdMenu,
+            LoginProcess.LoginProcessMailView, //Ingelogdmenu.DisplayIngelogdMenu <-- oud
             RegisterProcess.RegisterProcessView,
             Quit
         };
