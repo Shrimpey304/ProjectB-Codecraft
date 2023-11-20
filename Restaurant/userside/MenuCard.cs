@@ -59,7 +59,10 @@ public static class MenuCard
                 Console.WriteLine("Input allergy you want to remove: ");
                 allergy = Console.ReadLine();
                 FoodManager.RemoveAllergens(allergy);
+                Console.ForegroundColor = ConsoleColor.Green;
                 Console.WriteLine($"We have removed {allergy} from your meal(s)");
+                Thread.Sleep(4000);
+                Console.ResetColor();
             }
             Menu(option1[selectedOption]);
         }
@@ -86,7 +89,10 @@ public static class MenuCard
                     Console.WriteLine("Input allergy you want to remove: ");
                     allergy = Console.ReadLine();
                     FoodManager.RemoveAllergens(allergy);
+                    Console.ForegroundColor = ConsoleColor.Green;
                     Console.WriteLine($"We have removed {allergy} from your meal(s)");
+                    Thread.Sleep(4000);
+                    Console.ResetColor();
                 }
                 System.Console.WriteLine("Item added to cart.");
                 manager.AddToCart(dishes[selectedOption1]);
