@@ -65,7 +65,7 @@ public static class FoodItems_init_
             new Dessert(5, 2, "Divine", "Elevate your dining experience with The Grand Golden Symphony, our most opulent dessert creation. This masterpiece is a symphony of a luxurious 24-karat edible gold leaf-encased dark chocolate sphere that hides a decadent surprise within. While pouring a warm raspberry coulis over the sphere it starts melting  revealing a luscious core of Belgian chocolate mousse infused with rare, hand-harvested Tahitian vanilla beans. The spectacle continues as a scoop of Madagascar vanilla bean ice cream is crowned with white truffle shavings, and a sprinkle of saffron-infused golden sugar adds a delicate touch of sweetness. Handpicked seasonal berries and a delicate spun sugar sculpture complete this extravagant masterpiece. Every bite of The Grand Golden Symphony is a journey of pure luxury, delighting the senses and creating a lasting memory of culinary excellence.", 49.99m, "dairy, nuts, gluten")
         };
         return desserts;
-     }
+    }
 
     internal static List<Meals> PopulateMeals()
     {
