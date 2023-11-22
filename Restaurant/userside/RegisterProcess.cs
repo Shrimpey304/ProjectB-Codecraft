@@ -13,7 +13,6 @@ public class RegisterProcess{
             string mail = Console.ReadLine()!;
             GivenEmail += mail + "";
         }
-        Console.WriteLine(GivenEmail);
 
         Console.WriteLine("please enter your password"); 
         Console.WriteLine("Capital, lower, number");
@@ -34,9 +33,9 @@ public class RegisterProcess{
         }
 
         Console.WriteLine("please write your phone number");
-        string PhoneNR = Console.ReadLine();
+        string PhoneNR = Console.ReadLine()!;
 
-        REG.CreateAccount(GivenEmail, GivenPW, PhoneNR);
+        REG.CreateAccount(GivenEmail, GivenPW, PhoneNR!);
         Ingelogdmenu.DisplayIngelogdMenu();
     }
 

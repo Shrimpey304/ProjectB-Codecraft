@@ -2,6 +2,7 @@ namespace Restaurant;
 
 public class Ingelogdmenu
 {
+    
     public static void DisplayIngelogdMenu()
     {
 
