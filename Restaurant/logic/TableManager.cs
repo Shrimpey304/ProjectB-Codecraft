@@ -41,8 +41,12 @@ public class TableManager
         Tables = Table_init_.LoadTables(tablesFileName)!;
         ReservedTable = Table_init_.LoadReservations(reseravtionFileName);
     }
-
-    public bool AddReservation(DateOnly? date, int id)
+    public TableManager(string tablefilename)
+    {
+        Tables = Table_init_.LoadTables(tablefilename)!;
+        ReservedTable = new();
+    }
+    public bool AddReservation(DateOnly? date, int? id, string filename = reseravtionFileName)
     {
         if (ReservedTable.Count == 0 || !ReservedTable.Exists(item => item.ReservationDate == date))
         {
@@ -53,7 +57,7 @@ public class TableManager
                 table
             };
             ReservedTable.Add(reservations);
-            JsonUtil.UploadToJson<Reservations>(ReservedTable, reseravtionFileName);
+            JsonUtil.UploadToJson<Reservations>(ReservedTable, filename);
             return true;
             // u need to fix this cus it dont work like it should...
         } else if (ReservedTable.Exists(item => item.ReservationDate == date) && !ReservedTable.Exists(item => item.TablesList.Exists( Id => Id.ID == id)))
@@ -61,7 +65,7 @@ public class TableManager
             Reservations reservations = ReservedTable.Find(item => item.ReservationDate == date)!;
             Table table = Tables.Find(item => item.ID == id)!;
             reservations.TablesList.Add(table);
-            JsonUtil.UploadToJson<Reservations>(ReservedTable, reseravtionFileName);
+            JsonUtil.UploadToJson<Reservations>(ReservedTable, filename);
             return true;
         }
         return false;
@@ -125,13 +129,23 @@ public class TableManager
         return availability;
     }
 
-    public static bool ValidatePartySize(int partysize)
+    public static int? ValidatePartySize(string partysize)
     {
-        if (partysize < 2 || partysize > 8)
+        try
         {
-            return false;
+            int partySize = int.Parse(partysize);
+            if (partySize > 2 && partySize < 8)
+            {
+                return partySize;
+            }
+            return null;
         }
-        return true;
+        catch (System.Exception)
+        {
+            
+            return null;
+        }
+        
     }
 
     public static DateOnly? ValidateDate(string datestring)
@@ -140,7 +154,12 @@ public class TableManager
         try
         {
             DateOnly date = DateOnly.ParseExact(datestring, dateFormate);
-            return date;
+            DateOnly today = DateOnly.FromDateTime(DateTime.Now);
+            if (date >= today)
+            {
+                return date;
+            }
+            return null;
         }
         catch (System.Exception)
         {

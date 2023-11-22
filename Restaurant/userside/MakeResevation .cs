@@ -28,15 +28,15 @@ public static class MakeReservation
     public static void MakeReserve()
     {
         
-        bool partyCheck = false;
-        int partySize = 0;
+        
+        int? partySize = null;
         DateOnly? reservationDate = null;
-        while (!partyCheck)
+        while (partySize is null)
         {
             Console.Clear();
             System.Console.WriteLine("enter your party size");
-            partySize = int.Parse(Console.ReadLine()!);
-            partyCheck = TableManager.ValidatePartySize(partySize);
+            string partySizeString = Console.ReadLine()!;
+            partySize = TableManager.ValidatePartySize(partySizeString);
         }
 
         while (reservationDate is null)
@@ -70,7 +70,7 @@ public static class MakeReservation
         }
     }
 
-    private static void CheckOut(int partySize, DateOnly? date, IEnumerable<IFoodItems> order)
+    private static void CheckOut(int? partySize, DateOnly? date, IEnumerable<IFoodItems> order)
     {
         ConsoleKeyInfo key;
         do
