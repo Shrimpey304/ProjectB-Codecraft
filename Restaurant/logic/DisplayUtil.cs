@@ -20,6 +20,7 @@ public static class DisplayUtil
     public static int Display(List<string> options)
     {
         Console.Clear();
+        Console.WriteLine($"welcome {Login.getUser()}");
         Console.CursorVisible = false;
         (int left, int top) = Console.GetCursorPosition();
         int selectedOption = 0;

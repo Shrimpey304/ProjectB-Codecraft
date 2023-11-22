@@ -5,31 +5,17 @@ namespace Restaurant;
 public class Login
 {
 
-    public static string LoggedinUser = "";
+    public static string LoggedinUser = "Error";
     public static bool IsLoggedIn = false;
 
     private static string accountPath = @".\dataStorage\account.json";
-    public static bool PassMatches(User Password){
 
-        List<User> accounts = File.Exists(accountPath) 
-        ? JsonConvert.DeserializeObject<List<User>>(File.ReadAllText(accountPath) ?? string.Empty) ?? new List<User>()
-        : new List<User>(); 
-
-        if(accounts.Contains(Password)){
-            return true;
-        }else{
-            return false;
-        }
-
-    }
-
-    public static bool MailMatches(User mail){
+    public static bool MailMatches(string mail){
         
-        List<User> accounts = File.Exists(accountPath) 
-        ? JsonConvert.DeserializeObject<List<User>>(File.ReadAllText(accountPath) ?? string.Empty) ?? new List<User>()
-        : new List<User>(); 
+        List<User> accounts = JsonUtil.ReadFromJson<User>(accountPath)!;
+        User mailExist = accounts.FirstOrDefault(account => account.Email == mail)!;
 
-        if(accounts.Contains(mail)){
+        if(mailExist != null){
             return true;
         }else{
             return false;
@@ -37,15 +23,22 @@ public class Login
 
     }
 
-    public static void AccountExists(string Password, string mail){
-        string key  = mail;
-        string val = Password;
+    public static bool AccountExists(string password, string mail){
+        string key = mail;
+        string val = password;
 
-        List<User> accounts = File.Exists(accountPath) 
-        ? JsonConvert.DeserializeObject<List<User>>(File.ReadAllText(accountPath) ?? string.Empty) ?? new List<User>()
-        : new List<User>(); 
+        List<User> accounts = JsonUtil.ReadFromJson<User>(accountPath)!;
 
-        Console.WriteLine(accounts);
+        User account = accounts.FirstOrDefault(acc => acc.Email == mail && acc.Password == password)!;
+        Console.WriteLine(account);
+
+        LoggedinUser = key;
+
+        if(account != null){
+            return true;
+        }else{
+            return false;
+        }
 
     }
 
