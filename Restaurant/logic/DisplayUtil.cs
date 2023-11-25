@@ -8,16 +8,14 @@ just give it a list of the options you'll have in your menu and it'll do the res
 public static class DisplayUtil
 {
     private static string _decorator;
-    public static string Decorator
-    {
-        get => _decorator;
-        set => _decorator = value == "" ? $"{value}" : "\u001B[35m";
+    public static string Decorator{
+        get=>_decorator;
+        set=> _decorator = value != "" ? $"{value}" : "\u001B[35m";
     }
     private static string _optionColor;
-    public static string OptionColor
-    {
-        get => _optionColor;
-        set => _optionColor = value == "" ? $"{value}" : "\u001B[32m";
+    public static string OptionColor{
+        get=>_optionColor;
+        set=>_optionColor = value != "" ? $"{value}" : "\u001B[32m";
     }
     public static int Display(List<string> options)
     {
@@ -76,6 +74,12 @@ public static class DisplayUtil
         int selectedOption = Display(colors);
         Decorator = configs[selectedOption].Decorator;
         OptionColor = configs[selectedOption].OptionColor;
+    }
+
+    public static void SetDefaultColors()
+    {
+        Decorator = "\u001B[35m";
+        OptionColor = "\u001B[32m";
     }
 
     // public static void AddCostumization()

@@ -33,15 +33,20 @@ public class TableManager
         get => _reseravtions;
         set => _reseravtions = value is null ? new() : value;}
     public User? User {get;set;}
-    private readonly string[] fileNames = {@"C:dataStorage\Tables.json", @"C:dataStorage\Reservations.json"};
+    private const string tablesFileName = @"C:dataStorage\Tables.json";
+    private const string reseravtionFileName = @"C:dataStorage\Reservations.json";
 
     public TableManager()
     {
-        Tables = Table_init_.LoadTables(fileNames[0])!;
-        ReservedTable = Table_init_.LoadReservations(fileNames[1]);
+        Tables = Table_init_.LoadTables(tablesFileName)!;
+        ReservedTable = Table_init_.LoadReservations(reseravtionFileName);
     }
-
-    public bool AddReservation(DateOnly date, int id)
+    public TableManager(string tablefilename)
+    {
+        Tables = Table_init_.LoadTables(tablefilename)!;
+        ReservedTable = new();
+    }
+    public bool AddReservation(DateOnly? date, int? id, string filename = reseravtionFileName)
     {
         if (ReservedTable.Count == 0 || !ReservedTable.Exists(item => item.ReservationDate == date))
         {
@@ -52,27 +57,28 @@ public class TableManager
                 table
             };
             ReservedTable.Add(reservations);
-            JsonUtil.UploadToJson<Reservations>(ReservedTable, fileNames[1]);
+            JsonUtil.UploadToJson<Reservations>(ReservedTable, filename);
             return true;
+            // u need to fix this cus it dont work like it should...
         } else if (ReservedTable.Exists(item => item.ReservationDate == date) && !ReservedTable.Exists(item => item.TablesList.Exists( Id => Id.ID == id)))
         {
             Reservations reservations = ReservedTable.Find(item => item.ReservationDate == date)!;
             Table table = Tables.Find(item => item.ID == id)!;
             reservations.TablesList.Add(table);
-            JsonUtil.UploadToJson<Reservations>(ReservedTable, fileNames[1]);
+            JsonUtil.UploadToJson<Reservations>(ReservedTable, filename);
             return true;
         }
         return false;
     }
 
-    public bool RemoveReservation(DateOnly date, int id)
+    public bool RemoveReservation(DateOnly date, int id, string filename = reseravtionFileName)
     {
         if (ReservedTable.Exists(item => item.ReservationDate == date) && ReservedTable.Exists(item => item.TablesList.Exists(Id => Id.ID == id)))
         {
             Reservations reservations = ReservedTable.Find(item => item.ReservationDate == date)!;
             Table table = reservations.TablesList.Find(item => item.ID == id)!;
             reservations.TablesList.Remove(table);
-            JsonUtil.UploadToJson<Reservations>(ReservedTable, fileNames[1]);
+            JsonUtil.UploadToJson<Reservations>(ReservedTable, filename);
             return true;
         }
         return false;
@@ -83,7 +89,7 @@ public class TableManager
         if (Tables.Exists(item => item.ID != id))
         {
             Tables.Add(new Table(id, type));
-            JsonUtil.UploadToJson<Table>(Tables, fileNames[0]);
+            JsonUtil.UploadToJson<Table>(Tables, tablesFileName);
             return true;
         }
         return false;
@@ -96,6 +102,7 @@ public class TableManager
             if (table.ID == id)
             {
                 Tables.Remove(table);
+                JsonUtil.UploadToJson<Table>(Tables, tablesFileName);
                 UpdateResevations(table);
                 return true;
             }
@@ -122,6 +129,44 @@ public class TableManager
         return availability;
     }
 
+    public static int? ValidatePartySize(string partysize)
+    {
+        try
+        {
+            int partySize = int.Parse(partysize);
+            if (partySize > 2 && partySize < 8)
+            {
+                return partySize;
+            }
+            return null;
+        }
+        catch (System.Exception)
+        {
+            
+            return null;
+        }
+        
+    }
+
+    public static DateOnly? ValidateDate(string datestring)
+    {
+        string[] dateFormate = {"yyyy-MM-dd"};
+        try
+        {
+            DateOnly date = DateOnly.ParseExact(datestring, dateFormate);
+            DateOnly today = DateOnly.FromDateTime(DateTime.Now);
+            if (date >= today)
+            {
+                return date;
+            }
+            return null;
+        }
+        catch (System.Exception)
+        {
+            return null;
+        }
+    }
+
     private void UpdateResevations(Table table)
     {
         foreach (var item in ReservedTable)
@@ -131,7 +176,7 @@ public class TableManager
                 item.TablesList.Remove(table);
             }
         }
-        JsonUtil.UploadToJson<Reservations>(ReservedTable, fileNames[1]);
+        JsonUtil.UploadToJson<Reservations>(ReservedTable, reseravtionFileName);
     }
     public override string ToString()
     {

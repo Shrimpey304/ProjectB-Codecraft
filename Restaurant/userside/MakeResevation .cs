@@ -5,7 +5,7 @@ namespace Restaurant;
 public static class MakeReservation 
 {
     private static TableManager tableManager = new();
-    public static List<IFoodItems> foodItems;
+    public static IEnumerable<IFoodItems> foodItems;
     public static void Display()
     {
         List<string> options = new(){
@@ -27,19 +27,28 @@ public static class MakeReservation
 
     public static void MakeReserve()
     {
-        Console.Clear();
-        System.Console.WriteLine("enter your party size");
-        int partySize = int.Parse(Console.ReadLine()!);
-        while (partySize < 2 || partySize > 8)
-        {
-            System.Console.WriteLine("Invalide party size...\nPlease re-enter your party size");
-            partySize = int.Parse(Console.ReadLine()!);
-        }
-        DateOnly reservationDate = (DateOnly)ValidateDate()!;
         
+        
+        int? partySize = null;
+        DateOnly? reservationDate = null;
+        while (partySize is null)
+        {
+            Console.Clear();
+            System.Console.WriteLine("enter your party size");
+            string partySizeString = Console.ReadLine()!;
+            partySize = TableManager.ValidatePartySize(partySizeString);
+        }
+
+        while (reservationDate is null)
+        {
+            Console.Clear();
+            System.Console.WriteLine("enter your reservation date\n(yyyy-mm-dd)");
+            string dateSrting = Console.ReadLine();
+            reservationDate = TableManager.ValidateDate(dateSrting);
+        }
+
         if (!tableManager.AddReservation(reservationDate, partySize))
         {
-
             System.Console.WriteLine("Reservation unavailable. Please try again.");
             MakeReserve();
             
@@ -61,16 +70,16 @@ public static class MakeReservation
         }
     }
 
-    private static void CheckOut(int partySize, DateOnly date, List<IFoodItems> order)
+    private static void CheckOut(int? partySize, DateOnly? date, IEnumerable<IFoodItems> order)
     {
         ConsoleKeyInfo key;
         do
         {
             Console.Clear();
             System.Console.WriteLine($"Your reservation is set on {date}\nwith a party size of {partySize} people.\nYour order:");
-            for (int i = 0; i < order.Count; i++)
+            foreach (var item in order)
             {
-                System.Console.WriteLine($"{i}. {order[i].GetString()}");
+                System.Console.WriteLine(item.GetString());
             }
             System.Console.WriteLine($"Your Total: {FoodManager.GetTotal(order)}\nPress ENTER to go back to home menu.");
             key = Console.ReadKey(false);

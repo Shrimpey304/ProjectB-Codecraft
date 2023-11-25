@@ -60,7 +60,7 @@ public class FoodManager
     public List<IFoodItems> GetDishes(string type)
     {
         List<IFoodItems> dishes = new();
-        if (Dishes.Exists(item => item.DishType == type))
+        if (Dishes.Any(item => item.DishType == type))
         {
             Dish dish = Dishes.Find(item => item.DishType == type)!;
             dishes.Add(dish);
@@ -97,7 +97,7 @@ public class FoodManager
         Cart.Add(foodItems);
     }
 
-    public static decimal GetTotal(List<IFoodItems> cart)
+    public static decimal GetTotal(IEnumerable<IFoodItems> cart)
     {
         decimal total = 0.0m;
         foreach (var item in cart)
