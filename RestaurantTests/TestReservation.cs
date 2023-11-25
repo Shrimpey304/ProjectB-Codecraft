@@ -9,7 +9,7 @@ public class TestReservation
     private const string tablesFileName = @"C:\Users\zamir\Documents\GitHub\ProjectB-Codecraft\RestaurantTests\test_datastorage\Test_tables.json";
     private const string reseravtionFileName = @"C:\Users\zamir\Documents\GitHub\ProjectB-Codecraft\RestaurantTests\test_datastorage\Test_reservations.json";
     private static string[] dateFormate = {"yyyy-MM-dd"};
-    private DateOnly testDate = DateOnly.ParseExact("2029-11-23", dateFormate);
+    private static DateOnly testDate = DateOnly.ParseExact("2029-11-23", dateFormate);
 
     [TestMethod]
     [DataRow("2023-11-21", 2, true)]
@@ -40,17 +40,20 @@ public class TestReservation
     }
 
     [TestMethod]
-    [DataRow("2029-11-23", typeof(DateOnly))]
+    [DataRow("2029-11-23", "2029-11-23")]
     [DataRow("2022-01-01", null)]
     [DataRow("01-12-2023", null)]
     [DataRow("2023-13-09", null)]
     [DataRow("2023-11-40", null)]
     [DataRow("2023/11/02", null)]
-    public void Test_Date_Validation(string datestring, Type? expected)
+    public void Test_Date_Validation(string datestring, string? expectedout)
     {
+        //Arange
+        DateOnly? expected = expectedout is not null ? DateOnly.ParseExact(expectedout, dateFormate) : null;
+
         //Act
         DateOnly? actual = TableManager.ValidateDate(datestring);
-
+        
         //Assert
         Assert.AreEqual(expected, actual);
     }
