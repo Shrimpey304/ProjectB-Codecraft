@@ -1,4 +1,4 @@
-using System.Dynamic;
+﻿using System.Dynamic;
 using System.Runtime.InteropServices;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Restaurant;
@@ -9,7 +9,6 @@ public class TestReservation
     private const string tablesFileName = @"C:\Users\zamir\Documents\GitHub\ProjectB-Codecraft\RestaurantTests\test_datastorage\Test_tables.json";
     private const string reseravtionFileName = @"C:\Users\zamir\Documents\GitHub\ProjectB-Codecraft\RestaurantTests\test_datastorage\Test_reservations.json";
     private static string[] dateFormate = {"yyyy-MM-dd"};
-    private static DateOnly testDate = DateOnly.ParseExact("2029-11-23", dateFormate);
 
     [TestMethod]
     [DataRow("2023-11-21", 2, true)]
