@@ -2,10 +2,10 @@ namespace Restaurant;
 
 public class Reservations
 {
-    public DateOnly ReservationDate {get;set;}
+    public DateOnly? ReservationDate {get;set;}
     public List<Table>? TablesList {get;set;}
 
-    public Reservations(DateOnly reservation)
+    public Reservations(DateOnly? reservation)
     {
         ReservationDate = reservation;
         //Tables = new();

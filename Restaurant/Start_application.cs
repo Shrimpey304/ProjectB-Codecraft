@@ -24,7 +24,7 @@ class Program
         //     System.Console.WriteLine(item.ToString());
         // }
 
-        //DisplayUtil.CostumizeDisplay();
+        DisplayUtil.SetDefaultColors();
         MainMenu.DisplayMainMenu();
 
 
