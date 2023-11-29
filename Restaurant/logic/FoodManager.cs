@@ -1,4 +1,3 @@
-
 namespace Restaurant;
 
 public class FoodManager
