@@ -5,7 +5,7 @@ namespace Restaurant;
 public class Login
 {
 
-    public static string LoggedinUser = "Error";
+    public static string LoggedinUser = "";
     public static bool IsLoggedIn = false;
 
     private static string accountPath = @".\dataStorage\account.json";
@@ -39,7 +39,17 @@ public class Login
         }else{
             return false;
         }
+    }
 
+    public static User getUserData(string mail){
+
+        if(IsLoggedIn && MailMatches(mail)){
+            List<User> accounts = JsonUtil.ReadFromJson<User>(accountPath)!;
+
+            User account = accounts.FirstOrDefault(acc => acc.Email == mail)!;
+            return account;
+        }
+        return null!;
     }
 
     public static bool getStatus(){
@@ -47,6 +57,10 @@ public class Login
     }
 
     public static string getUser(){
-        return LoggedinUser;
+        if(LoggedinUser != ""){
+            return LoggedinUser;
+        }else{
+            return "Guest";
+        }
     }
 }
