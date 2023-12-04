@@ -1,7 +1,7 @@
 [
   {
     "ReservationDate": "2010-02-10",
-    "TablesList": [
+    "fivepm": [
       {
         "ID": 2,
         "Status": true,
@@ -11,6 +11,11 @@
         "ID": 1,
         "Status": true,
         "Type": 2
+      }
+    ],
+    "sevenpm": [
+      {
+        "ID"
       }
     ]
   },

@@ -1,27 +1,2 @@
 [
-  {
-    "ID": 1,
-    "Status": true,
-    "Type": 2
-  },
-  {
-    "ID": 2,
-    "Status": true,
-    "Type": 2
-  },
-  {
-    "ID": 3,
-    "Status": true,
-    "Type": 8
-  },
-  {
-    "ID": 4,
-    "Status": true,
-    "Type": 4
-  },
-  {
-    "ID": 5,
-    "Status": true,
-    "Type": 4
-  }
 ]

@@ -109,19 +109,19 @@ public static class MakeReservation
 
     private static void CheckAvailablity()
     {
-        Console.Clear();
-        System.Console.WriteLine("what date do you want to check");
-        DateOnly date1 = (DateOnly)ValidateDate()!;
-        List<string> tables = tableManager.CheckDateAvailability(date1);
-        foreach (string item in tables)
-        {
-            System.Console.WriteLine(item);
-        }
-        System.Console.WriteLine("press ENTER to go back");
-        if (Console.ReadKey(false).Key == ConsoleKey.Enter)
-        {
-            Display();
-        }
+        // Console.Clear();
+        // System.Console.WriteLine("what date do you want to check");
+        // DateOnly date1 = (DateOnly)ValidateDate()!;
+        // List<string> tables = tableManager.CheckDateAvailability(date1);
+        // foreach (string item in tables)
+        // {
+        //     System.Console.WriteLine(item);
+        // }
+        // System.Console.WriteLine("press ENTER to go back");
+        // if (Console.ReadKey(false).Key == ConsoleKey.Enter)
+        // {
+        //     Display();
+        // }
     }
 
     private static DateOnly? ValidateDate()
