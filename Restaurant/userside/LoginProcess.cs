@@ -6,7 +6,7 @@ public class LoginProcess{
     
     public static void LoginProcessMailView(){
 
-        Console.WriteLine("welcome to Logging in (alpha version)");    
+        Console.WriteLine("welcome to Logging in (Beta version)");    
         Console.WriteLine("please enter your Email");
         GivenEmail = Console.ReadLine()!;
 
