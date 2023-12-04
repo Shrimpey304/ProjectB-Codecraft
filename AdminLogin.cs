@@ -8,25 +8,27 @@ namespace Restaurant
         public static void CheckAdminAcc()
         {
             string jsonFileName = "AdminAccs.json";
-            string jsonContents = ReadAllText(jsonFileName);
+            string jsonContents = File.ReadAllText(jsonFileName);
 
-            Console.Write("Enter your email: ");
-            string userEmail = Console.ReadLine()!;
+            bool isLoggedIn = false;
 
-            if (jsonContents.Contains($"\"Email\": \"{userEmail}\"", StringComparison.OrdinalIgnoreCase))
+            while (!isLoggedIn)
             {
-                Console.WriteLine("Logged in as admin");
-                AdminMenu.DisplayAdminMenu();
-            }
-            else
-            {
-                Console.WriteLine("Email not found. Access denied.");
-            }
-        }
+                Console.Write("Enter your email: ");
+                string userEmail = Console.ReadLine();
 
-        static string ReadAllText(string jsonFileName)
-        {
-            return File.ReadAllText(jsonFileName);
+                if (jsonContents.Contains($"\"Email\": \"{userEmail}\"", StringComparison.OrdinalIgnoreCase))
+                {
+                    Console.WriteLine("Logged in as admin");
+                    AdminMenu.DisplayAdminMenu();
+                    isLoggedIn = true;
+                }
+                else
+                {
+                    Console.WriteLine("Email not found. Please try again.");
+                }
+            }
         }
     }
 }
+

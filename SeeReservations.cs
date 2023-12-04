@@ -1,16 +1,16 @@
 namespace Restaurant;
-public class OpenAdminAccs
+
+public class SeeReservations
 {
-    public static void SeeAdminAcc()
-    
+    public static void AdminSeeResv()
     {
-        ReadingWriting("AdminAccs.json");
-        BackToChangeAccsMenu();
+        ReadingWriting("Reservations.json");
+        BackToChangeResvMenu();
     }
 
     static void ReadingWriting(string fileName)
     {
-        Console.WriteLine("Showing all accounts...");
+        Console.WriteLine("Showing all reservations...");
         string contents = ReadAllText(fileName);
         Console.WriteLine(contents);
     }
@@ -23,7 +23,7 @@ public class OpenAdminAccs
         return contents;
     }
 
-    static void BackToChangeAccsMenu()
+    static void BackToChangeResvMenu()
     {
         ChangeAccMenu.DisplayChangeAccMenu();
     }

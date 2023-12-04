@@ -14,45 +14,44 @@ namespace Restaurant
         static void ShowAllAccounts()
         {
             Console.WriteLine("Showing all accounts...");
-            string[] lines = File.ReadAllLines("Admin.json");
-            foreach (string line in lines)
-            {
-                Console.WriteLine(line);
-            }
+            string json = File.ReadAllText("Admin.json");
+            Console.WriteLine(json);
         }
-
 
         public static void RemoveAcc()
         {
             Console.WriteLine("Type the ID of the account that you would like to remove");
-            string user_id = Console.ReadLine()!;
+            string userId = Console.ReadLine()!;
 
             string filePath = "Admin.json";
             string json = File.ReadAllText(filePath);
 
-            string searchTerm = $"\"ID\": \"{user_id}\"";
-            int index = json.IndexOf(searchTerm);
+            int startIndex = json.IndexOf($"\"ID\": \"{userId}\"");
 
-            if (index == -1)
+            if (startIndex == -1)
             {
                 Console.WriteLine("Account not found.");
                 return;
             }
 
-            int start = json.LastIndexOf('{', index);
-            int end = json.IndexOf('}', index) + 1;
+            int endIndex = json.IndexOf('}', startIndex);
 
-            if (start == -1 || end == -1)
+            if (endIndex == -1)
             {
                 Console.WriteLine("Invalid JSON structure.");
                 return;
             }
 
-            json = json.Remove(start, end - start);
+            int startBlock = json.LastIndexOf('{', startIndex);
+            int endBlock = endIndex + 1;
 
-            File.WriteAllText(filePath, json);
+            string removedJson = json.Remove(startBlock, endBlock - startBlock);
+
+            File.WriteAllText(filePath, removedJson);
             Console.WriteLine("Account removed successfully.");
         }
+
+        
     }
 }
 

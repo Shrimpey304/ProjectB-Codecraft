@@ -1,51 +1,30 @@
 namespace Restaurant;
 
-public class ChangeAccMenu
+public class AdminMenu
 {
-    public static void DisplayChangeAccMenu()
+    public static void DisplayAdminMenu()
     {
-        Console.WriteLine("Welcome to the change accounts menu, ");
-        Console.WriteLine("[C] Change accounts information");
-        Console.WriteLine("[D] Delete account");
-        Console.WriteLine("[M] Make account");
-        Console.WriteLine("[S] See all accounts");
-        Console.WriteLine("[B] Go back");
-        Console.WriteLine("[E] Exit");
+        List<string> options = new(){
+            "Change accounts information",
+            "Delete account",
+            "Make account",
+            "See all accounts",
+            "Quit Application"
+        };
+        List<Action> actions = new(){
+            ChangeAccs.ChangeAccsInfo,
+            RemoveAccs.RemoveAccsInfo,
+            MakeAdminAccs.AddUser,
+            OpenAdminAccs.SeeAdminAcc,
+            Quit
+        };
+        int selectedOption = DisplayUtil.Display(options);
+        actions[selectedOption]();
+    }
 
-        while (true)
-        {
-            string option = Console.ReadLine()!.ToUpper();
-
-            switch (option)
-            {
-                case "C":
-                    ChangeAccs.ChangeAccsInfo();
-                    break;
-
-                case "D":
-                    RemoveAccs.RemoveAccsInfo();
-                    break;
-
-                case "M":
-                    MakeAdminAccs.AddUser();
-                    break;
-
-                case "S":
-                    OpenAdminAccs.SeeAdminAcc();
-                    break;
-
-                case "B":
-                    AdminMenu.DisplayAdminMenu();
-                    break;
-
-                case "E":
-                    Console.WriteLine("Exit");
-                    return;
-
-                default:
-                    Console.WriteLine("Invalid option. Try again.");
-                    break;
-            }
-        }
+    private static void Quit()
+    {
+        Console.WriteLine("Quitting application...");
+        return;
     }
 }

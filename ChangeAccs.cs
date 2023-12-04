@@ -8,45 +8,56 @@ namespace Restaurant
         public static void ChangeAccsInfo()
         {
             ShowAllAccounts();
-            EnterID();
+            UpdateAcc();
         }
 
         static void ShowAllAccounts()
         {
             Console.WriteLine("Showing all accounts...");
-            string[] lines = File.ReadAllLines("Admin.json");
-            foreach (string line in lines)
-            {
-                Console.WriteLine(line);
-            }
+            string json = File.ReadAllText("Admin.json");
+            Console.WriteLine(json);
         }
 
-        static void EnterID()
+        public static void UpdateAcc()
         {
-            Console.WriteLine("Type the ID of the account that you would like to change");
-            string user_id = Console.ReadLine()!;
+            Console.WriteLine("Type the ID of the account that you would like to update");
+            string userId = Console.ReadLine()!;
 
-            string[] lines = File.ReadAllLines("Admin.json");
-            bool accountFound = false;
+            string filePath = "Admin.json";
+            string json = File.ReadAllText(filePath);
 
-            for (int i = 0; i < lines.Length; i++)
-            {
-                if (lines[i].Contains($"\"ID\": \"{user_id}\""))
-                {
-                    accountFound = true;
-                    lines[i] = UpdateAccountDetails(lines[i]);
-                    break;
-                }
-            }
+            int startIndex = json.IndexOf($"\"ID\": \"{userId}\"");
 
-            if (!accountFound)
+            if (startIndex == -1)
             {
                 Console.WriteLine("Account not found.");
+                return;
+            }
+
+            int endIndex = json.IndexOf('}', startIndex);
+
+            if (endIndex == -1)
+            {
+                Console.WriteLine("Invalid JSON structure.");
+                return;
+            }
+
+            int startBlock = json.LastIndexOf('{', startIndex);
+            int endBlock = endIndex + 1;
+
+            string accountInfo = json.Substring(startBlock, endBlock - startBlock);
+            string updatedAccountInfo = UpdateAccountDetails(accountInfo);
+
+            if (!string.IsNullOrEmpty(updatedAccountInfo))
+            {
+                json = json.Remove(startBlock, endBlock - startBlock).Insert(startBlock, updatedAccountInfo);
+
+                File.WriteAllText(filePath, json);
+                Console.WriteLine("Changes saved successfully.");
             }
             else
             {
-                File.WriteAllText("Admin.json", string.Join(Environment.NewLine, lines));
-                Console.WriteLine("Changes saved successfully.");
+                Console.WriteLine("Update failed.");
             }
         }
 
@@ -57,21 +68,21 @@ namespace Restaurant
             Console.WriteLine("[P] Password");
             Console.WriteLine("[H] PhoneNumber");
 
-            string choice = Console.ReadLine()!.ToUpper();
+            string choice = Console.ReadLine()?.ToUpper()!;
 
             switch (choice)
             {
                 case "E":
                     Console.WriteLine("Enter new email:");
-                    accountInfo = accountInfo.Replace("Email", $"Email: \"{Console.ReadLine()}\"");
+                    accountInfo = accountInfo.Replace("Email", $"Email\": \"{Console.ReadLine()}\"");
                     break;
                 case "P":
                     Console.WriteLine("Enter new password:");
-                    accountInfo = accountInfo.Replace("Password", $"Password: \"{Console.ReadLine()}\"");
+                    accountInfo = accountInfo.Replace("Password", $"Password\": \"{Console.ReadLine()}\"");
                     break;
                 case "H":
                     Console.WriteLine("Enter new phone number:");
-                    accountInfo = accountInfo.Replace("PhoneNumber", $"PhoneNumber: \"{Console.ReadLine()}\"");
+                    accountInfo = accountInfo.Replace("PhoneNumber", $"PhoneNumber\": \"{Console.ReadLine()}\"");
                     break;
                 default:
                     Console.WriteLine("Invalid choice.");

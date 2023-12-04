@@ -1,8 +1,8 @@
 namespace Restaurant;
 
-public class TMenu2
+public class A
 {
-    public static void Displaytest()
+    public static void B()
     {
         Console.WriteLine("test...");
     }

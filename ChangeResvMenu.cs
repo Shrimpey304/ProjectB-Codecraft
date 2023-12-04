@@ -1,21 +1,21 @@
 namespace Restaurant;
 
-public class TMenu
+public class ChangeResvMenu
 {
-    public static void DisplayMainMenu()
+    public static void DisplayChangeResvMenu()
     {
         List<string> options = new(){
-            "Change (food) menu",
-            "Change restaurant layout",
-            "Change Reservations",
-            "Change accounts",
+            "Change reservations",
+            "Remove reservation",
+            "Add reservation",
+            "See all reservations",
             "Quit Application"
         };
         List<Action> actions = new(){
-            TMenu2.Displaytest,
-            TMenu2.Displaytest,
-            TMenu2.Displaytest,
-            ChangeAccMenu.DisplayChangeAccMenu,
+            ChangeReservation.AdminChangeResv,
+            RemoveReservation.AdminRemResv,
+            AddReservation.AdminAddResv,
+            SeeReservations.AdminSeeResv,
             Quit
         };
         int selectedOption = DisplayUtil.Display(options);
@@ -28,6 +28,3 @@ public class TMenu
         return;
     }
 }
-
-
-
