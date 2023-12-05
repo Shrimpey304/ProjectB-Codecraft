@@ -5,19 +5,43 @@ using Newtonsoft.Json;
 using System.Globalization;
 
 
-public class Registration{
+public class Registration
+{
 
-    public static bool CheckPasswordSimilar(string password, string retypePassword){
+    public static bool CheckPasswordSimilar(string password, string retypePassword)
+    {
 
-        if(password == retypePassword){
+        if (password == retypePassword)
+        {
             return true;
-        }else{
+        }
+        else
+        {
             return false;
         }
 
     }
 
-    public static bool CheckPasswordFormat(string Password){
+    public static bool CheckPhoneNumberFormat(string phoneNumber)
+    {
+        if (phoneNumber.Length == 10)
+        {
+            return true;
+        }
+        else if (phoneNumber.Length > 10)
+        {
+            Console.WriteLine("Phone number too long, please enter a phone number that's up to 10 digits long");
+            return false;
+        }
+        else
+        {
+            Console.WriteLine("Phone number too short, please enter a phone number that's 10 digits long");
+            return false;
+        }
+    }
+
+    public static bool CheckPasswordFormat(string Password)
+    {
 
         if (Password.Length < 8)
         {
@@ -44,6 +68,28 @@ public class Registration{
         }
 
         return true;
+    }
+
+    public static string HashPassword()
+    {
+        ConsoleKeyInfo key;
+        string password = "";
+        do
+        {
+            key = Console.ReadKey(true);
+            if (key.Key != ConsoleKey.Backspace && key.Key != ConsoleKey.Enter)
+            {
+                password += key.KeyChar;
+                Console.Write("*");
+            }
+            else if (key.Key == ConsoleKey.Backspace && password.Length > 0)
+            {
+                password = password.Substring(0, (password.Length - 1));
+                Console.Write("\b \b");
+            }
+
+        }while (key.Key != ConsoleKey.Enter);
+        return password;
     }
 
     static bool ContainsUpperCase(string password)
@@ -83,26 +129,31 @@ public class Registration{
     }
     private static string accountPath = @".\dataStorage\account.json";
 
-    public static bool CheckEmailTaken(string email){
+    public static bool CheckEmailTaken(string email)
+    {
 
         List<User> accounts = JsonUtil.ReadFromJson<User>(accountPath)!;
         User mailExist = accounts.FirstOrDefault(account => account.Email == email)!;
 
-        if(mailExist != null){
+        if (mailExist != null)
+        {
             return true; //email is taken
-        }else{
+        }
+        else
+        {
             return false;//email is not taken
         }
 
     }
 
 
-    public static bool CheckEmailRegEx(string Email){
+    public static bool CheckEmailRegEx(string Email)
+    {
 
         //regex for Email
         string RegEx = "^[a-zA-Z0-9]+(?:\\.[a-zA-Z0-9]+)*@[a-zA-Z0-9]+(?:\\.[a-zA-Z0-9]+)*$";
 
-        if(!Regex.IsMatch(Email, RegEx))
+        if (!Regex.IsMatch(Email, RegEx))
         {
             return false;
         }
@@ -114,14 +165,15 @@ public class Registration{
     }
 
 
-    public User CreateAccount(string Email, string Password, string PhoneNumber){
+    public void CreateAccount(string Email, string Password, string PhoneNumber)
+    {
 
         string email = Email;
         string password = Password;
         string phonenumber = PhoneNumber;
 
         List<User> acc = JsonUtil.ReadFromJson<User>(accountPath)!;
-        var account = new User { Email = email, Password = password, PhoneNumber = phonenumber};
+        var account = new User { Email = email, Password = password, PhoneNumber = phonenumber };
         acc.Add(account);
         JsonUtil.UploadToJson(acc, accountPath);
         return account;

@@ -68,7 +68,7 @@ public class MenuCard : MasterDisplay
                 FoodManager.RemoveAllergens(allergy);
                 Console.ForegroundColor = ConsoleColor.Green;
                 Console.WriteLine($"We have removed {allergy} from your meal(s)");
-                Thread.Sleep(4000);
+                Thread.Sleep(3000);
                 Console.ResetColor();
             }
             Menu(option1[selectedOption]);
