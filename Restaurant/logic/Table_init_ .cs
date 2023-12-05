@@ -11,21 +11,15 @@ public static class Table_init_
     public static List<Table> LoadTables(string fileName)
     {
         List<Table> tables;
-        try
-        {
-            tables = JsonUtil.ReadFromJson<Table>(fileName);
-            if (tables is null)
-            {
-                throw new NullReferenceException();
-            }
-            return tables;
-        }
-        catch (NullReferenceException)
+        tables = JsonUtil.ReadFromJson<Table>(fileName);
+        if (tables is null || tables.Count == 0)
         {
             tables = PopulateTables();
             JsonUtil.UploadToJson<Table>(tables, fileName);
             return tables;
         }
+        return tables;
+    
     }
 
     public static List<Reservations>? LoadReservations(string fileName)

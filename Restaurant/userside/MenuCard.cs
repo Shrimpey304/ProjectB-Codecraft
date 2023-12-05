@@ -4,12 +4,18 @@ using System;
 using System.Formats.Asn1;
 using System.Net;
 
-public static class MenuCard
+public class MenuCard : MasterDisplay
 {
     private static FoodManager manager = new();
+    public Stack<Action> windowInstanceStack = new();
 
-    public static void FromMain() { Display(); }
-    public static List<IFoodItems>? Display()
+    public void FromMain()
+    {
+
+        //windowInstanceStack.Push(MainMenu.DisplayMainMenu);
+        Display(); 
+    }
+    public List<IFoodItems>? Display()
     {
         List<string> options = new(){
             "Full-Course Meal",
@@ -19,7 +25,7 @@ public static class MenuCard
         List<Action> actions = new(){
             CoursesOptions,
             DishesOptions,
-            MakeReservation.Display
+            windowInstanceStack.Pop()
         };
         int selectedOption = DisplayUtil.Display(options);
         if (selectedOption == (options.Count - 1) && manager.Cart.Count > 0)
@@ -31,7 +37,7 @@ public static class MenuCard
         return null;
     }
 
-    private static void DishesOptions()
+    private void DishesOptions()
     {
         List<string> option1 = OptionString<Dish>(manager.Dishes);
         int selectedOption = DisplayUtil.Display(option1);
@@ -41,11 +47,12 @@ public static class MenuCard
         }
         else
         {
+            windowInstanceStack.Push(MainMenu.DisplayMainMenu);
             Display();
         }
     }
 
-    private static void CoursesOptions()
+    private void CoursesOptions()
     {
         List<string> option1 = OptionString<Meals>(manager.Meals);
         int selectedOption = DisplayUtil.Display(option1);
@@ -68,17 +75,19 @@ public static class MenuCard
         }
         else
         {
+            windowInstanceStack.Push(MainMenu.DisplayMainMenu);
             Display();
         }
     }
 
-    private static void Menu(string itemType, bool dish = false)
+    private void Menu(string itemType, bool dish = false)
     {
         if (dish)
         {
             List<IFoodItems> dishes = manager.GetDishes(itemType);
             List<string> option3 = OptionString(dishes, false);
-            int selectedOption1 = DisplayUtil.Display(option3);
+            string foodCart = GetCartString(manager.Cart);
+            int selectedOption1 = DisplayUtil.Display(option3, foodCart);
             if (selectedOption1 < (option3.Count - 1))
             {
                 Console.WriteLine("Are there any allergens you would like to remove? ");
@@ -100,6 +109,7 @@ public static class MenuCard
             }
             else
             {
+                windowInstanceStack.Push(MainMenu.DisplayMainMenu);
                 Display();
             }
         }
@@ -118,10 +128,24 @@ public static class MenuCard
             }
             else
             {
-
+                windowInstanceStack.Push(MainMenu.DisplayMainMenu);
                 Display();
             }
         }
+    }
+
+    private string GetCartString(List<IFoodItems> cart)
+    {
+        List<string> outCart = new();
+        if (cart.Count > 0)
+        {
+            foreach (IFoodItems item in cart)
+            {
+                outCart.Add(item.GetString());
+            }
+            return string.Join("\n", outCart);
+        }
+        return "Your cart is empty";
     }
 
     private static List<string> OptionString<T>(List<T> foodItems, bool justname = true) where T : class

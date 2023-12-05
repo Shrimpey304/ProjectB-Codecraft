@@ -33,6 +33,9 @@ public class TableManager
         get => _reseravtions;
         set => _reseravtions = value is null ? new() : value;}
     public User? User {get;set;}
+    private List<string> timeSlots = new() {"12:00 pm", "2:00 pm", "4:00 pm", "6:00 pm", "8:00 pm"};
+    private const int codeLength = 8;
+    private const string timeFormate = "hh:mm tt";
     private const string tablesFileName = @"C:dataStorage\Tables.json";
     private const string reseravtionFileName = @"C:dataStorage\Reservations.json";
 
@@ -41,92 +44,90 @@ public class TableManager
         Tables = Table_init_.LoadTables(tablesFileName)!;
         ReservedTable = Table_init_.LoadReservations(reseravtionFileName);
     }
+
     public TableManager(string tablefilename)
     {
         Tables = Table_init_.LoadTables(tablefilename)!;
         ReservedTable = new();
     }
-    public bool AddReservation(DateOnly? date, int? id, string filename = reseravtionFileName)
+    public string? AddReservation(DateOnly? date, string time, Table table, string filename = reseravtionFileName)
     {
-        if (ReservedTable.Count == 0 || !ReservedTable.Exists(item => item.ReservationDate == date))
-        {
-            Reservations reservations = new(date);
-            Table table = Tables.Find(item => item.ID == id)!;
-            reservations.TablesList = new()
-            {
-                table
-            };
-            ReservedTable.Add(reservations);
-            JsonUtil.UploadToJson<Reservations>(ReservedTable, filename);
-            return true;
-            // u need to fix this cus it dont work like it should...
-        } else if (ReservedTable.Exists(item => item.ReservationDate == date) && !ReservedTable.Exists(item => item.TablesList.Exists( Id => Id.ID == id)))
+        string ReservationCode;
+        table.reservationDate = date;
+        table.ReservationTime = TimeOnly.ParseExact(time, timeFormate);
+        if (ReservedTable.Any(item => item.ReservationDate == date))
         {
             Reservations reservations = ReservedTable.Find(item => item.ReservationDate == date)!;
-            Table table = Tables.Find(item => item.ID == id)!;
-            reservations.TablesList.Add(table);
+            List<Table> tables = reservations.TimeSlotList[time];
+            tables.Add(table);
+            ReservationCode = GenerateCode();
+            User.tableHistory[ReservationCode] = table;
             JsonUtil.UploadToJson<Reservations>(ReservedTable, filename);
-            return true;
+            return ReservationCode;
         }
-        return false;
+        Reservations reservations1 = new(date);
+        List<Table> tables1 = reservations1.TimeSlotList[time];
+        tables1.Add(table);
+        ReservedTable.Add(reservations1);
+        ReservationCode = GenerateCode();
+        User.tableHistory[ReservationCode] = table;
+        JsonUtil.UploadToJson<Reservations>(ReservedTable, filename);
+        return ReservationCode;
     }
 
-    public bool RemoveReservation(DateOnly date, int id, string filename = reseravtionFileName)
+    public void RemoveReservation(DateOnly date, int position, string filename = reseravtionFileName)
     {
-        if (ReservedTable.Exists(item => item.ReservationDate == date) && ReservedTable.Exists(item => item.TablesList.Exists(Id => Id.ID == id)))
-        {
-            Reservations reservations = ReservedTable.Find(item => item.ReservationDate == date)!;
-            Table table = reservations.TablesList.Find(item => item.ID == id)!;
-            reservations.TablesList.Remove(table);
-            JsonUtil.UploadToJson<Reservations>(ReservedTable, filename);
-            return true;
-        }
-        return false;
+        
     }
 
-    public bool AddTable(int id, int type)
+    public bool AddTable(int position, int type)
     {
-        if (Tables.Exists(item => item.ID != id))
+        if (Tables.Exists(item => item.Position != position))
         {
-            Tables.Add(new Table(id, type));
+            Tables.Add(new Table(position, type));
             JsonUtil.UploadToJson<Table>(Tables, tablesFileName);
             return true;
         }
         return false;
     }
 
-    public bool RemoveTable(int id)
+    public bool RemoveTable(int position)
     {
         foreach (Table table in Tables)
         {
-            if (table.ID == id)
+            if (table.Position == position)
             {
                 Tables.Remove(table);
                 JsonUtil.UploadToJson<Table>(Tables, tablesFileName);
-                UpdateResevations(table);
+                //UpdateResevations(table);
                 return true;
             }
         }
         return false;
     }
 
-    public List<string> CheckDateAvailability(DateOnly date)
+    public IEnumerable<Table> GetAvailableTables(DateOnly? date, string timeslot)
     {
-        List<string> availability = new();
-        if (ReservedTable.Exists(item => item.ReservationDate == date))
+        List<Table> availableTables = new();
+        IEnumerable<Reservations>? reservations = ReservedTable.Count > 0 ? ReservedTable.Where(item => item.ReservationDate == date) : null;
+        List<Table>? timeSlotTables = reservations?.ToList()[0].TimeSlotList[timeslot];
+        return timeSlotTables is not null ? Tables.Except(timeSlotTables) : Tables;
+    }
+
+    public IEnumerable<string> GetAvailableTimeSlots(DateOnly? date)
+    {
+        List<string> AvailbaleTimeSlots = new();
+        IEnumerable<Reservations>? reservations = ReservedTable.Where(item => item.ReservationDate == date);
+        for (int i = 0; i < timeSlots.Count; i++)
         {
-            Reservations reservations = ReservedTable.Find(item => item.ReservationDate == date);
-            foreach (Table table in Tables)
+            //TimeOnly time = TimeOnly.ParseExact(timeSlots[i], timeFormate);
+            int? timeSlot = reservations.ToList().Count > 0 ? reservations.ToList()[0].TimeSlotList[timeSlots[i]].Count : 0;
+            if (reservations is null || timeSlot < 8)
             {
-                if (!reservations.TablesList.Contains(table))
-                {
-                    availability.Add(table.ToString());
-                }
+                AvailbaleTimeSlots.Add(timeSlots[i]);
             }
-            return availability;
         }
-        availability.Add("there are no tables currently available.");
-        return availability;
+        return AvailbaleTimeSlots;
     }
 
     public static int? ValidatePartySize(string partysize)
@@ -167,17 +168,30 @@ public class TableManager
         }
     }
 
-    private void UpdateResevations(Table table)
+    public static IEnumerable<string> GetTablesString(List<Table> tables)
     {
-        foreach (var item in ReservedTable)
+        List<string> outTableString = new();
+        foreach (Table table in tables)
         {
-            if (item.TablesList.Contains(table))
-            {
-                item.TablesList.Remove(table);
-            }
+            string tableString = table.ToString();
+            outTableString.Add(tableString);
         }
-        JsonUtil.UploadToJson<Reservations>(ReservedTable, reseravtionFileName);
+        return outTableString;
     }
+
+    private string GenerateCode() => Guid.NewGuid().ToString("N").Substring(0, codeLength);
+
+    // private void UpdateResevations(Table table)
+    // {
+    //     foreach (var item in ReservedTable)
+    //     {
+    //         if (item.TablesList.Contains(table))
+    //         {
+    //             item.TablesList.Remove(table);
+    //         }
+    //     }
+    //     JsonUtil.UploadToJson<Reservations>(ReservedTable, reseravtionFileName);
+    // }
     public override string ToString()
     {
         return $"table amount {Tables.Count}, resvered dates count {ReservedTable.Count}";

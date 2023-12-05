@@ -2,9 +2,10 @@ namespace Restaurant;
 
 public class LoginProcess{
 
+    private Ingelogdmenu ingelogdmenu = new();
     private static string GivenEmail = "";
     
-    public static void LoginProcessMailView(){
+    public void LoginProcessMailView(){
 
         Console.WriteLine("welcome to Logging in (Beta version)");    
         Console.WriteLine("please enter your Email");
@@ -22,17 +23,19 @@ public class LoginProcess{
 
     }
 
-    public static void LoginProcessPasswordView(string email){
+    public void LoginProcessPasswordView(string email){
 
         Console.WriteLine("please enter your password"); 
             
         string GivenPW = Console.ReadLine()!;
+        User? user = Login.AccountExists(GivenPW, email);
 
-        if(Login.AccountExists(GivenPW, email)){
+        if(user is not null){
 
             Console.WriteLine("Login is succesfull heading to mainscreen");
             Thread.Sleep(2);
-            Ingelogdmenu.DisplayIngelogdMenu();
+            ingelogdmenu.user = user;
+            ingelogdmenu.DisplayIngelogdMenu();
 
         }else{
 

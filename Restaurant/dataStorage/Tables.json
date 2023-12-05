@@ -1,27 +1,22 @@
 [
   {
-    "ID": 1,
-    "Status": true,
+    "Position": 1,
     "Type": 2
   },
   {
-    "ID": 2,
-    "Status": true,
+    "Position": 2,
     "Type": 2
   },
   {
-    "ID": 3,
-    "Status": true,
+    "Position": 3,
     "Type": 8
   },
   {
-    "ID": 4,
-    "Status": true,
+    "Position": 4,
     "Type": 4
   },
   {
-    "ID": 5,
-    "Status": true,
+    "Position": 5,
     "Type": 4
   }
 ]

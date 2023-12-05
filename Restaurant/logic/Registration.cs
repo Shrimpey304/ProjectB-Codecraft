@@ -114,7 +114,7 @@ public class Registration{
     }
 
 
-    public void CreateAccount(string Email, string Password, string PhoneNumber){
+    public User CreateAccount(string Email, string Password, string PhoneNumber){
 
         string email = Email;
         string password = Password;
@@ -124,5 +124,6 @@ public class Registration{
         var account = new User { Email = email, Password = password, PhoneNumber = phonenumber};
         acc.Add(account);
         JsonUtil.UploadToJson(acc, accountPath);
+        return account;
     }
 }

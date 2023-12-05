@@ -17,11 +17,11 @@ public static class DisplayUtil
         get=>_optionColor;
         set=>_optionColor = value != "" ? $"{value}" : "\u001B[32m";
     }
-    public static int Display(List<string> options)
+    public static int Display(List<string> options, string? foodcart=null)
     {
         Console.Clear();
         Header.DisplayHeader();
-        Console.WriteLine($"welcome {Login.getUser()}");
+        Console.WriteLine($"welcome {(foodcart is null ? $"{Login.getUser()}" : $"{Login.getUser()}\n{foodcart}")}");
         Console.CursorVisible = false;
         (int left, int top) = Console.GetCursorPosition();
         int selectedOption = 0;
