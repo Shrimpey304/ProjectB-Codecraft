@@ -2,60 +2,38 @@ namespace Restaurant;
 
 public class Ingelogdmenu
 {
-    
-    public static void DisplayIngelogdMenu()
+    public User user;
+    public void DisplayIngelogdMenu()
     {
-
+        MakeReservation makeReservation = new(user);
+        MenuCard menuCard = new();
         List<string> LogedInMenuOptions = new(){
             "Menu (food)",
             "Restaurant informatie",
             "Make reservation",
             "Order history",
             "Personal information",
+            "Logout"
         };
         List<Action> actions = new(){
-            MenuCard.FromMain,
+            menuCard.FromMain,
             RestaurantInfoTest.DisplayRestaurantInfo,
-            MakeReservation.Display,
+            makeReservation.Display,
             OrderHistoryTest.DisplayOrderHistory,
             PersonalInfoTest.DisplayPersonalInfo,
+            MainMenu.DisplayMainMenu
         };
-        DisplayUtil.Display(LogedInMenuOptions);
-
-        while (true)
+        int selectedOption = DisplayUtil.Display(LogedInMenuOptions);
+        switch (selectedOption)
         {
-            string option = Console.ReadLine()!.ToUpper();
-
-            switch (option)
-            {
-                case "M":
-                    MenuTest.DisplayMenu();
-                    break;
-
-                case "RI":
-                    RestaurantInfoTest.DisplayRestaurantInfo();
-                    break;
-
-                case "R":
-                    MakeReservation.Display();
-                    break;
-
-                case "H":
-                    OrderHistoryTest.DisplayOrderHistory();
-                    break;
-
-                case "P":
-                    Console.WriteLine("Personal information...");
-                    break;
-
-                case "Q":
-                    Console.WriteLine("Quitting application.");
-                    return;
-
-                default:
-                    Console.WriteLine("Invalid option. Try again.");
-                    break;
-            }
+            case 0:
+                menuCard.windowInstanceStack.Push(DisplayIngelogdMenu);
+                break;
+            case 2:
+                makeReservation.windowInstanceStack.Push(DisplayIngelogdMenu);
+                break;
         }
+        actions[selectedOption]();
+
     }
 }

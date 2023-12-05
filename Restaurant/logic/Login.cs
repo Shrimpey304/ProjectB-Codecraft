@@ -23,22 +23,18 @@ public class Login
 
     }
 
-    public static bool AccountExists(string password, string mail){
+    public static User? AccountExists(string password, string mail){
         string key = mail;
         string val = password;
 
         List<User> accounts = JsonUtil.ReadFromJson<User>(accountPath)!;
 
-        User account = accounts.FirstOrDefault(acc => acc.Email == mail && acc.Password == password)!;
+        User? account = accounts.FirstOrDefault(acc => acc.Email == mail && acc.Password == password)!;
         Console.WriteLine(account);
 
         LoggedinUser = key;
 
-        if(account != null){
-            return true;
-        }else{
-            return false;
-        }
+        return account;
 
     }
 

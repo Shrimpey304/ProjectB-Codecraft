@@ -1,97 +1,19 @@
 [
   {
-    "ReservationDate": "2010-02-10",
-    "fivepm": [
-      {
-        "ID": 2,
-        "Status": true,
-        "Type": 2
-      },
-      {
-        "ID": 1,
-        "Status": true,
-        "Type": 2
-      }
-    ],
-    "sevenpm": [
-      {
-        "ID"
-      }
-    ]
-  },
-  {
-    "ReservationDate": "2023-10-30",
-    "TablesList": [
-      {
-        "ID": 4,
-        "Status": true,
-        "Type": 4
-      }
-    ]
-  },
-  {
-    "ReservationDate": "2020-09-02",
-    "TablesList": [
-      {
-        "ID": 3,
-        "Status": true,
-        "Type": 8
-      }
-    ]
-  },
-  {
-    "ReservationDate": "2023-09-11",
-    "TablesList": [
-      {
-        "ID": 4,
-        "Status": true,
-        "Type": 4
-      }
-    ]
-  },
-  {
-    "ReservationDate": "2023-08-14",
-    "TablesList": [
-      {
-        "ID": 4,
-        "Status": true,
-        "Type": 4
-      }
-    ]
-  },
-  {
-    "ReservationDate": "2001-09-11",
-    "TablesList": [
-      {
-        "ID": 4,
-        "Status": true,
-        "Type": 4
-      },
-      {
-        "ID": 5,
-        "Status": true,
-        "Type": 4
-      },
-      {
-        "ID": 3,
-        "Status": true,
-        "Type": 8
-      },
-      {
-        "ID": 3,
-        "Status": true,
-        "Type": 8
-      }
-    ]
-  },
-  {
-    "ReservationDate": "2025-09-11",
-    "TablesList": [
-      {
-        "ID": 5,
-        "Status": true,
-        "Type": 4
-      }
-    ]
+    "ReservationDate": "2023-12-12",
+    "TimeSlotList": {
+      "12:00 pm": [
+        {
+          "Position": 1,
+          "reservationDate": "2023-12-12",
+          "Type": 2,
+          "ReservationTime": "12:00:00"
+        }
+      ],
+      "2:00 pm": [],
+      "4:00 pm": [],
+      "6:00 pm": [],
+      "8:00 pm": []
+    }
   }
 ]

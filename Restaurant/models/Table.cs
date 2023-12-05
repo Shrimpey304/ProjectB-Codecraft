@@ -3,15 +3,14 @@ namespace Restaurant;
 public class Table : IEquatable<Table>
 {
     public int Position {get;set;}
-    public bool Status {get;set;} = true;
+    public DateOnly? reservationDate {get;set;}
     public int Type {get;set;}
     public TimeOnly? ReservationTime {get;set;}
 
-    public Table(int position, int type, TimeOnly? reservationtime = null)
+    public Table(int position, int type)
     {
         Position = position;
         Type = type;
-        ReservationTime = reservationtime;
     }
 
     public bool Equals(Table table)
@@ -28,6 +27,6 @@ public class Table : IEquatable<Table>
 
     public override string ToString()
     {
-        return $"Table Position:{Position}, Status:{Status}, Table type:{Type}";
+        return $"Table Position:{Position}, Status:, Table type:{Type}";
     }
 }

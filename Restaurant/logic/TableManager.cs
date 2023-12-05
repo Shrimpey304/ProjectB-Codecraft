@@ -33,9 +33,9 @@ public class TableManager
         get => _reseravtions;
         set => _reseravtions = value is null ? new() : value;}
     public User? User {get;set;}
-    private List<string> timeSlots = new() {"12pm", "2pm", "4pm", "6pm", "8pm"};
+    private List<string> timeSlots = new() {"12:00 pm", "2:00 pm", "4:00 pm", "6:00 pm", "8:00 pm"};
     private const int codeLength = 8;
-    private const string timeFormate = "H:mm";
+    private const string timeFormate = "hh:mm tt";
     private const string tablesFileName = @"C:dataStorage\Tables.json";
     private const string reseravtionFileName = @"C:dataStorage\Reservations.json";
 
@@ -44,26 +44,34 @@ public class TableManager
         Tables = Table_init_.LoadTables(tablesFileName)!;
         ReservedTable = Table_init_.LoadReservations(reseravtionFileName);
     }
+
     public TableManager(string tablefilename)
     {
         Tables = Table_init_.LoadTables(tablefilename)!;
         ReservedTable = new();
     }
-    public string AddReservation(DateOnly? date, string time, Table table, string filename = reseravtionFileName)
+    public string? AddReservation(DateOnly? date, string time, Table table, string filename = reseravtionFileName)
     {
         string ReservationCode;
+        table.reservationDate = date;
+        table.ReservationTime = TimeOnly.ParseExact(time, timeFormate);
         if (ReservedTable.Any(item => item.ReservationDate == date))
         {
             Reservations reservations = ReservedTable.Find(item => item.ReservationDate == date)!;
             List<Table> tables = reservations.TimeSlotList[time];
             tables.Add(table);
             ReservationCode = GenerateCode();
+            User.tableHistory[ReservationCode] = table;
+            JsonUtil.UploadToJson<Reservations>(ReservedTable, filename);
             return ReservationCode;
         }
         Reservations reservations1 = new(date);
         List<Table> tables1 = reservations1.TimeSlotList[time];
         tables1.Add(table);
+        ReservedTable.Add(reservations1);
         ReservationCode = GenerateCode();
+        User.tableHistory[ReservationCode] = table;
+        JsonUtil.UploadToJson<Reservations>(ReservedTable, filename);
         return ReservationCode;
     }
 
@@ -98,7 +106,7 @@ public class TableManager
         return false;
     }
 
-    public IEnumerable<Table> ShowAvailablity(DateOnly date, string timeslot)
+    public IEnumerable<Table> GetAvailableTables(DateOnly? date, string timeslot)
     {
         List<Table> availableTables = new();
         IEnumerable<Reservations>? reservations = ReservedTable.Count > 0 ? ReservedTable.Where(item => item.ReservationDate == date) : null;
@@ -106,14 +114,14 @@ public class TableManager
         return timeSlotTables is not null ? Tables.Except(timeSlotTables) : Tables;
     }
 
-    public IEnumerable<string> GetAvailableTimeSlots(DateOnly date)
+    public IEnumerable<string> GetAvailableTimeSlots(DateOnly? date)
     {
         List<string> AvailbaleTimeSlots = new();
         IEnumerable<Reservations>? reservations = ReservedTable.Where(item => item.ReservationDate == date);
         for (int i = 0; i < timeSlots.Count; i++)
         {
             //TimeOnly time = TimeOnly.ParseExact(timeSlots[i], timeFormate);
-            int? timeSlot = reservations?.ToList()[0].TimeSlotList[timeSlots[i]].Count;
+            int? timeSlot = reservations.ToList().Count > 0 ? reservations.ToList()[0].TimeSlotList[timeSlots[i]].Count : 0;
             if (reservations is null || timeSlot < 8)
             {
                 AvailbaleTimeSlots.Add(timeSlots[i]);
@@ -160,19 +168,30 @@ public class TableManager
         }
     }
 
+    public static IEnumerable<string> GetTablesString(List<Table> tables)
+    {
+        List<string> outTableString = new();
+        foreach (Table table in tables)
+        {
+            string tableString = table.ToString();
+            outTableString.Add(tableString);
+        }
+        return outTableString;
+    }
+
     private string GenerateCode() => Guid.NewGuid().ToString("N").Substring(0, codeLength);
 
-    private void UpdateResevations(Table table)
-    {
-        foreach (var item in ReservedTable)
-        {
-            if (item.TablesList.Contains(table))
-            {
-                item.TablesList.Remove(table);
-            }
-        }
-        JsonUtil.UploadToJson<Reservations>(ReservedTable, reseravtionFileName);
-    }
+    // private void UpdateResevations(Table table)
+    // {
+    //     foreach (var item in ReservedTable)
+    //     {
+    //         if (item.TablesList.Contains(table))
+    //         {
+    //             item.TablesList.Remove(table);
+    //         }
+    //     }
+    //     JsonUtil.UploadToJson<Reservations>(ReservedTable, reseravtionFileName);
+    // }
     public override string ToString()
     {
         return $"table amount {Tables.Count}, resvered dates count {ReservedTable.Count}";

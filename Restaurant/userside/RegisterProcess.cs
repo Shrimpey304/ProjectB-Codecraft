@@ -2,7 +2,8 @@ namespace Restaurant;
 
 public class RegisterProcess{
 
-    public static void RegisterProcessView(){
+    private Ingelogdmenu ingelogdmenu = new();
+    public void RegisterProcessView(){
 
         Registration REG = new Registration();
 
@@ -35,8 +36,9 @@ public class RegisterProcess{
         Console.WriteLine("please write your phone number");
         string PhoneNR = Console.ReadLine()!;
 
-        REG.CreateAccount(GivenEmail, GivenPW, PhoneNR!);
-        Ingelogdmenu.DisplayIngelogdMenu();
+        User user = REG.CreateAccount(GivenEmail, GivenPW, PhoneNR!);
+        ingelogdmenu.user = user;
+        ingelogdmenu.DisplayIngelogdMenu();
     }
 
 }

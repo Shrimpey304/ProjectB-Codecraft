@@ -9,11 +9,11 @@ public class Reservations
     {
         ReservationDate = reservation;
         TimeSlotList = new(){
-            {"12pm",new()},
-            {"2pm",new()},
-            {"4pm",new()},
-            {"6pm",new()},
-            {"8pm",new()}
+            {"12:00 pm",new()},
+            {"2:00 pm",new()},
+            {"4:00 pm",new()},
+            {"6:00 pm",new()},
+            {"8:00 pm",new()}
         };
     }
 
