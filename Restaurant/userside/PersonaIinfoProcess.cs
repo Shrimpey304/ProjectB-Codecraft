@@ -6,33 +6,28 @@ public class PersonalInfoTest
     public static string ?mail;
     public static string ?pw;
     public static string ?phone;
+    Ingelogdmenu ingelogdmenu = new();
 
-    public static void DisplayPersonalInfo()
+    public void DisplayPersonalInfo()
     {
         Console.WriteLine($"Email: {mail}");
         Console.WriteLine($"Password: {pw}");
         Console.WriteLine($"Phone number: {phone}");
     }
 
-    public static void DisplayPIMenu()
+    public void DisplayPIMenu()
     {
         List<string> options = new(){
-            "Back",
-            "Change email",
-            "Change password",
-            "Change Phone number"
+            "Back"
         };
         List<Action> actions = new(){
-            Ingelogdmenu.DisplayIngelogdMenu,
-            // MakeReservation.Display,
-            // LoginProcess.LoginProcessMailView,
-            // RegisterProcess.RegisterProcessView,
+            ingelogdmenu.DisplayIngelogdMenu,
         };
         int selectedOption = DisplayUtil.Display(options);
         actions[selectedOption]();
     }
 
-    public static void showUserData(){
+    public void showUserData(){
         User acc = Login.getUserData(Login.LoggedinUser);
         if(acc != null){
             mail = acc.Email!;

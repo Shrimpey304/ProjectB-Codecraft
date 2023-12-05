@@ -38,6 +38,17 @@ public class Login
 
     }
 
+    public static User getUserData(string mail){
+
+        if(IsLoggedIn && MailMatches(mail)){
+            List<User> accounts = JsonUtil.ReadFromJson<User>(accountPath)!;
+
+            User account = accounts.FirstOrDefault(acc => acc.Email == mail)!;
+            return account;
+        }
+        return null!;
+    }
+
     public static bool getStatus(){
         return IsLoggedIn;
     }

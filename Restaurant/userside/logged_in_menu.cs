@@ -7,6 +7,7 @@ public class Ingelogdmenu
     {
         MakeReservation makeReservation = new(user);
         MenuCard menuCard = new();
+        PersonalInfoTest personalProcess = new();
         List<string> LogedInMenuOptions = new(){
             "Menu (food)",
             "Restaurant informatie",
@@ -20,7 +21,7 @@ public class Ingelogdmenu
             RestaurantInfoTest.DisplayRestaurantInfo,
             makeReservation.Display,
             OrderHistoryTest.DisplayOrderHistory,
-            PersonalInfoTest.DisplayPersonalInfo,
+            personalProcess.DisplayPIMenu,
             MainMenu.DisplayMainMenu
         };
         int selectedOption = DisplayUtil.Display(LogedInMenuOptions);

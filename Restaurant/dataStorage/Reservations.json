@@ -8,6 +8,12 @@
           "reservationDate": "2023-12-12",
           "Type": 2,
           "ReservationTime": "12:00:00"
+        },
+        {
+          "Position": 3,
+          "reservationDate": "2023-12-12",
+          "Type": 8,
+          "ReservationTime": "12:00:00"
         }
       ],
       "2:00 pm": [],
