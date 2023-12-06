@@ -5,7 +5,7 @@ public class Table : IEquatable<Table>
     public int Position {get;set;}
     public DateOnly? reservationDate {get;set;}
     public int Type {get;set;}
-    public TimeOnly? ReservationTime {get;set;}
+    public string? ReservationTime {get;set;}
 
     public Table(int position, int type)
     {

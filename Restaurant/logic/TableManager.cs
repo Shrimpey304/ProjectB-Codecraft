@@ -35,7 +35,7 @@ public class TableManager
     public User? User {get;set;}
     private List<string> timeSlots = new() {"12:00 pm", "2:00 pm", "4:00 pm", "6:00 pm", "8:00 pm"};
     private const int codeLength = 8;
-    private const string timeFormate = "hh:mm tt";
+    private const string timeFormate = "HH:mm tt";
     private const string tablesFileName = @"C:dataStorage\Tables.json";
     private const string reseravtionFileName = @"C:dataStorage\Reservations.json";
 
@@ -54,7 +54,7 @@ public class TableManager
     {
         string ReservationCode;
         table.reservationDate = date;
-        table.ReservationTime = TimeOnly.ParseExact(time, timeFormate);
+        table.ReservationTime = time;
         if (ReservedTable.Any(item => item.ReservationDate == date))
         {
             Reservations reservations = ReservedTable.Find(item => item.ReservationDate == date)!;
@@ -110,8 +110,11 @@ public class TableManager
     {
         List<Table> availableTables = new();
         IEnumerable<Reservations>? reservations = ReservedTable.Count > 0 ? ReservedTable.Where(item => item.ReservationDate == date) : null;
-        List<Table>? timeSlotTables = reservations?.ToList()[0].TimeSlotList[timeslot];
-        return timeSlotTables is not null ? Tables.Except(timeSlotTables) : Tables;
+        if (reservations is not null && reservations.ToList().Count > 0){
+            List<Table>? timeSlotTables = reservations?.ToList()[0].TimeSlotList[timeslot];
+            return timeSlotTables is not null ? Tables.Except(timeSlotTables) : Tables;
+        }
+        return Tables;
     }
 
     public IEnumerable<string> GetAvailableTimeSlots(DateOnly? date)
