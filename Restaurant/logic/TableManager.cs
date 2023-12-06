@@ -36,6 +36,12 @@ public class TableManager
     private const string tablesFileName = @"C:dataStorage\Tables.json";
     private const string reseravtionFileName = @"C:dataStorage\Reservations.json";
 
+    private const int MaxSeatingAmount = 48;
+
+    public Dictionary<string, Table> TableDictionary { get; private set; }
+
+
+
     public TableManager()
     {
         Tables = Table_init_.LoadTables(tablesFileName)!;
@@ -46,6 +52,7 @@ public class TableManager
         Tables = Table_init_.LoadTables(tablefilename)!;
         ReservedTable = new();
     }
+
     public bool AddReservation(DateOnly? date, int? id, string filename = reseravtionFileName)
     {
         if (ReservedTable.Count == 0 || !ReservedTable.Exists(item => item.ReservationDate == date))

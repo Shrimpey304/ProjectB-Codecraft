@@ -173,7 +173,11 @@ public class Registration
         string phonenumber = PhoneNumber;
 
         List<User> acc = JsonUtil.ReadFromJson<User>(accountPath)!;
-        var account = new User { Email = email, Password = password, PhoneNumber = phonenumber };
+        if (acc == null)
+        {
+            acc = new List<User>();
+        }
+        User account = new User { Email = email, Password = password, PhoneNumber = phonenumber };
         acc.Add(account);
         JsonUtil.UploadToJson(acc, accountPath);
     }
