@@ -102,6 +102,7 @@ public class MakeReservation : MasterDisplay
 
     private void CheckOut(int? partySize, DateOnly? date, IEnumerable<IFoodItems> order)
     {
+        Ingelogdmenu ingelogdmenu = new();
         ConsoleKeyInfo key;
         do
         {
@@ -115,7 +116,7 @@ public class MakeReservation : MasterDisplay
             key = Console.ReadKey(false);
         } while (key.Key != ConsoleKey.Enter);
         windowInstanceStack.Clear();
-        MainMenu.DisplayMainMenu();
+        ingelogdmenu.DisplayIngelogdMenu();
     }
 
     private void RemoveReserve()

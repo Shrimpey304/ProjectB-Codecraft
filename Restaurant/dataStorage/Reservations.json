@@ -32,6 +32,29 @@
           "reservationDate": "2023-12-20",
           "Type": 2,
           "ReservationTime": "2:00 pm"
+        },
+        {
+          "Position": 3,
+          "reservationDate": "2023-12-20",
+          "Type": 8,
+          "ReservationTime": "2:00 pm"
+        }
+      ],
+      "4:00 pm": [],
+      "6:00 pm": [],
+      "8:00 pm": []
+    }
+  },
+  {
+    "ReservationDate": "2023-12-29",
+    "TimeSlotList": {
+      "12:00 pm": [],
+      "2:00 pm": [
+        {
+          "Position": 2,
+          "reservationDate": "2023-12-29",
+          "Type": 2,
+          "ReservationTime": "2:00 pm"
         }
       ],
       "4:00 pm": [],
