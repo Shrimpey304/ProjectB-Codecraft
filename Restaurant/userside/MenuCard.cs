@@ -66,6 +66,39 @@ public class MenuCard : MasterDisplay
             Display();
         }
     }
+    public bool AddWine()
+    {
+        Console.WriteLine("Would you wine with your order (yes/no)?");
+        string userInput = Console.ReadLine().ToLower();
+        if (userInput == "yes")
+        {
+            Console.WriteLine("Splendid! Here is our list of available wine bottles: ");
+            List<Wine> wineList = FoodItems_init_.PopulateWine();
+            foreach (var availableWine in wineList)
+            {
+                Console.WriteLine($"ID: {availableWine.ID}, Name: {availableWine.WineName}, Description: {availableWine.Description}, Price: {availableWine.Price:C}");
+            }
+
+            Console.WriteLine("Enter the ID(s) of the wines you would like to add to your order. (Comma-separated)");
+            string userInput2 = Console.ReadLine();
+            List<int> selectedWineID = userInput2.Split(',')
+                                                 .Select(id => int.TryParse(id.Trim(), out var result) ? result : -1)
+                                                 .Where(id => id > 0 && id <= wineList.Count)
+                                                 .ToList();
+            if (selectedWineID.Count > 0)
+            {
+                Console.WriteLine("Adding the following wine(s) to your order: ");
+                foreach (var selectedWineId in selectedWineID)
+                {
+                    var selectedWine = wineList.FirstOrDefault(wine => wine.ID == selectedWineId);
+                    if (selectedWine != null)
+                    {
+                        Console.WriteLine($"{selectedWine.WineName} - {selectedWine.Price}");
+                    }
+                }
+            }
+        }return false;
+    }
 
     private void Menu(string itemType, bool dish = false)
     {
@@ -95,6 +128,7 @@ public class MenuCard : MasterDisplay
                 System.Console.WriteLine("Item added to cart.");
                 manager.AddToCart(dishes[selectedOption1]);
                 DishesOptions();
+                AddWine();
             }
             else
             {
