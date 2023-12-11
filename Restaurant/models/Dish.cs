@@ -8,6 +8,7 @@ public class Dish : IFoodItems
     public string Description {get;set;}
     public decimal Price {get;set;}
     public string Allergens {get;set;}
+    public string? RemovedA = null;
 
     public Dish(int id, string dishtype, string name, string description, decimal price, string allergens)
     {
@@ -20,12 +21,12 @@ public class Dish : IFoodItems
     }
 
     public decimal GetPrice() => Price;
-    public string GetString(bool itemType=false)
+    public string GetString(bool itemType=false, bool incart=false)
     {
         if (itemType)
         {
-            return $"{DishType}";
+            return !incart ? $"{DishType}" : $"{DishName}  €{Price}\n {Description}\n Contains:{Allergens}\n   Allergens removed:{(RemovedA is not null ? RemovedA : "No allergens romved")}";
         }
-        return $"{ID} | {DishType}\n  {DishName}  €{Price}\n   {Description}\n   Contains:{Allergens}";
+        return $"{ID} | {DishType}\n  {DishName}  €{Price}\n   {Description}\n   Contains:{Allergens}\n   Allergens removed:{(RemovedA is not null ? RemovedA : "No allergens romved")}";
     }
 }

@@ -58,19 +58,6 @@ public class MenuCard : MasterDisplay
         int selectedOption = DisplayUtil.Display(option1);
         if (selectedOption < (option1.Count - 1))
         {
-            Console.WriteLine("Are there any allergens you would like to remove? ");
-            string answer = Console.ReadLine();
-            string allergy = null;
-            if (answer.ToLower() == "yes")
-            {
-                Console.WriteLine("Input allergy you want to remove: ");
-                allergy = Console.ReadLine();
-                FoodManager.RemoveAllergens(allergy);
-                Console.ForegroundColor = ConsoleColor.Green;
-                Console.WriteLine($"We have removed {allergy} from your meal(s)");
-                Thread.Sleep(3000);
-                Console.ResetColor();
-            }
             Menu(option1[selectedOption]);
         }
         else
@@ -90,6 +77,7 @@ public class MenuCard : MasterDisplay
             int selectedOption1 = DisplayUtil.Display(option3, foodCart);
             if (selectedOption1 < (option3.Count - 1))
             {
+                Dish dish1 = (Dish)dishes[selectedOption1];
                 Console.WriteLine("Are there any allergens you would like to remove? ");
                 string answer = Console.ReadLine();
                 string allergy = null;
@@ -97,6 +85,7 @@ public class MenuCard : MasterDisplay
                 {
                     Console.WriteLine("Input allergy you want to remove: ");
                     allergy = Console.ReadLine();
+                    dish1.RemovedA = allergy;
                     FoodManager.RemoveAllergens(allergy);
                     Console.ForegroundColor = ConsoleColor.Green;
                     Console.WriteLine($"We have removed {allergy} from your meal(s)");
@@ -117,11 +106,26 @@ public class MenuCard : MasterDisplay
         {
             List<IFoodItems> meals = manager.GetMeals(itemType);
             System.Console.WriteLine($"{itemType}, {meals.Count}");
-
             List<string> option2 = OptionString(meals, false);
-            int selectedOption = DisplayUtil.Display(option2);
+            string foodCart = GetCartString(manager.Cart);
+            int selectedOption = DisplayUtil.Display(option2, foodCart);
             if (selectedOption < (option2.Count - 1))
             {
+                Meals meal = (Meals)meals[selectedOption];
+                Console.WriteLine("Are there any allergens you would like to remove? ");
+                string answer = Console.ReadLine();
+                string allergy = null;
+                if (answer.ToLower() == "yes")
+                {
+                    Console.WriteLine("Input allergy you want to remove: ");
+                    allergy = Console.ReadLine();
+                    meal.RemovedA = allergy;
+                    FoodManager.RemoveAllergens(allergy);
+                    Console.ForegroundColor = ConsoleColor.Green;
+                    Console.WriteLine($"We have removed {allergy} from your meal(s)");
+                    Thread.Sleep(4000);
+                    Console.ResetColor();
+                }
                 System.Console.WriteLine("Item added to cart. $_$");
                 manager.AddToCart(meals[selectedOption]);
                 CoursesOptions();
@@ -141,7 +145,7 @@ public class MenuCard : MasterDisplay
         {
             foreach (IFoodItems item in cart)
             {
-                outCart.Add(item.GetString());
+                outCart.Add(item.GetString(true, true));
             }
             return string.Join("\n", outCart);
         }

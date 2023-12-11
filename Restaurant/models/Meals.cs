@@ -9,6 +9,7 @@ public class Meals : IFoodItems
     //public List<Dish> Dishes {get;set;}
     public decimal Price { get; set; }
     public string CourseDescription { get; set; }
+    public string? RemovedA = null;
 
     public Meals(int id, int coursetype, string mealtype, string mealname, decimal price, string coursedescription)
     {
@@ -22,12 +23,12 @@ public class Meals : IFoodItems
     }
 
     public decimal GetPrice() => Price;
-    public string GetString(bool itemType=false)
+    public string GetString(bool itemType=false, bool incart=false)
     {
         if (itemType)
         {
-            return $"{MealType}";
+            return !incart ?  $"{MealType}" : $"{CourseType}-course {MealType} meal €{Price}\nAllergens removed:{(RemovedA is not null ? RemovedA : "No allergens romved")}";
         }
-        return $"{ID} | {CourseType}-course {MealType} meal €{Price}\n  {CourseDescription}";
+        return $"{ID} | {CourseType}-course {MealType} meal €{Price}\n  {CourseDescription}\n   Allergens removed:{(RemovedA is not null ? RemovedA : "No allergens romved")}";
     }
 }

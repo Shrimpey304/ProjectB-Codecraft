@@ -62,6 +62,7 @@ public class TableManager
             tables.Add(table);
             ReservationCode = GenerateCode();
             User.tableHistory[ReservationCode] = table;
+            
             JsonUtil.UploadToJson<Reservations>(ReservedTable, filename);
             return ReservationCode;
         }

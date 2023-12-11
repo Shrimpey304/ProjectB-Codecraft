@@ -20,7 +20,7 @@ public class Dessert : IFoodItems
 
     public decimal GetPrice() => Price;
 
-    public string GetString(bool itemType)
+    public string GetString(bool itemType=false, bool incart=false)
     {
         if (itemType)
         {

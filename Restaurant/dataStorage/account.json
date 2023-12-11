@@ -47,5 +47,33 @@
     "Password": "qAAAA1234",
     "PhoneNumber": "1234657900",
     "HasRervering": false
+  },
+  {
+    "tableHistory": {},
+    "Email": "ass@gmail.com",
+    "Password": "Vis0101vis",
+    "PhoneNumber": "1234567890",
+    "HasRervering": false
+  },
+  {
+    "tableHistory": {},
+    "Email": "gort@gortium.nl",
+    "Password": "password123Password123",
+    "PhoneNumber": "0612345678fdsf",
+    "HasRervering": false
+  },
+  {
+    "tableHistory": {},
+    "Email": "Test@test.nl",
+    "Password": "Password123",
+    "PhoneNumber": "0612345678dsadsa",
+    "HasRervering": false
+  },
+  {
+    "tableHistory": {},
+    "Email": "zammer@gmail.com",
+    "Password": "Qp12345678",
+    "PhoneNumber": "1234567890",
+    "HasRervering": false
   }
 ]
