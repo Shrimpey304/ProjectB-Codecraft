@@ -9,46 +9,35 @@ namespace Restaurant
         {
             ShowAllAccounts();
             RemoveAcc();
+            
         }
 
         static void ShowAllAccounts()
         {
             Console.WriteLine("Showing all accounts...");
-            string json = File.ReadAllText("Admin.json");
+            string json = File.ReadAllText("ez.json");
             Console.WriteLine(json);
         }
 
+        private static string accountPath = "ez.json";
         public static void RemoveAcc()
-        {
-            Console.WriteLine("Type the ID of the account that you would like to remove");
-            string userId = Console.ReadLine()!;
+         {
+            Console.WriteLine("Enter the email of the account you want to remove:");
+            string emailToRemove = Console.ReadLine();
 
-            string filePath = "Admin.json";
-            string json = File.ReadAllText(filePath);
+            List<User> accounts = JsonUtil.ReadFromJson<User>(accountPath);
+            User userToRemove = accounts.FirstOrDefault(acc => acc.Email == emailToRemove);
 
-            int startIndex = json.IndexOf($"\"ID\": \"{userId}\"");
-
-            if (startIndex == -1)
+            if (userToRemove != null)
+            {
+                accounts.Remove(userToRemove);
+                JsonUtil.UploadToJson(accounts, accountPath);
+                Console.WriteLine("Account removed.");
+            }
+            else
             {
                 Console.WriteLine("Account not found.");
-                return;
             }
-
-            int endIndex = json.IndexOf('}', startIndex);
-
-            if (endIndex == -1)
-            {
-                Console.WriteLine("Invalid JSON structure.");
-                return;
-            }
-
-            int startBlock = json.LastIndexOf('{', startIndex);
-            int endBlock = endIndex + 1;
-
-            string removedJson = json.Remove(startBlock, endBlock - startBlock);
-
-            File.WriteAllText(filePath, removedJson);
-            Console.WriteLine("Account removed successfully.");
         }
 
         

@@ -12,9 +12,9 @@ public class ChangeResvMenu
             "Quit Application"
         };
         List<Action> actions = new(){
-            ChangeReservation.AdminChangeResv,
-            RemoveReservation.AdminRemResv,
-            AddReservation.AdminAddResv,
+            ChangeReservationA.AdminChangeResv,
+            RemoveReservationA.AdminRemResv,
+            AddReservationA.AdminAddResv,
             SeeReservations.AdminSeeResv,
             Quit
         };

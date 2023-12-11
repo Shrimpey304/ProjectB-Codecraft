@@ -1,0 +1,18 @@
+[
+  {
+    "Email": "kimo@gmail.com",
+    "Password": "Kimo1234!",
+    "PhoneNumber": "0612345",
+    "HasRervering": false,
+    "TableRes": null,
+    "Admin": false
+  },
+  {
+    "Email": "zamir@gmail.com",
+    "Password": "Kimo2004!",
+    "PhoneNumber": "012343246",
+    "HasRervering": false,
+    "TableRes": null,
+    "Admin": true
+  }
+]

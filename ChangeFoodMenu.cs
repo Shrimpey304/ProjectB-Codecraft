@@ -1,20 +1,22 @@
 namespace Restaurant;
 
-public class ChangeAccMenu
+public class ChangeFoodMenu
 {
-    public static void DisplayChangeAccMenu()
+    public static void DisplayFoodMenu()
     {
         List<string> options = new(){
-            "Change accounts information",
-            "Delete account",
-            "Make account",
-            "See all accounts",
+            "Change dish information",
+            "Delete dish",
+            "Add dish",
+            "Delete whole menu",
+            "See food menu",
             "Quit Application"
         };
         List<Action> actions = new(){
             ChangeAccs.ChangeAccsInfo,
             RemoveAccs.RemoveAccsInfo,
             MakeAdminAccs.AddUser,
+            OpenAdminAccs.SeeAdminAcc,
             OpenAdminAccs.SeeAdminAcc,
             Quit
         };

@@ -1,21 +1,19 @@
 namespace Restaurant;
 
-public class ChangeAccMenu
+public class ChangeTableMenu
 {
-    public static void DisplayChangeAccMenu()
+    public static void DisplayChangeTableMenu()
     {
         List<string> options = new(){
-            "Change accounts information",
-            "Delete account",
-            "Make account",
-            "See all accounts",
+            "See existing tables"
+            "Add table",
+            "Remove table",
             "Quit Application"
         };
         List<Action> actions = new(){
-            ChangeAccs.ChangeAccsInfo,
-            RemoveAccs.RemoveAccsInfo,
-            MakeAdminAccs.AddUser,
-            OpenAdminAccs.SeeAdminAcc,
+            SeeTables.DisplaySeeTables
+            AddAdminTable.MakeTableA,
+            RemoveAdminTable.RemoveTableA,
             Quit
         };
         int selectedOption = DisplayUtil.Display(options);

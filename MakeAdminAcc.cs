@@ -7,41 +7,43 @@ namespace Restaurant
     {
         public static void AddUser()
         {
-            Console.WriteLine("Enter the information (email, name, id, password, phonenumber) to make an account.");
-            Console.WriteLine("Enter user information:");
 
-            Console.Write("Email: ");
-            string email = Console.ReadLine()!;
-
-            Console.Write("Name: ");
-            string naam = Console.ReadLine()!;
-
-            Console.Write("ID: ");
-            string id = Console.ReadLine()!;
-
-            Console.Write("Password: ");
-            string password = Console.ReadLine()!;
-
-            Console.Write("Phone Number: ");
-            string phoneNumber = Console.ReadLine()!;
-
-            WriteToJson("MakeAccs.json", email, naam, id, password, phoneNumber);
+        Registration REG = new Registration();
+  
+        Console.WriteLine("Enter Email");
+        string ?GivenEmail = "";
+        while(Registration.CheckEmailRegEx(GivenEmail!) == false){
+            string mail = Console.ReadLine()!;
+            GivenEmail += mail + "";
         }
 
-        static void WriteToJson(string fileName, string email, string naam, string id, string password, string phoneNumber)
-        {
-            Console.WriteLine("Adding a new user...");
-
-            // Construct the JSON string with indentation
-            string json = $"{{\n  \"Email\": \"{email}\",\n  \"Naam\": \"{naam}\",\n  \"ID\": \"{id}\",\n  \"Password\": \"{password}\",\n  \"PhoneNumber\": \"{phoneNumber}\"\n}}";
-
-            // Append the JSON to the file
-            File.AppendAllText(fileName, json + Environment.NewLine);
-
-            Console.WriteLine("User added successfully!");
-
-            ChangeAccMenu.DisplayChangeAccMenu();
+        Console.WriteLine("Enter password"); 
+        Console.WriteLine("Capital, lower, number");
+        string ?GivenPW = "";
+        while(Registration.CheckPasswordFormat(GivenPW!) == false){
+            string pass = Console.ReadLine()!;
+            GivenPW += pass + "";
         }
+        Console.WriteLine(GivenPW);
+        
+
+        Console.Write("Retype the password\n");
+        string ?RetypePW = Console.ReadLine();
+        if(Registration.CheckPasswordSimilar(GivenPW!, RetypePW!) == true){
+            Console.WriteLine("registratie succesvol");
+        }else{
+            Console.WriteLine("failed");
+        }
+
+        Console.WriteLine("Enter phone number");
+        string PhoneNR = Console.ReadLine()!;
+
+        Console.WriteLine("Admin: (true/false)");
+        bool isAdmin = Convert.ToBoolean(Console.ReadLine()!);
+
+        REG.CreateAccount(GivenEmail, GivenPW, PhoneNR!, isAdmin);
+        ChangeAccMenu.DisplayChangeAccMenu();
+    }
     }
 }
 

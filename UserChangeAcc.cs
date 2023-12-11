@@ -3,22 +3,25 @@ using System.Collections.Generic;
 
 namespace Restaurant
 {
-    public class ChangeAccs
+    public class UserChangeAccs
     {
         private static string accountPath = "ez.json";
 
-        public static void ChangeAccsInfo()
+        public static void UserChangeAccsInfo()
         {
-            Console.WriteLine("Enter the email of the account you want to modify:");
-            string emailToModify = Console.ReadLine();
+            Console.WriteLine("Enter your email:");
+            string userEmail = Console.ReadLine();
+
+            Console.WriteLine("Enter your password:");
+            string userPassword = Console.ReadLine();
 
             List<User> accounts = JsonUtil.ReadFromJson<User>(accountPath);
-            User userToModify = accounts.FirstOrDefault(acc => acc.Email == emailToModify);
+            User userToModify = accounts.FirstOrDefault(acc => acc.Email == userEmail && acc.Password == userPassword);
 
             if (userToModify != null)
             {
                 Console.WriteLine("Account found. Select the information to change:");
-                Console.WriteLine("1. Email\n2. Password\n3. Phone Number\n4. Admin Status");
+                Console.WriteLine("1. Email\n2. Password\n3. Phone Number");
 
                 int choice = Convert.ToInt32(Console.ReadLine());
                 switch (choice)
@@ -57,12 +60,6 @@ namespace Restaurant
                         userToModify.PhoneNumber = newPhoneNumber;
                         break;
 
-                    case 4:
-                        Console.WriteLine("Change admin status (true/false):");
-                        bool newAdminStatus = Convert.ToBoolean(Console.ReadLine());
-                        userToModify.Admin = newAdminStatus;
-                        break;
-
                     default:
                         Console.WriteLine("Invalid choice.");
                         break;
@@ -74,7 +71,7 @@ namespace Restaurant
             }
             else
             {
-                Console.WriteLine("Account not found.");
+                Console.WriteLine("Invalid email or password. Account not found.");
             }
         }
     }

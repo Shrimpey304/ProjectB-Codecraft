@@ -1,16 +1,16 @@
 namespace Restaurant;
-public class SeeReservations
+public class SeeTables
 {
-    public static void AdminSeeResv()
+    public static void DisplaySeeTables()
     
     {
-        ReadingWriting("Reservations.json");
-        BackToChangeResvMenu();
+        ReadingWriting("Tables.json");
+        BackToChangeTableMenu();
     }
 
     static void ReadingWriting(string fileName)
     {
-        Console.WriteLine("Showing all reservations...");
+        Console.WriteLine("Showing all existing tables...");
         string contents = ReadAllText(fileName);
         Console.WriteLine(contents);
     }
@@ -23,9 +23,9 @@ public class SeeReservations
         return contents;
     }
 
-    static void BackToChangeResvMenu()
+    static void BackToChangeTableMenu()
     {
-        ChangeResvMenu.DisplayChangeResvMenu();
+        ChangeTableMenu.DisplayChangeTableMenu();
     }
 
 }

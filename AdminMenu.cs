@@ -7,15 +7,19 @@ public class AdminMenu
         List<string> options = new(){
             "Change (food) menu",
             "Change restaurant layout",
-            "Change Reservations",
+            "Change application color",
+            "Change reservations",
             "Change accounts",
+            "Change tables",
             "Quit Application"
         };
         List<Action> actions = new(){
-            A.B,
-            A.B,
+            ChangeFoodMenu.DisplayChangeFoodMenu,
+            ChangeLayout.SetLayout,
+            ChangeColor.SetColor,
             ChangeResvMenu.DisplayChangeResvMenu,
             ChangeAccMenu.DisplayChangeAccMenu,
+            ChangeTableMenu.DisplayChangeTableMenu,
             Quit
         };
         int selectedOption = DisplayUtil.Display(options);
