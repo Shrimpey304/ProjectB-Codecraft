@@ -46,6 +46,31 @@ public class Registration{
         return true;
     }
 
+    public static string HashPassword()
+    {
+        ConsoleKeyInfo key;
+        string password = "";
+        do
+        {
+            key = Console.ReadKey(true);
+            if (key.Key != ConsoleKey.Backspace && key.Key != ConsoleKey.Enter)
+            {
+                password += key.KeyChar;
+                Console.Write(key.KeyChar);
+                Thread.Sleep(200); 
+                Console.Write("\b*");
+            }
+            else if (key.Key == ConsoleKey.Backspace && password.Length > 0)
+            {
+                password = password.Substring(0, (password.Length - 1));
+                Console.Write("\b \b");
+            }
+
+        }while (key.Key != ConsoleKey.Enter);
+        Console.WriteLine();
+        return password;
+    }
+
     static bool ContainsUpperCase(string password)
     {
         foreach (char c in password)

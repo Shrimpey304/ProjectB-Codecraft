@@ -19,14 +19,14 @@ public class RegisterProcess{
         Console.WriteLine("Capital, lower, number");
         string ?GivenPW = "";
         while(Registration.CheckPasswordFormat(GivenPW!) == false){
-            string pass = Console.ReadLine()!;
+            string pass = Registration.HashPassword();
             GivenPW += pass + "";
         }
         Console.WriteLine(GivenPW);
         
 
         Console.Write("please retype the password\n");
-        string ?RetypePW = Console.ReadLine();
+        string ?RetypePW = Registration.HashPassword();
         if(Registration.CheckPasswordSimilar(GivenPW!, RetypePW!) == true){
             Console.WriteLine("registratie succesvol");
         }else{

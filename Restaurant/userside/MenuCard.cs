@@ -128,7 +128,7 @@ public class MenuCard : MasterDisplay
                 System.Console.WriteLine("Item added to cart.");
                 manager.AddToCart(dishes[selectedOption1]);
                 DishesOptions();
-                AddWine();
+                AddWine(); // ADDWINE METHOD HERE (COULD BE IN WRONG PLACE)
             }
             else
             {
