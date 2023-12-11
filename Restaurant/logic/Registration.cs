@@ -80,7 +80,9 @@ public class Registration
             if (key.Key != ConsoleKey.Backspace && key.Key != ConsoleKey.Enter)
             {
                 password += key.KeyChar;
-                Console.Write("*");
+                Console.Write(key.KeyChar);
+                Thread.Sleep(200); 
+                Console.Write("\b*");
             }
             else if (key.Key == ConsoleKey.Backspace && password.Length > 0)
             {
@@ -89,6 +91,7 @@ public class Registration
             }
 
         }while (key.Key != ConsoleKey.Enter);
+        Console.WriteLine();
         return password;
     }
 

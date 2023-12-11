@@ -25,7 +25,7 @@ public class RegisterProcess
             string pass = Console.ReadLine()!;
             GivenPW += pass + "";
         }
-        Console.WriteLine("\n", GivenPW);
+        Console.WriteLine("\n" + GivenPW);
 
 
         Console.Write("please retype the password\n");

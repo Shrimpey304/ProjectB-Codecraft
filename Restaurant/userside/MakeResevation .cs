@@ -80,6 +80,7 @@ public static class MakeReservation
             foreach (var item in order)
             {
                 System.Console.WriteLine(item.GetString());
+                System.Console.WriteLine($"Removed allergen(s): {null}");
             }
             System.Console.WriteLine($"Your Total: {FoodManager.GetTotal(order)}\nPress ENTER to go back to home menu.");
             key = Console.ReadKey(false);

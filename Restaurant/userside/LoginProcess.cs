@@ -26,7 +26,7 @@ public class LoginProcess{
 
         Console.WriteLine("please enter your password"); 
             
-        string GivenPW = Console.ReadLine()!;
+        string GivenPW = Registration.HashPassword()!;
 
         if(Login.AccountExists(GivenPW, email)){
 
