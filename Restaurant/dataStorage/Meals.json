@@ -2,9 +2,26 @@
   {
     "ID": 1,
     "CourseType": 3,
-    "MealType": "fish Course",
+    "MealType": "Fish Course",
     "MealName": "bomama",
     "Price": 56.90,
     "CourseDescription": "etaboma"
+  },
+  {
+    "ID": 2,
+    "CourseType": 2,
+    "MealType": "Chicken",
+    "MealName": "Grilled chicken breast with steamed broccoli.",
+    "Price": 45.80,
+    "CourseDescription": "A succulent piece of chicken grilled in thyme, koriander, and basil salt with a side of steamed broccoli."
+  },
+  {
+    "ID": 3,
+    "CourseType": 4,
+    "MealType": "Steak",
+    "MealName": "Grilled steak",
+    "Price": 67.99,
+    "CourseDescription": "A top notch A4 wagyu steak imported straight from Saitama, Japan. We serve this delicious dish with a side of culinary french fries and steamy jasmin rice."
   }
+
 ]

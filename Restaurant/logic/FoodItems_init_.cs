@@ -74,4 +74,15 @@ public static class FoodItems_init_
         };
         return meals;
     }
+    internal static List<Wine> PopulateWine()
+    {
+        List<Wine> wine = new()
+        {
+            new Wine(1, 50.99m, 14.7, "Rosé", "Magnum Château", "High quality sweet yet dry rosé wine imported straight from Lyon, France"),
+            new Wine(2, 89.99m, 16.3, "White", "Joseph Drouhin Meursault Porusots", "Luxurious dry white wine hand-harvested from our own vineyard estates in the NorthEastern region of italy Friuli-Venezia Giulia."),
+            new Wine(3, 100.00m, 15.3, "White", "Château Suduiraut Sauternes", "This sweet white wine is one of the finest wines in our product range."),
+            new Wine(4, 149.99m, 15.7, "Red", "Cavallotto Barolo Riserva Bricco Boschis Vigna San Giuseppe", "This delicious red whine could be considered a masterpiece by some. The delicate balance of flavours between the sweetness of the grapes and the sourness of the vinegar are unmatched in this classic Italian treasure.")
+        };
+        return wine;
+    }
 }
