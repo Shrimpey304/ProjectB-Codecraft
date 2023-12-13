@@ -75,5 +75,13 @@
     "Password": "Qp12345678",
     "PhoneNumber": "1234567890",
     "HasRervering": false
+  },
+  {
+    "tableHistory": {},
+    "Email": "jay@gmail.com",
+    "Password": "Jay123456",
+    "PhoneNumber": "1234567890",
+    "HasRervering": false,
+    "Admin": true
   }
 ]

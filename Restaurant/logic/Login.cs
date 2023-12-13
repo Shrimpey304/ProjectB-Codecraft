@@ -60,4 +60,12 @@ public class Login
             return "Guest";
         }
     }
+
+    public static bool IsAdmin(string password, string mail)
+        {
+            List<User> accounts = JsonUtil.ReadFromJson<User>(accountPath);
+            User account = accounts.FirstOrDefault(acc => acc.Email == mail && acc.Password == password && acc.Admin);
+
+            return account != null;
+        }
 }

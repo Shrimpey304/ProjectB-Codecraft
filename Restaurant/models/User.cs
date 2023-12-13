@@ -7,4 +7,5 @@ public class User{
     public string ?PhoneNumber {get; set;}
     public bool HasRervering {get; set;}
     public Dictionary<string, Table> tableHistory = new();
+    public bool Admin { get; set; }
 }

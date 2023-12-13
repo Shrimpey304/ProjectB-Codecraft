@@ -36,7 +36,7 @@ public class RegisterProcess{
         Console.WriteLine("please write your phone number");
         string PhoneNR = Console.ReadLine()!;
 
-        User user = REG.CreateAccount(GivenEmail, GivenPW, PhoneNR!);
+        User user = REG.CreateAccount(GivenEmail, GivenPW, PhoneNR!, false);
         ingelogdmenu.user = user;
         ingelogdmenu.DisplayIngelogdMenu();
     }

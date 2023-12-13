@@ -1,0 +1,30 @@
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System;
+using System.IO;
+using System.Text;
+
+namespace Restaurant.Tests
+{
+    [TestClass]
+    public class MakeAdminAccsTests
+    {
+        private readonly StringWriter _consoleOutput = new StringWriter();
+        private readonly StringReader _consoleInput = new StringReader("example@example.com\nPassw0rd\nPassw0rd\n1234567890\nno\n");
+        
+        [TestInitialize]
+        public void SetupConsole()
+        {
+            Console.SetOut(_consoleOutput);
+            Console.SetIn(_consoleInput);
+        }
+
+        [TestMethod]
+        public void AddUser_InputtingNoForAdmin_ShouldCreateNonAdminAccount()
+        {
+            MakeAdminAccs.AddUser();
+            string consoleOutput = _consoleOutput.ToString();
+            
+            Assert.IsTrue(consoleOutput.Contains("registratie succesvol"));
+        }
+    }
+}
