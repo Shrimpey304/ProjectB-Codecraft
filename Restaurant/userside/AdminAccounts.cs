@@ -4,7 +4,7 @@ public class AdminAccounts
 {
 
     private static string accountPath = @".\dataStorage\account.json";
-    
+
     public static void SeeAccountsA()
     {
         Console.WriteLine("Showing all accounts...");
