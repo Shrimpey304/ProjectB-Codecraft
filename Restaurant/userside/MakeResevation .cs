@@ -84,7 +84,7 @@ public class MakeReservation : MasterDisplay
             menuCard.Display();
             if (foodItems is not null)
             {
-                List<string> options = new(){"Go to checkout", "Go back to reseravtion menu"};
+                List<string> options = new(){"Go to checkout", "Go back to reservation menu"};
                 int selectedOption2 = DisplayUtil.Display(options);
                 if (selectedOption2 == 0)
                 {

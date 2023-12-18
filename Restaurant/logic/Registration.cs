@@ -46,6 +46,20 @@ public class Registration{
         return true;
     }
 
+    public static bool CheckPhoneNumberFormat(string PhoneNR)
+    {
+        if (PhoneNR.Length < 8)
+        {
+            Console.WriteLine("Invalid. Phone number must be longer than 8 characters.");
+            return false;
+        }
+        else
+        {
+            Console.WriteLine("Phone number stored, registration succesful");
+            return true;
+        }
+    }
+
     public static string HashPassword()
     {
         ConsoleKeyInfo key;
@@ -147,7 +161,11 @@ public class Registration{
 
         List<User> acc = JsonUtil.ReadFromJson<User>(accountPath)!;
         var account = new User { Email = email, Password = password, PhoneNumber = phonenumber};
-        acc.Add(account);
+
+        if (acc != null)
+        {
+            acc.Add(account);
+        }
         JsonUtil.UploadToJson(acc, accountPath);
         return account;
     }

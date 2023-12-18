@@ -66,38 +66,40 @@ public class MenuCard : MasterDisplay
             Display();
         }
     }
-    public bool AddWine()
+    public void AddWine()
     {
-        Console.WriteLine("Would you wine with your order (yes/no)?");
-        string userInput = Console.ReadLine().ToLower();
-        if (userInput == "yes")
+        Console.WriteLine("Would you like a bottle of wine with your order?");
+        string answer = Console.ReadLine().ToLower();
+
+        if (answer == "yes")
         {
+        
+
             Console.WriteLine("Splendid! Here is our list of available wine bottles: ");
             List<Wine> wineList = FoodItems_init_.PopulateWine();
+            
             foreach (var availableWine in wineList)
             {
-                Console.WriteLine($"ID: {availableWine.ID}, Name: {availableWine.WineName}, Description: {availableWine.Description}, Price: {availableWine.Price:C}");
+                Console.WriteLine($"ID: {availableWine.ID}, Name: {availableWine.WineName}, Description: {availableWine.Description}, Price: {availableWine.Price:C}\n");
             }
 
-            Console.WriteLine("Enter the ID(s) of the wines you would like to add to your order. (Comma-separated)");
+            Console.WriteLine("Enter the ID of the wine you would like to add to your order.");
             string userInput2 = Console.ReadLine();
-            List<int> selectedWineID = userInput2.Split(',')
-                                                 .Select(id => int.TryParse(id.Trim(), out var result) ? result : -1)
-                                                 .Where(id => id > 0 && id <= wineList.Count)
-                                                 .ToList();
-            if (selectedWineID.Count > 0)
+            if (int.TryParse(userInput2.Trim(), out int selectedWineID) && selectedWineID > 0 && selectedWineID <= wineList.Count)
             {
-                Console.WriteLine("Adding the following wine(s) to your order: ");
-                foreach (var selectedWineId in selectedWineID)
-                {
-                    var selectedWine = wineList.FirstOrDefault(wine => wine.ID == selectedWineId);
+                    var selectedWine = wineList.FirstOrDefault(wine => wine.ID == selectedWineID);
                     if (selectedWine != null)
                     {
-                        Console.WriteLine($"{selectedWine.WineName} - {selectedWine.Price}");
+                        Console.WriteLine($"We have added: {selectedWine.WineName} - with a price of: {selectedWine.Price} to your order");
+                        Thread.Sleep(4000);
+                        manager.AddToCart(selectedWine);
                     }
-                }
             }
-        }return false;
+            else
+            {
+                Console.WriteLine("Invalid input. Please enter a valid wine ID.");
+            }
+        }
     }
 
     private void Menu(string itemType, bool dish = false)
@@ -127,8 +129,10 @@ public class MenuCard : MasterDisplay
                 }
                 System.Console.WriteLine("Item added to cart.");
                 manager.AddToCart(dishes[selectedOption1]);
+                AddWine();
                 DishesOptions();
-                AddWine(); // ADDWINE METHOD HERE (COULD BE IN WRONG PLACE)
+                
+                 
             }
             else
             {
@@ -160,7 +164,7 @@ public class MenuCard : MasterDisplay
                     Thread.Sleep(4000);
                     Console.ResetColor();
                 }
-                System.Console.WriteLine("Item added to cart. $_$");
+                System.Console.WriteLine("Item added to cart.");
                 manager.AddToCart(meals[selectedOption]);
                 CoursesOptions();
             }

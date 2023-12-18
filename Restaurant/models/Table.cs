@@ -27,6 +27,6 @@ public class Table : IEquatable<Table>
 
     public override string ToString()
     {
-        return $"Table number:{Position}, Status:, Table type:{Type}";
+        return $"Table number: {Position}, Table type: {Type}-people table";
     }
 }
