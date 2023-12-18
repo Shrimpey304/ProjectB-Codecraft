@@ -37,7 +37,7 @@ public class AdminMenu
             AdminAccounts.SeeAccountsA,
             AdminAccounts.AddAccountsA,
             AdminAccounts.RemoveAccountsA,
-            AdminAccounts.ChangeAccountsA,
+            ChangeAccountsA,
             DisplayAdminMenu
         };
         int selectedOption = DisplayUtil.Display(options);
@@ -46,18 +46,25 @@ public class AdminMenu
 
     public static void DisplayChangeFoodMenu()
     {
+        MenuCard menuCard = new MenuCard();
         List<string> options = new(){
             "See food menu",
-            "Add food",
-            "Remove food",
-            "Change food",
+            "Add dish",
+            "Add meal",
+            "Remove dish",
+            "Remove meal",
+            "Change dish",
+            "Change meal",
             "Go back to admin menu"
         };
         List<Action> actions = new(){
-            AdminFood.SeeFoodA,
-            AdminFood.AddFoodA,
-            AdminFood.RemoveFoodA,
-            AdminFood.ChangeFoodA,
+            menuCard.FromMain,
+            AdminFood.AddDishA,
+            AdminFood.AddMealA,
+            AdminFood.RemoveDishA,
+            AdminFood.RemoveMealA,
+            ChangeDishA,
+            ChangeMealA,
             DisplayAdminMenu
         };
         int selectedOption = DisplayUtil.Display(options);
@@ -66,6 +73,7 @@ public class AdminMenu
 
     public static void DisplayChangeResvMenu()
     {
+        MakeReservation makeReservation = new MakeReservation();
         List<string> options = new(){
             "See reservations",
             "Add reservation",
@@ -75,7 +83,7 @@ public class AdminMenu
         };
         List<Action> actions = new(){
             AdminReservations.SeeReservationsA,
-            AdminReservations.AddReservationA,
+            makeReservation.MakeReserve,
             AdminReservations.RemovReservationA,
             AdminReservations.ChangeReservationA,
             DisplayAdminMenu
@@ -125,5 +133,75 @@ public class AdminMenu
     {
         Console.WriteLine("Quitting application...");
         return;
+    }
+
+    public static void ChangeAccountsA()
+    {   
+        List<string> options = new(){
+            "Change email of account",
+            "Change password of account",
+            "Change phone number of account",
+            "Change admin status of account",
+            "Go back to admin accounts menu"
+        };
+        List<Action> actions = new(){
+            AdminEditAccs.ChangeEmail,
+            AdminEditAccs.ChangePassword,
+            AdminEditAccs.ChangePhonenumber,
+            AdminEditAccs.ChangeAdminstatus,
+            DisplayChangeAccMenu,
+        };
+        int selectedOption = DisplayUtil.Display(options);
+        actions[selectedOption]();
+        
+
+    }
+
+    public static void ChangeDishA()
+    {   
+        List<string> options = new(){
+            "Change name of dish",
+            "Change type of dish",
+            "Change description of dish",
+            "Change price of dish",
+            "Change allergiens of dish",
+            "Go back to admin accounts menu"
+        };
+        List<Action> actions = new(){
+            AdminEditDish.ChangeDishName,
+            AdminEditDish.ChangeDishType,
+            AdminEditDish.ChangeDescription,
+            AdminEditDish.ChangePrice,
+            AdminEditDish.ChangeAllergens,
+            DisplayChangeAccMenu,
+        };
+        int selectedOption = DisplayUtil.Display(options);
+        actions[selectedOption]();
+        
+
+    }
+
+    public static void ChangeMealA()
+    {   
+        List<string> options = new(){
+            "Change course type",
+            "Change meal type",
+            "Change name of meal",
+            "Change price of meal",
+            "Change description of meal",
+            "Go back to admin accounts menu"
+        };
+        List<Action> actions = new(){
+            AdminEditMeal.ChangeCourseType,
+            AdminEditMeal.ChangeMealType,
+            AdminEditMeal.ChangeMealName,
+            AdminEditMeal.ChangePrice,
+            AdminEditMeal.ChangeCourseDescription,
+            DisplayChangeAccMenu,
+        };
+        int selectedOption = DisplayUtil.Display(options);
+        actions[selectedOption]();
+        
+
     }
 }

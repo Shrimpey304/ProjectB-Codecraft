@@ -2,20 +2,140 @@ namespace Restaurant;
 
 public class AdminFood
 {
-    public static void SeeFoodA()
+    public static void SeeDishes()
     {
-        Console.WriteLine("test...");
+        Console.WriteLine("Showing all accounts...");
+        string json = File.ReadAllText(@".\dataStorage\Dishes.json");
+        Console.WriteLine(json);
     }
 
-    public static void AddFoodA()
+    public static void SeeMeals()
     {
-        Console.WriteLine("test...");
+        Console.WriteLine("Showing all accounts...");
+        string json = File.ReadAllText(@".\dataStorage\Meals.json");
+        Console.WriteLine(json);
     }
 
-    public static void RemoveFoodA()
+    public static void AddDishA()
     {
-        Console.WriteLine("test...");
+        SeeDishes();
+        FoodManager foodManager = new FoodManager();
+
+        Console.WriteLine("Enter dish ID:");
+        int id = Convert.ToInt32(Console.ReadLine());
+
+        Console.WriteLine("Enter dish type:");
+        string dishType = Console.ReadLine();
+
+        Console.WriteLine("Enter dish name:");
+        string name = Console.ReadLine();
+
+        Console.WriteLine("Enter dish description:");
+        string description = Console.ReadLine();
+
+        Console.WriteLine("Enter dish price:");
+        decimal price = Convert.ToDecimal(Console.ReadLine());
+
+        Console.WriteLine("Enter dish allergens:");
+        string allergens = Console.ReadLine();
+
+        // Call the FoodManager's AddDish method with the user input
+        bool dishAdded = foodManager.AddDish(id, dishType, name, description, price, allergens);
+
+        if (dishAdded)
+        {
+            Console.WriteLine("Dish added successfully!");
+            AdminMenu.DisplayChangeFoodMenu();
+        }
+        else
+        {
+                Console.WriteLine("Invalid");
+        }
     }
+
+    public static void AddMealA()
+    {
+        SeeMeals(); 
+    
+        FoodManager foodManager = new FoodManager();
+
+        Console.WriteLine("Enter meal ID:");
+        int id = Convert.ToInt32(Console.ReadLine());
+
+        Console.WriteLine("Enter course type:");
+        int courseType = Convert.ToInt32(Console.ReadLine());
+
+        Console.WriteLine("Enter meal type:");
+        string mealType = Console.ReadLine();
+
+        Console.WriteLine("Enter meal name:");
+        string mealName = Console.ReadLine();
+
+        Console.WriteLine("Enter meal description:");
+        string mealDescription = Console.ReadLine();
+
+        Console.WriteLine("Enter meal price:");
+        decimal price = Convert.ToDecimal(Console.ReadLine());
+
+        // Call the FoodManager's AddMeal method with the user input
+        bool mealAdded = foodManager.AddMeal(id, courseType, mealType, mealName, price, mealDescription);
+
+        if (mealAdded)
+        {
+            Console.WriteLine("Meal added successfully!");
+            AdminMenu.DisplayChangeFoodMenu();
+        }
+        else
+        {
+            Console.WriteLine("Invalid");
+        }
+    }
+
+    public static void RemoveDishA()
+    {
+        SeeDishes();
+        FoodManager foodManager = new FoodManager();
+
+        Console.WriteLine("Enter the ID of the dish that you want to remove:");
+        int id = Convert.ToInt32(Console.ReadLine());
+
+
+        bool dishRemoved = foodManager.RemoveDish(id);
+
+        if (dishRemoved)
+        {
+            Console.WriteLine("Dish removed successfully!");
+            AdminMenu.DisplayChangeFoodMenu();
+        }
+        else
+        {
+            Console.WriteLine("Dish not found");
+        }
+    }
+
+
+    public static void RemoveMealA()
+    {
+        SeeMeals(); 
+        FoodManager foodManager = new FoodManager();
+
+        Console.WriteLine("Enter the ID of the meal you want to remove:");
+        int id = Convert.ToInt32(Console.ReadLine());
+
+        bool mealRemoved = foodManager.RemoveMeal(id);
+
+        if (mealRemoved)
+        {
+            Console.WriteLine("Meal removed successfully!");
+            AdminMenu.DisplayChangeFoodMenu();
+        }
+        else
+        {
+            Console.WriteLine("Meal not found");
+        }
+    }
+
+
 
     public static void ChangeFoodA()
     {

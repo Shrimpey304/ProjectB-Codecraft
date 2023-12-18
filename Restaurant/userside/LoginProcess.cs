@@ -39,12 +39,12 @@ public class LoginProcess
             bool isAdmin = Login.IsAdmin(GivenPW, email);
             if (isAdmin)
             {
-                Console.WriteLine("Login successful. Redirecting to admin panel.");
+                Console.WriteLine("Login is successful heading to admin panel.");
                 AdminMenu.DisplayAdminMenu(); 
             }
             else
             {
-                Console.WriteLine("Login is succesfull heading to mainscreen");
+                Console.WriteLine("Login is succesfull heading to mainscreen.");
                 Thread.Sleep(2);
                 ingelogdmenu.user = user;
                 ingelogdmenu.DisplayIngelogdMenu();

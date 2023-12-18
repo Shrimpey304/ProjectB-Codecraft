@@ -46,7 +46,7 @@ public class AdminAccounts
         Console.WriteLine("Enter phone number");
         string PhoneNR = Console.ReadLine()!;
 
-        Console.WriteLine("Admin: (true/false)");
+        Console.WriteLine("Enter Admin status (true or false)");
         bool isAdmin = Convert.ToBoolean(Console.ReadLine()!);
 
         REG.CreateAccount(GivenEmail, GivenPW, PhoneNR!, isAdmin);
@@ -57,7 +57,7 @@ public class AdminAccounts
     {
         SeeAccountsA();
 
-        Console.WriteLine("Enter the email of the account you want to remove:");
+        Console.WriteLine("Enter the email of the account that you want to remove:");
         string emailToRemove = Console.ReadLine();
 
         List<User> accounts = JsonUtil.ReadFromJson<User>(accountPath);
@@ -68,74 +68,11 @@ public class AdminAccounts
             accounts.Remove(userToRemove);
             JsonUtil.UploadToJson(accounts, accountPath);
             Console.WriteLine("Account removed.");
+            AdminMenu.DisplayChangeAccMenu();
         }
         else
         {
             Console.WriteLine("Account not found.");
         }
     }
-
-
-    public static void ChangeAccountsA()
-    {
-        SeeAccountsA();
-
-        Console.WriteLine("Enter the email of the account you want to modify:");
-        string emailToModify = Console.ReadLine();
-
-        List<User> accounts = JsonUtil.ReadFromJson<User>(accountPath);
-        User userToModify = accounts.FirstOrDefault(acc => acc.Email == emailToModify);
-
-        if (userToModify != null)
-        {
-            Console.WriteLine("Account found. Select the information to change:");
-            List<string> options = new(){
-                "Change email of selected account",
-                "Change password of selected account",
-                "Change phone number of selected account",
-                "Change admin status of selected account",
-                "Go back to change other account",
-                "Go back to admin accounts menu"
-            };
-            List<Action> actions = new(){
-                ChangeEmail,
-                ChangePassword,
-                ChangePhonenumber,
-                ChangeAdminstatus,
-                ChangeAccountsA,
-                AdminMenu.DisplayChangeAccMenu,
-            };
-            int selectedOption = DisplayUtil.Display(options);
-            actions[selectedOption]();
-        }
-        else
-        {
-            Console.WriteLine("Account not found.");
-        }
-    }
-
-    public static void ChangeEmail()
-    {
-
-        Console.WriteLine("test...");
-    }
-
-    public static void ChangePassword()
-    {
-
-        Console.WriteLine("test...");
-    }
-
-    public static void ChangePhonenumber()
-    {
-
-        Console.WriteLine("test...");
-    }
-
-    public static void ChangeAdminstatus()
-    {
-
-        Console.WriteLine("test...");
-    }
-
 }

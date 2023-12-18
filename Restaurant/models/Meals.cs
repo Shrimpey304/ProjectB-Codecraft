@@ -31,4 +31,5 @@ public class Meals : IFoodItems
         }
         return $"{ID} | {CourseType}-course {MealType} meal €{Price}\n  {CourseDescription}\n   Allergens removed:{(RemovedA is not null ? RemovedA : "No allergens romved")}";
     }
+
 }

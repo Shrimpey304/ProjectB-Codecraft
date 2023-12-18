@@ -2,16 +2,16 @@ namespace Restaurant;
 
 public class AdminReservations
 {
+    private static string reservationPath = @".\dataStorage\Reservations.json";
     public static void SeeReservationsA()
     {
-        Console.WriteLine("test...");
+        Console.WriteLine("Showing all reservations...");
+        string json = File.ReadAllText(reservationPath);
+        Console.WriteLine(json);
     }
-
-    public static void AddReservationA()
-    {
-        Console.WriteLine("test...");
-    }
-
+    /// <summary>
+    /// make resv change in makeresrevation later
+    /// </summary>
     public static void RemovReservationA()
     {
         Console.WriteLine("test...");
