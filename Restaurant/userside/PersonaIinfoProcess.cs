@@ -18,10 +18,18 @@ public class PersonalInfoTest
     public void DisplayPIMenu()
     {
         List<string> options = new(){
+            "See personal information",
+            "Change email",
+            "Change password",
+            "Change phone numberk",
             "Back"
         };
         List<Action> actions = new(){
-            ingelogdmenu.DisplayIngelogdMenu,
+            ///UserChangeAcc.UserSeeOwnAcc,
+            UserChangeAcc.ChangeEmailU,
+            UserChangeAcc.ChangePasswordU,
+            UserChangeAcc.ChangePhoneNumberU,
+            ingelogdmenu.DisplayIngelogdMenu
         };
         int selectedOption = DisplayUtil.Display(options);
         actions[selectedOption]();
@@ -38,4 +46,5 @@ public class PersonalInfoTest
             }
         }
     }
+
 }

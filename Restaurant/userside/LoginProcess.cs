@@ -23,6 +23,7 @@ public class LoginProcess
         }
 
         LoginProcessPasswordView(GivenEmail);
+        UserChangeAcc.UserSeeOwnAcc(GivenEmail);
 
     }
 

@@ -8,15 +8,15 @@ public class AdminEditAccs
     AdminAccounts.SeeAccountsA();
 
     Console.WriteLine("Enter the email of the account that you want to change:");
-    string currentEmail = Console.ReadLine();
+    string currentEmail = Console.ReadLine()!;
 
-    List<User> accounts = JsonUtil.ReadFromJson<User>(accountPath);
-    User userToChange = accounts.FirstOrDefault(acc => acc.Email == currentEmail);
+    List<User> accounts = JsonUtil.ReadFromJson<User>(accountPath)!;
+    User userToChange = accounts.FirstOrDefault(acc => acc.Email == currentEmail)!;
 
     if (userToChange != null)
     {
-        Console.WriteLine($"Enter the new email for {currentEmail}:");
-        string newEmail = Console.ReadLine();
+        Console.WriteLine("Enter new email:");
+        string newEmail = Console.ReadLine()!;
 
         if (!Registration.CheckEmailRegEx(newEmail))
         {
@@ -30,7 +30,6 @@ public class AdminEditAccs
             return;
         }
 
-        // Change the email using the method from the User class
         userToChange.ChangeEmail(newEmail);
 
         JsonUtil.UploadToJson(accounts, accountPath);
