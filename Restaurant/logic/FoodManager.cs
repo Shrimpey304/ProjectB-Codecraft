@@ -20,6 +20,8 @@ public class FoodManager
         {
             Dish dish = new(id, dishtype, name, description, price, allergens);
             Dishes.Add(dish);
+            JsonUtil.UploadToJson(Dishes, fileNames[0]);
+            return true;
         }
         return false;
     }
@@ -30,6 +32,8 @@ public class FoodManager
         {
             Meals meal = new(id, coursetype, mealtype, mealname, price, coursedescription);
             Meals.Add(meal);
+            JsonUtil.UploadToJson(Meals, fileNames[1]);
+            return true;
         }
         return false;
     }
@@ -40,6 +44,7 @@ public class FoodManager
         {
             Dish dish = Dishes.Find(item => item.ID == id)!;
             Dishes.Remove(dish);
+            JsonUtil.UploadToJson(Dishes, @"C:dataStorage\Dishes.json");
             return true;
         }
         return false;
@@ -51,6 +56,7 @@ public class FoodManager
         {
             Meals meal = Meals.Find(item => item.ID == id)!;
             Meals.Remove(meal);
+            JsonUtil.UploadToJson(Meals, @"C:dataStorage\Meals.json");
             return true;
         }
         return false;

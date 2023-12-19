@@ -6,7 +6,7 @@
     "Description": "Chicken nuggets and fries for the kids",
     "Price": 12.90,
     "Allergens": "wheat"
-  },  
+  },
   {
     "ID": 2,
     "DishType": "Fish",

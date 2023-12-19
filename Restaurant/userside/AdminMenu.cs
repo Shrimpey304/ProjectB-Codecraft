@@ -34,7 +34,7 @@ public class AdminMenu
             "Go back to admin menu"
         };
         List<Action> actions = new(){
-            AdminAccounts.SeeAccountsA,
+            AdminAccounts.SeeAccountsB,
             AdminAccounts.AddAccountsA,
             AdminAccounts.RemoveAccountsA,
             ChangeAccountsA,
@@ -48,23 +48,25 @@ public class AdminMenu
     {
         MenuCard menuCard = new MenuCard();
         List<string> options = new(){
-            "See food menu",
+            "See dishes",
             "Add dish",
             "Add meal",
             "Remove dish",
             "Remove meal",
             "Change dish",
             "Change meal",
+            "Remove all dishes",
             "Go back to admin menu"
         };
         List<Action> actions = new(){
-            menuCard.FromMain,
+            AdminFood.SeeDishesB,
             AdminFood.AddDishA,
             AdminFood.AddMealA,
             AdminFood.RemoveDishA,
             AdminFood.RemoveMealA,
             ChangeDishA,
             ChangeMealA,
+            AdminFood.RemAllDishes,
             DisplayAdminMenu
         };
         int selectedOption = DisplayUtil.Display(options);

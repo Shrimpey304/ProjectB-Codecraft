@@ -89,18 +89,10 @@
   },
   {
     "tableHistory": {},
-    "Email": "jay@gmail.com",
+    "Email": "jay@gmail",
     "Password": "Jay123456",
     "PhoneNumber": "1234567890",
     "HasRervering": false,
     "Admin": true
-  },
-  {
-    "tableHistory": {},
-    "Email": "henk@gmail.com",
-    "Password": "hEnk1234",
-    "PhoneNumber": "1",
-    "HasRervering": false,
-    "Admin": false
   }
 ]

@@ -5,6 +5,17 @@ public class AdminAccounts
 
     private static string accountPath = @".\dataStorage\account.json";
 
+    public static void SeeAccountsB()
+    {
+        Console.WriteLine("Showing all accounts...");
+        string json = File.ReadAllText(accountPath);
+        Console.WriteLine(json);
+        Console.WriteLine("Go back");
+        Console.ReadLine();
+
+        AdminMenu.DisplayChangeAccMenu();
+    }
+
     public static void SeeAccountsA()
     {
         Console.WriteLine("Showing all accounts...");

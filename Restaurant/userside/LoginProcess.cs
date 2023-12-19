@@ -23,7 +23,6 @@ public class LoginProcess
         }
 
         LoginProcessPasswordView(GivenEmail);
-        UserChangeAcc.UserSeeOwnAcc(GivenEmail);
 
     }
 
@@ -49,6 +48,7 @@ public class LoginProcess
                 Thread.Sleep(2);
                 ingelogdmenu.user = user;
                 ingelogdmenu.DisplayIngelogdMenu();
+                ///UserChangeAcc.UserSeeOwnAcc(email);
             }
 
         }

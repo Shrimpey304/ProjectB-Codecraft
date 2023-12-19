@@ -2,16 +2,27 @@ namespace Restaurant;
 
 public class AdminFood
 {
+    public static void SeeDishesB()
+    {
+        Console.WriteLine("Showing all dishes...");
+        string json = File.ReadAllText(@".\dataStorage\Dishes.json");
+        Console.WriteLine(json);
+        Console.WriteLine("Go back");
+        Console.ReadLine();
+
+        AdminMenu.DisplayChangeFoodMenu();
+    }
+
     public static void SeeDishes()
     {
-        Console.WriteLine("Showing all accounts...");
+        Console.WriteLine("Showing all dishes...");
         string json = File.ReadAllText(@".\dataStorage\Dishes.json");
         Console.WriteLine(json);
     }
 
     public static void SeeMeals()
     {
-        Console.WriteLine("Showing all accounts...");
+        Console.WriteLine("Showing all meals...");
         string json = File.ReadAllText(@".\dataStorage\Meals.json");
         Console.WriteLine(json);
     }
@@ -39,7 +50,6 @@ public class AdminFood
         Console.WriteLine("Enter dish allergens:");
         string allergens = Console.ReadLine();
 
-        // Call the FoodManager's AddDish method with the user input
         bool dishAdded = foodManager.AddDish(id, dishType, name, description, price, allergens);
 
         if (dishAdded)
@@ -142,6 +152,14 @@ public class AdminFood
         Console.WriteLine("test...");
     }
 
-    
+    public static void RemAllDishes()
+    {
+        FoodManager foodManager = new FoodManager();
+        foodManager.Dishes.Clear();
+        JsonUtil.UploadToJson(foodManager.Dishes, @"C:dataStorage\Dishes.json");
+        Console.WriteLine("All dishes removed successfully!");
+        AdminMenu.DisplayChangeFoodMenu();
+    }
+
 
 }
