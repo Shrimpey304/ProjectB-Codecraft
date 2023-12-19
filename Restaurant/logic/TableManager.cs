@@ -183,19 +183,13 @@ public class TableManager
         return outTableString;
     }
 
-    private string GenerateCode() => Guid.NewGuid().ToString("N").Substring(0, codeLength);
-
-    // private void UpdateResevations(Table table)
-    // {
-    //     foreach (var item in ReservedTable)
-    //     {
-    //         if (item.TablesList.Contains(table))
-    //         {
-    //             item.TablesList.Remove(table);
-    //         }
-    //     }
-    //     JsonUtil.UploadToJson<Reservations>(ReservedTable, reseravtionFileName);
-    // }
+    public static string GenerateCode()
+    {
+        Random random = new Random();
+        int reservationCodeInt = random.Next(100000, 999999);
+        string reservationCode = reservationCodeInt.ToString();
+        return reservationCode;
+    }
     public override string ToString()
     {
         return $"table amount {Tables.Count}, resvered dates count {ReservedTable.Count}";

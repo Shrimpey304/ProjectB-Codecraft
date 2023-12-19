@@ -102,12 +102,13 @@ public class MakeReservation : MasterDisplay
 
     private void CheckOut(int? partySize, DateOnly? date, IEnumerable<IFoodItems> order)
     {
+        string reservationCode = TableManager.GenerateCode();
         Ingelogdmenu ingelogdmenu = new();
         ConsoleKeyInfo key;
         do
         {
             Console.Clear();
-            System.Console.WriteLine($"Your reservation is set on {date}\nwith a party size of {partySize} people.\nYour order:");
+            System.Console.WriteLine($"Your reservation is set on {date}\nwith a party size of {partySize} people.\nYour personal reservation code: {reservationCode}\nYour order:");
             foreach (var item in order)
             {
                 System.Console.WriteLine(item.GetString());

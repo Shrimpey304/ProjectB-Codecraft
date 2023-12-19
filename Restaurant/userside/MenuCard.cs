@@ -71,7 +71,7 @@ public class MenuCard : MasterDisplay
         Console.WriteLine("Would you like a bottle of wine with your order?");
         string answer = Console.ReadLine().ToLower();
 
-        if (answer == "yes")
+        if (answer == "yes" || answer == "yess")
         {
         
 
@@ -95,11 +95,16 @@ public class MenuCard : MasterDisplay
                         manager.AddToCart(selectedWine);
                     }
             }
+            else if (int.TryParse(userInput2, out int userInput3) && userInput3 > 4)
+            {
+                Console.WriteLine("Input too high. Please enter a valid wine ID.");
+            }
             else
             {
-                Console.WriteLine("Invalid input. Please enter a valid wine ID.");
+                Console.WriteLine("Invalid input. Please enter a valid wine ID");
             }
         }
+
     }
 
     private void Menu(string itemType, bool dish = false)
@@ -129,7 +134,7 @@ public class MenuCard : MasterDisplay
                 }
                 System.Console.WriteLine("Item added to cart.");
                 manager.AddToCart(dishes[selectedOption1]);
-                AddWine();
+                AddWine(); //ADDWINE HERE !!!! (als iemand een betere plek weet om de method aan te roepen do your thing)
                 DishesOptions();
                 
                  

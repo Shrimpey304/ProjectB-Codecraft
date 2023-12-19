@@ -40,6 +40,7 @@ public class RegisterProcess{
         User user = REG.CreateAccount(GivenEmail, GivenPW, PhoneNR!);
         ingelogdmenu.user = user;
         ingelogdmenu.DisplayIngelogdMenu();
+        Login.IsLoggedIn = true;
     }
 
 }

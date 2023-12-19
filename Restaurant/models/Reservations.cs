@@ -21,4 +21,5 @@ public class Reservations
     {
         return $"Date:{ReservationDate} Tables:{TimeSlotList.Count}";
     }
+
 }
