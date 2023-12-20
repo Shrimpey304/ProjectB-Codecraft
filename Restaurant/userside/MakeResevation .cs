@@ -94,7 +94,6 @@ private TableManager tableManager = new();
 
     private void CheckOut(Table table, DateOnly? date, IEnumerable<IFoodItems> order, string reservationCode)
     {
-        string reservationCode = TableManager.GenerateCode();
         Ingelogdmenu ingelogdmenu = new();
         ConsoleKeyInfo key;
         do

@@ -59,7 +59,7 @@ public class Login : MasterLogin{
 
     public static bool IsAdmin(string password, string mail)
         {
-            List<User> accounts = JsonUtil.ReadFromJson<User>(accountPath);
+            List<User> accounts = JsonUtil.ReadFromJson<User>(filePath);
             User account = accounts.FirstOrDefault(acc => acc.Email == mail && acc.Password == password && acc.Admin);
 
             return account != null;

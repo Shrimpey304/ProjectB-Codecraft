@@ -3,6 +3,7 @@ namespace Restaurant;
 public class AdminEditDish
 {
     private static string dishPath = @".\dataStorage\Dishes.json";
+    
 
     public static void ChangeDishName()
     {

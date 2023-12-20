@@ -3,8 +3,8 @@ namespace Restaurant;
 public class AdminEditAccs
 {
     private static string accountPath = @".\dataStorage\account.json";
-    public static void ChangeEmail()
-{
+    public static Registration registration = new();
+    public static void ChangeEmail(){
     AdminAccounts.SeeAccountsA();
 
     Console.WriteLine("Enter the email of the account that you want to change:");
@@ -24,7 +24,7 @@ public class AdminEditAccs
             return;
         }
 
-        if (Registration.CheckEmailTaken(newEmail))
+        if (registration.CheckEmailTaken(newEmail))
         {
             Console.WriteLine("Email is already taken.");
             return;
