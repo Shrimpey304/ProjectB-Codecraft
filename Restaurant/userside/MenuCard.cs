@@ -171,6 +171,7 @@ public class MenuCard : MasterDisplay
                 }
                 System.Console.WriteLine("Item added to cart.");
                 manager.AddToCart(meals[selectedOption]);
+                AddWine();
                 CoursesOptions();
             }
             else

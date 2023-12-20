@@ -104,6 +104,7 @@ public class FoodManager
         foreach (var item in cart)
         {
             total += item.GetPrice();
+            TipCalculator.AddTip();
         }
         return total;
     }

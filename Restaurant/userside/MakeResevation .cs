@@ -118,6 +118,7 @@ public class MakeReservation : MasterDisplay
         } while (key.Key != ConsoleKey.Enter);
         windowInstanceStack.Clear();
         ingelogdmenu.DisplayIngelogdMenu();
+        
     }
 
     private void RemoveReserve()
