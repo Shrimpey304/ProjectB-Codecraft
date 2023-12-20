@@ -2,7 +2,7 @@ namespace Restaurant;
 
 public class Ingelogdmenu
 {
-    public User user;
+    public User? user;
     public List<MasterLogin>? logOut = new();
     public void DisplayIngelogdMenu()
     {

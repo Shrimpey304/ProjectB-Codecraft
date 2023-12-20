@@ -4,15 +4,18 @@ namespace Restaurant;
 
 public class MakeReservation : MasterDisplay
 {
-private TableManager tableManager = new();
+    public User? User;
+
+    private TableManager tableManager;
 
     public static IEnumerable<IFoodItems> foodItems;
 
     public List<Ingelogdmenu> windowInstance = new();
-    
-    public User? User;
 
-    public MakeReservation(User? user=null) => User = user;
+    public MakeReservation(User? user){
+        User = user;
+        tableManager = new(User);
+    }
 
     public void Display()
     {
@@ -61,7 +64,7 @@ private TableManager tableManager = new();
             table = tables.ToList()[selectedOption1];
         }
 
-        string ReservationCode = tableManager.AddReservation(reservationDate, selectedTime, table);
+        List<Reservations>? ReservationCode = tableManager.AddReservation(reservationDate, selectedTime, table);
 
         if (ReservationCode is null)
         {
@@ -80,7 +83,7 @@ private TableManager tableManager = new();
                 int selectedOption2 = DisplayUtil.Display(options);
                 if (selectedOption2 == 0)
                 {
-                    CheckOut(table, reservationDate, foodItems, ReservationCode);
+                    CheckOut(table, reservationDate, foodItems);
                 }else
                 {
                     Display();
@@ -92,7 +95,7 @@ private TableManager tableManager = new();
         }
     }
 
-    private void CheckOut(Table table, DateOnly? date, IEnumerable<IFoodItems> order, string reservationCode)
+    private void CheckOut(Table table, DateOnly? date, IEnumerable<IFoodItems> order)
     {
         Ingelogdmenu ingelogdmenu = new();
         ConsoleKeyInfo key;
@@ -107,7 +110,6 @@ private TableManager tableManager = new();
             System.Console.WriteLine($"Your Total: {FoodManager.GetTotal(order)}\nPress ENTER to go back to home menu.");
             key = Console.ReadKey(false);
         } while (key.Key != ConsoleKey.Enter);
-        User.tableHistory[reservationCode] = table;
         GoBack();
     }
 
