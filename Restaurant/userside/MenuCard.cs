@@ -14,6 +14,18 @@ public class MenuCard : MasterDisplay
     {
         Display(); 
     }
+
+    Ingelogdmenu loggedInMenu = new();
+    public void GoBackAction(){
+        Console.WriteLine("in gobackaction");
+        windowInstanceStack.Pop();
+        if(Login.IsLoggedIn){
+            loggedInMenu.DisplayIngelogdMenu();
+        }else{
+            MainMenu.DisplayMainMenu();
+        }
+    }
+
     public void Display()
     {
         switch(toCheckOut){
@@ -26,7 +38,7 @@ public class MenuCard : MasterDisplay
             List<Action> actions = new(){
                 CoursesOptions,
                 DishesOptions,
-                windowInstanceStack.Pop()
+                GoBackAction
             };
             int selectedOption = DisplayUtil.Display(options);
             if (selectedOption == (options.Count - 1) && manager.Cart.Count > 0){
@@ -41,8 +53,11 @@ public class MenuCard : MasterDisplay
             }else{
                 System.Console.WriteLine("You can't check out with an empty cart. Please select an item and try again.");
                 Thread.Sleep(2500);
-                windowInstanceStack.Pop();
+                GoBackAction();
             }
+            break;
+        default:
+            GoBackAction();
             break;
         }
     }
@@ -141,8 +156,8 @@ public class MenuCard : MasterDisplay
                     Thread.Sleep(4000);
                     Console.ResetColor();
                 }
-                System.Console.WriteLine("Item added to cart. $_$");
                 manager.AddToCart(dishes[selectedOption1]);
+                System.Console.WriteLine("Item added to cart. $_$");
                 List<string> options = new(){"Go back", "Go to checkout"};
                 int selected = DisplayUtil.Display(options, foodCart);
                 if (selected == 0){
