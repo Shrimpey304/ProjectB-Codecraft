@@ -153,19 +153,16 @@ public class Registration{
     }
 
 
-    public User CreateAccount(string Email, string Password, string PhoneNumber){
+    public User CreateAccount(string Email, string Password, string PhoneNumber, bool isAdmin){
 
         string email = Email;
         string password = Password;
         string phonenumber = PhoneNumber;
+        bool adminStatus = isAdmin;
 
         List<User> acc = JsonUtil.ReadFromJson<User>(accountPath)!;
-        var account = new User { Email = email, Password = password, PhoneNumber = phonenumber};
-
-        if (acc != null)
-        {
-            acc.Add(account);
-        }
+        var account = new User { Email = email, Password = password, PhoneNumber = phonenumber, Admin = adminStatus};
+        acc.Add(account);
         JsonUtil.UploadToJson(acc, accountPath);
         return account;
     }

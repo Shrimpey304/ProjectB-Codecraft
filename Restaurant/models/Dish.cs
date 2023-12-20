@@ -29,4 +29,5 @@ public class Dish : IFoodItems
         }
         return $"{ID} | {DishType}\n  {DishName}  €{Price}\n   {Description}\n   Contains:{Allergens}\n   Allergens removed:{(RemovedA is not null ? RemovedA : "No allergens romved")}";
     }
+
 }

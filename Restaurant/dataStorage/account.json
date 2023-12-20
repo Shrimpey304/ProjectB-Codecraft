@@ -4,76 +4,95 @@
     "Email": "Kimo.edelbroek@gmail.com",
     "Password": "Kimo1234!",
     "PhoneNumber": "0612345",
-    "HasRervering": false
+    "HasRervering": false,
+    "Admin": false
   },
   {
     "tableHistory": {},
     "Email": "a.a@a.a",
     "Password": "Kimo1234!",
     "PhoneNumber": "0143q54",
-    "HasRervering": false
+    "HasRervering": false,
+    "Admin": false
   },
   {
     "tableHistory": {},
     "Email": "kimo.edelbroek@gmail.com",
     "Password": "Kimo2004!",
     "PhoneNumber": "012343246",
-    "HasRervering": false
+    "HasRervering": false,
+    "Admin": false
   },
   {
     "tableHistory": {},
     "Email": "a@a.a",
     "Password": "pw123",
     "PhoneNumber": "",
-    "HasRervering": false
+    "HasRervering": false,
+    "Admin": false
   },
   {
     "tableHistory": {},
     "Email": "a.aa.a@a.a",
     "Password": "ab123ab123ab123Ab123",
     "PhoneNumber": "",
-    "HasRervering": false
+    "HasRervering": false,
+    "Admin": false
   },
   {
     "tableHistory": {},
     "Email": "zaza@trefount.nl",
     "Password": "Tref0Tref0123456",
     "PhoneNumber": "56561234",
-    "HasRervering": false
+    "HasRervering": false,
+    "Admin": false
   },
   {
     "tableHistory": {},
     "Email": "zamir@fuckvscode.com",
     "Password": "qAAAA1234",
     "PhoneNumber": "1234657900",
-    "HasRervering": false
+    "HasRervering": false,
+    "Admin": false
   },
   {
     "tableHistory": {},
     "Email": "ass@gmail.com",
     "Password": "Vis0101vis",
     "PhoneNumber": "1234567890",
-    "HasRervering": false
+    "HasRervering": false,
+    "Admin": false
   },
   {
     "tableHistory": {},
     "Email": "gort@gortium.nl",
     "Password": "password123Password123",
     "PhoneNumber": "0612345678fdsf",
-    "HasRervering": false
+    "HasRervering": false,
+    "Admin": false
   },
   {
     "tableHistory": {},
     "Email": "Test@test.nl",
     "Password": "Password123",
     "PhoneNumber": "0612345678dsadsa",
-    "HasRervering": false
+    "HasRervering": false,
+    "Admin": false
   },
   {
     "tableHistory": {},
     "Email": "zammer@gmail.com",
     "Password": "Qp12345678",
     "PhoneNumber": "1234567890",
-    "HasRervering": false
+    "HasRervering": false,
+    "Admin": false
+  },
+  {
+    "tableHistory": {},
+    "Email": "jay@gmail",
+    "Password": "Jay123456",
+    "PhoneNumber": "1234567890",
+    "HasRervering": false,
+    "Admin": true
   }
 ]

@@ -194,4 +194,23 @@ public class TableManager
     {
         return $"table amount {Tables.Count}, resvered dates count {ReservedTable.Count}";
     }
+
+    public bool ChangeTableDetails(int currentPosition, int newPosition, int newType)
+    {
+        List<Table> tables = JsonUtil.ReadFromJson<Table>(tablesFileName);
+
+        Table tableToChange = tables.FirstOrDefault(t => t.Position == currentPosition);
+
+        if (tableToChange != null)
+        {
+            tableToChange.Position = newPosition;
+            tableToChange.Type = newType;
+
+            JsonUtil.UploadToJson<Table>(tables, tablesFileName);
+
+            return true;
+        }
+
+        return false;
+    }
 }
