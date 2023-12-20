@@ -47,10 +47,10 @@ public class LoginProcess
                 Console.WriteLine("Login is succesfull heading to mainscreen.");
                 Thread.Sleep(2);
                 ingelogdmenu.user = user;
+                ingelogdmenu.logOut.Add(login);
                 ingelogdmenu.DisplayIngelogdMenu();
                 ///UserChangeAcc.UserSeeOwnAcc(email);
             }
-
         }
         else
         {

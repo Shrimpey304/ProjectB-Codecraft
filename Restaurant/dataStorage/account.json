@@ -48,7 +48,20 @@
     "Admin": false
   },
   {
-    "tableHistory": {},
+    "tableHistory": {
+      "809726": {
+        "Position": 1,
+        "reservationDate": "2026-09-09",
+        "Type": 2,
+        "ReservationTime": "12:00 pm"
+      },
+      "214243": {
+        "Position": 3,
+        "reservationDate": "2026-09-09",
+        "Type": 8,
+        "ReservationTime": "12:00 pm"
+      }
+    },
     "Email": "zamir@fuckvscode.com",
     "Password": "qAAAA1234",
     "PhoneNumber": "1234657900",
@@ -91,7 +104,8 @@
     "Email": "zammer@gmail.com",
     "Password": "Qp12345678",
     "PhoneNumber": "1234567890",
-    "HasRervering": false
+    "HasRervering": false,
+    "Admin": false
   },
   {
     "tableHistory": {
@@ -111,6 +125,7 @@
     "Email": "fffff@ddd.ooo",
     "Password": "OOpp0909",
     "PhoneNumber": "34345656",
-    "HasRervering": false
+    "HasRervering": false,
+    "Admin": false
   }
 ]
