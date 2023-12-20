@@ -4,11 +4,11 @@ namespace Restaurant;
 
 public class MakeReservation : MasterDisplay
 {
-    private TableManager tableManager = new();
+private TableManager tableManager = new();
 
     public static IEnumerable<IFoodItems> foodItems;
 
-    public Stack<Action> windowInstanceStack = new();
+    public List<Ingelogdmenu> windowInstance = new();
     
     public User? User;
 
@@ -28,24 +28,16 @@ public class MakeReservation : MasterDisplay
             MakeReserve,
             RemoveReserve,
             CheckAvailablity,
-            windowInstanceStack.Peek()
-            //Ingelogdmenu.DisplayIngelogdMenu
+            GoBack
         };
-        int selectedOption = DisplayUtil.Display(options);
-        if (selectedOption == actions.Count - 1)
-        {
-            actions[selectedOption]();
-        }else
-        {
-            windowInstanceStack.Push(actions[selectedOption]);
-            actions[selectedOption]();
-        }
+        int selectedOption = DisplayUtil.Display(options);    
+        actions[selectedOption]();
     }
 
     public void MakeReserve()
     {
         
-        tableManager.User = User;
+        //tableManager.User = User;
         //int? partySize = null;
         DateOnly? reservationDate = null;
         string? selectedTime = null;
@@ -69,18 +61,18 @@ public class MakeReservation : MasterDisplay
             table = tables.ToList()[selectedOption1];
         }
 
-        if (tableManager.AddReservation(reservationDate, selectedTime, table) is null)
+        string ReservationCode = tableManager.AddReservation(reservationDate, selectedTime, table);
+
+        if (ReservationCode is null)
         {
             System.Console.WriteLine("Reservation unavailable. Please try again.");
             MakeReserve();
             
         }else
         {
-            windowInstanceStack.Push(MakeReserve);
-            MenuCard menuCard = new()
-            {
-                windowInstanceStack = windowInstanceStack
-            };
+            
+            MenuCard menuCard = new();
+            menuCard.windowInstanceStack.Push(MakeReserve);
             menuCard.Display();
             if (foodItems is not null)
             {
@@ -88,7 +80,7 @@ public class MakeReservation : MasterDisplay
                 int selectedOption2 = DisplayUtil.Display(options);
                 if (selectedOption2 == 0)
                 {
-                    CheckOut(table.Type, reservationDate, foodItems);
+                    CheckOut(table, reservationDate, foodItems, ReservationCode);
                 }else
                 {
                     Display();
@@ -100,14 +92,14 @@ public class MakeReservation : MasterDisplay
         }
     }
 
-    private void CheckOut(int? partySize, DateOnly? date, IEnumerable<IFoodItems> order)
+    private void CheckOut(Table table, DateOnly? date, IEnumerable<IFoodItems> order, string reservationCode)
     {
         Ingelogdmenu ingelogdmenu = new();
         ConsoleKeyInfo key;
         do
         {
             Console.Clear();
-            System.Console.WriteLine($"Your reservation is set on {date}\nwith a party size of {partySize} people.\nYour order:");
+            System.Console.WriteLine($"Your reservation is set on {date}\nwith a party size of {table.Type} people.\nYour order:");
             foreach (var item in order)
             {
                 System.Console.WriteLine(item.GetString());
@@ -115,8 +107,8 @@ public class MakeReservation : MasterDisplay
             System.Console.WriteLine($"Your Total: {FoodManager.GetTotal(order)}\nPress ENTER to go back to home menu.");
             key = Console.ReadKey(false);
         } while (key.Key != ConsoleKey.Enter);
-        windowInstanceStack.Clear();
-        ingelogdmenu.DisplayIngelogdMenu();
+        User.tableHistory[reservationCode] = table;
+        GoBack();
     }
 
     private void RemoveReserve()
@@ -154,5 +146,9 @@ public class MakeReservation : MasterDisplay
         // {
         //     Display();
         // }
+    }
+
+    private void GoBack(){
+        windowInstance[0].FromMR(windowInstance[0].logOut);
     }
 }

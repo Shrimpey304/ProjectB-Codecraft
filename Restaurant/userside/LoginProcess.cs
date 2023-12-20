@@ -3,6 +3,7 @@ namespace Restaurant;
 public class LoginProcess{
 
     private Ingelogdmenu ingelogdmenu = new();
+    private Login login = new();
     private static string GivenEmail = "";
     
     public void LoginProcessMailView(){
@@ -11,7 +12,7 @@ public class LoginProcess{
         Console.WriteLine("please enter your Email");
         GivenEmail = Console.ReadLine()!;
 
-        if(!Login.MailMatches(GivenEmail)){
+        if(!login.MailMatches(GivenEmail)){
 
             Console.Clear();
             Console.WriteLine("this email is not valid or is not registered yet");
@@ -26,15 +27,15 @@ public class LoginProcess{
     public void LoginProcessPasswordView(string email){
 
         Console.WriteLine("please enter your password"); 
-            
         string GivenPW = Console.ReadLine()!;
-        User? user = Login.AccountExists(GivenPW, email);
+        User? user = login.AccountExists(GivenPW, email);
 
         if(user is not null){
 
             Console.WriteLine("Login is succesfull heading to mainscreen");
             Thread.Sleep(2);
             ingelogdmenu.user = user;
+            ingelogdmenu.logOut.Add(login);
             ingelogdmenu.DisplayIngelogdMenu();
 
         }else{
@@ -45,5 +46,7 @@ public class LoginProcess{
 
         }
     }
+
+    
 
 }

@@ -5,7 +5,12 @@ using Newtonsoft.Json;
 using System.Globalization;
 
 
-public class Registration{
+public class Registration : MasterLogin{
+    public List<User> Accounts;
+
+    public Registration(){
+        Accounts = JsonUtil.ReadFromJson<User>(filePath)!;
+    }
 
     public static bool CheckPasswordSimilar(string password, string retypePassword){
 
@@ -81,12 +86,10 @@ public class Registration{
         }
         return false;
     }
-    private static string accountPath = @".\dataStorage\account.json";
 
-    public static bool CheckEmailTaken(string email){
+    public bool CheckEmailTaken(string email){
 
-        List<User> accounts = JsonUtil.ReadFromJson<User>(accountPath)!;
-        User mailExist = accounts.FirstOrDefault(account => account.Email == email)!;
+        User mailExist = Accounts.FirstOrDefault(account => account.Email == email)!;
 
         if(mailExist != null){
             return true; //email is taken
@@ -120,10 +123,19 @@ public class Registration{
         string password = Password;
         string phonenumber = PhoneNumber;
 
-        List<User> acc = JsonUtil.ReadFromJson<User>(accountPath)!;
         var account = new User { Email = email, Password = password, PhoneNumber = phonenumber};
-        acc.Add(account);
-        JsonUtil.UploadToJson(acc, accountPath);
+        //JsonUtil.UploadToJson(acc, accountPath);
         return account;
+    }
+
+    public override void LogOut(User user){
+        int userIndex = Accounts.FindIndex(item => item.Email == user.Email);
+        if (userIndex != -1){
+            Accounts[userIndex] = user;
+            JsonUtil.UploadToJson(Accounts, filePath);
+        }else{
+            Accounts.Add(user);
+            JsonUtil.UploadToJson(Accounts, filePath);
+        }
     }
 }

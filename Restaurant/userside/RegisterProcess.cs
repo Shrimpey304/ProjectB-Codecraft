@@ -3,9 +3,9 @@ namespace Restaurant;
 public class RegisterProcess{
 
     private Ingelogdmenu ingelogdmenu = new();
+    private Registration REG = new Registration();
+    
     public void RegisterProcessView(){
-
-        Registration REG = new Registration();
 
         Console.WriteLine("welcome to registration (alpha version)");    
         Console.WriteLine("please enter your Email");
@@ -38,7 +38,7 @@ public class RegisterProcess{
 
         User user = REG.CreateAccount(GivenEmail, GivenPW, PhoneNR!);
         ingelogdmenu.user = user;
+        ingelogdmenu.logOut.Add(REG);
         ingelogdmenu.DisplayIngelogdMenu();
     }
-
 }

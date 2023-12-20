@@ -32,7 +32,7 @@ public class TableManager
     public List<Reservations>? ReservedTable {
         get => _reseravtions;
         set => _reseravtions = value is null ? new() : value;}
-    public User? User {get;set;}
+    //public User? User {get;set;}
     private List<string> timeSlots = new() {"12:00 pm", "2:00 pm", "4:00 pm", "6:00 pm", "8:00 pm"};
     private const int codeLength = 8;
     private const string timeFormate = "HH:mm tt";
@@ -61,7 +61,7 @@ public class TableManager
             List<Table> tables = reservations.TimeSlotList[time];
             tables.Add(table);
             ReservationCode = GenerateCode();
-            User.tableHistory[ReservationCode] = table;
+            //User.tableHistory[ReservationCode] = table;
             
             JsonUtil.UploadToJson<Reservations>(ReservedTable, filename);
             return ReservationCode;
@@ -71,7 +71,7 @@ public class TableManager
         tables1.Add(table);
         ReservedTable.Add(reservations1);
         ReservationCode = GenerateCode();
-        User.tableHistory[ReservationCode] = table;
+        //User.tableHistory[ReservationCode] = table;
         JsonUtil.UploadToJson<Reservations>(ReservedTable, filename);
         return ReservationCode;
     }

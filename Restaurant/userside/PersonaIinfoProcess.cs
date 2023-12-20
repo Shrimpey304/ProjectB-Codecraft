@@ -6,29 +6,36 @@ public class PersonalInfoTest
     public static string ?mail;
     public static string ?pw;
     public static string ?phone;
-    Ingelogdmenu ingelogdmenu = new();
+    public List<Ingelogdmenu> windowInstance = new();
 
-    public void DisplayPersonalInfo()
+    public void DisplayPersonalInfo(User user)
     {
-        Console.WriteLine($"Email: {mail}");
-        Console.WriteLine($"Password: {pw}");
-        Console.WriteLine($"Phone number: {phone}");
+        ConsoleKeyInfo key;
+        do{
+            Console.WriteLine($"Email: {user.Email}");
+            Console.WriteLine($"Password: {user.Password}");
+            Console.WriteLine($"Phone number: {user.PhoneNumber}");
+            System.Console.WriteLine("PRESS ENTER TO GO BACK");
+            key = Console.ReadKey(false);
+        }while (key.Key != ConsoleKey.Enter);
+        windowInstance[0].FromMR(windowInstance[0].logOut);
     }
 
-    public void DisplayPIMenu()
-    {
-        List<string> options = new(){
-            "Back"
-        };
-        List<Action> actions = new(){
-            ingelogdmenu.DisplayIngelogdMenu,
-        };
-        int selectedOption = DisplayUtil.Display(options);
-        actions[selectedOption]();
-    }
+    // public void DisplayPIMenu()
+    // {
+    //     List<string> options = new(){
+    //         "Back"
+    //     };
+    //     List<Action> actions = new(){
+    //         ingelogdmenu.DisplayIngelogdMenu,
+    //     };
+    //     int selectedOption = DisplayUtil.Display(options);
+    //     actions[selectedOption]();
+    // }
 
     public void showUserData(){
-        User acc = Login.getUserData(Login.LoggedinUser);
+        Login login = new();
+        User acc = login.getUserData(Login.LoggedinUser);
         if(acc != null){
             mail = acc.Email!;
             pw = acc.Password!;
