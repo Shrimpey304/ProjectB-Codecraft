@@ -105,6 +105,7 @@ public class MakeReservation : MasterDisplay
         string reservationCode = TableManager.GenerateCode();
         Ingelogdmenu ingelogdmenu = new();
         ConsoleKeyInfo key;
+        decimal totalWithTip = TipCalculator.AddTip(FoodManager.GetTotal(order));
         do
         {
             Console.Clear();
@@ -113,7 +114,7 @@ public class MakeReservation : MasterDisplay
             {
                 System.Console.WriteLine(item.GetString());
             }
-            System.Console.WriteLine($"Your Total: {FoodManager.GetTotal(order)}\nPress ENTER to go back to home menu.");
+            System.Console.WriteLine($"Your Total with tip: {totalWithTip}\nPress ENTER to go back to home menu.");
             key = Console.ReadKey(false);
         } while (key.Key != ConsoleKey.Enter);
         windowInstanceStack.Clear();

@@ -12,8 +12,8 @@ public class Login
 
     public static bool MailMatches(string mail){
         
-        List<User> accounts = JsonUtil.ReadFromJson<User>(accountPath)!;
-        User mailExist = accounts.FirstOrDefault(account => account.Email == mail)!;
+        List<User> accounts = JsonUtil.ReadFromJson<User>(accountPath);
+        User mailExist = accounts.FirstOrDefault(account => account.Email == mail);
 
         if(mailExist != null){
             return true;
