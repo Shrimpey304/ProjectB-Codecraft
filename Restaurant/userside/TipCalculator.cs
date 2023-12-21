@@ -24,7 +24,7 @@ public static class TipCalculator
         string amount = Console.ReadLine();
         if (int.TryParse(amount, out int percentage) && percentage >= 0 && percentage <= 100)
             {
-                decimal tipAmount = total * (percentage / 100.0m);
+                decimal tipAmount = total * (percentage / 100m);
                 decimal newTotal = total + tipAmount;
                 Console.WriteLine($"Tip of {percentage}% added succesfully");
                 return newTotal;

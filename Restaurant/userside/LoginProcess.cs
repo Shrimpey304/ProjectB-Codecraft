@@ -33,8 +33,9 @@ public class LoginProcess{
 
         if(user is not null){
 
-            Console.WriteLine("Login is succesfull heading to mainscreen");
+            Console.WriteLine("Login is succesful, heading to mainscreen");
             Thread.Sleep(2);
+            Login.IsLoggedIn = true;
             ingelogdmenu.user = user;
             ingelogdmenu.DisplayIngelogdMenu();
 

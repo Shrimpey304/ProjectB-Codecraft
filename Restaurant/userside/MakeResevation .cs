@@ -5,6 +5,7 @@ namespace Restaurant;
 public class MakeReservation : MasterDisplay
 {
     private TableManager tableManager = new();
+    private RegisterProcess register = new();
 
     public static IEnumerable<IFoodItems> foodItems;
 
@@ -50,8 +51,14 @@ public class MakeReservation : MasterDisplay
         DateOnly? reservationDate = null;
         string? selectedTime = null;
         Table? table = null;
-
-        while (reservationDate is null || selectedTime is null || table is null)
+        if (User == null)
+        {
+            Console.WriteLine("You need to be registered to make a reservation.");
+            register.RegisterProcessView();
+        }
+        else
+        {
+            while (reservationDate is null || selectedTime is null || table is null)
         {
             Console.Clear();
             System.Console.WriteLine("enter your reservation date\n(yyyy-mm-dd)");
@@ -67,6 +74,7 @@ public class MakeReservation : MasterDisplay
             IEnumerable<string> tableString = TableManager.GetTablesString(tables.ToList());
             int selectedOption1 = DisplayUtil.Display(tableString.ToList());
             table = tables.ToList()[selectedOption1];
+        }
         }
 
         if (tableManager.AddReservation(reservationDate, selectedTime, table) is null)
@@ -114,7 +122,7 @@ public class MakeReservation : MasterDisplay
             {
                 System.Console.WriteLine(item.GetString());
             }
-            System.Console.WriteLine($"Your Total with tip: {totalWithTip}\nPress ENTER to go back to home menu.");
+            System.Console.WriteLine($"Your Total with tip: {totalWithTip:F2}\nPress ENTER to go back to home menu.");
             key = Console.ReadKey(false);
         } while (key.Key != ConsoleKey.Enter);
         windowInstanceStack.Clear();

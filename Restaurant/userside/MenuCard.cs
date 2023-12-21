@@ -7,11 +7,18 @@ using System.Net;
 public class MenuCard : MasterDisplay
 {
     private static FoodManager manager = new();
+    private RegisterProcess register = new();
+    private User user = new();
     public Stack<Action> windowInstanceStack = new();
 
     public void FromMain()
     {
-
+         if (user == null)
+        {
+            Console.WriteLine("You need to be logged in to order. Please log in or register.");
+            register.RegisterProcessView();
+            return;
+        }
         //windowInstanceStack.Push(MainMenu.DisplayMainMenu);
         Display(); 
     }
