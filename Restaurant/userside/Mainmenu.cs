@@ -12,11 +12,13 @@ public class MainMenu : MasterDisplay
             "Menu",
             "Log in",
             "Register",
+            "Quit Application"
         };
         List<Action> actions = new(){
             menuCard.FromMain,
             loginProcess.LoginProcessMailView,
             registerProcess.RegisterProcessView,
+            Quit
         };
         int selectedOption = DisplayUtil.Display(options);
         switch (selectedOption)
@@ -27,5 +29,12 @@ public class MainMenu : MasterDisplay
         }
         actions[selectedOption]();
     }
-    
+
+    private static void Quit()
+    {
+        Console.WriteLine("Quitting application...");
+        System.Environment.Exit(1);
+    }
 }
+    
+

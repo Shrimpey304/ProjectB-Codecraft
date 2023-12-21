@@ -39,8 +39,9 @@ public class TableManager
     private const string tablesFileName = @"C:dataStorage\Tables.json";
     private const string reseravtionFileName = @"C:dataStorage\Reservations.json";
 
-    public TableManager()
+    public TableManager(User? user)
     {
+        User = user;
         Tables = Table_init_.LoadTables(tablesFileName)!;
         ReservedTable = Table_init_.LoadReservations(reseravtionFileName);
     }
@@ -50,7 +51,7 @@ public class TableManager
         Tables = Table_init_.LoadTables(tablefilename)!;
         ReservedTable = new();
     }
-    public string? AddReservation(DateOnly? date, string time, Table table, string filename = reseravtionFileName)
+    public List<Reservations>? AddReservation(DateOnly? date, string time, Table table, string filename = reseravtionFileName)
     {
         string ReservationCode;
         table.reservationDate = date;
@@ -64,16 +65,17 @@ public class TableManager
             User.tableHistory[ReservationCode] = table;
             
             JsonUtil.UploadToJson<Reservations>(ReservedTable, filename);
-            return ReservationCode;
+            return ReservedTable;
         }
         Reservations reservations1 = new(date);
         List<Table> tables1 = reservations1.TimeSlotList[time];
         tables1.Add(table);
         ReservedTable.Add(reservations1);
         ReservationCode = GenerateCode();
+        
         User.tableHistory[ReservationCode] = table;
         JsonUtil.UploadToJson<Reservations>(ReservedTable, filename);
-        return ReservationCode;
+        return ReservedTable;
     }
 
     public void RemoveReservation(DateOnly date, int position, string filename = reseravtionFileName)
@@ -193,5 +195,24 @@ public class TableManager
     public override string ToString()
     {
         return $"table amount {Tables.Count}, resvered dates count {ReservedTable.Count}";
+    }
+
+    public bool ChangeTableDetails(int currentPosition, int newPosition, int newType)
+    {
+        List<Table> tables = JsonUtil.ReadFromJson<Table>(tablesFileName);
+
+        Table tableToChange = tables.FirstOrDefault(t => t.Position == currentPosition);
+
+        if (tableToChange != null)
+        {
+            tableToChange.Position = newPosition;
+            tableToChange.Type = newType;
+
+            JsonUtil.UploadToJson<Table>(tables, tablesFileName);
+
+            return true;
+        }
+
+        return false;
     }
 }

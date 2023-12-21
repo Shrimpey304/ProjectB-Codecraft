@@ -16,12 +16,14 @@ public class FoodManager
         Meals = FoodItems_init_.LoadMeals(fileNames[1]);
     }
 
-    public bool AddDish(int id, string dishtype, string name, string description, decimal price, string allergens)
+    public bool AddDish(int id, string dishname, string name, string description, decimal price, string allergens)
     {
-        if (!Dishes.Exists(item => item.ID == id))
+        if (!Dishes.Exists(item => item.DishName == dishname))
         {
-            Dish dish = new(id, dishtype, name, description, price, allergens);
+            Dish dish = new(id, name, description, price, allergens);
             Dishes.Add(dish);
+            JsonUtil.UploadToJson(Dishes, fileNames[0]);
+            return true;
         }
         return false;
     }
@@ -32,6 +34,8 @@ public class FoodManager
         {
             Meals meal = new(id, coursetype, mealtype, mealname, price, coursedescription);
             Meals.Add(meal);
+            JsonUtil.UploadToJson(Meals, fileNames[1]);
+            return true;
         }
         return false;
     }
@@ -42,6 +46,7 @@ public class FoodManager
         {
             Dish dish = Dishes.Find(item => item.ID == id)!;
             Dishes.Remove(dish);
+            JsonUtil.UploadToJson(Dishes, @"C:dataStorage\Dishes.json");
             return true;
         }
         return false;
@@ -53,17 +58,18 @@ public class FoodManager
         {
             Meals meal = Meals.Find(item => item.ID == id)!;
             Meals.Remove(meal);
+            JsonUtil.UploadToJson(Meals, @"C:dataStorage\Meals.json");
             return true;
         }
         return false;
     }
 
-    public List<IFoodItems> GetDishes(string type)
+    public List<IFoodItems> GetDishes(string name)
     {
         List<IFoodItems> dishes = new();
-        if (Dishes.Any(item => item.DishType == type))
+        if (Dishes.Any(item => item.DishName == name))
         {
-            Dish dish = Dishes.Find(item => item.DishType == type)!;
+            Dish dish = Dishes.Find(item => item.DishName == name)!;
             dishes.Add(dish);
             return dishes;
         }
@@ -107,4 +113,5 @@ public class FoodManager
         }
         return total;
     }
+    
 }

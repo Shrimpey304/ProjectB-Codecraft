@@ -1,20 +1,23 @@
 namespace Restaurant;
 
-public class LoginProcess{
+public class LoginProcess
+{
 
     private Ingelogdmenu ingelogdmenu = new();
+    private Login login = new();
     private static string GivenEmail = "";
     
-    public void LoginProcessMailView(){
+    public void LoginProcessMailView()
+    {
 
         Console.WriteLine("welcome to Logging in (Beta version)");    
         Console.WriteLine("please enter your Email");
         GivenEmail = Console.ReadLine()!;
 
-        if(!Login.MailMatches(GivenEmail)){
+        if(!login.MailMatches(GivenEmail)){
 
             Console.Clear();
-            Console.WriteLine("this email is not valid or is not registered yet");
+            Console.WriteLine("this email is not valid or is already registered");
             LoginProcessMailView();
 
         }
@@ -24,28 +27,40 @@ public class LoginProcess{
 
     }
 
-    public void LoginProcessPasswordView(string email){
+    public void LoginProcessPasswordView(string email)
+    {
 
         Console.WriteLine("please enter your password"); 
-            
         string GivenPW = Console.ReadLine()!;
-        User? user = Login.AccountExists(GivenPW, email);
+        User? user = login.AccountExists(GivenPW, email);
 
-        if(user is not null){
-
-            Console.WriteLine("Login is succesful, heading to mainscreen");
-            Thread.Sleep(2);
-            Login.IsLoggedIn = true;
-            ingelogdmenu.user = user;
-            ingelogdmenu.DisplayIngelogdMenu();
-
-        }else{
-
+        if(user is not null)
+        {
+            bool isAdmin = Login.IsAdmin(GivenPW, email);
+            if (isAdmin)
+            {
+                Console.WriteLine("Login is successful heading to admin panel.");
+                // AdminMenu.DisplayAdminMenu(); 
+            }
+            else
+            {
+                Console.WriteLine("Login is succesfull heading to mainscreen.");
+                Thread.Sleep(2);
+                ingelogdmenu.user = user;
+                ingelogdmenu.logOut.Add(login);
+                ingelogdmenu.DisplayIngelogdMenu();
+                ///UserChangeAcc.UserSeeOwnAcc(email);
+            }
+        }
+        else
+        {
             Console.Clear();
             Console.WriteLine("incorrect password email combination");
             LoginProcessPasswordView(email);
 
         }
     }
+
+    
 
 }

@@ -10,6 +10,7 @@ public class MenuCard : MasterDisplay
     private RegisterProcess register = new();
     private User user = new();
     public Stack<Action> windowInstanceStack = new();
+    private int toCheckOut=0;
 
     public void FromMain()
     {
@@ -20,28 +21,55 @@ public class MenuCard : MasterDisplay
             return;
         }
         //windowInstanceStack.Push(MainMenu.DisplayMainMenu);
+
         Display(); 
     }
-    public List<IFoodItems>? Display()
-    {
-        List<string> options = new(){
-            "Full-Course Meal",
-            "Individual Dishes",
-            "Go Back"
-        };
-        List<Action> actions = new(){
-            CoursesOptions,
-            DishesOptions,
-            windowInstanceStack.Pop()
-        };
-        int selectedOption = DisplayUtil.Display(options);
-        if (selectedOption == (options.Count - 1) && manager.Cart.Count > 0)
-        {
-            MakeReservation.foodItems = manager.Cart;
-            return manager.Cart;
+
+    Ingelogdmenu loggedInMenu = new();
+    public void GoBackAction(){
+        Console.WriteLine("in gobackaction");
+        windowInstanceStack.Pop();
+        if(Login.IsLoggedIn){
+            loggedInMenu.DisplayIngelogdMenu();
+        }else{
+            MainMenu.DisplayMainMenu();
         }
-        actions[selectedOption]();
-        return null;
+    }
+
+    public void Display()
+    {
+        switch(toCheckOut){
+        case 0:
+            List<string> options = new(){
+                "Full-Course Meal",
+                "Individual Dishes",
+                "Go Back"
+            };
+            List<Action> actions = new(){
+                CoursesOptions,
+                DishesOptions,
+                GoBackAction
+            };
+            int selectedOption = DisplayUtil.Display(options);
+            if (selectedOption == (options.Count - 1) && manager.Cart.Count > 0){
+                MakeReservation.foodItems = manager.Cart;
+            }else{
+                actions[selectedOption]();
+            }
+            break;
+        case 1:
+            if (manager.Cart.Count > 0){
+                MakeReservation.foodItems = manager.Cart;
+            }else{
+                System.Console.WriteLine("You can't check out with an empty cart. Please select an item and try again.");
+                Thread.Sleep(2500);
+                GoBackAction();
+            }
+            break;
+        default:
+            GoBackAction();
+            break;
+        }
     }
 
     private void DishesOptions()
@@ -125,26 +153,29 @@ public class MenuCard : MasterDisplay
             if (selectedOption1 < (option3.Count - 1))
             {
                 Dish dish1 = (Dish)dishes[selectedOption1];
-                Console.WriteLine("Are there any allergens you would like to remove? ");
+                Console.WriteLine("Are there any allergens you would like to remove?(y/n) ");
                 string answer = Console.ReadLine();
                 string allergy = null;
-                if (answer.ToLower() == "yes")
+                if (answer.ToLower() == "y")
                 {
                     Console.WriteLine("Input allergy you want to remove: ");
                     allergy = Console.ReadLine();
                     dish1.RemovedA = allergy;
-                    FoodManager.RemoveAllergens(allergy);
                     Console.ForegroundColor = ConsoleColor.Green;
                     Console.WriteLine($"We have removed {allergy} from your meal(s)");
                     Thread.Sleep(4000);
                     Console.ResetColor();
                 }
-                System.Console.WriteLine("Item added to cart.");
                 manager.AddToCart(dishes[selectedOption1]);
-                AddWine(); //ADDWINE HERE !!!! (als iemand een betere plek weet om de method aan te roepen do your thing)
-                DishesOptions();
-                
-                 
+                System.Console.WriteLine("Item added to cart. $_$");
+                List<string> options = new(){"Go back", "Go to checkout"};
+                int selected = DisplayUtil.Display(options, foodCart);
+                if (selected == 0){
+                    DishesOptions();
+                }else{
+                    toCheckOut = 1;
+                    Display();
+                }
             }
             else
             {
