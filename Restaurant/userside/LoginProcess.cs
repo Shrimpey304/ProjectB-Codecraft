@@ -17,7 +17,7 @@ public class LoginProcess
         if(!login.MailMatches(GivenEmail)){
 
             Console.Clear();
-            Console.WriteLine("this email is not valid or is not registered yet");
+            Console.WriteLine("this email is not valid or is already registered");
             LoginProcessMailView();
 
         }
