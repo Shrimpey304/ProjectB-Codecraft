@@ -8,10 +8,15 @@ public class MenuCard : MasterDisplay
 {
     private static FoodManager manager = new();
     public Stack<Action> windowInstanceStack = new();
-    private int toCheckOut=0;
+    private int toCheckOut;
+    private User? user1;
 
-    public void FromMain()
+    public void FromMain(User? user)
     {
+        if (user is null){
+            user1 = user;
+            toCheckOut = 0;
+        }
         Display(); 
     }
     public void Display()
@@ -143,13 +148,17 @@ public class MenuCard : MasterDisplay
                 }
                 System.Console.WriteLine("Item added to cart. $_$");
                 manager.AddToCart(dishes[selectedOption1]);
-                List<string> options = new(){"Go back", "Go to checkout"};
-                int selected = DisplayUtil.Display(options, foodCart);
-                if (selected == 0){
-                    DishesOptions();
+                if (user1 is null){
+                    MainMenu.DisplayMainMenu();
                 }else{
-                    toCheckOut = 1;
-                    Display();
+                    List<string> options = new(){"Go back", "Go to checkout"};
+                    int selected = DisplayUtil.Display(options, foodCart);
+                    if (selected == 0){
+                        DishesOptions();
+                    }else{
+                        toCheckOut = 1;
+                        Display();
+                    }
                 }
             }
             else

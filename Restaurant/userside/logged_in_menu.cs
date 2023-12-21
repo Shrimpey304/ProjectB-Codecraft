@@ -23,7 +23,7 @@ public class Ingelogdmenu
         {
             case 0:
                 menuCard.windowInstanceStack.Push(DisplayIngelogdMenu);
-                menuCard.FromMain();
+                menuCard.FromMain(user);
                 break;
             case 1:
                 RestaurantInfoTest.DisplayRestaurantInfo();

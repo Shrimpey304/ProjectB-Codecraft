@@ -14,20 +14,23 @@ public class MainMenu : MasterDisplay
             "Register",
             "Quit Application"
         };
-        List<Action> actions = new(){
-            menuCard.FromMain,
-            loginProcess.LoginProcessMailView,
-            registerProcess.RegisterProcessView,
-            Quit
-        };
         int selectedOption = DisplayUtil.Display(options);
         switch (selectedOption)
         {
             case 0:
                 menuCard.windowInstanceStack.Push(DisplayMainMenu);
+                menuCard.FromMain(null);
+                break;
+            case 1: 
+                loginProcess.LoginProcessMailView();
+                break;
+            case 2:
+                registerProcess.RegisterProcessView();
+                break;
+            case 3:
+                Quit();
                 break;
         }
-        actions[selectedOption]();
     }
 
     private static void Quit()
