@@ -54,7 +54,6 @@ public class LoginProcess
         }
         else
         {
-
             Console.Clear();
             Console.WriteLine("incorrect password email combination");
             LoginProcessPasswordView(email);

@@ -45,8 +45,14 @@ public class MakeReservation : MasterDisplay
         DateOnly? reservationDate = null;
         string? selectedTime = null;
         Table? table = null;
-
-        while (reservationDate is null || selectedTime is null || table is null)
+        if (User == null)
+        {
+            Console.WriteLine("You need to be registered to make a reservation.");
+            register.RegisterProcessView();
+        }
+        else
+        {
+            while (reservationDate is null || selectedTime is null || table is null)
         {
             Console.Clear();
             System.Console.WriteLine("enter your reservation date\n(yyyy-mm-dd)");
@@ -62,6 +68,7 @@ public class MakeReservation : MasterDisplay
             IEnumerable<string> tableString = TableManager.GetTablesString(tables.ToList());
             int selectedOption1 = DisplayUtil.Display(tableString.ToList());
             table = tables.ToList()[selectedOption1];
+        }
         }
 
         List<Reservations>? ReservationCode = tableManager.AddReservation(reservationDate, selectedTime, table);
@@ -99,6 +106,7 @@ public class MakeReservation : MasterDisplay
     {
         Ingelogdmenu ingelogdmenu = new();
         ConsoleKeyInfo key;
+        decimal totalWithTip = TipCalculator.AddTip(FoodManager.GetTotal(order));
         do
         {
             Console.Clear();
@@ -107,7 +115,7 @@ public class MakeReservation : MasterDisplay
             {
                 System.Console.WriteLine(item.GetString());
             }
-            System.Console.WriteLine($"Your Total: {FoodManager.GetTotal(order)}\nPress ENTER to go back to home menu.");
+            System.Console.WriteLine($"Your Total with tip: {totalWithTip:F2}\nPress ENTER to go back to home menu.");
             key = Console.ReadKey(false);
         } while (key.Key != ConsoleKey.Enter);
         GoBack();

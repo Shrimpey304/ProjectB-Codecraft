@@ -70,7 +70,9 @@ public static class FoodItems_init_
     internal static List<Meals> PopulateMeals()
     {
         List<Meals> meals = new(){
-            new Meals(1, 3, "fish", "salmon", 56.90M, "its smoked...")
+            new Meals(1, 3, "Chicken", "Chicken", 56.90M, "Our 3-course meal starts with a gluten-free Caprese Salad Stack, followed by a succulent Grilled Lemon Herb Chicken breast with a medley of roasted veggies and for dessert a Flourless Chocolate Torte"),
+            new Meals(2, 4, "Fish", "Salmon", 74.99m, "Our 4-course meal consists of an Avocado and Mango Tartare, followed by our Red Pepper and Tomato Bisque. Then for the main course a delicious Seared Salmon fillet, adorned with a dairy-free Lemon Dill Sauce. And for dessert a Coconut Panna Cotta with Mixed Berry Compote"),
+            new Meals(3, 5, "Meat", "Beef", 109.99m, "Our 5-course meal starts with our famed Citrus-Marinated Shrimp Skewers, shortly followed by our Spinach and Strawberry Salad. Then a delicious Butternut Squash and Apple Velouté soup to wash it all down. As for the main course we present an Herb-Crusted Beef Tenderloin. And for dessert you will have the wonderful Raspberry Almond Tart (Nut-Free Version)")
         };
         return meals;
     }

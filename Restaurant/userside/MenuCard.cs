@@ -7,11 +7,21 @@ using System.Net;
 public class MenuCard : MasterDisplay
 {
     private static FoodManager manager = new();
+    private RegisterProcess register = new();
+    private User user = new();
     public Stack<Action> windowInstanceStack = new();
     private int toCheckOut=0;
 
     public void FromMain()
     {
+         if (user == null)
+        {
+            Console.WriteLine("You need to be logged in to order. Please log in or register.");
+            register.RegisterProcessView();
+            return;
+        }
+        //windowInstanceStack.Push(MainMenu.DisplayMainMenu);
+
         Display(); 
     }
 
@@ -199,14 +209,8 @@ public class MenuCard : MasterDisplay
                 }
                 System.Console.WriteLine("Item added to cart.");
                 manager.AddToCart(meals[selectedOption]);
-                List<string> options = new(){"Go back", "Go to checkout"};
-                int selected = DisplayUtil.Display(options, foodCart);
-                if (selected == 0){
-                    CoursesOptions();
-                }else{
-                    toCheckOut = 1;
-                    Display();
-                }
+                AddWine();
+                CoursesOptions();
             }
             else
             {
