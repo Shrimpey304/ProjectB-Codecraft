@@ -7,6 +7,8 @@ using System.Net;
 public class MenuCard : MasterDisplay
 {
     private static FoodManager manager = new();
+    private RegisterProcess register = new();
+    private User user = new();
     public Stack<Action> windowInstanceStack = new();
     private int toCheckOut;
     private User? user1;
@@ -19,6 +21,18 @@ public class MenuCard : MasterDisplay
         }
         Display(); 
     }
+
+    Ingelogdmenu loggedInMenu = new();
+    public void GoBackAction(){
+        Console.WriteLine("in gobackaction");
+        windowInstanceStack.Pop();
+        if(Login.IsLoggedIn){
+            loggedInMenu.DisplayIngelogdMenu();
+        }else{
+            MainMenu.DisplayMainMenu();
+        }
+    }
+
     public void Display()
     {
         switch(toCheckOut){
@@ -31,7 +45,7 @@ public class MenuCard : MasterDisplay
             List<Action> actions = new(){
                 CoursesOptions,
                 DishesOptions,
-                windowInstanceStack.Pop()
+                GoBackAction
             };
             int selectedOption = DisplayUtil.Display(options);
             if (selectedOption == (options.Count - 1) && manager.Cart.Count > 0){
@@ -46,8 +60,11 @@ public class MenuCard : MasterDisplay
             }else{
                 System.Console.WriteLine("You can't check out with an empty cart. Please select an item and try again.");
                 Thread.Sleep(2500);
-                windowInstanceStack.Pop();
+                GoBackAction();
             }
+            break;
+        default:
+            GoBackAction();
             break;
         }
     }
@@ -146,6 +163,7 @@ public class MenuCard : MasterDisplay
                     Thread.Sleep(4000);
                     Console.ResetColor();
                 }
+                manager.AddToCart(dishes[selectedOption1]);
                 System.Console.WriteLine("Item added to cart. $_$");
                 manager.AddToCart(dishes[selectedOption1]);
                 if (user1 is null){
@@ -193,14 +211,8 @@ public class MenuCard : MasterDisplay
                 }
                 System.Console.WriteLine("Item added to cart.");
                 manager.AddToCart(meals[selectedOption]);
-                List<string> options = new(){"Go back", "Go to checkout"};
-                int selected = DisplayUtil.Display(options, foodCart);
-                if (selected == 0){
-                    CoursesOptions();
-                }else{
-                    toCheckOut = 1;
-                    Display();
-                }
+                AddWine();
+                CoursesOptions();
             }
             else
             {

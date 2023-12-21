@@ -4,15 +4,18 @@ namespace Restaurant;
 
 public class MakeReservation : MasterDisplay
 {
-private TableManager tableManager = new();
+    public User? User;
+
+    private TableManager tableManager;
 
     public static IEnumerable<IFoodItems> foodItems;
 
     public List<Ingelogdmenu> windowInstance = new();
-    
-    public User? User;
 
-    public MakeReservation(User? user=null) => User = user;
+    public MakeReservation(User? user){
+        User = user;
+        tableManager = new(User);
+    }
 
     public void Display()
     {
@@ -42,8 +45,14 @@ private TableManager tableManager = new();
         DateOnly? reservationDate = null;
         string? selectedTime = null;
         Table? table = null;
-
-        while (reservationDate is null || selectedTime is null || table is null)
+        if (User == null)
+        {
+            Console.WriteLine("You need to be registered to make a reservation.");
+            register.RegisterProcessView();
+        }
+        else
+        {
+            while (reservationDate is null || selectedTime is null || table is null)
         {
             Console.Clear();
             System.Console.WriteLine("enter your reservation date\n(yyyy-mm-dd)");
@@ -60,8 +69,9 @@ private TableManager tableManager = new();
             int selectedOption1 = DisplayUtil.Display(tableString.ToList());
             table = tables.ToList()[selectedOption1];
         }
+        }
 
-        string ReservationCode = tableManager.AddReservation(reservationDate, selectedTime, table);
+        List<Reservations>? ReservationCode = tableManager.AddReservation(reservationDate, selectedTime, table);
 
         if (ReservationCode is null)
         {
@@ -80,7 +90,7 @@ private TableManager tableManager = new();
                 int selectedOption2 = DisplayUtil.Display(options);
                 if (selectedOption2 == 0)
                 {
-                    CheckOut(table, reservationDate, foodItems, ReservationCode);
+                    CheckOut(table, reservationDate, foodItems);
                 }else
                 {
                     Display();
@@ -92,10 +102,11 @@ private TableManager tableManager = new();
         }
     }
 
-    private void CheckOut(Table table, DateOnly? date, IEnumerable<IFoodItems> order, string reservationCode)
+    private void CheckOut(Table table, DateOnly? date, IEnumerable<IFoodItems> order)
     {
         Ingelogdmenu ingelogdmenu = new();
         ConsoleKeyInfo key;
+        decimal totalWithTip = TipCalculator.AddTip(FoodManager.GetTotal(order));
         do
         {
             Console.Clear();
@@ -104,10 +115,9 @@ private TableManager tableManager = new();
             {
                 System.Console.WriteLine(item.GetString());
             }
-            System.Console.WriteLine($"Your Total: {FoodManager.GetTotal(order)}\nPress ENTER to go back to home menu.");
+            System.Console.WriteLine($"Your Total with tip: {totalWithTip:F2}\nPress ENTER to go back to home menu.");
             key = Console.ReadKey(false);
         } while (key.Key != ConsoleKey.Enter);
-        User.tableHistory[reservationCode] = table;
         GoBack();
     }
 

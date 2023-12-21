@@ -17,7 +17,7 @@ public class LoginProcess
         if(!login.MailMatches(GivenEmail)){
 
             Console.Clear();
-            Console.WriteLine("this email is not valid or is not registered yet");
+            Console.WriteLine("this email is not valid or is already registered");
             LoginProcessMailView();
 
         }
@@ -40,7 +40,7 @@ public class LoginProcess
             if (isAdmin)
             {
                 Console.WriteLine("Login is successful heading to admin panel.");
-                AdminMenu.DisplayAdminMenu(); 
+                // AdminMenu.DisplayAdminMenu(); 
             }
             else
             {
@@ -54,7 +54,6 @@ public class LoginProcess
         }
         else
         {
-
             Console.Clear();
             Console.WriteLine("incorrect password email combination");
             LoginProcessPasswordView(email);

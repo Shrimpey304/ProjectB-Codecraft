@@ -16,11 +16,11 @@ public class FoodManager
         Meals = FoodItems_init_.LoadMeals(fileNames[1]);
     }
 
-    public bool AddDish(int id, string dishtype, string name, string description, decimal price, string allergens)
+    public bool AddDish(int id, string dishname, string name, string description, decimal price, string allergens)
     {
-        if (!Dishes.Exists(item => item.ID == id))
+        if (!Dishes.Exists(item => item.DishName == dishname))
         {
-            Dish dish = new(id, dishtype, name, description, price, allergens);
+            Dish dish = new(id, name, description, price, allergens);
             Dishes.Add(dish);
             JsonUtil.UploadToJson(Dishes, fileNames[0]);
             return true;
@@ -64,12 +64,12 @@ public class FoodManager
         return false;
     }
 
-    public List<IFoodItems> GetDishes(string type)
+    public List<IFoodItems> GetDishes(string name)
     {
         List<IFoodItems> dishes = new();
-        if (Dishes.Any(item => item.DishType == type))
+        if (Dishes.Any(item => item.DishName == name))
         {
-            Dish dish = Dishes.Find(item => item.DishType == type)!;
+            Dish dish = Dishes.Find(item => item.DishName == name)!;
             dishes.Add(dish);
             return dishes;
         }

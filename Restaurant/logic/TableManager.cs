@@ -32,15 +32,16 @@ public class TableManager
     public List<Reservations>? ReservedTable {
         get => _reseravtions;
         set => _reseravtions = value is null ? new() : value;}
-    //public User? User {get;set;}
+    public User? User {get;set;}
     private List<string> timeSlots = new() {"12:00 pm", "2:00 pm", "4:00 pm", "6:00 pm", "8:00 pm"};
     private const int codeLength = 8;
     private const string timeFormate = "HH:mm tt";
     private const string tablesFileName = @"C:dataStorage\Tables.json";
     private const string reseravtionFileName = @"C:dataStorage\Reservations.json";
 
-    public TableManager()
+    public TableManager(User? user)
     {
+        User = user;
         Tables = Table_init_.LoadTables(tablesFileName)!;
         ReservedTable = Table_init_.LoadReservations(reseravtionFileName);
     }
@@ -50,7 +51,7 @@ public class TableManager
         Tables = Table_init_.LoadTables(tablefilename)!;
         ReservedTable = new();
     }
-    public string? AddReservation(DateOnly? date, string time, Table table, string filename = reseravtionFileName)
+    public List<Reservations>? AddReservation(DateOnly? date, string time, Table table, string filename = reseravtionFileName)
     {
         string ReservationCode;
         table.reservationDate = date;
@@ -61,19 +62,20 @@ public class TableManager
             List<Table> tables = reservations.TimeSlotList[time];
             tables.Add(table);
             ReservationCode = GenerateCode();
-            //User.tableHistory[ReservationCode] = table;
+            User.tableHistory[ReservationCode] = table;
             
             JsonUtil.UploadToJson<Reservations>(ReservedTable, filename);
-            return ReservationCode;
+            return ReservedTable;
         }
         Reservations reservations1 = new(date);
         List<Table> tables1 = reservations1.TimeSlotList[time];
         tables1.Add(table);
         ReservedTable.Add(reservations1);
         ReservationCode = GenerateCode();
-        //User.tableHistory[ReservationCode] = table;
+        
+        User.tableHistory[ReservationCode] = table;
         JsonUtil.UploadToJson<Reservations>(ReservedTable, filename);
-        return ReservationCode;
+        return ReservedTable;
     }
 
     public void RemoveReservation(DateOnly date, int position, string filename = reseravtionFileName)

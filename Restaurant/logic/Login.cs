@@ -15,10 +15,8 @@ public class Login : MasterLogin{
     }
 
     public bool MailMatches(string mail){
-        
         List<User> accounts = JsonUtil.ReadFromJson<User>(filePath)!;
         User mailExist = accounts.FirstOrDefault(account => account.Email == mail)!;
-
         if(mailExist != null){
             return true;
         }else{
