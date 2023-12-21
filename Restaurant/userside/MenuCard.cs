@@ -98,7 +98,7 @@ public class MenuCard : MasterDisplay
             Display();
         }
     }
-    public void AddWine()
+    public void AddWine(Table table, DateOnly? reservationDate, IEnumerable<IFoodItems> foodItems)
     {
         Console.WriteLine("Would you like a bottle of wine with your order?");
         string answer = Console.ReadLine().ToLower();
@@ -136,6 +136,8 @@ public class MenuCard : MasterDisplay
                 Console.WriteLine("Invalid input. Please enter a valid wine ID");
             }
         }
+        MakeReservation mr = new(user);
+        mr.CheckOut(table, reservationDate, foodItems);
 
     }
 
@@ -211,7 +213,6 @@ public class MenuCard : MasterDisplay
                 }
                 System.Console.WriteLine("Item added to cart.");
                 manager.AddToCart(meals[selectedOption]);
-                AddWine();
                 CoursesOptions();
             }
             else

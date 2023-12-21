@@ -12,6 +12,8 @@ public class MakeReservation : MasterDisplay
 
     public List<Ingelogdmenu> windowInstance = new();
 
+    public RegisterProcess register = new();
+
     public MakeReservation(User? user){
         User = user;
         tableManager = new(User);
@@ -90,7 +92,7 @@ public class MakeReservation : MasterDisplay
                 int selectedOption2 = DisplayUtil.Display(options);
                 if (selectedOption2 == 0)
                 {
-                    CheckOut(table, reservationDate, foodItems);
+                    menuCard.AddWine(table, reservationDate, foodItems);
                 }else
                 {
                     Display();
@@ -102,7 +104,7 @@ public class MakeReservation : MasterDisplay
         }
     }
 
-    private void CheckOut(Table table, DateOnly? date, IEnumerable<IFoodItems> order)
+    public void CheckOut(Table table, DateOnly? date, IEnumerable<IFoodItems> order)
     {
         Ingelogdmenu ingelogdmenu = new();
         ConsoleKeyInfo key;
