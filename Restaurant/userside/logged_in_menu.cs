@@ -23,7 +23,7 @@ public class Ingelogdmenu
         {
             case 0:
                 menuCard.windowInstanceStack.Push(DisplayIngelogdMenu);
-                menuCard.FromMain(user);
+                menuCard.FromMain(false);
                 break;
             case 1:
                 RestaurantInfoTest.DisplayRestaurantInfo();
@@ -42,8 +42,6 @@ public class Ingelogdmenu
                 break;
             case 5:
                 //if (this.logOut.Count == 0){throw new Exception("list = 0 :(");}
-                MasterLogin lout = logOut[0];
-                lout.LogOut(user);
                 MainMenu.DisplayMainMenu();
                 break;
         }

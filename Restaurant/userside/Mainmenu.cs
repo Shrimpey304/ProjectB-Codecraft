@@ -19,7 +19,7 @@ public class MainMenu : MasterDisplay
         {
             case 0:
                 menuCard.windowInstanceStack.Push(DisplayMainMenu);
-                menuCard.FromMain(null);
+                menuCard.FromMain(false);
                 break;
             case 1: 
                 loginProcess.LoginProcessMailView();

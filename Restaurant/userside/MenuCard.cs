@@ -11,12 +11,12 @@ public class MenuCard : MasterDisplay
     private User user = new();
     public Stack<Action> windowInstanceStack = new();
     private int toCheckOut;
-    private User? user1;
+    private bool isLoggedIn;
 
-    public void FromMain(User? user)
+    public void FromMain(bool loggedin)
     {
         if (user is null){
-            user1 = user;
+            isLoggedIn = loggedin;
             toCheckOut = 0;
         }
         Display(); 
@@ -168,7 +168,7 @@ public class MenuCard : MasterDisplay
                 manager.AddToCart(dishes[selectedOption1]);
                 System.Console.WriteLine("Item added to cart. $_$");
                 manager.AddToCart(dishes[selectedOption1]);
-                if (user1 is null){
+                if (isLoggedIn){
                     MainMenu.DisplayMainMenu();
                 }else{
                     List<string> options = new(){"Go back", "Go to checkout"};
