@@ -11,8 +11,7 @@ public class MainMenu : MasterDisplay
         List<string> options = new(){
             "Menu",
             "Log in",
-            "Register",
-            "Quit Application"
+            "Register"
         };
         int selectedOption = DisplayUtil.Display(options);
         switch (selectedOption)
@@ -26,9 +25,6 @@ public class MainMenu : MasterDisplay
                 break;
             case 2:
                 registerProcess.RegisterProcessView();
-                break;
-            case 3:
-                Quit();
                 break;
         }
     }

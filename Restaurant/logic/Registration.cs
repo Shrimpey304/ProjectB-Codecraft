@@ -5,8 +5,9 @@ using Newtonsoft.Json;
 using System.Globalization;
 
 
-public class Registration : MasterLogin{
+public class Registration{
     public List<User> Accounts;
+    protected const string filePath = @".\dataStorage\account.json";
 
     public Registration(){
         Accounts = JsonUtil.ReadFromJson<User>(filePath)!;
@@ -166,16 +167,5 @@ public class Registration : MasterLogin{
         var account = new User { Email = email, Password = password, PhoneNumber = phonenumber};
         //JsonUtil.UploadToJson(acc, accountPath);
         return account;
-    }
-
-    public override void LogOut(User user){
-        int userIndex = Accounts.FindIndex(item => item.Email == user.Email);
-        if (userIndex != -1){
-            Accounts[userIndex] = user;
-            JsonUtil.UploadToJson(Accounts, filePath);
-        }else{
-            Accounts.Add(user);
-            JsonUtil.UploadToJson(Accounts, filePath);
-        }
     }
 }

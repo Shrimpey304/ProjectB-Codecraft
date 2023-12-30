@@ -4,6 +4,7 @@ public class Ingelogdmenu
 {
     public User? user;
     public List<MasterLogin>? logOut = new();
+    Login login = new();
     public void DisplayIngelogdMenu()
     {
         MakeReservation makeReservation = new(user);
@@ -42,6 +43,7 @@ public class Ingelogdmenu
                 break;
             case 5:
                 //if (this.logOut.Count == 0){throw new Exception("list = 0 :(");}
+                login.LogOut();
                 MainMenu.DisplayMainMenu();
                 break;
         }
