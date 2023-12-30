@@ -15,6 +15,8 @@ public class MakeReservation : MasterDisplay
 
     public RegisterProcess register = new();
 
+    public RegisterProcess register = new();
+
     public MakeReservation(User? user){
         User = user;
         tableManager = new(User);

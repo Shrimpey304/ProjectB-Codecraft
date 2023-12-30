@@ -131,13 +131,13 @@ public class MenuCard : MasterDisplay
             {
                 Console.WriteLine("Input too high. Please enter a valid wine ID.");
                 Thread.Sleep(2000);
-                AddWine();
+                //AddWine();
             }
             else
             {
                 Console.WriteLine("Invalid input. Please enter a valid wine ID");
                 Thread.Sleep(2000);
-                AddWine();
+                //AddWine();
             }
         }
         MakeReservation mr = new(user);
@@ -174,20 +174,9 @@ public class MenuCard : MasterDisplay
                 if (isLoggedIn){
                     MainMenu.DisplayMainMenu();
                 }else{
-<<<<<<< HEAD
-                    AddWine();
+                    //AddWine();
                     toCheckOut = 1;
                     Display();
-=======
-                    List<string> options = new(){"Go back", "Go to checkout"};
-                    int selected = DisplayUtil.Display(options, foodCart);
-                    if (selected == 0){
-                        DishesOptions();
-                    }else{
-                        toCheckOut = 1;
-                        Display();
-                    }
->>>>>>> cadaadbfae2919938ca60ae945979171f630099d
                 }
             }
             else
@@ -221,19 +210,19 @@ public class MenuCard : MasterDisplay
                 }
                 System.Console.WriteLine("Item added to cart.");
                 manager.AddToCart(meals[selectedOption]);
-<<<<<<< HEAD
+
                 List<string> options = new(){"Go back", "Go to checkout"};
                 int selected = DisplayUtil.Display(options, foodCart);
                 if (selected == 0){
                     CoursesOptions();
                 }else{
-                    AddWine();
+                    //AddWine();
                     toCheckOut = 1;
                     Display();
                 }
-=======
+
                 CoursesOptions();
->>>>>>> cadaadbfae2919938ca60ae945979171f630099d
+
             }
             else
             {

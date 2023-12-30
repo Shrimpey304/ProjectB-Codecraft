@@ -13,14 +13,12 @@ public class MainMenu : MasterDisplay
             "Log in",
             "Register"
         };
-<<<<<<< HEAD
         List<Action> actions = new(){
-            menuCard.FromMain,
+            //menuCard.FromMain,
             loginProcess.LoginProcessMailView,
             registerProcess.RegisterProcessView,
         };
-=======
->>>>>>> cadaadbfae2919938ca60ae945979171f630099d
+
         int selectedOption = DisplayUtil.Display(options);
         switch (selectedOption)
         {
@@ -34,8 +32,7 @@ public class MainMenu : MasterDisplay
             case 2:
                 registerProcess.RegisterProcessView();
                 break;
-            case 3:
-                Quit();
+            default:
                 break;
         }
     }
