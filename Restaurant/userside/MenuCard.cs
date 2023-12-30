@@ -10,18 +10,15 @@ public class MenuCard : MasterDisplay
     private RegisterProcess register = new();
     private User user = new();
     public Stack<Action> windowInstanceStack = new();
-    private int toCheckOut=0;
+    private int toCheckOut;
+    private bool isLoggedIn;
 
-    public void FromMain()
+    public void FromMain(bool loggedin)
     {
-         if (user == null)
-        {
-            Console.WriteLine("You need to be logged in to order. Please log in or register.");
-            register.RegisterProcessView();
-            return;
+        if (user is null){
+            isLoggedIn = loggedin;
+            toCheckOut = 0;
         }
-        //windowInstanceStack.Push(MainMenu.DisplayMainMenu);
-
         Display(); 
     }
 
@@ -101,7 +98,7 @@ public class MenuCard : MasterDisplay
             Display();
         }
     }
-    public void AddWine()
+    public void AddWine(Table table, DateOnly? reservationDate, IEnumerable<IFoodItems> foodItems)
     {
         Console.WriteLine("Would you like a bottle of wine with your order?");
         string answer = Console.ReadLine().ToLower();
@@ -133,12 +130,18 @@ public class MenuCard : MasterDisplay
             else if (int.TryParse(userInput2, out int userInput3) && userInput3 > 4)
             {
                 Console.WriteLine("Input too high. Please enter a valid wine ID.");
+                Thread.Sleep(2000);
+                AddWine();
             }
             else
             {
                 Console.WriteLine("Invalid input. Please enter a valid wine ID");
+                Thread.Sleep(2000);
+                AddWine();
             }
         }
+        MakeReservation mr = new(user);
+        mr.CheckOut(table, reservationDate, foodItems);
 
     }
 
@@ -155,11 +158,10 @@ public class MenuCard : MasterDisplay
                 Dish dish1 = (Dish)dishes[selectedOption1];
                 Console.WriteLine("Are there any allergens you would like to remove?(y/n) ");
                 string answer = Console.ReadLine();
-                string allergy = null;
                 if (answer.ToLower() == "y")
                 {
                     Console.WriteLine("Input allergy you want to remove: ");
-                    allergy = Console.ReadLine();
+                    string allergy = Console.ReadLine();
                     dish1.RemovedA = allergy;
                     Console.ForegroundColor = ConsoleColor.Green;
                     Console.WriteLine($"We have removed {allergy} from your meal(s)");
@@ -168,13 +170,24 @@ public class MenuCard : MasterDisplay
                 }
                 manager.AddToCart(dishes[selectedOption1]);
                 System.Console.WriteLine("Item added to cart. $_$");
-                List<string> options = new(){"Go back", "Go to checkout"};
-                int selected = DisplayUtil.Display(options, foodCart);
-                if (selected == 0){
-                    DishesOptions();
+                manager.AddToCart(dishes[selectedOption1]);
+                if (isLoggedIn){
+                    MainMenu.DisplayMainMenu();
                 }else{
+<<<<<<< HEAD
+                    AddWine();
                     toCheckOut = 1;
                     Display();
+=======
+                    List<string> options = new(){"Go back", "Go to checkout"};
+                    int selected = DisplayUtil.Display(options, foodCart);
+                    if (selected == 0){
+                        DishesOptions();
+                    }else{
+                        toCheckOut = 1;
+                        Display();
+                    }
+>>>>>>> cadaadbfae2919938ca60ae945979171f630099d
                 }
             }
             else
@@ -195,11 +208,10 @@ public class MenuCard : MasterDisplay
                 Meals meal = (Meals)meals[selectedOption];
                 Console.WriteLine("Are there any allergens you would like to remove? ");
                 string answer = Console.ReadLine();
-                string allergy = null;
                 if (answer.ToLower() == "yes")
                 {
                     Console.WriteLine("Input allergy you want to remove: ");
-                    allergy = Console.ReadLine();
+                    string allergy = Console.ReadLine();
                     meal.RemovedA = allergy;
                     FoodManager.RemoveAllergens(allergy);
                     Console.ForegroundColor = ConsoleColor.Green;
@@ -209,8 +221,19 @@ public class MenuCard : MasterDisplay
                 }
                 System.Console.WriteLine("Item added to cart.");
                 manager.AddToCart(meals[selectedOption]);
-                AddWine();
+<<<<<<< HEAD
+                List<string> options = new(){"Go back", "Go to checkout"};
+                int selected = DisplayUtil.Display(options, foodCart);
+                if (selected == 0){
+                    CoursesOptions();
+                }else{
+                    AddWine();
+                    toCheckOut = 1;
+                    Display();
+                }
+=======
                 CoursesOptions();
+>>>>>>> cadaadbfae2919938ca60ae945979171f630099d
             }
             else
             {

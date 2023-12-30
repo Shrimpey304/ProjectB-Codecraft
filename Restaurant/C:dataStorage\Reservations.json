@@ -1,0 +1,26 @@
+[
+  {
+    "ReservationDate": "2023-12-31",
+    "TimeSlotList": {
+      "12:00 pm": [
+        {
+          "Position": 1,
+          "reservationDate": "2023-12-31",
+          "Type": 2,
+          "ReservationTime": "12:00 pm"
+        }
+      ],
+      "2:00 pm": [
+        {
+          "Position": 1,
+          "reservationDate": "2023-12-31",
+          "Type": 2,
+          "ReservationTime": "2:00 pm"
+        }
+      ],
+      "4:00 pm": [],
+      "6:00 pm": [],
+      "8:00 pm": []
+    }
+  }
+]

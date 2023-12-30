@@ -18,6 +18,7 @@ public class Dish : IFoodItems
         Allergens = allergens;
     }
 
+
     public decimal GetPrice() => Price;
     public string GetString(bool itemType=false, bool incart=false)
     {

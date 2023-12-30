@@ -11,6 +11,9 @@ public class MakeReservation : MasterDisplay
     public static IEnumerable<IFoodItems> foodItems;
 
     public List<Ingelogdmenu> windowInstance = new();
+    public RegisterProcess register = new();
+
+    public RegisterProcess register = new();
 
     public MakeReservation(User? user){
         User = user;
@@ -31,7 +34,7 @@ public class MakeReservation : MasterDisplay
             MakeReserve,
             RemoveReserve,
             CheckAvailablity,
-            GoBack
+            windowInstance[0].DisplayIngelogdMenu
         };
         int selectedOption = DisplayUtil.Display(options);    
         actions[selectedOption]();
@@ -83,14 +86,14 @@ public class MakeReservation : MasterDisplay
             
             MenuCard menuCard = new();
             menuCard.windowInstanceStack.Push(MakeReserve);
-            menuCard.Display();
+            menuCard.FromMain(true);
             if (foodItems is not null)
             {
                 List<string> options = new(){"Go to checkout", "Go back to reservation menu"};
                 int selectedOption2 = DisplayUtil.Display(options);
                 if (selectedOption2 == 0)
                 {
-                    CheckOut(table, reservationDate, foodItems);
+                    menuCard.AddWine(table, reservationDate, foodItems);
                 }else
                 {
                     Display();
@@ -102,9 +105,10 @@ public class MakeReservation : MasterDisplay
         }
     }
 
-    private void CheckOut(Table table, DateOnly? date, IEnumerable<IFoodItems> order)
+    public void CheckOut(Table table, DateOnly? date, IEnumerable<IFoodItems> order)
     {
         Ingelogdmenu ingelogdmenu = new();
+        ingelogdmenu.user = User;
         ConsoleKeyInfo key;
         decimal totalWithTip = TipCalculator.AddTip(FoodManager.GetTotal(order));
         do
@@ -118,7 +122,7 @@ public class MakeReservation : MasterDisplay
             System.Console.WriteLine($"Your Total with tip: {totalWithTip:F2}\nPress ENTER to go back to home menu.");
             key = Console.ReadKey(false);
         } while (key.Key != ConsoleKey.Enter);
-        GoBack();
+        ingelogdmenu.DisplayIngelogdMenu();
     }
 
     private void RemoveReserve()
@@ -158,7 +162,4 @@ public class MakeReservation : MasterDisplay
         // }
     }
 
-    private void GoBack(){
-        windowInstance[0].FromMR(windowInstance[0].logOut);
-    }
 }

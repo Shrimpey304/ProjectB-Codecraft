@@ -11,30 +11,40 @@ public class MainMenu : MasterDisplay
         List<string> options = new(){
             "Menu",
             "Log in",
-            "Register",
-            "Quit Application"
+            "Register"
         };
+<<<<<<< HEAD
         List<Action> actions = new(){
             menuCard.FromMain,
             loginProcess.LoginProcessMailView,
             registerProcess.RegisterProcessView,
-            Quit
         };
+=======
+>>>>>>> cadaadbfae2919938ca60ae945979171f630099d
         int selectedOption = DisplayUtil.Display(options);
         switch (selectedOption)
         {
             case 0:
                 menuCard.windowInstanceStack.Push(DisplayMainMenu);
+                menuCard.FromMain(false);
+                break;
+            case 1: 
+                loginProcess.LoginProcessMailView();
+                break;
+            case 2:
+                registerProcess.RegisterProcessView();
+                break;
+            case 3:
+                Quit();
                 break;
         }
-        actions[selectedOption]();
     }
 
-    private static void Quit()
-    {
-        Console.WriteLine("Quitting application...");
-        System.Environment.Exit(1);
-    }
+    // private static void Quit()
+    // {
+    //     Console.WriteLine("Quitting application...");
+    //     System.Environment.Exit(1);
+    // }
 }
     
 
