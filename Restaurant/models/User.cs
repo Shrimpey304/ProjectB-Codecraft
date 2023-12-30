@@ -28,6 +28,11 @@ public class User{
         {
             Admin = newAdminStatus;
         }
+
+    public override string ToString()
+    {
+        return Email;
+    }
 }
 
 
