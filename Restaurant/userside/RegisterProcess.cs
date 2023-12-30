@@ -4,6 +4,7 @@ public class RegisterProcess{
 
     private Ingelogdmenu ingelogdmenu = new();
     private Registration REG = new Registration();
+    protected const string filePath = @".\dataStorage\account.json";
     
     public void RegisterProcessView(){
 
@@ -40,7 +41,9 @@ public class RegisterProcess{
         User user = REG.CreateAccount(GivenEmail, GivenPW, PhoneNR!, false);
         ingelogdmenu.user = user;
         // ingelogdmenu.logOut.Add(REG);
-        ingelogdmenu.DisplayIngelogdMenu();
+        JsonUtil.UpdateSingleObject(user, filePath);
         Login.IsLoggedIn = true;
+        Login.LoggedinUser = user.Email;
+        ingelogdmenu.DisplayIngelogdMenu();
     }
 }

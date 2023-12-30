@@ -164,5 +164,21 @@
     "PhoneNumber": "1234567890",
     "HasRervering": false,
     "Admin": false
+  },
+  {
+    "tableHistory": {},
+    "Email": "aba@aavba.com",
+    "Password": "Kimo1234!",
+    "PhoneNumber": "123456789",
+    "HasRervering": false,
+    "Admin": false
+  },
+  {
+    "tableHistory": {},
+    "Email": "ada.aa@avcda.com",
+    "Password": "Kimo1234!",
+    "PhoneNumber": "123456789",
+    "HasRervering": false,
+    "Admin": false
   }
 ]
