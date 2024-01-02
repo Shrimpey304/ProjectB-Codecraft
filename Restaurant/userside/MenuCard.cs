@@ -19,6 +19,7 @@ public class MenuCard : MasterDisplay
             isLoggedIn = loggedin;
             toCheckOut = 0;
         }
+        isLoggedIn = loggedin;
         Display(); 
     }
 
@@ -35,6 +36,7 @@ public class MenuCard : MasterDisplay
 
     public void Display()
     {
+        if (!isLoggedIn){throw new Exception("nigga wtf");}
         switch(toCheckOut){
         case 0:
             List<string> options = new(){
@@ -73,6 +75,7 @@ public class MenuCard : MasterDisplay
     {
         List<string> option1 = OptionString<Dish>(manager.Dishes);
         int selectedOption = DisplayUtil.Display(option1);
+
         if (selectedOption < (option1.Count - 1))
         {
             Menu(option1[selectedOption], true);
@@ -149,7 +152,7 @@ public class MenuCard : MasterDisplay
             List<string> option3 = OptionString(dishes, false);
             string foodCart = GetCartString(manager.Cart);
             int selectedOption1 = DisplayUtil.Display(option3, foodCart);
-            if (selectedOption1 < (option3.Count - 1))
+            if (selectedOption1 < (option3.Count - 1) && isLoggedIn)
             {
                 Dish dish1 = (Dish)dishes[selectedOption1];
                 Console.WriteLine("Are there any allergens you would like to remove?(y/n) ");
@@ -168,7 +171,7 @@ public class MenuCard : MasterDisplay
                 manager.AddToCart(dishes[selectedOption1]);
                 System.Console.WriteLine("Item added to cart. $_$");
                 manager.AddToCart(dishes[selectedOption1]);
-                if (isLoggedIn){
+                if (!isLoggedIn){
                     MainMenu.DisplayMainMenu();
                 }else{
                     List<string> options = new(){"Go back", "Go to checkout"};
@@ -194,7 +197,7 @@ public class MenuCard : MasterDisplay
             List<string> option2 = OptionString(meals, false);
             string foodCart = GetCartString(manager.Cart);
             int selectedOption = DisplayUtil.Display(option2, foodCart);
-            if (selectedOption < (option2.Count - 1))
+            if (selectedOption < (option2.Count - 1) && isLoggedIn)
             {
                 Meals meal = (Meals)meals[selectedOption];
                 Console.WriteLine("Are there any allergens you would like to remove? ");
@@ -213,7 +216,14 @@ public class MenuCard : MasterDisplay
                 }
                 System.Console.WriteLine("Item added to cart.");
                 manager.AddToCart(meals[selectedOption]);
-                CoursesOptions();
+                List<string> options = new(){"Go back", "Go to checkout"};
+                int selected = DisplayUtil.Display(options, foodCart);
+                if (selected == 0){
+                    CoursesOptions();
+                }else{
+                    toCheckOut = 1;
+                    Display();
+                }
             }
             else
             {

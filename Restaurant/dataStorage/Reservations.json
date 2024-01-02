@@ -9,6 +9,12 @@
           "reservationDate": "2024-11-10",
           "Type": 2,
           "ReservationTime": "2:00 pm"
+        },
+        {
+          "Position": 3,
+          "reservationDate": "2024-11-10",
+          "Type": 8,
+          "ReservationTime": "2:00 pm"
         }
       ],
       "4:00 pm": [
@@ -17,10 +23,23 @@
           "reservationDate": "2024-11-10",
           "Type": 2,
           "ReservationTime": "4:00 pm"
+        },
+        {
+          "Position": 3,
+          "reservationDate": "2024-11-10",
+          "Type": 8,
+          "ReservationTime": "4:00 pm"
         }
       ],
       "6:00 pm": [],
-      "8:00 pm": []
+      "8:00 pm": [
+        {
+          "Position": 2,
+          "reservationDate": "2024-11-10",
+          "Type": 2,
+          "ReservationTime": "8:00 pm"
+        }
+      ]
     }
   }
 ]
