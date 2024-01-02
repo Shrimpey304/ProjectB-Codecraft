@@ -31,7 +31,7 @@ public static class JsonUtil
         }else{
             objList.Add(toWrite);
         }
-        JsonUtil.UploadToJson(objList, fileName);
+        UploadToJson(objList, fileName);
     }
 
     public static List<T>? ReadFromJson<T>(string fileName) where T : class
