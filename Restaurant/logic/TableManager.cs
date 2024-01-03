@@ -63,7 +63,7 @@ public class TableManager
             tables.Add(table);
             ReservationCode = GenerateCode();
             User.tableHistory[ReservationCode] = table;
-            
+            JsonUtil.UpdateSingleObject<User>(User, @".\dataStorage\account.json");
             JsonUtil.UploadToJson<Reservations>(ReservedTable, filename);
             return ReservedTable;
         }
@@ -74,6 +74,7 @@ public class TableManager
         ReservationCode = GenerateCode();
         
         User.tableHistory[ReservationCode] = table;
+        JsonUtil.UpdateSingleObject<User>(User, @".\dataStorage\account.json");
         JsonUtil.UploadToJson<Reservations>(ReservedTable, filename);
         return ReservedTable;
     }

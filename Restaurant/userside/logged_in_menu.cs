@@ -43,6 +43,7 @@ public class Ingelogdmenu
                 break;
             case 5:
                 //if (this.logOut.Count == 0){throw new Exception("list = 0 :(");}
+                login.LogOut();
                 MainMenu.DisplayMainMenu();
                 break;
         }

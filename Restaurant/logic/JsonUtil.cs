@@ -23,6 +23,17 @@ public static class JsonUtil
         JsonSerializer.CreateDefault(_options).Serialize(jsonWriter, ToUpload);
     }
 
+    public static void UpdateSingleObject<T>(T toWrite, string fileName) where T : class{
+        List<T> objList = ReadFromJson<T>(fileName);
+        int index = objList.FindIndex(item => item.ToString == toWrite.ToString);
+        if (index != -1){
+            objList[index] = toWrite;
+        }else{
+            objList.Add(toWrite);
+        }
+        UploadToJson(objList, fileName);
+    }
+
     public static List<T>? ReadFromJson<T>(string fileName) where T : class
     {
         try

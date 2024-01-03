@@ -63,14 +63,9 @@ public class Login : MasterLogin{
             return account != null;
         }
 
-    public override void LogOut(User user)
+    public override void LogOut()
     {
-        int userIndex = Accounts.FindIndex(item => item.Email == user.Email);
-        if (userIndex != -1){
-            Accounts[userIndex] = user;
-            JsonUtil.UploadToJson(Accounts, filePath);
-        }else{
-            throw new NullReferenceException();
-        }
+        LoggedinUser = "";
+        IsLoggedIn = false;
     }
 }

@@ -32,8 +32,10 @@ public class MainMenu : MasterDisplay
             case 2:
                 registerProcess.RegisterProcessView();
                 break;
+                
             default:
                 break;
+
         }
     }
 
