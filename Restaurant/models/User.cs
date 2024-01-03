@@ -29,9 +29,14 @@ public class User{
             Admin = newAdminStatus;
         }
 
-    public override string ToString()
+    public override int GetHashCode()
     {
-        return Email;
+        return (Email, PhoneNumber, Password).GetHashCode();
+    }
+
+    public override bool Equals(object? obj)
+    {
+        return GetHashCode() == obj.GetHashCode();
     }
 }
 

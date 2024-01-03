@@ -25,7 +25,8 @@ public static class JsonUtil
 
     public static void UpdateSingleObject<T>(T toWrite, string fileName) where T : class{
         List<T> objList = ReadFromJson<T>(fileName);
-        int index = objList.FindIndex(item => item.ToString == toWrite.ToString);
+        
+        int index = objList.FindIndex(item => item.GetHashCode() == toWrite.GetHashCode());
         if (index != -1){
             objList[index] = toWrite;
         }else{

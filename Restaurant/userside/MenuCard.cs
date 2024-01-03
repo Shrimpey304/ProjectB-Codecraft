@@ -36,7 +36,6 @@ public class MenuCard : MasterDisplay
 
     public void Display()
     {
-        if (!isLoggedIn){throw new Exception("nigga wtf");}
         switch(toCheckOut){
         case 0:
             List<string> options = new(){
