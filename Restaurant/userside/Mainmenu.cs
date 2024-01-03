@@ -16,7 +16,7 @@ public class MainMenu : MasterDisplay
         List<Action> actions = new(){
             //menuCard.FromMain,
             loginProcess.LoginProcessMailView,
-            registerProcess.RegisterProcessView,
+            registerProcess.RegisterMail,
         };
 
         int selectedOption = DisplayUtil.Display(options);
