@@ -13,6 +13,12 @@ public class MainMenu : MasterDisplay
             "Log in",
             "Register"
         };
+        List<Action> actions = new(){
+            //menuCard.FromMain,
+            loginProcess.LoginProcessMailView,
+            registerProcess.RegisterMail,
+        };
+
         int selectedOption = DisplayUtil.Display(options);
         switch (selectedOption)
         {
@@ -24,16 +30,20 @@ public class MainMenu : MasterDisplay
                 loginProcess.LoginProcessMailView();
                 break;
             case 2:
-                registerProcess.RegisterProcessView();
+                registerProcess.RegisterMail();
                 break;
+                
+            default:
+                break;
+
         }
     }
 
-    private static void Quit()
-    {
-        Console.WriteLine("Quitting application...");
-        System.Environment.Exit(1);
-    }
+    // private static void Quit()
+    // {
+    //     Console.WriteLine("Quitting application...");
+    //     System.Environment.Exit(1);
+    // }
 }
     
 

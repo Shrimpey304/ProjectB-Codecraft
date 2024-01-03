@@ -11,7 +11,6 @@ public class MakeReservation : MasterDisplay
     public static IEnumerable<IFoodItems> foodItems;
 
     public List<Ingelogdmenu> windowInstance = new();
-
     public RegisterProcess register = new();
 
     public MakeReservation(User? user){

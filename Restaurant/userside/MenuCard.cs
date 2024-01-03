@@ -92,7 +92,7 @@ public class MenuCard : MasterDisplay
         int selectedOption = DisplayUtil.Display(option1);
         if (selectedOption < (option1.Count - 1))
         {
-            Menu(option1[selectedOption]);
+            Menu(option1[selectedOption], true);
         }
         else
         {
@@ -132,10 +132,14 @@ public class MenuCard : MasterDisplay
             else if (int.TryParse(userInput2, out int userInput3) && userInput3 > 4)
             {
                 Console.WriteLine("Input too high. Please enter a valid wine ID.");
+                Thread.Sleep(2000);
+                AddWine(table, reservationDate, foodItems);
             }
             else
             {
                 Console.WriteLine("Invalid input. Please enter a valid wine ID");
+                Thread.Sleep(2000);
+                AddWine(table, reservationDate, foodItems);
             }
         }
         MakeReservation mr = new(user);
@@ -156,12 +160,12 @@ public class MenuCard : MasterDisplay
                 Dish dish1 = (Dish)dishes[selectedOption1];
                 Console.WriteLine("Are there any allergens you would like to remove?(y/n) ");
                 string answer = Console.ReadLine();
-                string allergy = null;
                 if (answer.ToLower() == "y")
                 {
                     Console.WriteLine("Input allergy you want to remove: ");
-                    allergy = Console.ReadLine();
+                    string allergy = Console.ReadLine();
                     dish1.RemovedA = allergy;
+                    FoodManager.RemoveAllergens(allergy);
                     Console.ForegroundColor = ConsoleColor.Green;
                     Console.WriteLine($"We have removed {allergy} from your meal(s)");
                     Thread.Sleep(4000);
@@ -173,14 +177,9 @@ public class MenuCard : MasterDisplay
                 if (!isLoggedIn){
                     MainMenu.DisplayMainMenu();
                 }else{
-                    List<string> options = new(){"Go back", "Go to checkout"};
-                    int selected = DisplayUtil.Display(options, foodCart);
-                    if (selected == 0){
-                        DishesOptions();
-                    }else{
-                        toCheckOut = 1;
-                        Display();
-                    }
+                    //AddWine();
+                    toCheckOut = 1;
+                    Display();
                 }
             }
             else
@@ -199,13 +198,12 @@ public class MenuCard : MasterDisplay
             if (selectedOption < (option2.Count - 1) && isLoggedIn)
             {
                 Meals meal = (Meals)meals[selectedOption];
-                Console.WriteLine("Are there any allergens you would like to remove? ");
+                Console.WriteLine("Are there any allergens you would like to remove?(y/n) ");
                 string answer = Console.ReadLine();
-                string allergy = null;
-                if (answer.ToLower() == "yes")
+                if (answer.ToLower() == "y")
                 {
                     Console.WriteLine("Input allergy you want to remove: ");
-                    allergy = Console.ReadLine();
+                    string allergy = Console.ReadLine();
                     meal.RemovedA = allergy;
                     FoodManager.RemoveAllergens(allergy);
                     Console.ForegroundColor = ConsoleColor.Green;
@@ -215,15 +213,24 @@ public class MenuCard : MasterDisplay
                 }
                 System.Console.WriteLine("Item added to cart.");
                 manager.AddToCart(meals[selectedOption]);
+
                 List<string> options = new(){"Go back", "Go to checkout"};
                 int selected = DisplayUtil.Display(options, foodCart);
                 if (selected == 0){
                     CoursesOptions();
                 }else{
+
+                    //AddWine();
                     toCheckOut = 1;
                     Display();
                 }
-            }
+
+                CoursesOptions();
+
+                    toCheckOut = 1;
+                    Display();
+                }
+
             else
             {
                 windowInstanceStack.Push(MainMenu.DisplayMainMenu);

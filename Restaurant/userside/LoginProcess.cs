@@ -10,18 +10,17 @@ public class LoginProcess
     public void LoginProcessMailView()
     {
 
-        Console.WriteLine("welcome to Logging in (Beta version)");    
+        Console.WriteLine("welcome to Logging in");    
         Console.WriteLine("please enter your Email");
         GivenEmail = Console.ReadLine()!;
 
         if(!login.MailMatches(GivenEmail)){
 
             Console.Clear();
-            Console.WriteLine("this email is not valid or is already registered");
+            Console.WriteLine("this email is not valid");
             LoginProcessMailView();
 
         }
-        
 
         LoginProcessPasswordView(GivenEmail);
 
@@ -36,6 +35,7 @@ public class LoginProcess
 
         if(user is not null)
         {
+            Login.IsLoggedIn = true;
             bool isAdmin = Login.IsAdmin(GivenPW, email);
             if (isAdmin)
             {
