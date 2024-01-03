@@ -2,6 +2,7 @@ namespace Restaurant;
 
 public class RestaurantInfoTest
 {
+
     static Dictionary<string,string> OpeningTimes = new(){
         {"Monday", "14:00 - 21:00"},
         {"Tuesday", "14:00 - 21:00"},
@@ -13,7 +14,7 @@ public class RestaurantInfoTest
     };
 
     
-      public static void DisplayRestaurantInfo()
+      public static void DisplayRestaurantInfo(User user)
     {
         Ingelogdmenu ingelogdmenu = new();
         Console.WriteLine("Welcome to Codecraft Cuisine!\u001B[35m");
@@ -23,6 +24,7 @@ public class RestaurantInfoTest
         Console.WriteLine("\n\n---------- General Information ----------\u001B[35m \n\n");
         System.Console.WriteLine("press any key to exit.");
         string outl = Console.ReadLine();
+        ingelogdmenu.user = user;
         if (outl is not null){ingelogdmenu.DisplayIngelogdMenu();}
     }
 

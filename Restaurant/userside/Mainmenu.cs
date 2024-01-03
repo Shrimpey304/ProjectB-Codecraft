@@ -24,7 +24,7 @@ public class MainMenu : MasterDisplay
                 loginProcess.LoginProcessMailView();
                 break;
             case 2:
-                registerProcess.RegisterProcessView();
+                registerProcess.RegisterMail();
                 break;
         }
     }

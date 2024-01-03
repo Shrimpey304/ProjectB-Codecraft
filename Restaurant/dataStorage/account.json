@@ -209,5 +209,43 @@
     "PhoneNumber": "1234567890",
     "HasRervering": false,
     "Admin": false
+  },
+  {
+    "tableHistory": {},
+    "Email": "Kimo.edelbroek@hoi.mail",
+    "Password": "ABCdef123!",
+    "PhoneNumber": "1234567890",
+    "HasRervering": false,
+    "Admin": false
+  },
+  {
+    "tableHistory": {
+      "837304": {
+        "Position": 3,
+        "reservationDate": "2025-06-01",
+        "Type": 8,
+        "ReservationTime": "2:00 pm"
+      }
+    },
+    "Email": "Kimo.edelbroek@hoi.mail",
+    "Password": "ABCdef123!",
+    "PhoneNumber": "1234567890",
+    "HasRervering": false,
+    "Admin": false
+  },
+  {
+    "tableHistory": {
+      "329011": {
+        "Position": 1,
+        "reservationDate": "2026-05-30",
+        "Type": 2,
+        "ReservationTime": "2:00 pm"
+      }
+    },
+    "Email": "Kimo.edelbroek@hoi.mail",
+    "Password": "ABCdef123!",
+    "PhoneNumber": "1234567890",
+    "HasRervering": false,
+    "Admin": false
   }
 ]
