@@ -31,8 +31,7 @@ public class RegisterProcess{
         if(Registration.CheckPasswordSimilar(GivenPW!, RetypePW!) == true){
             Console.WriteLine("registratie succesvol");
         }else{
-            Console.WriteLine("failed");
-            
+            Console.WriteLine("failed");     
         }
 
         Console.WriteLine("please write your phone number");

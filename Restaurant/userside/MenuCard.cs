@@ -93,7 +93,7 @@ public class MenuCard : MasterDisplay
         int selectedOption = DisplayUtil.Display(option1);
         if (selectedOption < (option1.Count - 1))
         {
-            Menu(option1[selectedOption]);
+            Menu(option1[selectedOption], true);
         }
         else
         {
@@ -166,6 +166,7 @@ public class MenuCard : MasterDisplay
                     Console.WriteLine("Input allergy you want to remove: ");
                     string allergy = Console.ReadLine();
                     dish1.RemovedA = allergy;
+                    FoodManager.RemoveAllergens(allergy);
                     Console.ForegroundColor = ConsoleColor.Green;
                     Console.WriteLine($"We have removed {allergy} from your meal(s)");
                     Thread.Sleep(4000);
@@ -198,9 +199,9 @@ public class MenuCard : MasterDisplay
             if (selectedOption < (option2.Count - 1) && isLoggedIn)
             {
                 Meals meal = (Meals)meals[selectedOption];
-                Console.WriteLine("Are there any allergens you would like to remove? ");
+                Console.WriteLine("Are there any allergens you would like to remove?(y/n) ");
                 string answer = Console.ReadLine();
-                if (answer.ToLower() == "yes")
+                if (answer.ToLower() == "y")
                 {
                     Console.WriteLine("Input allergy you want to remove: ");
                     string allergy = Console.ReadLine();
