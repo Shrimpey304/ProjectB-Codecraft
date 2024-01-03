@@ -13,10 +13,6 @@ public class MakeReservation : MasterDisplay
     public List<Ingelogdmenu> windowInstance = new();
     public RegisterProcess register = new();
 
-    public RegisterProcess register = new();
-
-    public RegisterProcess register = new();
-
     public MakeReservation(User? user){
         User = user;
         tableManager = new(User);

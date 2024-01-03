@@ -31,6 +31,7 @@ public class RegisterProcess{
             Console.WriteLine("registratie succesvol");
         }else{
             Console.WriteLine("failed");
+            
         }
 
         Console.WriteLine("please write your phone number");

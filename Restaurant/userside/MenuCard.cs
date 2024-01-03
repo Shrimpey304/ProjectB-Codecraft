@@ -131,13 +131,13 @@ public class MenuCard : MasterDisplay
             {
                 Console.WriteLine("Input too high. Please enter a valid wine ID.");
                 Thread.Sleep(2000);
-                //AddWine();
+                AddWine(table, reservationDate, foodItems);
             }
             else
             {
                 Console.WriteLine("Invalid input. Please enter a valid wine ID");
                 Thread.Sleep(2000);
-                //AddWine();
+                AddWine(table, reservationDate, foodItems);
             }
         }
         MakeReservation mr = new(user);
