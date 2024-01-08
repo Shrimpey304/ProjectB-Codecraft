@@ -12,7 +12,7 @@ public class MainMenu : MasterDisplay
             "Menu",
             "Log in",
             "Register",
-            "Restuarant info"
+            "Restaurant information"
         };
         List<Action> actions = new(){
             //menuCard.FromMain,
@@ -38,7 +38,11 @@ public class MainMenu : MasterDisplay
                 RestaurantInfoTest.DisplayRestaurantInfo(null);
                 break;
             default:
+            case 3:
+                RestaurantInfo.DisplayRestaurantInfo();
                 break;
+            default:
+                throw new Exception("un-expected main menu error");
 
         }
     }

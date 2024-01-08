@@ -8,7 +8,7 @@ public class MenuCard : MasterDisplay
 {
     private static FoodManager manager = new();
     private RegisterProcess register = new();
-    private User user = new();
+    public User user = new();
     public Stack<Action> windowInstanceStack = new();
     private int toCheckOut;
     private bool isLoggedIn;
@@ -28,7 +28,7 @@ public class MenuCard : MasterDisplay
         Console.WriteLine("in gobackaction");
         windowInstanceStack.Pop();
         if(Login.IsLoggedIn){
-            
+            loggedInMenu.user = user;
             loggedInMenu.DisplayIngelogdMenu();
         }else{
             MainMenu.DisplayMainMenu();
@@ -52,6 +52,7 @@ public class MenuCard : MasterDisplay
             int selectedOption = DisplayUtil.Display(options);
             if (selectedOption == (options.Count - 1) && manager.Cart.Count > 0){
                 MakeReservation.foodItems = manager.Cart;
+
             }else{
                 actions[selectedOption]();
             }
@@ -93,7 +94,7 @@ public class MenuCard : MasterDisplay
         int selectedOption = DisplayUtil.Display(option1);
         if (selectedOption < (option1.Count - 1))
         {
-            Menu(option1[selectedOption]);
+            Menu(option1[selectedOption], true);
         }
         else
         {
@@ -148,8 +149,10 @@ public class MenuCard : MasterDisplay
 
     }
 
-    private void Menu(string itemType, bool dish = false){
-        if (dish){
+    private void Menu(string itemType, bool dish = false)
+    {
+        if (dish)
+        {
             List<IFoodItems> dishes = manager.GetDishes(itemType);
             List<string> option3 = OptionString(dishes, false);
             string foodCart = GetCartString(manager.Cart);
@@ -171,11 +174,12 @@ public class MenuCard : MasterDisplay
                     Console.ResetColor();
                 }
                 manager.AddToCart(dishes[selectedOption1]);
-                List<string> options = new(){"Go back", "Go to checkout"};
-                int selected = DisplayUtil.Display(options, foodCart);
-                if (selected == 0){
-                    DishesOptions();
+                System.Console.WriteLine("Item added to cart. $_$");
+                manager.AddToCart(dishes[selectedOption1]);
+                if (!isLoggedIn){
+                    MainMenu.DisplayMainMenu();
                 }else{
+                    //AddWine();
                     toCheckOut = 1;
                     Display();
                 }
@@ -185,7 +189,9 @@ public class MenuCard : MasterDisplay
                 windowInstanceStack.Push(MainMenu.DisplayMainMenu);
                 Display();
             }
-        }else{
+        }
+        else
+        {
             List<IFoodItems> meals = manager.GetMeals(itemType);
             System.Console.WriteLine($"{itemType}, {meals.Count}");
             List<string> option2 = OptionString(meals, false);
@@ -220,7 +226,12 @@ public class MenuCard : MasterDisplay
                     toCheckOut = 1;
                     Display();
                 }
-            }
+
+                CoursesOptions();
+
+                    toCheckOut = 1;
+                    Display();
+                }
 
             else
             {

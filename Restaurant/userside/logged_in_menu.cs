@@ -24,10 +24,11 @@ public class Ingelogdmenu
         {
             case 0:
                 menuCard.windowInstanceStack.Push(DisplayIngelogdMenu);
+                menuCard.user = user;
                 menuCard.FromMain(false);
                 break;
             case 1:
-                RestaurantInfoTest.DisplayRestaurantInfo(user);
+                RestaurantInfo.DisplayRestaurantInfo(user);
                 break;
             case 2:
                 makeReservation.windowInstance.Add(this);
@@ -36,7 +37,10 @@ public class Ingelogdmenu
             case 3:
                 orderHistory.windowInstance.Add(this);
                 if(user == null){throw new Exception("user is null");}
-                orderHistory.DisplayOrderHistory(user); // user is niet set to instance
+                if (user != null) //added null check
+                {
+                    orderHistory.DisplayOrderHistory(user); // user is niet set to instance
+                }
                 break;
             case 4:
                 personalProcess.windowInstance.Add(this);
