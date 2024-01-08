@@ -10,12 +10,17 @@ public class PersonalInfoTest
 
     public void DisplayPersonalInfo(User user)
     {
+        Console.Clear();
+        Header.DisplayHeader();
+
+        Console.WriteLine($"\u001B[35m" +"Your user data:\n\n");
+
         ConsoleKeyInfo key;
         do{
-            Console.WriteLine($"Email: {user.Email}");
-            Console.WriteLine($"Password: {user.Password}");
-            Console.WriteLine($"Phone number: {user.PhoneNumber}");
-            System.Console.WriteLine("PRESS ENTER TO GO BACK");
+            Console.WriteLine($">  Email: {user.Email}\n");
+            Console.WriteLine($">  Password: {user.Password}\n");
+            Console.WriteLine($">  Phone number: {user.PhoneNumber}\n");
+            System.Console.WriteLine($"\x1B[4m" +"\nPRESS ENTER TO GO BACK" + $"\x1B[0m");
             key = Console.ReadKey(false);
         }while (key.Key != ConsoleKey.Enter);
         windowInstance[0].FromMR(windowInstance[0].logOut);

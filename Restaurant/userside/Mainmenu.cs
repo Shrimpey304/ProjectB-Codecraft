@@ -11,7 +11,8 @@ public class MainMenu : MasterDisplay
         List<string> options = new(){
             "Menu",
             "Log in",
-            "Register"
+            "Register",
+            "Restaurant information"
         };
         List<Action> actions = new(){
             //menuCard.FromMain,
@@ -32,9 +33,11 @@ public class MainMenu : MasterDisplay
             case 2:
                 registerProcess.RegisterMail();
                 break;
-                
-            default:
+            case 3:
+                RestaurantInfo.DisplayRestaurantInfo();
                 break;
+            default:
+                throw new Exception("un-expected main menu error");
 
         }
     }
