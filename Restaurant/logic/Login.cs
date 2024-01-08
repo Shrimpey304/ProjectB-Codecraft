@@ -14,7 +14,8 @@ public class Login : MasterLogin{
         Accounts = JsonUtil.ReadFromJson<User>(filePath);
     }
 
-    public bool MailMatches(string mail){
+    public bool MailMatches(string mail)
+    {
         List<User> accounts = JsonUtil.ReadFromJson<User>(filePath)!;
         if (accounts != null) //added null check
         {
