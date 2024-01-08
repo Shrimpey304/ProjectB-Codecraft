@@ -24,6 +24,7 @@ public class Ingelogdmenu
         {
             case 0:
                 menuCard.windowInstanceStack.Push(DisplayIngelogdMenu);
+                menuCard.user = user;
                 menuCard.FromMain(false);
                 break;
             case 1:

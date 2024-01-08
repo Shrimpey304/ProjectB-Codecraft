@@ -8,7 +8,7 @@ public class MenuCard : MasterDisplay
 {
     private static FoodManager manager = new();
     private RegisterProcess register = new();
-    private User user = new();
+    public User user = new();
     public Stack<Action> windowInstanceStack = new();
     private int toCheckOut;
     private bool isLoggedIn;
@@ -28,6 +28,7 @@ public class MenuCard : MasterDisplay
         Console.WriteLine("in gobackaction");
         windowInstanceStack.Pop();
         if(Login.IsLoggedIn){
+            loggedInMenu.user = user;
             loggedInMenu.DisplayIngelogdMenu();
         }else{
             MainMenu.DisplayMainMenu();
