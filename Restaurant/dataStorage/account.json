@@ -225,7 +225,26 @@
     "Admin": false
   },
   {
-    "tableHistory": {},
+    "tableHistory": {
+      "940360": {
+        "Position": 3,
+        "reservationDate": "2024-01-08",
+        "Type": 8,
+        "ReservationTime": "12:00 pm"
+      },
+      "723304": {
+        "Position": 3,
+        "reservationDate": "2024-01-20",
+        "Type": 8,
+        "ReservationTime": "4:00 pm"
+      },
+      "221491": {
+        "Position": 1,
+        "reservationDate": "2024-01-30",
+        "Type": 2,
+        "ReservationTime": "2:00 pm"
+      }
+    },
     "Email": "Kimo.edelbroek@hoi.mail",
     "Password": "ABCdef123!",
     "PhoneNumber": "1234567890",
@@ -259,6 +278,14 @@
     "Email": "Kimo.edelbroek@hoi.mail",
     "Password": "ABCdef123!",
     "PhoneNumber": "1234567890",
+    "HasRervering": false,
+    "Admin": false
+  },
+  {
+    "tableHistory": {},
+    "Email": "qwerty.asdfg@qwerty.asdfg",
+    "Password": "YoinkySploinky123!",
+    "PhoneNumber": "123456789",
     "HasRervering": false,
     "Admin": false
   }
