@@ -13,7 +13,6 @@ public class RestaurantInfoTest
         {"Sunday", "15:00 - 20:00"}
     };
 
-    
       public static void DisplayRestaurantInfo(User user)
     {
         Ingelogdmenu ingelogdmenu = new();
