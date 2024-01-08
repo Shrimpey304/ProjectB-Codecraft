@@ -36,7 +36,10 @@ public class Ingelogdmenu
             case 3:
                 orderHistory.windowInstance.Add(this);
                 if(user == null){throw new Exception("user is null");}
-                orderHistory.DisplayOrderHistory(user); // user is niet set to instance
+                if (user != null) //added null check
+                {
+                    orderHistory.DisplayOrderHistory(user); // user is niet set to instance
+                }
                 break;
             case 4:
                 personalProcess.windowInstance.Add(this);

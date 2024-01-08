@@ -25,14 +25,16 @@ public static class JsonUtil
 
     public static void UpdateSingleObject<T>(T toWrite, string fileName) where T : class{
         List<T> objList = ReadFromJson<T>(fileName);
-        
-        int index = objList.FindIndex(item => item.GetHashCode() == toWrite.GetHashCode());
-        if (index != -1){
-            objList[index] = toWrite;
-        }else{
-            objList.Add(toWrite);
+        if (toWrite != null && objList != null) //added null checking
+        {
+            int index = objList.FindIndex(item => item.GetHashCode() == toWrite.GetHashCode());
+            if (index != -1){
+                objList[index] = toWrite;
+            }else{
+                objList.Add(toWrite);
+            }
+            UploadToJson(objList, fileName);
         }
-        UploadToJson(objList, fileName);
     }
 
     public static List<T>? ReadFromJson<T>(string fileName) where T : class
