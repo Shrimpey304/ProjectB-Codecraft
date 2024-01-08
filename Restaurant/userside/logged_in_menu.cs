@@ -27,7 +27,7 @@ public class Ingelogdmenu
                 menuCard.FromMain(false);
                 break;
             case 1:
-                RestaurantInfoTest.DisplayRestaurantInfo(user);
+                RestaurantInfo.DisplayRestaurantInfo(user);
                 break;
             case 2:
                 makeReservation.windowInstance.Add(this);
