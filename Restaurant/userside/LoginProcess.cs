@@ -9,9 +9,11 @@ public class LoginProcess
     
     public void LoginProcessMailView()
     {
-
-        Console.WriteLine("welcome to Logging in");    
-        Console.WriteLine("please enter your Email");
+        Console.Clear();
+        Header.DisplayHeader();
+        Console.WriteLine($"\u001B[35m" + "Welcome to the login page!\n\n");    
+        Console.WriteLine($"\u001B[35m" + "Please enter your Email\n");
+        Console.Write(">  ");
         GivenEmail = Console.ReadLine()!;
 
         if(!login.MailMatches(GivenEmail)){
@@ -29,7 +31,8 @@ public class LoginProcess
     public void LoginProcessPasswordView(string email)
     {
 
-        Console.WriteLine("please enter your password"); 
+        Console.WriteLine($"\u001B[35m" + "\nPlease enter your password\n"); 
+        Console.Write(">  ");
         string GivenPW = Console.ReadLine()!;
         User? user = login.AccountExists(GivenPW, email);
 
