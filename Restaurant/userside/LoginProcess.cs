@@ -42,7 +42,7 @@ public class LoginProcess
             bool isAdmin = Login.IsAdmin(GivenPW, email);
             if (isAdmin)
             {
-                Console.WriteLine("Login is successful heading to admin panel.");
+                Console.WriteLine("Login is successful, heading to admin panel.");
                 // AdminMenu.DisplayAdminMenu(); 
             }
             else
