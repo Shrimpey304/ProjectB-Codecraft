@@ -236,6 +236,81 @@
     "Admin": false
   },
   {
+    "tableHistory": {
+      "820183": {
+        "Position": 1,
+        "reservationDate": "2024-11-10",
+        "Type": 2,
+        "ReservationTime": "2:00 pm"
+      }
+    },
+    "Email": "ass@gmail.com",
+    "Password": "Vis0101vis",
+    "PhoneNumber": "1234567890",
+    "HasRervering": false,
+    "Admin": false
+  },
+  {
+    "tableHistory": {
+      "605841": {
+        "Position": 1,
+        "reservationDate": "2024-11-10",
+        "Type": 2,
+        "ReservationTime": "4:00 pm"
+      }
+    },
+    "Email": "ass@gmail.com",
+    "Password": "Vis0101vis",
+    "PhoneNumber": "1234567890",
+    "HasRervering": false,
+    "Admin": false
+  },
+  {
+    "tableHistory": {
+      "195418": {
+        "Position": 3,
+        "reservationDate": "2024-11-10",
+        "Type": 8,
+        "ReservationTime": "2:00 pm"
+      }
+    },
+    "Email": "ass@gmail.com",
+    "Password": "Vis0101vis",
+    "PhoneNumber": "1234567890",
+    "HasRervering": false,
+    "Admin": false
+  },
+  {
+    "tableHistory": {
+      "521686": {
+        "Position": 3,
+        "reservationDate": "2024-11-10",
+        "Type": 8,
+        "ReservationTime": "4:00 pm"
+      }
+    },
+    "Email": "ass@gmail.com",
+    "Password": "Vis0101vis",
+    "PhoneNumber": "1234567890",
+    "HasRervering": false,
+    "Admin": false
+  },
+  {
+    "tableHistory": {
+      "958185": {
+        "Position": 2,
+        "reservationDate": "2024-11-10",
+        "Type": 2,
+        "ReservationTime": "8:00 pm"
+      }
+    },
+    "Email": "ass@gmail.com",
+    "Password": "Vis0101vis",
+    "PhoneNumber": "1234567890",
+    "HasRervering": false,
+    "Admin": false
+  },
+  {
     "tableHistory": {},
     "Email": "Kimo.edelbroek@hoi.mail",
     "Password": "ABCdef123!",
@@ -274,14 +349,10 @@
     "Admin": false
   },
   {
-    "tableHistory": {
-      "812866": {
-        "Position": 2,
-        "reservationDate": "2029-09-11",
-        "Type": 2,
-        "ReservationTime": "2:00 pm"
-      }
-    },
+    "tableHistory": {},
+    "Email": "qwerty.asdfg@qwerty.asdfg",
+    "Password": "YoinkySploinky123!",
+    "PhoneNumber": "123456789",
     "HasRervering": false,
     "Admin": false
   }

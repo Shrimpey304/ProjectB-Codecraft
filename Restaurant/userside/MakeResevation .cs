@@ -49,7 +49,7 @@ public class MakeReservation : MasterDisplay
         if (User == null)
         {
             Console.WriteLine("You need to be registered to make a reservation.");
-            register.RegisterProcessView();
+            register.RegisterMail();
         }
         else
         {

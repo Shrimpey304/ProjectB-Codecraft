@@ -8,25 +8,35 @@ public class RegisterProcess{
     private static string GivenEmail = "";
     
     public void RegisterMail(){
+
+        Console.Clear();
+        Header.DisplayHeader();
+        Console.WriteLine($"\u001B[35m" + "Welcome to the registration page!\n\n");
+        Console.WriteLine($"\u001B[35m" + "Please enter the email you would like to register\n");
+        Console.Write(">   ");
+
         GivenEmail = Console.ReadLine()!;
 
         if(!Registration.CheckEmailRegEx(GivenEmail)){
             if(!REG.CheckEmailTaken(GivenEmail)){
                 Console.Clear();
-                Console.WriteLine("this email is already registered");
+                Console.WriteLine($"\u001B[35m" + "this email is already registered");
                 RegisterMail();
             }
-            Console.WriteLine("this is not a valid email format");
+            Console.WriteLine($"\u001B[35m" + "this is not a valid email format");
         }
 
         RegisterPassword(GivenEmail);
     }
 
     public void RegisterPassword(string email){
-        Console.WriteLine("please enter a password with atleast:\n 1 capital letter, 1 lower letter, a number and a readtoken. the password must be 8 characters or more");
+
+        Console.Clear();
+        Header.DisplayHeader();
+        Console.WriteLine($"\u001B[35m" + "\nPlease enter a password with atleast:\n 1 capital letter, 1 lower letter, a number and a punctuation mark. the password must be 8 characters or more");
+        Console.Write(">   ");
 
         string pass = Console.ReadLine();
-        Console.Clear();
 
         if(!Registration.CheckPasswordFormat(pass)){
             RegisterPassword(email);
@@ -37,10 +47,13 @@ public class RegisterProcess{
     }
 
     public void RegisterPasswordConfirmation(string email, string pass){
-        Console.WriteLine("please enter the password again");
 
-        string passconfirm = Console.ReadLine();
         Console.Clear();
+        Header.DisplayHeader();
+        Console.WriteLine($"\u001B[35m" + "\nPlease enter the password again");
+        Console.Write(">   ");
+        
+        string passconfirm = Console.ReadLine();
 
         if(!Registration.CheckPasswordSimilar(pass, passconfirm)){
             RegisterPasswordConfirmation(email, pass);
@@ -50,7 +63,11 @@ public class RegisterProcess{
     }
 
     public void RegisterPhone(string email, string pass){
-        Console.WriteLine("please enter your phone number");
+
+        Console.Clear();
+        Header.DisplayHeader();
+        Console.WriteLine($"\u001B[35m" + "Please enter your phone number");
+        Console.Write(">   ");
 
         string phone = Console.ReadLine();
         Console.Clear();
