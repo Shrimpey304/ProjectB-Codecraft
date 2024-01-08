@@ -35,10 +35,6 @@ public class MainMenu : MasterDisplay
                 break;
             
             case 3:
-                RestaurantInfoTest.DisplayRestaurantInfo(null);
-                break;
-            default:
-            case 3:
                 RestaurantInfo.DisplayRestaurantInfo();
                 break;
             default:
