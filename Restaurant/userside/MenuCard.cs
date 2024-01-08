@@ -92,7 +92,7 @@ public class MenuCard : MasterDisplay
         int selectedOption = DisplayUtil.Display(option1);
         if (selectedOption < (option1.Count - 1))
         {
-            Menu(option1[selectedOption], true);
+            Menu(option1[selectedOption]);
         }
         else
         {
@@ -147,10 +147,8 @@ public class MenuCard : MasterDisplay
 
     }
 
-    private void Menu(string itemType, bool dish = false)
-    {
-        if (dish)
-        {
+    private void Menu(string itemType, bool dish = false){
+        if (dish){
             List<IFoodItems> dishes = manager.GetDishes(itemType);
             List<string> option3 = OptionString(dishes, false);
             string foodCart = GetCartString(manager.Cart);
@@ -172,12 +170,11 @@ public class MenuCard : MasterDisplay
                     Console.ResetColor();
                 }
                 manager.AddToCart(dishes[selectedOption1]);
-                System.Console.WriteLine("Item added to cart. $_$");
-                manager.AddToCart(dishes[selectedOption1]);
-                if (!isLoggedIn){
-                    MainMenu.DisplayMainMenu();
+                List<string> options = new(){"Go back", "Go to checkout"};
+                int selected = DisplayUtil.Display(options, foodCart);
+                if (selected == 0){
+                    DishesOptions();
                 }else{
-                    //AddWine();
                     toCheckOut = 1;
                     Display();
                 }
@@ -187,9 +184,7 @@ public class MenuCard : MasterDisplay
                 windowInstanceStack.Push(MainMenu.DisplayMainMenu);
                 Display();
             }
-        }
-        else
-        {
+        }else{
             List<IFoodItems> meals = manager.GetMeals(itemType);
             System.Console.WriteLine($"{itemType}, {meals.Count}");
             List<string> option2 = OptionString(meals, false);
@@ -224,12 +219,7 @@ public class MenuCard : MasterDisplay
                     toCheckOut = 1;
                     Display();
                 }
-
-                CoursesOptions();
-
-                    toCheckOut = 1;
-                    Display();
-                }
+            }
 
             else
             {

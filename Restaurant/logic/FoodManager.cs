@@ -81,12 +81,10 @@ public class FoodManager
         List<IFoodItems> meals = new();
         if (Meals.Exists(item => item.MealType == type))
         {
-            System.Console.WriteLine("yep");
             Meals meal = Meals.Find(item => item.MealType == type)!;
             meals.Add(meal);
             return meals;
         }
-        System.Console.WriteLine(type);
         return meals;
     }
 
