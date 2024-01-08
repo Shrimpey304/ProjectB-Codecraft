@@ -28,6 +28,7 @@ public class MenuCard : MasterDisplay
         Console.WriteLine("in gobackaction");
         windowInstanceStack.Pop();
         if(Login.IsLoggedIn){
+            
             loggedInMenu.DisplayIngelogdMenu();
         }else{
             MainMenu.DisplayMainMenu();

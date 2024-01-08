@@ -349,7 +349,14 @@
     "Admin": false
   },
   {
-    "tableHistory": {},
+    "tableHistory": {
+      "686214": {
+        "Position": 2,
+        "reservationDate": "2025-04-24",
+        "Type": 2,
+        "ReservationTime": "4:00 pm"
+      }
+    },
     "Email": "qwerty.asdfg@qwerty.asdfg",
     "Password": "YoinkySploinky123!",
     "PhoneNumber": "123456789",

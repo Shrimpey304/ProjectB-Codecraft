@@ -11,7 +11,8 @@ public class MainMenu : MasterDisplay
         List<string> options = new(){
             "Menu",
             "Log in",
-            "Register"
+            "Register",
+            "Restuarant info"
         };
         List<Action> actions = new(){
             //menuCard.FromMain,
@@ -32,7 +33,10 @@ public class MainMenu : MasterDisplay
             case 2:
                 registerProcess.RegisterMail();
                 break;
-                
+            
+            case 3:
+                RestaurantInfoTest.DisplayRestaurantInfo(null);
+                break;
             default:
                 break;
 

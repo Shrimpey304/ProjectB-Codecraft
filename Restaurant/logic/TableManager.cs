@@ -216,4 +216,18 @@ public class TableManager
 
         return false;
     }
+
+    public Reservations? GetReservation(string date){
+        List<Reservations> reservations = JsonUtil.ReadFromJson<Reservations>(reseravtionFileName);
+        DateOnly? dateOnly = ValidateDate(date);
+        Reservations? reservation = reservations.Find(item => item.ReservationDate == dateOnly);
+        return reservation;
+    }
+
+    public void UpdateResevationsTablePosition(int currenttableposition, int newtableposition, List<Table> timeslot){
+        Table table = timeslot.Find(item => item.Position == currenttableposition);
+        int tableIndex = timeslot.IndexOf(table);
+        timeslot[tableIndex].Position = newtableposition;
+        
+    }
 }
