@@ -428,47 +428,6 @@ public class AdminMenu
         }
     }
 
-    public static void DisplayChangeResvMenu(User user)
-    {
-        List<string> options = new(){
-            "See reservations",
-            "See reservation By date",
-            "Add reservation(disabled)",
-            "Remove reservation(disabled)",
-            "Change reservation(disabled)",
-            "Go back to admin menu"
-        };
-
-        int selectedOption = DisplayUtil.Display(options);
-        switch (selectedOption)
-        {
-            case 0:
-                AdminReservations.SeeReservationsA(user);
-                break;
-            case 1:
-                AdminEditResv.SeeReservationsDateA(user);
-                break;
-            case 2: 
-                DisplayAdminMenu(user);
-                break;
-            case 3:
-                DisplayAdminMenu(user);
-                break;
-            case 4:
-                 ChangeResvA(user);
-                break;
-            case 5:
-                 AdminEditDish.ChangeDishAllergens(user);
-                break;
-            case 6:
-                DisplayAdminMenu(user);
-                break;
-            default:
-                throw new Exception("un-expected admin menu error");
-        }
-    }
-
-
     public static void DisplayAdminTableMenu(User user)
     {
         List<string> options = new(){
@@ -523,6 +482,43 @@ public class AdminMenu
                 break;
             case 3:
                  DisplayAdminTableMenu(user);
+                break;
+            default:
+                throw new Exception("un-expected admin menu error");
+        }
+    }
+
+    public static void DisplayChangeResvMenu(User user)
+    {
+        List<string> options = new(){
+            "See reservations",
+            "See reservation By date",
+            "Add reservation(disabled)",
+            "Remove reservation(disabled)",
+            "Change reservation(disabled)",
+            "Go back to admin menu"
+        };
+
+        int selectedOption = DisplayUtil.Display(options);
+        switch (selectedOption)
+        {
+            case 0:
+                AdminReservations.SeeReservationsA(user);
+                break;
+            case 1:
+                AdminEditResv.SeeReservationsDateA(user);
+                break;
+            case 2: 
+                DisplayAdminMenu(user);
+                break;
+            case 3:
+                DisplayAdminMenu(user);
+                break;
+            case 4:
+                 ChangeResvA(user);
+                break;
+            case 5:
+                DisplayAdminMenu(user);
                 break;
             default:
                 throw new Exception("un-expected admin menu error");
