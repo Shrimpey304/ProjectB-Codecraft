@@ -6,8 +6,10 @@ public class RegisterProcess{
     private Registration REG = new Registration();
     protected const string filePath = @".\dataStorage\account.json";
     private static string GivenEmail = "";
+    public User? loggedUser;
     
-    public void RegisterMail(){
+    public void RegisterMail(User? LoggedinUser = null){
+        loggedUser = LoggedinUser;
 
         Console.Clear();
         Header.DisplayHeader();
@@ -121,11 +123,18 @@ public class RegisterProcess{
         Registration.CheckPhoneNumberFormat(PhoneNR);
 
         User user = REG.CreateAccount(GivenEmail, GivenPW, PhoneNR!, false);
-        ingelogdmenu.user = user;
-        // ingelogdmenu.logOut.Add(REG);
-        JsonUtil.UpdateSingleObject(user, filePath);
-        Login.IsLoggedIn = true;
-        Login.LoggedinUser = user.Email;
-        ingelogdmenu.DisplayIngelogdMenu();
+        if(loggedUser is null){
+            ingelogdmenu.user = user;
+            // ingelogdmenu.logOut.Add(REG);
+            JsonUtil.UpdateSingleObject(user, filePath);
+            Login.IsLoggedIn = true;
+            Login.LoggedinUser = user.Email;
+            ingelogdmenu.DisplayIngelogdMenu();
+        }else{
+            Login.IsLoggedIn = true;
+            Login.LoggedinUser = loggedUser.Email;
+            AdminMenu.DisplayAdminMenu();
+        }
+
     }
 }

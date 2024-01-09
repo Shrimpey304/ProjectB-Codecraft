@@ -4,6 +4,9 @@ public class AdminAccounts
 {
 
     private static string accountPath = @".\dataStorage\account.json";
+
+    public User user;
+
     public static void SeeAccountsA()
     {
         FormatJsonJ.FormatAccs();
@@ -14,44 +17,9 @@ public class AdminAccounts
     
     public static void AddAccountsA()
     {
-        FormatJsonJ.FormatAccs();
-
-        Registration REG = new Registration();
-  
-        Console.WriteLine("Make new account: ");
-        Console.WriteLine("Enter Email");
-        string ?GivenEmail = "";
-        while(Registration.CheckEmailRegEx(GivenEmail!) == false){
-            string mail = Console.ReadLine()!;
-            GivenEmail += mail;
-        }
-
-        Console.WriteLine("Enter password"); 
-        Console.WriteLine("Capital, lower, number");
-        string ?GivenPW = "";
-        while(Registration.CheckPasswordFormat(GivenPW!) == false){
-            string pass = Console.ReadLine()!;
-            GivenPW += pass;
-        }
-        Console.WriteLine(GivenPW);
-        
-
-        Console.Write("Retype the password\n");
-        string ?RetypePW = Console.ReadLine();
-        if(Registration.CheckPasswordSimilar(GivenPW!, RetypePW!) == true){
-            Console.WriteLine("registratie succesvol");
-        }else{
-            Console.WriteLine("failed");
-        }
-
-        Console.WriteLine("Enter phone number");
-        string PhoneNR = Console.ReadLine()!;
-
-        Console.WriteLine("Enter Admin status (true or false)");
-        bool isAdmin = Convert.ToBoolean(Console.ReadLine()!);
-
-        REG.CreateAccount(GivenEmail, GivenPW, PhoneNR!, isAdmin);
-        AdminMenu.DisplayChangeAccMenu();
+        RegisterProcess REG = new();
+        Console.WriteLine("Going to register");
+        REG.RegisterMail(user);
     }
 
     public static void RemoveAccountsA()
