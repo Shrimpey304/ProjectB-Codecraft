@@ -22,7 +22,7 @@ public class AdminMenu
                 DisplayChangeFoodMenu(user);
                 break;
             case 2:
-                //DisplayChangeResvMenu(user);
+                DisplayChangeResvMenu(user);
                 break;
             case 3:
                 DisplayAdminTableMenu(user);
@@ -428,41 +428,6 @@ public class AdminMenu
         }
     }
 
-    // public static void DisplayChangeResvMenu(User user)
-    // {
-    //     List<string> options = new(){
-    //         "See reservations",
-    //         "Remove reservation",
-    //         "Change reservation",
-    //         "Go back to admin menu"
-    //     };
-
-    //     int selectedOption = DisplayUtil.Display(options);
-    //     switch (selectedOption)
-    //     {
-    //         case 0:
-    //             AdminEditDish.ChangeDishName(user);
-    //             break;
-    //         case 1: 
-    //             AdminEditDish.ChangeDishType(user);
-    //             break;
-    //         case 2:
-    //             AdminEditDish.ChangeDishDescription(user);
-    //             break;
-    //         case 3:
-    //              AdminEditDish.ChangeDishPrice(user);
-    //             break;
-    //         case 4:
-    //              AdminEditDish.ChangeDishAllergens(user);
-    //             break;
-    //         case 5:
-    //             DisplayAdminDish(user);
-    //             break;
-    //         default:
-    //             throw new Exception("un-expected admin menu error");
-    //     }
-    // }
-
     public static void DisplayAdminTableMenu(User user)
     {
         List<string> options = new(){
@@ -523,37 +488,74 @@ public class AdminMenu
         }
     }
 
-    // public static void ChangeResvA(User user)
-    // {   
-    //     List<string> options = new(){
-    //         "Change position of table",
-    //         "Change reservation date",
-    //         "Change reservation table type",
-    //         "Change reservation time",
-    //         "Go back to admin reservations menu"
-    //     };
-    //     int selectedOption = DisplayUtil.Display(options);
-    //     switch (selectedOption)
-    //     {
-    //         case 0:
-    //             AdminEditAccs.ChangePassword(user);
-    //             break;
-    //         case 1: 
-    //             AdminEditAccs.ChangePassword(user);
-    //             break;
-    //         case 2:
-    //             AdminEditResv.ChangeTableTypeR();
-    //             break;
-    //         case 3:
-    //              AdminEditAccs.ChangeAdminstatus(user);
-    //             break;
-    //         case 4:
-    //              DisplayChangeAccMenu(user);
-    //             break;
-    //         default:
-    //             throw new Exception("un-expected admin menu error");
-    //     }
-    // }
+    public static void DisplayChangeResvMenu(User user)
+    {
+        List<string> options = new(){
+            "See reservations",
+            "See reservation By date",
+            "Add reservation(disabled)",
+            "Remove reservation(disabled)",
+            "Change reservation(disabled)",
+            "Go back to admin menu"
+        };
+
+        int selectedOption = DisplayUtil.Display(options);
+        switch (selectedOption)
+        {
+            case 0:
+                AdminReservations.SeeReservationsA(user);
+                break;
+            case 1:
+                AdminEditResv.SeeReservationsDateA(user);
+                break;
+            case 2: 
+                DisplayAdminMenu(user);
+                break;
+            case 3:
+                DisplayAdminMenu(user);
+                break;
+            case 4:
+                 ChangeResvA(user);
+                break;
+            case 5:
+                DisplayAdminMenu(user);
+                break;
+            default:
+                throw new Exception("un-expected admin menu error");
+        }
+    }
+
+    public static void ChangeResvA(User user)
+    {   
+        List<string> options = new(){
+            "Change reservation table position(disabled)",
+            "Change reservation table type(disabled)",
+            "Change reservation date(disabled)",
+            "Change reservation time(disabled)",
+            "Go back to admin reservations menu"
+        };
+        int selectedOption = DisplayUtil.Display(options);
+        switch (selectedOption)
+        {
+            case 0:
+                DisplayAdminMenu(user);
+                break;
+            case 1: 
+                DisplayAdminMenu(user);
+                break;
+            case 2:
+                DisplayAdminMenu(user);
+                break;
+            case 3:
+                 DisplayAdminMenu(user);
+                break;
+            case 4:
+                 DisplayChangeResvMenu(user);
+                break;
+            default:
+                throw new Exception("un-expected admin menu error");
+        }
+    }
 
     private static void LogoutA()
     {

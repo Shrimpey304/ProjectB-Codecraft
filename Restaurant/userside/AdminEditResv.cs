@@ -1,11 +1,11 @@
-// namespace Restaurant;
+namespace Restaurant;
 
-// public class AdminEditResv
-// {
-//     public User User;
-//     private static string reservationsPath = @".\dataStorage\Reservations.json";
-//     private static List<Table> tables = JsonUtil.ReadFromJson<Table>(reservationsPath)!;
-//     private static List<Reservations> reservations = JsonUtil.ReadFromJson<Reservations>(reservationsPath)!;
+public class AdminEditResv
+{
+    public User User;
+    private static string reservationsPath = @".\dataStorage\Reservations.json";
+    private static List<Table> tables = JsonUtil.ReadFromJson<Table>(reservationsPath)!;
+    private static List<Reservations> reservations = JsonUtil.ReadFromJson<Reservations>(reservationsPath)!;
 //     private (Reservations reservation, Table table) GetReservationByDetails()
 //     {
 //         TableManager manager = new(User);
@@ -91,43 +91,54 @@
 //             AdminMenu.DisplayChangeResvMenu();
 //         }
 //     }
-//     public static void FormatReservationsByDate(List<Reservations> reservations, DateOnly? resvDate)
-//     {
-//         Console.WriteLine(" ");
-//         Console.WriteLine($"Reservations for {resvDate}");
-//         Console.WriteLine("--------------");
+    public static void FormatReservationsByDate(User user)
+    {
+        Console.WriteLine("Enter the reservation date (YYYY-MM-DD):");
+        string resvDateString = Console.ReadLine();
 
-//         foreach (var reservation in reservations)
-//         {
-//             foreach (var timeSlot in reservation.TimeSlotList)
-//             {
-//                 foreach (var slot in timeSlot.Value)
-//                 {
-//                     if (DateOnly.TryParse(slot.reservationDate.ToString(), out DateOnly slotDate) && slotDate == resvDate)
-//                     {
-//                         Console.WriteLine($"Reservation date: {slot.reservationDate}");
-//                         Console.WriteLine($"Reservation Time: {slot.ReservationTime}");
-//                         Console.WriteLine($"Position: {slot.Position}");
-//                         Console.WriteLine($"Type: {slot.Type}");
-//                         Console.WriteLine("--------------");
-//                     }
-//                 }
-//             }
-//         }
-//     }
+        if (DateOnly.TryParse(resvDateString, out DateOnly resvDate))
+        {
+            Console.WriteLine(" ");
+            Console.WriteLine($"Reservations for {resvDate}");
+            Console.WriteLine("--------------");
 
-//     public static void SeeByDate(List<Reservations> reservations)
-//     {
-//         Console.WriteLine("Enter the reservation date (YYYY-MM-DD):");
-//         string resvDateString = Console.ReadLine();
+            bool reservationsFound = false;
 
-//         if (DateOnly.TryParse(resvDateString, out DateOnly resvDate))
-//         {
-//             FormatReservationsByDate(reservations, resvDate);
-//         }
-//         else
-//         {
-//             Console.WriteLine("Invalid date format.");
-//         }
-//     }
-// }
+            foreach (var reservation in reservations)
+            {
+                foreach (var timeSlot in reservation.TimeSlotList)
+                {
+                    foreach (var slot in timeSlot.Value)
+                    {
+                        if (DateOnly.TryParse(slot.reservationDate.ToString(), out DateOnly slotDate) && slotDate == resvDate)
+                        {
+                            Console.WriteLine($"Reservation date: {slot.reservationDate}");
+                            Console.WriteLine($"Reservation Time: {slot.ReservationTime}");
+                            Console.WriteLine($"Position: {slot.Position}");
+                            Console.WriteLine($"Type: {slot.Type}");
+                            Console.WriteLine("--------------");
+                        }
+                    }
+                }
+            }
+            if (!reservationsFound)
+        {
+            Console.WriteLine("No reservations found for the entered date.");
+        }
+        }
+        else
+        {
+            Console.WriteLine("Invalid date format.");
+        }
+    }
+
+
+    public static void SeeReservationsDateA(User user)
+    {
+        FormatReservationsByDate(user);
+        Console.WriteLine("Press enter to go back to change reservation menu");
+        Console.ReadLine();
+        AdminMenu.DisplayChangeResvMenu(user); 
+    }
+}
+ 

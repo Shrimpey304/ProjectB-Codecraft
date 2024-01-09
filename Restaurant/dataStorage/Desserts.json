@@ -1,12 +1,18 @@
 [
-    {
-      "ID": 1,
-      "DessertType": 2,
-      "DessertName": "Chocolate",
-      "Description": "Indulge in the ultimate chocolate lover's dream with our Chocolate Lava Cake. Crack open the delicate shell to reveal a warm, oozing center of rich dark chocolate. Served with a scoop of vanilla bean ice cream and a sprinkle of powdered sugar, it's the perfect balance of warm, cold, and sweet, making each bite a heavenly indulgence",
-      "Price": 7.99,
-      "Allergens": "Dairy, eggs and gluten."
-    }
+  {
+    "ID": 1,
+    "DessertType": 2,
+    "DessertName": "Chocolate",
+    "Description": "Indulge in the ultimate chocolate lover's dream with our Chocolate Lava Cake. Crack open the delicate shell to reveal a warm, oozing center of rich dark chocolate. Served with a scoop of vanilla bean ice cream and a sprinkle of powdered sugar, it's the perfect balance of warm, cold, and sweet, making each bite a heavenly indulgence",
+    "Price": 7.99,
+    "Allergens": "Dairy, eggs and gluten."
+  },
+  {
+    "ID": 2,
+    "DessertType": 1,
+    "DessertName": "Apfel strudel",
+    "Description": "A nice warm apple pie with whipped cream and apricot marmalade originating out of germany.",
+    "Price": 6.70,
+    "Allergens": "apple, wheat and gluten"
+  }
 ]
-
-
