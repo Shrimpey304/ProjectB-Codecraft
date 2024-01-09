@@ -73,7 +73,9 @@ public class AdminFood
         else
         {
                 Console.WriteLine("Invalid");
+                Console.WriteLine("Heading back to admin menu");
                 Thread.Sleep(2000);
+                AdminMenu.DisplayAdminMenu(user);
         }
     }
 
@@ -112,7 +114,9 @@ public class AdminFood
         else
         {
             Console.WriteLine("Invalid");
+            Console.WriteLine("Heading back to admin menu");
             Thread.Sleep(2000);
+            AdminMenu.DisplayAdminMenu(user);
         }
     }
 
@@ -151,7 +155,9 @@ public class AdminFood
         else
         {
             Console.WriteLine("Invalid");
+            Console.WriteLine("Heading back to admin menu");
             Thread.Sleep(2000);
+            AdminMenu.DisplayAdminMenu(user);
         }
     }
 
@@ -190,7 +196,9 @@ public class AdminFood
         else
         {
             Console.WriteLine("Invalid");
+            Console.WriteLine("Heading back to admin menu");
             Thread.Sleep(2000);
+            AdminMenu.DisplayAdminMenu(user);
         }
     }
 
@@ -214,7 +222,9 @@ public class AdminFood
         else
         {
             Console.WriteLine("Dish not found");
+            Console.WriteLine("Heading back to admin menu");
             Thread.Sleep(2000);
+            AdminMenu.DisplayAdminMenu(user);
         }
     }
 
@@ -238,7 +248,9 @@ public class AdminFood
         else
         {
             Console.WriteLine("Meal not found");
+            Console.WriteLine("Heading back to admin menu");
             Thread.Sleep(2000);
+            AdminMenu.DisplayAdminMenu(user);
         }
     }
 
@@ -261,7 +273,9 @@ public class AdminFood
         else
         {
             Console.WriteLine("Wine not found");
+            Console.WriteLine("Heading back to admin menu");
             Thread.Sleep(2000);
+            AdminMenu.DisplayAdminMenu(user);
         }
     }
     public static void RemoveDessertA(User user)
@@ -283,7 +297,9 @@ public class AdminFood
         else
         {
             Console.WriteLine("Dessert not found");
+            Console.WriteLine("Heading back to admin menu");
             Thread.Sleep(2000);
+            AdminMenu.DisplayAdminMenu(user);
         }
     }
 

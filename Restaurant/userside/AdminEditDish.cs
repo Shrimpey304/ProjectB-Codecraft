@@ -5,14 +5,16 @@ public class AdminEditDish
     private static string dishPath = @".\dataStorage\Dishes.json";
     private static List<Dish> dishes = JsonUtil.ReadFromJson<Dish>(dishPath);
 
-    private static Dish GetDishById()
+    private static Dish GetDishById(User user)
     {
         Console.WriteLine("Enter the ID of the dish you want to change:");
         int dishID;
         if (!int.TryParse(Console.ReadLine(), out dishID))
         {
             Console.WriteLine("Invalid input");
+            Console.WriteLine("Heading back to admin menu");
             Thread.Sleep(2000);
+            AdminMenu.DisplayAdminMenu(user);
             return null;
         }
 
@@ -21,7 +23,9 @@ public class AdminEditDish
         if (dishToChange == null)
         {
             Console.WriteLine("Dish not found.");
+            Console.WriteLine("Heading back to admin menu");
             Thread.Sleep(2000);
+            AdminMenu.DisplayAdminMenu(user);
         }
 
         return dishToChange;
@@ -30,7 +34,7 @@ public class AdminEditDish
     public static void ChangeDishName(User user)
     {
         FormatJsonJ.FormatDishes();
-        Dish dishToChange = GetDishById();
+        Dish dishToChange = GetDishById(user);
 
         if (dishToChange != null)
         {
@@ -49,7 +53,7 @@ public class AdminEditDish
     public static void ChangeDishDescription(User user)
     {
         FormatJsonJ.FormatDishes();
-        Dish dishToChange = GetDishById();
+        Dish dishToChange = GetDishById(user);
 
         if (dishToChange != null)
         {
@@ -68,7 +72,7 @@ public class AdminEditDish
     public static void ChangeDishPrice(User user)
     {
         FormatJsonJ.FormatDishes();
-        Dish dishToChange = GetDishById();
+        Dish dishToChange = GetDishById(user);
 
         if (dishToChange != null)
         {
@@ -77,7 +81,9 @@ public class AdminEditDish
             if (!decimal.TryParse(Console.ReadLine(), out newPrice))
             {
                 Console.WriteLine("Invalid input.");
-                return;
+                Console.WriteLine("Heading back to admin menu");
+                Thread.Sleep(2000);
+                AdminMenu.DisplayAdminMenu(user);
             }
 
              dishToChange.Price = newPrice;
@@ -92,7 +98,7 @@ public class AdminEditDish
     public static void ChangeDishAllergens(User user)
     {
         FormatJsonJ.FormatDishes();
-        Dish dishToChange = GetDishById();
+        Dish dishToChange = GetDishById(user);
 
         if (dishToChange != null)
         {
@@ -111,7 +117,7 @@ public class AdminEditDish
     public static void ChangeDishType(User user)
     {
         FormatJsonJ.FormatDishes();
-        Dish dishToChange = GetDishById();
+        Dish dishToChange = GetDishById(user);
 
         if (dishToChange != null)
         {

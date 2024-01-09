@@ -17,6 +17,9 @@ public class UserChangeOwnAcc
             if (userToChange == null)
             {
                 Console.WriteLine("Account not found.");
+                Thread.Sleep(2000);
+                ingelogdmenu.user = user;
+                ingelogdmenu.DisplayIngelogdMenu();
             }
             else
             {
@@ -75,12 +78,18 @@ public class UserChangeOwnAcc
                 if (!Registration.CheckEmailRegEx(newEmail))
                 {
                     Console.WriteLine("Invalid email format.");
+                    Thread.Sleep(2000);
+                    ingelogdmenu.user = user;
+                    ingelogdmenu.DisplayIngelogdMenu();
                     return;
                 }
 
                 if (registration.CheckEmailTaken(newEmail))
                 {
                     Console.WriteLine("Email is already taken.");
+                    Thread.Sleep(2000);
+                    ingelogdmenu.user = user;
+                    ingelogdmenu.DisplayIngelogdMenu();
                     return;
                 }
 

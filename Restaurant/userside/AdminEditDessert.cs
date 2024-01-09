@@ -5,14 +5,16 @@ public class AdminEditDessert
     private static string dessertPath = @".\dataStorage\Desserts.json";
     private static List<Dessert> desserts = JsonUtil.ReadFromJson<Dessert>(dessertPath);
 
-    private static Dessert GetDessertById()
+    private static Dessert GetDessertById(User user)
     {
         Console.WriteLine("Enter the ID of the dessert you want to change:");
         int dessertID;
         if (!int.TryParse(Console.ReadLine(), out dessertID))
         {
             Console.WriteLine("Invalid input");
+            Console.WriteLine("Heading back to admin menu");
             Thread.Sleep(2000);
+            AdminMenu.DisplayAdminMenu(user);
             return null;
         }
 
@@ -21,7 +23,9 @@ public class AdminEditDessert
         if (dessertToChange == null)
         {
             Console.WriteLine("Dessert not found.");
+            Console.WriteLine("Heading back to admin menu");
             Thread.Sleep(2000);
+            AdminMenu.DisplayAdminMenu(user);
         }
 
         return dessertToChange;
@@ -30,7 +34,7 @@ public class AdminEditDessert
     public static void ChangeDessertType(User user)
     {
         FormatJsonJ.FormatDesserts();
-        Dessert dessertToChange = GetDessertById();
+        Dessert dessertToChange = GetDessertById(user);
 
         if (dessertToChange != null)
         {
@@ -49,7 +53,7 @@ public class AdminEditDessert
     public static void ChangeDessertName(User user)
     {
         FormatJsonJ.FormatDesserts();
-        Dessert dessertToChange = GetDessertById();
+        Dessert dessertToChange = GetDessertById(user);
 
         if (dessertToChange != null)
         {
@@ -68,7 +72,7 @@ public class AdminEditDessert
     public static void ChangeDessertDescription(User user)
     {
         FormatJsonJ.FormatDesserts();
-        Dessert dessertToChange = GetDessertById();
+        Dessert dessertToChange = GetDessertById(user);
 
         if (dessertToChange != null)
         {
@@ -87,7 +91,7 @@ public class AdminEditDessert
     public static void ChangeDessertPrice(User user)
     {
         FormatJsonJ.FormatDesserts();
-        Dessert dessertToChange = GetDessertById();
+        Dessert dessertToChange = GetDessertById(user);
 
         if (dessertToChange != null)
         {
@@ -96,7 +100,9 @@ public class AdminEditDessert
             if (!decimal.TryParse(Console.ReadLine(), out newPrice))
             {
                 Console.WriteLine("Invalid input.");
+                Console.WriteLine("Heading back to admin menu");
                 Thread.Sleep(2000);
+                AdminMenu.DisplayAdminMenu(user);
                 return;
             }
 
@@ -112,7 +118,7 @@ public class AdminEditDessert
     public static void ChangeDessertAllergens(User user)
     {
         FormatJsonJ.FormatDesserts();
-        Dessert dessertToChange = GetDessertById();
+        Dessert dessertToChange = GetDessertById(user);
 
         if (dessertToChange != null)
         {

@@ -45,6 +45,9 @@ public class AdminTable
         else
         {
             Console.WriteLine("Table with the specified position already exists.");
+            Console.WriteLine("Heading back to admin menu");
+            Thread.Sleep(2000);
+            AdminMenu.DisplayAdminMenu(user);
         }
     }
 
@@ -68,6 +71,9 @@ public class AdminTable
         else
         {
             Console.WriteLine("Table not found.");
+            Console.WriteLine("Heading back to admin menu");
+            Thread.Sleep(2000);
+            AdminMenu.DisplayAdminMenu(user);
         }
     }
 
@@ -78,6 +84,10 @@ public class AdminTable
         if (!int.TryParse(Console.ReadLine(), out tablePosition))
         {
             Console.WriteLine("Invalid input");
+            Console.WriteLine("Heading back to admin menu");
+            Thread.Sleep(2000);
+            AdminMenu.DisplayAdminMenu(user);
+            
             return null;
         }
 
@@ -86,6 +96,9 @@ public class AdminTable
         if (tableToChange == null)
         {
             Console.WriteLine("table not found.");
+            Console.WriteLine("Heading back to admin menu");
+            Thread.Sleep(2000);
+            AdminMenu.DisplayAdminMenu(user);
         }
 
         return tableToChange;
@@ -103,6 +116,9 @@ public class AdminTable
             if (!int.TryParse(Console.ReadLine(), out position))
             {
                 Console.WriteLine("Invalid input.");
+                Console.WriteLine("Heading back to admin menu");
+                Thread.Sleep(2000);
+                AdminMenu.DisplayAdminMenu(user);
                 return;
             }
 
@@ -126,6 +142,9 @@ public class AdminTable
             if (!int.TryParse(Console.ReadLine(), out type))
             {
                 Console.WriteLine("Invalid input.");
+                Console.WriteLine("Heading back to admin menu");
+                Thread.Sleep(2000);
+                AdminMenu.DisplayAdminMenu(user);
                 return;
             }
 
@@ -146,6 +165,9 @@ public class AdminTable
         if (!int.TryParse(Console.ReadLine(), out currentposition))
             {
                 Console.WriteLine("Invalid input.");
+                Console.WriteLine("Heading back to admin menu");
+                Thread.Sleep(2000);
+                AdminMenu.DisplayAdminMenu(user);
                 return;
             }
         Console.WriteLine("Enter the new position for the table:");
@@ -153,6 +175,9 @@ public class AdminTable
         if (!int.TryParse(Console.ReadLine(), out position))
             {
                 Console.WriteLine("Invalid input.");
+                Console.WriteLine("Heading back to admin menu");
+                Thread.Sleep(2000);
+                AdminMenu.DisplayAdminMenu(user);
                 return;
             }
         Console.WriteLine("Enter the new type for the table:");
@@ -160,6 +185,9 @@ public class AdminTable
         if (!int.TryParse(Console.ReadLine(), out type))
             {
                 Console.WriteLine("Invalid input.");
+                Console.WriteLine("Heading back to admin menu");
+                Thread.Sleep(2000);
+                AdminMenu.DisplayAdminMenu(user);
                 return;
             }
 

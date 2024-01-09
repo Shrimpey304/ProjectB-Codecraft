@@ -36,14 +36,18 @@ public class AdminEditAccs
             if (!Registration.CheckEmailRegEx(newEmail))
             {
                 Console.WriteLine("Invalid email format.");
+                Console.WriteLine("Heading back to admin menu");
                 Thread.Sleep(2000);
+                AdminMenu.DisplayAdminMenu(user);
                 return;
             }
 
             if (registration.CheckEmailTaken(newEmail))
             {
                 Console.WriteLine("Email is already taken.");
+                Console.WriteLine("Heading back to admin menu");
                 Thread.Sleep(2000);
+                AdminMenu.DisplayAdminMenu(user);
                 return;
             }
 
