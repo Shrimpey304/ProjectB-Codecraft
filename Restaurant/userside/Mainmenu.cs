@@ -14,12 +14,17 @@ public class MainMenu : MasterDisplay
             "Register",
             "Restaurant information"
         };
+        List<Action> actions = new(){
+            //menuCard.FromMain,
+            loginProcess.LoginProcessMailView,
+            //registerProcess.RegisterMail,
+        };
 
         int selectedOption = DisplayUtil.Display(options);
         switch (selectedOption)
         {
             case 0:
-                menuCard.windowInstanceStack.Push(DisplayMainMenu);
+                menuCard.windowInstanceStack.Add(DisplayMainMenu);
                 menuCard.FromMain(false);
                 break;
             case 1: 
@@ -44,5 +49,4 @@ public class MainMenu : MasterDisplay
     //     System.Environment.Exit(1);
     // }
 }
-    
 

@@ -12,6 +12,8 @@ public class MakeReservation : MasterDisplay
 
     public List<Ingelogdmenu> windowInstance = new();
     public RegisterProcess register = new();
+    public Table? table;
+    public DateOnly? reservationDate;
 
     public MakeReservation(User? user){
         User = user;
@@ -28,14 +30,27 @@ public class MakeReservation : MasterDisplay
             "Check Availablity",
             "press ENTER or click ESC to go back"
         };
-        List<Action> actions = new(){
-            MakeReserve,
-            RemoveReserve,
-            CheckAvailablity,
-            windowInstance[0].DisplayIngelogdMenu
-        };
-        int selectedOption = DisplayUtil.Display(options);    
-        actions[selectedOption]();
+        int selectedOption = DisplayUtil.Display(options);  
+        switch (selectedOption)
+        {
+            case 0:
+                tableManager.User = User;
+                MakeReserve();
+                break;
+            case 1:
+                if(User is null){throw new Exception("user is null by remove..3");}
+                tableManager.User = User;
+                RemoveReserve();
+                break;
+            case 2:
+                CheckAvailablity();
+                break;
+            case 3:
+                if(User is null){throw new Exception("user is null by when going back..1");}
+                windowInstance[0].user = User;
+                windowInstance[0].DisplayIngelogdMenu();
+                break;
+        }
     }
 
     public void MakeReserve()
@@ -43,9 +58,9 @@ public class MakeReservation : MasterDisplay
         
         //tableManager.User = User;
         //int? partySize = null;
-        DateOnly? reservationDate = null;
+        // DateOnly? reservationDate = null;
         string? selectedTime = null;
-        Table? table = null;
+        // Table? table = null;
         if (User == null)
         {
             Console.WriteLine("You need to be registered to make a reservation.");
@@ -56,8 +71,7 @@ public class MakeReservation : MasterDisplay
             while (reservationDate is null || selectedTime is null || table is null)
         {
             Console.Clear();
-            Header.DisplayHeader();
-            System.Console.WriteLine("\nEnter your reservation date\n(yyyy-mm-dd)");
+            System.Console.WriteLine("enter your reservation date\n(yyyy-mm-dd)");
             string dateSrting = Console.ReadLine();
             reservationDate = TableManager.ValidateDate(dateSrting);
             if (reservationDate is null) {continue;}
@@ -84,23 +98,9 @@ public class MakeReservation : MasterDisplay
         {
             
             MenuCard menuCard = new();
-            menuCard.windowInstanceStack.Push(MakeReserve);
+            menuCard.CheckOut = this;
+            //menuCard.windowInstanceStack.Push(MakeReserve);
             menuCard.FromMain(true);
-            if (foodItems is not null)
-            {
-                List<string> options = new(){"Go to checkout", "Go back to reservation menu"};
-                int selectedOption2 = DisplayUtil.Display(options);
-                if (selectedOption2 == 0)
-                {
-                    menuCard.AddWine(table, reservationDate, foodItems);
-                }else
-                {
-                    Display();
-                }
-            }else
-            {
-                Display();
-            }
         }
     }
 
@@ -121,27 +121,22 @@ public class MakeReservation : MasterDisplay
             System.Console.WriteLine($"Your Total with tip: {totalWithTip:F2}\nPress ENTER to go back to home menu.");
             key = Console.ReadKey(false);
         } while (key.Key != ConsoleKey.Enter);
+        if(ingelogdmenu.user is null){throw new Exception("user is null when checkout..4");}
         ingelogdmenu.DisplayIngelogdMenu();
     }
 
-    private void RemoveReserve()
-    {
-        // System.Console.WriteLine("On what date is your reservation");
-        // DateOnly date = (DateOnly)ValidateDate()!;
-        // System.Console.WriteLine("what is the table id of your reservation");
-        // int tableId = Convert.ToInt32(Console.ReadLine());
-        // if (tableManager.RemoveReservation(date, tableId))
-        // {
-        //     System.Console.WriteLine("press ENTER to go back");
-        //     if (Console.ReadKey(false).Key == ConsoleKey.Enter)
-        //     {
-        //         Display();
-        //     }
-        // }else
-        // {
-        //     System.Console.WriteLine("Reservation doesn't exist. Please try again.");
-        //     RemoveReserve();
-        // }
+    private void RemoveReserve(){
+        List<string> reserevationCode = tableManager.GetReservationCodes();
+        reserevationCode.Add("Go Back");
+        int selectedOption = DisplayUtil.Display(reserevationCode);
+        if (selectedOption == reserevationCode.Count -1){
+            Display();
+        }else{
+            tableManager.RemoveReservation(reserevationCode[selectedOption]);
+            System.Console.WriteLine("Reservation deleted");
+            Thread.Sleep(2500);
+            Display();
+        }
     }
 
     private static void CheckAvailablity()
@@ -162,3 +157,4 @@ public class MakeReservation : MasterDisplay
     }
 
 }
+ 
