@@ -29,12 +29,12 @@ public class AdminReservations
         }
     }
 
-    public static void SeeReservationsA()
+    public static void SeeReservationsA(User user)
     {
         FormatReservations();
         Console.WriteLine("Press enter to go back to change reservation menu");
         Console.ReadLine();
-        AdminMenu.DisplayChangeResvMenu(); 
+        AdminMenu.DisplayChangeResvMenu(user); 
     }
 
 

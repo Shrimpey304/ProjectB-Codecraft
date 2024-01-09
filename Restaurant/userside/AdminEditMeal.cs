@@ -3,21 +3,32 @@ namespace Restaurant
     public class AdminEditMeal
     {
         private static string mealsPath = @".\dataStorage\Meals.json";
+        private static List<Meals> meals = JsonUtil.ReadFromJson<Meals>(mealsPath);
 
-        public static void ChangeCourseType()
+        private static Meals GetMealById()
         {
-            AdminFood.SeeMeals();
-
             Console.WriteLine("Enter the ID of the meal you want to change:");
             int mealID;
             if (!int.TryParse(Console.ReadLine(), out mealID))
             {
                 Console.WriteLine("Invalid input");
-                return;
+                return null;
             }
 
-            List<Meals> meals = JsonUtil.ReadFromJson<Meals>(mealsPath);
             Meals mealToChange = meals.FirstOrDefault(m => m.ID == mealID);
+
+            if (mealToChange == null)
+            {
+                Console.WriteLine("Meal not found.");
+            }
+
+            return mealToChange;
+        }
+
+        public static void ChangeCourseType(User user)
+        {
+            FormatJsonJ.FormatMeals();
+            Meals mealToChange = GetMealById();
 
             if (mealToChange != null)
             {
@@ -33,28 +44,14 @@ namespace Restaurant
 
                 JsonUtil.UploadToJson(meals, mealsPath);
                 Console.WriteLine("Course type changed successfully.");
-                AdminMenu.DisplayChangeFoodMenu();
-            }
-            else
-            {
-                Console.WriteLine("Meal not found.");
+                AdminMenu.DisplayChangeFoodMenu(user);
             }
         }
 
-        public static void ChangeMealType()
+        public static void ChangeMealType(User user)
         {
-            AdminFood.SeeMeals();
-
-            Console.WriteLine("Enter the ID of the meal you want to change:");
-            int mealID;
-            if (!int.TryParse(Console.ReadLine(), out mealID))
-            {
-                Console.WriteLine("Invalid input");
-                return;
-            }
-
-            List<Meals> meals = JsonUtil.ReadFromJson<Meals>(mealsPath);
-            Meals mealToChange = meals.FirstOrDefault(m => m.ID == mealID);
+            FormatJsonJ.FormatMeals();
+            Meals mealToChange = GetMealById();
 
             if (mealToChange != null)
             {
@@ -65,7 +62,7 @@ namespace Restaurant
 
                 JsonUtil.UploadToJson(meals, mealsPath);
                 Console.WriteLine("Meal type changed successfully.");
-                AdminMenu.DisplayChangeFoodMenu();
+                AdminMenu.DisplayChangeFoodMenu(user);
             }
             else
             {
@@ -73,20 +70,10 @@ namespace Restaurant
             }
         }
 
-        public static void ChangeMealName()
+        public static void ChangeMealName(User user)
         {
-            AdminFood.SeeMeals();
-
-            Console.WriteLine("Enter the ID of the meal you want to change:");
-            int mealID;
-            if (!int.TryParse(Console.ReadLine(), out mealID))
-            {
-                Console.WriteLine("Invalid input");
-                return;
-            }
-
-            List<Meals> meals = JsonUtil.ReadFromJson<Meals>(mealsPath);
-            Meals mealToChange = meals.FirstOrDefault(m => m.ID == mealID);
+            FormatJsonJ.FormatMeals();
+            Meals mealToChange = GetMealById();
 
             if (mealToChange != null)
             {
@@ -97,7 +84,7 @@ namespace Restaurant
 
                 JsonUtil.UploadToJson(meals, mealsPath);
                 Console.WriteLine("Meal name changed successfully.");
-                AdminMenu.DisplayChangeFoodMenu();
+                AdminMenu.DisplayChangeFoodMenu(user);
             }
             else
             {
@@ -105,20 +92,10 @@ namespace Restaurant
             }
         }
 
-        public static void ChangePrice()
+        public static void ChangePrice(User user)
         {
-            AdminFood.SeeMeals();
-
-            Console.WriteLine("Enter the ID of the meal you want to change:");
-            int mealID;
-            if (!int.TryParse(Console.ReadLine(), out mealID))
-            {
-                Console.WriteLine("Invalid input.");
-                return;
-            }
-
-            List<Meals> meals = JsonUtil.ReadFromJson<Meals>(mealsPath);
-            Meals mealToChange = meals.FirstOrDefault(m => m.ID == mealID);
+            FormatJsonJ.FormatMeals();
+            Meals mealToChange = GetMealById();
 
             if (mealToChange != null)
             {
@@ -134,7 +111,7 @@ namespace Restaurant
 
                 JsonUtil.UploadToJson(meals, mealsPath);
                 Console.WriteLine("Price changed successfully.");
-                AdminMenu.DisplayChangeFoodMenu();
+                AdminMenu.DisplayChangeFoodMenu(user);
             }
             else
             {
@@ -142,20 +119,10 @@ namespace Restaurant
             }
         }
 
-        public static void ChangeCourseDescription()
+        public static void ChangeCourseDescription(User user)
         {
-            AdminFood.SeeMeals();
-
-            Console.WriteLine("Enter the ID of the meal you want to change:");
-            int mealID;
-            if (!int.TryParse(Console.ReadLine(), out mealID))
-            {
-                Console.WriteLine("Invalid input.");
-                return;
-            }
-
-            List<Meals> meals = JsonUtil.ReadFromJson<Meals>(mealsPath);
-            Meals mealToChange = meals.FirstOrDefault(m => m.ID == mealID);
+            FormatJsonJ.FormatMeals();
+            Meals mealToChange = GetMealById();
 
             if (mealToChange != null)
             {
@@ -166,7 +133,7 @@ namespace Restaurant
 
                 JsonUtil.UploadToJson(meals, mealsPath);
                 Console.WriteLine("Course description changed successfully.");
-                AdminMenu.DisplayChangeFoodMenu();
+                AdminMenu.DisplayChangeFoodMenu(user);
             }
             else
             {

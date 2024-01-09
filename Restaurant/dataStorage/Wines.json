@@ -1,0 +1,12 @@
+[
+    {
+      "ID": 1,
+      "Price": 50.99,
+      "AlcoholPercentage": 14.7,
+      "WineType": "Rosé",
+      "WineName": "Magnum Château",
+      "Description": "High quality sweet yet dry rosé wine imported straight from Lyon, France"
+
+    }
+]
+

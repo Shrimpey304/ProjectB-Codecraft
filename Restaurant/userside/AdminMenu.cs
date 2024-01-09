@@ -2,7 +2,7 @@ namespace Restaurant;
 
 public class AdminMenu
 {
-    public static void DisplayAdminMenu()
+    public static void DisplayAdminMenu(User user)
     {
         List<string> options = new(){
             "Admin accounts",
@@ -11,18 +11,32 @@ public class AdminMenu
             "Admin tables",
             "Log out"
         };
-        List<Action> actions = new(){
-            DisplayChangeAccMenu,
-            DisplayChangeFoodMenu,
-            DisplayChangeResvMenu,
-            DisplayAdminTableMenu,
-            LogoutA
-        };
+
         int selectedOption = DisplayUtil.Display(options);
-        actions[selectedOption]();
+        switch (selectedOption)
+        {
+            case 0:
+                DisplayChangeAccMenu(user);
+                break;
+            case 1: 
+                DisplayChangeFoodMenu(user);
+                break;
+            case 2:
+                DisplayChangeResvMenu(user);
+                break;
+            case 3:
+                DisplayAdminTableMenu(user);
+                break;
+            case 4:
+                LogoutA();
+                break;
+            default:
+                throw new Exception("un-expected admin menu error");
+
+        }
     }
 
-    public static void DisplayChangeAccMenu()
+    public static void DisplayChangeAccMenu(User user)
     {
         List<string> options = new(){
             "See accounts",
@@ -31,18 +45,31 @@ public class AdminMenu
             "Change account",
             "Go back to admin menu"
         };
-        List<Action> actions = new(){
-            AdminAccounts.SeeAccountsA,
-            AdminAccounts.AddAccountsA,
-            AdminAccounts.RemoveAccountsA,
-            ChangeAccountsA,
-            DisplayAdminMenu
-        };
+
         int selectedOption = DisplayUtil.Display(options);
-        actions[selectedOption]();
+        switch (selectedOption)
+        {
+            case 0:
+                AdminAccounts.SeeAccountsA(user);
+                break;
+            case 1: 
+                AdminAccounts.AddAccountsA(user);
+                break;
+            case 2:
+                AdminAccounts.RemoveAccountsA(user);
+                break;
+            case 3:
+                ChangeAccountsA(user);
+                break;
+            case 4:
+                DisplayAdminMenu(user);
+                break;
+            default:
+                throw new Exception("un-expected admin menu error");
+        }
     }
 
-    public static void ChangeAccountsA()
+    public static void ChangeAccountsA(User user)
     {   
         List<string> options = new(){
             "Change email of account",
@@ -51,18 +78,31 @@ public class AdminMenu
             "Change admin status of account",
             "Go back to admin accounts menu"
         };
-        List<Action> actions = new(){
-            AdminEditAccs.ChangeEmail,
-            AdminEditAccs.ChangePassword,
-            AdminEditAccs.ChangePhonenumber,
-            AdminEditAccs.ChangeAdminstatus,
-            DisplayChangeAccMenu,
-        };
+
         int selectedOption = DisplayUtil.Display(options);
-        actions[selectedOption]();
+        switch (selectedOption)
+        {
+            case 0:
+                AdminEditAccs.ChangeEmail(user);
+                break;
+            case 1: 
+                AdminEditAccs.ChangePassword(user);
+                break;
+            case 2:
+                AdminEditAccs.ChangePhonenumber(user);
+                break;
+            case 3:
+                AdminEditAccs.ChangeAdminstatus(user);
+                break;
+            case 4:
+                DisplayChangeAccMenu(user);
+                break;
+            default:
+                throw new Exception("un-expected admin menu error");
+        }
     }
 
-    public static void DisplayChangeFoodMenu()
+    public static void DisplayChangeFoodMenu(User user)
     {
         List<string> options = new(){
             "Admin dishes",
@@ -71,18 +111,31 @@ public class AdminMenu
             "Admin desserts",
             "Go back to admin menu"
         };
-        List<Action> actions = new(){
-            DisplayAdminDish,
-            DisplayAdminMeal,
-            DisplayAdminWine,
-            DisplayAdminDessert,
-            DisplayAdminMenu
-        };
+
         int selectedOption = DisplayUtil.Display(options);
-        actions[selectedOption]();
+        switch (selectedOption)
+        {
+            case 0:
+                DisplayAdminDish(user);
+                break;
+            case 1: 
+                DisplayAdminMeal(user);
+                break;
+            case 2:
+                DisplayAdminWine(user);
+                break;
+            case 3:
+                 DisplayAdminDessert(user);
+                break;
+            case 4:
+                 DisplayAdminMenu(user);
+                break;
+            default:
+                throw new Exception("un-expected admin menu error");
+        }
     }
 
-    public static void DisplayAdminDish()
+    public static void DisplayAdminDish(User user)
     {
         List<string> options = new(){
             "See dishes",
@@ -92,19 +145,34 @@ public class AdminMenu
             "Remove all dishes",
             "Go back to change food menu"
         };
-        List<Action> actions = new(){
-            AdminFood.SeeDishes,
-            AdminFood.AddDishA,
-            AdminFood.RemoveDishA,
-            DisplayChangeDish,
-            AdminFood.RemAllDishes,
-            DisplayChangeFoodMenu
-        };
+
         int selectedOption = DisplayUtil.Display(options);
-        actions[selectedOption]();
+        switch (selectedOption)
+        {
+            case 0:
+                AdminFood.SeeDishes(user);
+                break;
+            case 1: 
+                AdminFood.AddDishA(user);
+                break;
+            case 2:
+                AdminFood.RemoveDishA(user);
+                break;
+            case 3:
+                 DisplayChangeDish(user);
+                break;
+            case 4:
+                 AdminFood.RemAllDishes(user);
+                break;
+            case 5:
+                DisplayChangeFoodMenu(user);
+                break;
+            default:
+                throw new Exception("un-expected admin menu error");
+        }
     }
 
-    public static void DisplayChangeDish()
+    public static void DisplayChangeDish(User user)
     {
         List<string> options = new(){
             "Change name of dish",
@@ -114,160 +182,288 @@ public class AdminMenu
             "Change allergens of dish",
             "Go back to admin dish menu"
         };
-        List<Action> actions = new(){
-            AdminEditDish.ChangeDishName,
-            AdminEditDish.ChangeDishType,
-            AdminEditDish.ChangeDishDescription,
-            AdminEditDish.ChangeDishPrice,
-            AdminEditDish.ChangeDishAllergens,
-            DisplayAdminDish
-        };
+
         int selectedOption = DisplayUtil.Display(options);
-        actions[selectedOption]();
+        switch (selectedOption)
+        {
+            case 0:
+                AdminEditDish.ChangeDishName(user);
+                break;
+            case 1: 
+                AdminEditDish.ChangeDishType(user);
+                break;
+            case 2:
+                AdminEditDish.ChangeDishDescription(user);
+                break;
+            case 3:
+                 AdminEditDish.ChangeDishPrice(user);
+                break;
+            case 4:
+                 AdminEditDish.ChangeDishAllergens(user);
+                break;
+            case 5:
+                DisplayAdminDish(user);
+                break;
+            default:
+                throw new Exception("un-expected admin menu error");
+        }
     }
 
-    public static void DisplayAdminMeal()
+    public static void DisplayAdminMeal(User user)
+    {
+        List<string> options = new(){
+            "See meals",
+            "Add meal",
+            "Remove meal",
+            "Change meal",
+            "Remove all meals",
+            "Go back to change food menu"
+        };
+        
+        int selectedOption = DisplayUtil.Display(options);
+        switch (selectedOption)
+        {
+            case 0:
+                AdminFood.SeeMeals(user);
+                break;
+            case 1: 
+                AdminFood.AddMealA(user);
+                break;
+            case 2:
+                AdminFood.RemoveMealA(user);
+                break;
+            case 3:
+                DisplayChangeMeal(user);
+                break;
+            case 4:
+                DisplayChangeFoodMenu(user);
+                break;
+            default:
+                throw new Exception("un-expected admin menu error");
+        }
+    }
+
+    public static void DisplayChangeMeal(User user)
+    {
+        List<string> options = new(){
+            "Change name of meal",
+            "Change course type of meal",
+            "Change course description of dish",
+            "Change price of dish",
+            "Change meal type of dish",
+            "Go back to admin meal menu"
+        };
+
+        int selectedOption = DisplayUtil.Display(options);
+        switch (selectedOption)
+        {
+            case 0:
+                AdminEditMeal.ChangeMealName(user);
+                break;
+            case 1: 
+                AdminEditMeal.ChangeCourseType(user);
+                break;
+            case 2:
+                AdminEditMeal.ChangeCourseDescription(user);
+                break;
+            case 3:
+                 AdminEditMeal.ChangePrice(user);
+                break;
+            case 4:
+                 AdminEditMeal.ChangeMealType(user);
+                break;
+            case 5:
+                DisplayAdminMeal(user);
+                break;
+            default:
+                throw new Exception("un-expected admin menu error");
+        }
+    }
+
+    public static void DisplayChangeWine(User user)
+    {
+        List<string> options = new(){
+            "Change name of dish",
+            "Change type of dish",
+            "Change description of dish",
+            "Change price of dish",
+            "Change allergens of dish",
+            "Go back to admin dish menu"
+        };
+
+        int selectedOption = DisplayUtil.Display(options);
+        switch (selectedOption)
+        {
+            case 0:
+                AdminEditDish.ChangeDishName(user);
+                break;
+            case 1: 
+                AdminEditDish.ChangeDishType(user);
+                break;
+            case 2:
+                AdminEditDish.ChangeDishDescription(user);
+                break;
+            case 3:
+                 AdminEditDish.ChangeDishPrice(user);
+                break;
+            case 4:
+                 AdminEditDish.ChangeDishAllergens(user);
+                break;
+            case 5:
+                DisplayAdminDish(user);
+                break;
+            default:
+                throw new Exception("un-expected admin menu error");
+        }
+    }
+
+    public static void DisplayAdminWine(User user)
+    {
+        List<string> options = new(){
+            "See dishes",
+            "Add dish",
+            "Remove dish",
+            "Change dish",
+            "Remove all dishes",
+            "Go back to change food menu"
+        };
+
+        int selectedOption = DisplayUtil.Display(options);
+        switch (selectedOption)
+        {
+            case 0:
+                AdminFood.SeeDishes(user);
+                break;
+            case 1: 
+                AdminFood.AddDishA(user);
+                break;
+            case 2:
+                AdminFood.RemoveDishA(user);
+                break;
+            case 3:
+                 DisplayChangeDish(user);
+                break;
+            case 4:
+                 AdminFood.RemAllDishes(user);
+                break;
+            case 5:
+                DisplayChangeFoodMenu(user);
+                break;
+            default:
+                throw new Exception("un-expected admin menu error");
+        }
+    }
+
+    public static void DisplayAdminDessert(User user)
+    {
+        List<string> options = new(){
+            "See dishes",
+            "Add dish",
+            "Remove dish",
+            "Change dish",
+            "Remove all dishes",
+            "Go back to change food menu"
+        };
+
+        int selectedOption = DisplayUtil.Display(options);
+        switch (selectedOption)
+        {
+            case 0:
+                AdminFood.SeeDishes(user);
+                break;
+            case 1: 
+                AdminFood.AddDishA(user);
+                break;
+            case 2:
+                AdminFood.RemoveDishA(user);
+                break;
+            case 3:
+                 DisplayChangeDish(user);
+                break;
+            case 4:
+                 AdminFood.RemAllDishes(user);
+                break;
+            case 5:
+                DisplayChangeFoodMenu(user);
+                break;
+            default:
+                throw new Exception("un-expected admin menu error");
+        }
+    }
+
+    public static void DisplayChangeDessert(User user)
+    {
+        List<string> options = new(){
+            "Change name of dish",
+            "Change type of dish",
+            "Change description of dish",
+            "Change price of dish",
+            "Change allergens of dish",
+            "Go back to admin dish menu"
+        };
+
+        int selectedOption = DisplayUtil.Display(options);
+        switch (selectedOption)
+        {
+            case 0:
+                AdminEditDish.ChangeDishName(user);
+                break;
+            case 1: 
+                AdminEditDish.ChangeDishType(user);
+                break;
+            case 2:
+                AdminEditDish.ChangeDishDescription(user);
+                break;
+            case 3:
+                 AdminEditDish.ChangeDishPrice(user);
+                break;
+            case 4:
+                 AdminEditDish.ChangeDishAllergens(user);
+                break;
+            case 5:
+                DisplayAdminDish(user);
+                break;
+            default:
+                throw new Exception("un-expected admin menu error");
+        }
+    }
+
+    public static void DisplayChangeResvMenu(User user)
     {
         List<string> options = new(){
             "See reservations",
-            "Add reservation",
             "Remove reservation",
             "Change reservation",
             "Go back to admin menu"
         };
-        List<Action> actions = new(){
-            AdminReservations.SeeReservationsA,
-            DisplayAdminMenu,
-            AdminReservations.RemovReservationA,
-            DisplayChangeMeal,
-            DisplayAdminMenu
-        };
+
         int selectedOption = DisplayUtil.Display(options);
-        actions[selectedOption]();
+        switch (selectedOption)
+        {
+            case 0:
+                AdminEditDish.ChangeDishName(user);
+                break;
+            case 1: 
+                AdminEditDish.ChangeDishType(user);
+                break;
+            case 2:
+                AdminEditDish.ChangeDishDescription(user);
+                break;
+            case 3:
+                 AdminEditDish.ChangeDishPrice(user);
+                break;
+            case 4:
+                 AdminEditDish.ChangeDishAllergens(user);
+                break;
+            case 5:
+                DisplayAdminDish(user);
+                break;
+            default:
+                throw new Exception("un-expected admin menu error");
+        }
     }
 
-    public static void DisplayChangeMeal()
-    {
-        LoginProcess loginProcess = new LoginProcess();
-        List<string> options = new(){
-            "See reservations",
-            "Add reservation",
-            "Remove reservation",
-            // "Change reservation",
-            "Go back to admin menu"
-        };
-        List<Action> actions = new(){
-            AdminReservations.SeeReservationsA,
-            DisplayAdminMenu,
-            AdminReservations.RemovReservationA,
-            // ChangeResvA,
-            DisplayAdminMenu
-        };
-        int selectedOption = DisplayUtil.Display(options);
-        actions[selectedOption]();
-    }
-
-    public static void DisplayChangeWine()
-    {
-        List<string> options = new(){
-            "See reservations",
-            "Add reservation",
-            "Remove reservation",
-            // "Change reservation",
-            "Go back to admin menu"
-        };
-        List<Action> actions = new(){
-            AdminReservations.SeeReservationsA,
-            DisplayAdminMenu,
-            AdminReservations.RemovReservationA,
-            // ChangeResvA,
-            DisplayAdminMenu
-        };
-        int selectedOption = DisplayUtil.Display(options);
-        actions[selectedOption]();
-    }
-
-    public static void DisplayAdminWine()
-    {
-        List<string> options = new(){
-            "See reservations",
-            "Add reservation",
-            "Remove reservation",
-            // "Change reservation",
-            "Go back to admin menu"
-        };
-        List<Action> actions = new(){
-            AdminReservations.SeeReservationsA,
-            DisplayAdminMenu,
-            AdminReservations.RemovReservationA,
-            // ChangeResvA,
-            DisplayAdminMenu
-        };
-        int selectedOption = DisplayUtil.Display(options);
-        actions[selectedOption]();
-    }
-
-    public static void DisplayAdminDessert()
-    {
-        List<string> options = new(){
-            "See reservations",
-            "Add reservation",
-            "Remove reservation",
-            // "Change reservation",
-            "Go back to admin menu"
-        };
-        List<Action> actions = new(){
-            AdminReservations.SeeReservationsA,
-            DisplayAdminMenu,
-            AdminReservations.RemovReservationA,
-            // ChangeResvA,
-            DisplayAdminMenu
-        };
-        int selectedOption = DisplayUtil.Display(options);
-        actions[selectedOption]();
-    }
-
-    public static void DisplayChangeDessert()
-    {
-        List<string> options = new(){
-            "See reservations",
-            "Add reservation",
-            "Remove reservation",
-            // "Change reservation",
-            "Go back to admin menu"
-        };
-        List<Action> actions = new(){
-            AdminReservations.SeeReservationsA,
-            DisplayAdminMenu,
-            AdminReservations.RemovReservationA,
-            // ChangeResvA,
-            DisplayAdminMenu
-        };
-        int selectedOption = DisplayUtil.Display(options);
-        actions[selectedOption]();
-    }
-
-    public static void DisplayChangeResvMenu()
-    {
-        List<string> options = new(){
-            "See reservations",
-            "Add reservation",
-            "Remove reservation",
-            // "Change reservation",
-            "Go back to admin menu"
-        };
-        List<Action> actions = new(){
-            AdminReservations.SeeReservationsA,
-            DisplayAdminMenu,
-            AdminReservations.RemovReservationA,
-            // ChangeResvA,
-            DisplayAdminMenu
-        };
-        int selectedOption = DisplayUtil.Display(options);
-        actions[selectedOption]();
-    }
-
-    public static void DisplayAdminTableMenu()
+    public static void DisplayAdminTableMenu(User user)
     {
         List<string> options = new(){
             "See tables",
@@ -276,18 +472,30 @@ public class AdminMenu
             "Change table",
             "Go back to admin menu"
         };
-        List<Action> actions = new(){
-            AdminTable.SeeTablesA,
-            AdminTable.AddTableA,
-            AdminTable.RemoveTableA,
-            DisplayChangeTableMenu,
-            DisplayAdminMenu
-        };
         int selectedOption = DisplayUtil.Display(options);
-        actions[selectedOption]();
+        switch (selectedOption)
+        {
+            case 0:
+                AdminTable.SeeTablesA(user);
+                break;
+            case 1: 
+                AdminTable.AddTableA(user);
+                break;
+            case 2:
+                AdminTable.RemoveTableA(user);
+                break;
+            case 3:
+                 DisplayChangeTableMenu(user);
+                break;
+            case 4:
+                 DisplayAdminMenu(user);
+                break;
+            default:
+                throw new Exception("un-expected admin menu error");
+        }
     }
 
-    public static void DisplayChangeTableMenu()
+    public static void DisplayChangeTableMenu(User user)
     {
         List<string> options = new(){
             "Change table",
@@ -295,40 +503,63 @@ public class AdminMenu
             "Change table type",
             "Go back to admin table menu"
         };
-        List<Action> actions = new(){
-            AdminTable.ChangeTableA,
-            AdminTable.ChangeTablePosition,
-            AdminTable.ChangeTableType,
-            DisplayAdminTableMenu
+        int selectedOption = DisplayUtil.Display(options);
+        switch (selectedOption)
+        {
+            case 0:
+                AdminTable.ChangeTableA(user);
+                break;
+            case 1: 
+                AdminTable.ChangeTablePosition(user);
+                break;
+            case 2:
+                AdminTable.RemoveTableA(user);
+                break;
+            case 3:
+                 AdminTable.ChangeTableType(user);
+                break;
+            case 4:
+                 DisplayAdminTableMenu(user);
+                break;
+            default:
+                throw new Exception("un-expected admin menu error");
+        }
+    }
+
+    public static void ChangeResvA(User user)
+    {   
+        List<string> options = new(){
+            "Change position of table",
+            "Change reservation date",
+            "Change reservation table type",
+            "Change reservation time",
+            "Go back to admin reservations menu"
         };
         int selectedOption = DisplayUtil.Display(options);
-        actions[selectedOption]();
+        switch (selectedOption)
+        {
+            case 0:
+                AdminEditAccs.ChangePassword(user);
+                break;
+            case 1: 
+                AdminEditAccs.ChangePassword(user);
+                break;
+            case 2:
+                //AdminEditResv.ChangeTableTypeR();
+                break;
+            case 3:
+                 AdminEditAccs.ChangeAdminstatus(user);
+                break;
+            case 4:
+                 DisplayChangeAccMenu(user);
+                break;
+            default:
+                throw new Exception("un-expected admin menu error");
+        }
     }
 
     private static void LogoutA()
     {
         MainMenu.DisplayMainMenu();
     }
-
-    // public static void ChangeResvA()
-    // {   
-    //     List<string> options = new(){
-    //         "Change position of table",
-    //         "Change reservation date",
-    //         "Change reservation table type",
-    //         "Change reservation time",
-    //         "Go back to admin reservations menu"
-    //     };
-    //     List<Action> actions = new(){
-    //         AdminEditAccs.ChangePassword,
-    //         AdminEditAccs.ChangePassword,
-    //         AdminEditResv.ChangeTableTypeR,
-    //         AdminEditAccs.ChangeAdminstatus,
-    //         DisplayChangeAccMenu,
-    //     };
-    //     int selectedOption = DisplayUtil.Display(options);
-    //     actions[selectedOption]();
-        
-
-    // }
 }

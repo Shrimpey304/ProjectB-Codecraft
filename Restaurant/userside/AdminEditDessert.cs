@@ -25,7 +25,7 @@ public class AdminEditDessert
         return dessertToChange;
     }
 
-    public static void ChangeDessertType()
+    public static void ChangeDessertType(User user)
     {
         FormatJsonJ.FormatDesserts();
         Dessert dessertToChange = GetDessertById();
@@ -39,11 +39,11 @@ public class AdminEditDessert
 
             JsonUtil.UploadToJson(desserts, dessertPath);
             Console.WriteLine("Dessert type changed successfully.");
-            AdminMenu.DisplayChangeFoodMenu();
+            AdminMenu.DisplayChangeFoodMenu(user);
         }
     }
 
-    public static void ChangeDessertName()
+    public static void ChangeDessertName(User user)
     {
         FormatJsonJ.FormatDesserts();
         Dessert dessertToChange = GetDessertById();
@@ -57,11 +57,11 @@ public class AdminEditDessert
 
             JsonUtil.UploadToJson(desserts, dessertPath);
             Console.WriteLine("Dessert name changed successfully.");
-            AdminMenu.DisplayChangeFoodMenu();
+            AdminMenu.DisplayChangeFoodMenu(user);
         }
     }
 
-    public static void ChangeDessertDescription()
+    public static void ChangeDessertDescription(User user)
     {
         FormatJsonJ.FormatDesserts();
         Dessert dessertToChange = GetDessertById();
@@ -75,11 +75,11 @@ public class AdminEditDessert
 
             JsonUtil.UploadToJson(desserts, dessertPath);
             Console.WriteLine("Description changed successfully.");
-            AdminMenu.DisplayChangeFoodMenu();
+            AdminMenu.DisplayChangeFoodMenu(user);
         }    
     }
 
-    public static void ChangeDessertPrice()
+    public static void ChangeDessertPrice(User user)
     {
         FormatJsonJ.FormatDesserts();
         Dessert dessertToChange = GetDessertById();
@@ -98,11 +98,11 @@ public class AdminEditDessert
 
             JsonUtil.UploadToJson(desserts, dessertPath);
             Console.WriteLine("Price changed successfully.");
-            AdminMenu.DisplayChangeFoodMenu();
+            AdminMenu.DisplayChangeFoodMenu(user);
         }
     }
 
-    public static void ChangeDessertAllergens()
+    public static void ChangeDessertAllergens(User user)
     {
         FormatJsonJ.FormatDesserts();
         Dessert dessertToChange = GetDessertById();
@@ -116,7 +116,7 @@ public class AdminEditDessert
             
             JsonUtil.UploadToJson(desserts, dessertPath);
             Console.WriteLine("Allergens changed successfully.");
-            AdminMenu.DisplayChangeFoodMenu();
+            AdminMenu.DisplayChangeFoodMenu(user);
         }
     }
 }

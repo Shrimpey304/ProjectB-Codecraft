@@ -21,7 +21,7 @@ public class AdminEditAccs
         return userToChange;
     }
     
-    public static void ChangeEmail()
+    public static void ChangeEmail(User user)
     {
         FormatJsonJ.FormatAccs();;
         User userToChange = GetAccByEmail();
@@ -47,12 +47,12 @@ public class AdminEditAccs
 
         JsonUtil.UploadToJson(accounts, accountPath);
         Console.WriteLine("Email changed successfully.");
-        AdminMenu.DisplayChangeAccMenu();
+        AdminMenu.DisplayChangeAccMenu(user);
         }
     }
     
 
-    public static void ChangePassword()
+    public static void ChangePassword(User user)
     {
         FormatJsonJ.FormatAccs();
         User userToChange = GetAccByEmail();
@@ -68,12 +68,12 @@ public class AdminEditAccs
 
                 JsonUtil.UploadToJson(accounts, accountPath);
                 Console.WriteLine("Password changed successfully.");
-                AdminMenu.DisplayChangeAccMenu();
+                AdminMenu.DisplayChangeAccMenu(user);
             }
         }
     }
 
-    public static void ChangePhonenumber()
+    public static void ChangePhonenumber(User user)
     {
         FormatJsonJ.FormatAccs();
         User userToChange = GetAccByEmail();
@@ -87,27 +87,27 @@ public class AdminEditAccs
 
             JsonUtil.UploadToJson(accounts, accountPath);
             Console.WriteLine("Phonenumber changed successfully.");
-            AdminMenu.DisplayChangeAccMenu();
+            AdminMenu.DisplayChangeAccMenu(user);
         }
     }
 
-    public static void ChangeAdminstatus()
+    public static void ChangeAdminstatus(User user)
     {
         FormatJsonJ.FormatAccs(); 
         User userToChange = GetAccByEmail();
         
         if (userToChange != null)
         {
-            Console.WriteLine("Enter Admin status (type true or else false)");
+            Console.WriteLine("Enter Admin status (type y/n)");
             string input = Console.ReadLine().ToLower();
 
-             bool newAdminStatus = input == "true";
+             bool newAdminStatus = input.ToUpper() == "Y";
 
             userToChange.Admin = newAdminStatus;
 
             JsonUtil.UploadToJson(accounts, accountPath);
             Console.WriteLine("Admin status changed successfully.");
-            AdminMenu.DisplayChangeAccMenu();
+            AdminMenu.DisplayChangeAccMenu(user);
         }
     }
 }

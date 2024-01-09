@@ -25,7 +25,7 @@ public class AdminEditDish
         return dishToChange;
     }
 
-    public static void ChangeDishName()
+    public static void ChangeDishName(User user)
     {
         FormatJsonJ.FormatDishes();
         Dish dishToChange = GetDishById();
@@ -39,11 +39,11 @@ public class AdminEditDish
 
             JsonUtil.UploadToJson(dishes, dishPath);
             Console.WriteLine("Dish name changed successfully.");
-            AdminMenu.DisplayChangeFoodMenu();
+            AdminMenu.DisplayChangeFoodMenu(user);
         }
     }
 
-    public static void ChangeDishDescription()
+    public static void ChangeDishDescription(User user)
     {
         FormatJsonJ.FormatDishes();
         Dish dishToChange = GetDishById();
@@ -57,11 +57,11 @@ public class AdminEditDish
 
             JsonUtil.UploadToJson(dishes, dishPath);
             Console.WriteLine("Description changed successfully.");
-            AdminMenu.DisplayChangeFoodMenu();
+            AdminMenu.DisplayChangeFoodMenu(user);
         }    
     }
 
-    public static void ChangeDishPrice()
+    public static void ChangeDishPrice(User user)
     {
         FormatJsonJ.FormatDishes();
         Dish dishToChange = GetDishById();
@@ -80,11 +80,11 @@ public class AdminEditDish
 
             JsonUtil.UploadToJson(dishes, dishPath);
             Console.WriteLine("Price changed successfully.");
-            AdminMenu.DisplayChangeFoodMenu();
+            AdminMenu.DisplayChangeFoodMenu(user);
         }
     }
 
-    public static void ChangeDishAllergens()
+    public static void ChangeDishAllergens(User user)
     {
         FormatJsonJ.FormatDishes();
         Dish dishToChange = GetDishById();
@@ -98,11 +98,11 @@ public class AdminEditDish
             
             JsonUtil.UploadToJson(dishes, dishPath);
             Console.WriteLine("Allergens changed successfully.");
-            AdminMenu.DisplayChangeFoodMenu();
+            AdminMenu.DisplayChangeFoodMenu(user);
         }
     }
 
-    public static void ChangeDishType()
+    public static void ChangeDishType(User user)
     {
         FormatJsonJ.FormatDishes();
         Dish dishToChange = GetDishById();
@@ -116,7 +116,7 @@ public class AdminEditDish
 
             JsonUtil.UploadToJson(dishes, dishPath);
             Console.WriteLine("Dish type changed successfully.");
-            AdminMenu.DisplayChangeFoodMenu();
+            AdminMenu.DisplayChangeFoodMenu(user);
         }
     }
 }

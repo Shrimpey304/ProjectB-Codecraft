@@ -9,15 +9,15 @@ public class AdminTable
 
     private static List<Table> tables = JsonUtil.ReadFromJson<Table>(tablesPath);
 
-    public static void SeeTablesA()
+    public static void SeeTablesA(User user)
     {
         FormatJsonJ.FormatTables();
         Console.WriteLine("Press enter to go back to change tables menu");
         Console.ReadLine();
-        AdminMenu.DisplayChangeTableMenu(); 
+        AdminMenu.DisplayChangeTableMenu(user); 
     }
 
-    public static void AddTableA()
+    public static void AddTableA(User user)
     {
         FormatJsonJ.FormatTables();
 
@@ -40,7 +40,7 @@ public class AdminTable
         {
             tables = tableManager.Tables;
             Console.WriteLine("Table added successfully.");
-            AdminMenu.DisplayChangeTableMenu();
+            AdminMenu.DisplayChangeTableMenu(user);
         }
         else
         {
@@ -48,7 +48,7 @@ public class AdminTable
         }
     }
 
-    public static void RemoveTableA()
+    public static void RemoveTableA(User user)
     {
         FormatJsonJ.FormatTables();
 
@@ -63,7 +63,7 @@ public class AdminTable
         if (tableRemoved)
         {
             Console.WriteLine("Table removed successfully.");
-            AdminMenu.DisplayChangeTableMenu();
+            AdminMenu.DisplayChangeTableMenu(user);
         }
         else
         {
@@ -91,7 +91,7 @@ public class AdminTable
         return tableToChange;
     }
 
-    public static void ChangeTablePosition()
+    public static void ChangeTablePosition(User user)
     {
         FormatJsonJ.FormatTables();
         Table tableToChange = GetTableByPosition();
@@ -110,11 +110,11 @@ public class AdminTable
 
             JsonUtil.UploadToJson(tables, tablesPath);
             Console.WriteLine("Table Position changed successfully.");
-            AdminMenu.DisplayChangeTableMenu();
+            AdminMenu.DisplayChangeTableMenu(user);
         }
     }
 
-    public static void ChangeTableType()
+    public static void ChangeTableType(User user)
     {
         FormatJsonJ.FormatTables();
         Table tableToChange = GetTableByPosition();
@@ -133,11 +133,11 @@ public class AdminTable
 
             JsonUtil.UploadToJson(tables, tablesPath);
             Console.WriteLine("Type changed successfully.");
-            AdminMenu.DisplayChangeTableMenu();
+            AdminMenu.DisplayChangeTableMenu(user);
         }
     }
 
-    public static void ChangeTableA()
+    public static void ChangeTableA(User user)
     {
         FormatJsonJ.FormatTables();
 
@@ -167,7 +167,7 @@ public class AdminTable
         if (tablechanged)
         {
             Console.WriteLine("Table Position changed successfully.");
-            AdminMenu.DisplayChangeTableMenu();
+            AdminMenu.DisplayChangeTableMenu(user);
         }
     }
 }

@@ -14,11 +14,6 @@ public class MainMenu : MasterDisplay
             "Register",
             "Restaurant information"
         };
-        List<Action> actions = new(){
-            //menuCard.FromMain,
-            loginProcess.LoginProcessMailView,
-            registerProcess.RegisterMail,
-        };
 
         int selectedOption = DisplayUtil.Display(options);
         switch (selectedOption)

@@ -43,7 +43,7 @@ public class LoginProcess
             if (isAdmin)
             {
                 Console.WriteLine("Login is successful, heading to admin panel.");
-                AdminMenu.DisplayAdminMenu(); 
+                AdminMenu.DisplayAdminMenu(user); 
             }
             else
             {
