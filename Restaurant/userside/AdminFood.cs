@@ -67,11 +67,13 @@ public class AdminFood
         if (dishAdded)
         {
             Console.WriteLine("Dish added successfully!");
+            Thread.Sleep(2000);
             AdminMenu.DisplayChangeFoodMenu(user);
         }
         else
         {
                 Console.WriteLine("Invalid");
+                Thread.Sleep(2000);
         }
     }
 
@@ -104,11 +106,13 @@ public class AdminFood
         if (mealAdded)
         {
             Console.WriteLine("Meal added successfully!");
+            Thread.Sleep(2000);
             AdminMenu.DisplayChangeFoodMenu(user);
         }
         else
         {
             Console.WriteLine("Invalid");
+            Thread.Sleep(2000);
         }
     }
 
@@ -141,11 +145,13 @@ public class AdminFood
         if (wineAdded)
         {
             Console.WriteLine("Wine added successfully!");
+            Thread.Sleep(2000);
             AdminMenu.DisplayChangeFoodMenu(user);
         }
         else
         {
             Console.WriteLine("Invalid");
+            Thread.Sleep(2000);
         }
     }
 
@@ -178,11 +184,13 @@ public class AdminFood
         if (dessertAdded)
         {
             Console.WriteLine("Meal added successfully!");
+            Thread.Sleep(2000);
             AdminMenu.DisplayChangeFoodMenu(user);
         }
         else
         {
             Console.WriteLine("Invalid");
+            Thread.Sleep(2000);
         }
     }
 
@@ -200,11 +208,13 @@ public class AdminFood
         if (dishRemoved)
         {
             Console.WriteLine("Dish removed successfully!");
+            Thread.Sleep(2000);
             AdminMenu.DisplayChangeFoodMenu(user);
         }
         else
         {
             Console.WriteLine("Dish not found");
+            Thread.Sleep(2000);
         }
     }
 
@@ -222,11 +232,13 @@ public class AdminFood
         if (mealRemoved)
         {
             Console.WriteLine("Meal removed successfully!");
+            Thread.Sleep(2000);
             AdminMenu.DisplayChangeFoodMenu(user);
         }
         else
         {
             Console.WriteLine("Meal not found");
+            Thread.Sleep(2000);
         }
     }
 
@@ -243,11 +255,13 @@ public class AdminFood
         if (wineRemoved)
         {
             Console.WriteLine("Wine removed successfully!");
+            Thread.Sleep(2000);
             AdminMenu.DisplayChangeFoodMenu(user);
         }
         else
         {
             Console.WriteLine("Wine not found");
+            Thread.Sleep(2000);
         }
     }
     public static void RemoveDessertA(User user)
@@ -263,11 +277,13 @@ public class AdminFood
         if (dessertRemoved)
         {
             Console.WriteLine("Dessert removed successfully!");
+            Thread.Sleep(2000);
             AdminMenu.DisplayChangeFoodMenu(user);
         }
         else
         {
             Console.WriteLine("Dessert not found");
+            Thread.Sleep(2000);
         }
     }
 
@@ -277,6 +293,7 @@ public class AdminFood
         foodManager.Dishes.Clear();
         JsonUtil.UploadToJson(foodManager.Dishes, dishesPath);
         Console.WriteLine("All dishes removed successfully!");
+        Thread.Sleep(2000);
         AdminMenu.DisplayChangeFoodMenu(user);
     }
 
@@ -286,6 +303,7 @@ public class AdminFood
         foodManager.Meals.Clear();
         JsonUtil.UploadToJson(foodManager.Meals, mealsPath);
         Console.WriteLine("All dishes removed successfully!");
+        Thread.Sleep(2000);
         AdminMenu.DisplayChangeFoodMenu(user);
     }
 
@@ -295,6 +313,7 @@ public class AdminFood
         foodManager.Desserts.Clear();
         JsonUtil.UploadToJson(foodManager.Desserts, dessertsPath);
         Console.WriteLine("All desserts removed successfully!");
+        Thread.Sleep(2000);
         AdminMenu.DisplayChangeFoodMenu(user);
     }
 
@@ -304,6 +323,7 @@ public class AdminFood
         foodManager.Wines.Clear();
         JsonUtil.UploadToJson(foodManager.Wines, winesPath);
         Console.WriteLine("All Wines removed successfully!");
+        Thread.Sleep(2000);
         AdminMenu.DisplayChangeFoodMenu(user);
     }
 

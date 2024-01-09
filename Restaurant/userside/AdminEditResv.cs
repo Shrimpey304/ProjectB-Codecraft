@@ -100,7 +100,7 @@ public class AdminEditResv
         {
             Console.WriteLine(" ");
             Console.WriteLine($"Reservations for {resvDate}");
-            Console.WriteLine("--------------");
+            Console.WriteLine("---------------------------");
 
             bool reservationsFound = false;
 
@@ -116,7 +116,7 @@ public class AdminEditResv
                             Console.WriteLine($"Reservation Time: {slot.ReservationTime}");
                             Console.WriteLine($"Position: {slot.Position}");
                             Console.WriteLine($"Type: {slot.Type}");
-                            Console.WriteLine("--------------");
+                            Console.WriteLine("---------------------------");
                         }
                     }
                 }
@@ -124,11 +124,13 @@ public class AdminEditResv
             if (!reservationsFound)
         {
             Console.WriteLine("No reservations found for the entered date.");
+            Thread.Sleep(2000);
         }
         }
         else
         {
             Console.WriteLine("Invalid date format.");
+            Thread.Sleep(2000);
         }
     }
 

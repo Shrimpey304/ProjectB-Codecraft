@@ -12,6 +12,7 @@ public class AdminEditDish
         if (!int.TryParse(Console.ReadLine(), out dishID))
         {
             Console.WriteLine("Invalid input");
+            Thread.Sleep(2000);
             return null;
         }
 
@@ -20,6 +21,7 @@ public class AdminEditDish
         if (dishToChange == null)
         {
             Console.WriteLine("Dish not found.");
+            Thread.Sleep(2000);
         }
 
         return dishToChange;
@@ -39,6 +41,7 @@ public class AdminEditDish
 
             JsonUtil.UploadToJson(dishes, dishPath);
             Console.WriteLine("Dish name changed successfully.");
+            Thread.Sleep(2000);
             AdminMenu.DisplayChangeFoodMenu(user);
         }
     }
@@ -57,6 +60,7 @@ public class AdminEditDish
 
             JsonUtil.UploadToJson(dishes, dishPath);
             Console.WriteLine("Description changed successfully.");
+            Thread.Sleep(2000);
             AdminMenu.DisplayChangeFoodMenu(user);
         }    
     }
@@ -80,6 +84,7 @@ public class AdminEditDish
 
             JsonUtil.UploadToJson(dishes, dishPath);
             Console.WriteLine("Price changed successfully.");
+            Thread.Sleep(2000);
             AdminMenu.DisplayChangeFoodMenu(user);
         }
     }
@@ -98,6 +103,7 @@ public class AdminEditDish
             
             JsonUtil.UploadToJson(dishes, dishPath);
             Console.WriteLine("Allergens changed successfully.");
+            Thread.Sleep(2000);
             AdminMenu.DisplayChangeFoodMenu(user);
         }
     }
@@ -116,6 +122,7 @@ public class AdminEditDish
 
             JsonUtil.UploadToJson(dishes, dishPath);
             Console.WriteLine("Dish type changed successfully.");
+            Thread.Sleep(2000);
             AdminMenu.DisplayChangeFoodMenu(user);
         }
     }

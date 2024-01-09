@@ -10,7 +10,7 @@ public class AdminReservations
 
         Console.WriteLine(" ");
         Console.WriteLine("Reservations:");
-        Console.WriteLine("--------------");
+        Console.WriteLine("---------------------------");
 
         foreach (var reservation in reservations)
         {
@@ -23,7 +23,7 @@ public class AdminReservations
                     Console.WriteLine($"Reservation Time: {slot.ReservationTime}");
                     Console.WriteLine($"Position: {slot.Position}");
                     Console.WriteLine($"Type: {slot.Type}");
-                    Console.WriteLine("--------------");
+                    Console.WriteLine("---------------------------");
                 }
             }
         }

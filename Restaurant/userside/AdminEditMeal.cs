@@ -12,6 +12,7 @@ namespace Restaurant
             if (!int.TryParse(Console.ReadLine(), out mealID))
             {
                 Console.WriteLine("Invalid input");
+                Thread.Sleep(2000);
                 return null;
             }
 
@@ -20,6 +21,7 @@ namespace Restaurant
             if (mealToChange == null)
             {
                 Console.WriteLine("Meal not found.");
+                Thread.Sleep(2000);
             }
 
             return mealToChange;
@@ -37,6 +39,7 @@ namespace Restaurant
                 if (!int.TryParse(Console.ReadLine(), out newCourseType))
                 {
                     Console.WriteLine("Invalid input");
+                    Thread.Sleep(2000);
                     return;
                 }
 
@@ -44,6 +47,7 @@ namespace Restaurant
 
                 JsonUtil.UploadToJson(meals, mealsPath);
                 Console.WriteLine("Course type changed successfully.");
+                Thread.Sleep(2000);
                 AdminMenu.DisplayChangeFoodMenu(user);
             }
         }
@@ -62,11 +66,13 @@ namespace Restaurant
 
                 JsonUtil.UploadToJson(meals, mealsPath);
                 Console.WriteLine("Meal type changed successfully.");
+                Thread.Sleep(2000);
                 AdminMenu.DisplayChangeFoodMenu(user);
             }
             else
             {
                 Console.WriteLine("Meal not found.");
+                Thread.Sleep(2000);
             }
         }
 
@@ -84,6 +90,7 @@ namespace Restaurant
 
                 JsonUtil.UploadToJson(meals, mealsPath);
                 Console.WriteLine("Meal name changed successfully.");
+                Thread.Sleep(2000);
                 AdminMenu.DisplayChangeFoodMenu(user);
             }
             else
@@ -104,6 +111,7 @@ namespace Restaurant
                 if (!decimal.TryParse(Console.ReadLine(), out newPrice))
                 {
                     Console.WriteLine("Invalid input.");
+                    Thread.Sleep(2000);
                     return;
                 }
 
@@ -111,11 +119,13 @@ namespace Restaurant
 
                 JsonUtil.UploadToJson(meals, mealsPath);
                 Console.WriteLine("Price changed successfully.");
+                Thread.Sleep(2000);
                 AdminMenu.DisplayChangeFoodMenu(user);
             }
             else
             {
                 Console.WriteLine("Meal not found.");
+                Thread.Sleep(2000);
             }
         }
 
@@ -133,11 +143,13 @@ namespace Restaurant
 
                 JsonUtil.UploadToJson(meals, mealsPath);
                 Console.WriteLine("Course description changed successfully.");
+                Thread.Sleep(2000);
                 AdminMenu.DisplayChangeFoodMenu(user);
             }
             else
             {
                 Console.WriteLine("Meal not found.");
+                Thread.Sleep(2000);
             }
         }
     }
