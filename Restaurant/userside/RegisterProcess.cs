@@ -133,7 +133,7 @@ public class RegisterProcess{
         }else{
             Login.IsLoggedIn = true;
             Login.LoggedinUser = loggedUser.Email;
-            AdminMenu.DisplayAdminMenu();
+            AdminMenu.DisplayAdminMenu(user);
         }
 
     }

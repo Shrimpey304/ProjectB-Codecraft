@@ -7,22 +7,22 @@ public class AdminAccounts
 
     public User user;
 
-    public static void SeeAccountsA()
+    public static void SeeAccountsA(User user)
     {
         FormatJsonJ.FormatAccs();
         Console.WriteLine("Press enter to go back to change accounts menu");
         Console.ReadLine();
-        AdminMenu.DisplayChangeAccMenu(); 
+        AdminMenu.DisplayChangeAccMenu(user); 
     }
     
-    public static void AddAccountsA()
+    public static void AddAccountsA(User user)
     {
         RegisterProcess REG = new();
         Console.WriteLine("Going to register");
         REG.RegisterMail(user);
     }
 
-    public static void RemoveAccountsA()
+    public static void RemoveAccountsA(User user)
     {
         FormatJsonJ.FormatAccs();
 
@@ -37,7 +37,7 @@ public class AdminAccounts
             accounts.Remove(userToRemove);
             JsonUtil.UploadToJson(accounts, accountPath);
             Console.WriteLine("Account removed.");
-            AdminMenu.DisplayChangeAccMenu();
+            AdminMenu.DisplayChangeAccMenu(user);
         }
         else
         {

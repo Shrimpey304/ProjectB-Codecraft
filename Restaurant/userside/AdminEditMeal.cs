@@ -4,9 +4,9 @@ namespace Restaurant
     {
         private static string mealsPath = @".\dataStorage\Meals.json";
 
-        public static void ChangeCourseType()
+        public static void ChangeCourseType(User user)
         {
-            AdminFood.SeeMeals();
+            AdminFood.SeeMeals(user);
 
             Console.WriteLine("Enter the ID of the meal you want to change:");
             int mealID;
@@ -33,7 +33,7 @@ namespace Restaurant
 
                 JsonUtil.UploadToJson(meals, mealsPath);
                 Console.WriteLine("Course type changed successfully.");
-                AdminMenu.DisplayChangeFoodMenu();
+                AdminMenu.DisplayChangeFoodMenu(user);
             }
             else
             {
@@ -41,9 +41,9 @@ namespace Restaurant
             }
         }
 
-        public static void ChangeMealType()
+        public static void ChangeMealType(User user)
         {
-            AdminFood.SeeMeals();
+            AdminFood.SeeMeals(user);
 
             Console.WriteLine("Enter the ID of the meal you want to change:");
             int mealID;
@@ -65,7 +65,7 @@ namespace Restaurant
 
                 JsonUtil.UploadToJson(meals, mealsPath);
                 Console.WriteLine("Meal type changed successfully.");
-                AdminMenu.DisplayChangeFoodMenu();
+                AdminMenu.DisplayChangeFoodMenu(user);
             }
             else
             {
@@ -73,9 +73,9 @@ namespace Restaurant
             }
         }
 
-        public static void ChangeMealName()
+        public static void ChangeMealName(User user)
         {
-            AdminFood.SeeMeals();
+            AdminFood.SeeMeals(user);
 
             Console.WriteLine("Enter the ID of the meal you want to change:");
             int mealID;
@@ -97,7 +97,7 @@ namespace Restaurant
 
                 JsonUtil.UploadToJson(meals, mealsPath);
                 Console.WriteLine("Meal name changed successfully.");
-                AdminMenu.DisplayChangeFoodMenu();
+                AdminMenu.DisplayChangeFoodMenu(user);
             }
             else
             {
@@ -105,9 +105,9 @@ namespace Restaurant
             }
         }
 
-        public static void ChangePrice()
+        public static void ChangePrice(User user)
         {
-            AdminFood.SeeMeals();
+            AdminFood.SeeMeals(user);
 
             Console.WriteLine("Enter the ID of the meal you want to change:");
             int mealID;
@@ -134,7 +134,7 @@ namespace Restaurant
 
                 JsonUtil.UploadToJson(meals, mealsPath);
                 Console.WriteLine("Price changed successfully.");
-                AdminMenu.DisplayChangeFoodMenu();
+                AdminMenu.DisplayChangeFoodMenu(user);
             }
             else
             {
@@ -142,9 +142,9 @@ namespace Restaurant
             }
         }
 
-        public static void ChangeCourseDescription()
+        public static void ChangeCourseDescription(User user)
         {
-            AdminFood.SeeMeals();
+            AdminFood.SeeMeals(user);
 
             Console.WriteLine("Enter the ID of the meal you want to change:");
             int mealID;
@@ -166,7 +166,7 @@ namespace Restaurant
 
                 JsonUtil.UploadToJson(meals, mealsPath);
                 Console.WriteLine("Course description changed successfully.");
-                AdminMenu.DisplayChangeFoodMenu();
+                AdminMenu.DisplayChangeFoodMenu(user);
             }
             else
             {
