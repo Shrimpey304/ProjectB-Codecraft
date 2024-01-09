@@ -212,11 +212,11 @@ public class AdminMenu
     public static void DisplayAdminMeal(User user)
     {
         List<string> options = new(){
-            "See dishes",
-            "Add dish",
-            "Remove dish",
-            "Change dish",
-            "Remove all dishes",
+            "See meals",
+            "Add meal",
+            "Remove meal",
+            "Change meal",
+            "Remove all meals",
             "Go back to change food menu"
         };
         
@@ -224,19 +224,19 @@ public class AdminMenu
         switch (selectedOption)
         {
             case 0:
-                AdminReservations.SeeReservationsA(user);
+                AdminFood.SeeMeals(user);
                 break;
             case 1: 
-                DisplayAdminMenu(user);
+                AdminFood.AddMealA(user);
                 break;
             case 2:
-                AdminReservations.RemovReservationA();
+                AdminFood.RemoveMealA(user);
                 break;
             case 3:
                 DisplayChangeMeal(user);
                 break;
             case 4:
-                DisplayAdminMenu(user);
+                DisplayChangeFoodMenu(user);
                 break;
             default:
                 throw new Exception("un-expected admin menu error");
@@ -246,34 +246,34 @@ public class AdminMenu
     public static void DisplayChangeMeal(User user)
     {
         List<string> options = new(){
-            "Change name of dish",
-            "Change type of dish",
-            "Change description of dish",
+            "Change name of meal",
+            "Change course type of meal",
+            "Change course description of dish",
             "Change price of dish",
-            "Change allergens of dish",
-            "Go back to admin dish menu"
+            "Change meal type of dish",
+            "Go back to admin meal menu"
         };
 
         int selectedOption = DisplayUtil.Display(options);
         switch (selectedOption)
         {
             case 0:
-                AdminEditDish.ChangeDishName(user);
+                AdminEditMeal.ChangeMealName(user);
                 break;
             case 1: 
-                AdminEditDish.ChangeDishType(user);
+                AdminEditMeal.ChangeCourseType(user);
                 break;
             case 2:
-                AdminEditDish.ChangeDishDescription(user);
+                AdminEditMeal.ChangeCourseDescription(user);
                 break;
             case 3:
-                 AdminEditDish.ChangeDishPrice(user);
+                 AdminEditMeal.ChangePrice(user);
                 break;
             case 4:
-                 AdminEditDish.ChangeDishAllergens(user);
+                 AdminEditMeal.ChangeMealType(user);
                 break;
             case 5:
-                DisplayAdminDish(user);
+                DisplayAdminMeal(user);
                 break;
             default:
                 throw new Exception("un-expected admin menu error");
