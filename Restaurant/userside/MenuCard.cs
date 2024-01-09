@@ -8,7 +8,7 @@ public class MenuCard : MasterDisplay
 {
     private static FoodManager manager = new();
     private RegisterProcess register = new();
-    public User user = new();
+    public User user;
     public Stack<Action> windowInstanceStack = new();
     private int toCheckOut;
     private bool isLoggedIn;

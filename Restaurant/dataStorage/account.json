@@ -36,7 +36,7 @@
     "Password": "Kimo1234!",
     "PhoneNumber": "0612345",
     "HasRervering": false,
-    "Admin": false
+    "Admin": true
   },
   {
     "tableHistory": {
@@ -312,7 +312,7 @@
   },
   {
     "tableHistory": {},
-    "Email": "Kimo.edelbroek@hoi.mail",
+    "Email": "Kimo.edelbroek@doei.mail",
     "Password": "ABCdef123!",
     "PhoneNumber": "1234567890",
     "HasRervering": false,
@@ -329,7 +329,7 @@
     },
     "Email": "Kimo.edelbroek@hoi.mail",
     "Password": "ABCdef123!",
-    "PhoneNumber": "1234567890",
+    "PhoneNumber": "09876543",
     "HasRervering": false,
     "Admin": false
   },

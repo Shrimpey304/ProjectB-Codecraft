@@ -9,25 +9,13 @@ public class User{
     public Dictionary<string, Table> tableHistory = new();
     public bool Admin { get; set; }
 
-    public void ChangeEmail(string newEmail)
-        {
-            Email = newEmail;
-        }
-
-    public void ChangePassword(string newPassword)
-        {
-            Email = newPassword;
-        }
-
-    public void ChangePhonenumber(string newPhoneNumber)
-        {
-            PhoneNumber = newPhoneNumber;
-        }
-
-    public void ChangeAdminstatus(bool newAdminStatus)
-        {
-            Admin = newAdminStatus;
-        }
+    public User(string newEmail, string newPassword, string newPhoneNumber, bool newAdminStatus)
+    {
+        Email = newEmail;
+        Password = newPassword;
+        PhoneNumber = newPhoneNumber;
+        Admin = newAdminStatus;
+    }
 
     public override int GetHashCode()
     {
@@ -39,5 +27,6 @@ public class User{
         return GetHashCode() == obj.GetHashCode();
     }
 }
+
 
 

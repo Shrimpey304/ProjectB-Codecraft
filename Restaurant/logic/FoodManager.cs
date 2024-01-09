@@ -6,9 +6,11 @@ public class FoodManager
 {
     public List<Dish> Dishes { get; set; }
     public List<Meals> Meals { get; set; }
+    public List<Wine> Wines { get; set; }
+    public List<Dessert> Desserts { get; set; }
     public List<IFoodItems> Cart = new();
     public User? User { get; set; }
-    private readonly string[] fileNames = { @"C:dataStorage\Dishes.json", @"C:dataStorage\Meals.json" };
+    private readonly string[] fileNames = { @"C:dataStorage\Dishes.json", @"C:dataStorage\Meals.json", @"C:dataStorage\Wines.json", @"C:dataStorage\Desserts.json"  };
 
     public FoodManager()
     {
@@ -40,13 +42,37 @@ public class FoodManager
         return false;
     }
 
+    public bool AddWine(int id, decimal price, double alcoholPercentage, string wineType, string wineName, string description)
+    {
+        if (!Wines.Exists(item => item.ID == id))
+        {
+            Wine wine = new(id, price, alcoholPercentage, wineType, wineName, description);
+            Wines.Add(wine);
+            JsonUtil.UploadToJson(Wines, fileNames[2]);
+            return true;
+        }
+        return false;
+    }
+
+    public bool AddDessert(int id, int desserttypeid, string name, string description, decimal price, string allergens)
+    {
+        if (!Desserts.Exists(item => item.ID == id))
+        {
+            Dessert dessert = new(id, desserttypeid, name, description, price, allergens);
+            Desserts.Add(dessert);
+            JsonUtil.UploadToJson(Desserts, fileNames[3]);
+            return true;
+        }
+        return false;
+    }
+
     public bool RemoveDish(int id)
     {
         if (Dishes.Exists(item => item.ID == id))
         {
             Dish dish = Dishes.Find(item => item.ID == id)!;
             Dishes.Remove(dish);
-            JsonUtil.UploadToJson(Dishes, @"C:dataStorage\Dishes.json");
+            JsonUtil.UploadToJson(Dishes, fileNames[0]);
             return true;
         }
         return false;
@@ -58,7 +84,31 @@ public class FoodManager
         {
             Meals meal = Meals.Find(item => item.ID == id)!;
             Meals.Remove(meal);
-            JsonUtil.UploadToJson(Meals, @"C:dataStorage\Meals.json");
+            JsonUtil.UploadToJson(Meals, fileNames[1]);
+            return true;
+        }
+        return false;
+    }
+
+    public bool RemoveWine(int id)
+    {
+        if (Wines.Exists(item => item.ID == id))
+        {
+            Wine wine = Wines.Find(item => item.ID == id)!;
+            Wines.Remove(wine);
+            JsonUtil.UploadToJson(Wines, fileNames[2]);
+            return true;
+        }
+        return false;
+    }
+
+    public bool RemoveDessert(int id)
+    {
+        if (Desserts.Exists(item => item.ID == id))
+        {
+            Dessert dessert = Desserts.Find(item => item.ID == id)!;
+            Desserts.Remove(dessert);
+            JsonUtil.UploadToJson(Desserts, fileNames[3]);
             return true;
         }
         return false;

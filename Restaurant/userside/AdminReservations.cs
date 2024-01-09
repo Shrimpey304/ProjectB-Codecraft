@@ -1,25 +1,56 @@
-// namespace Restaurant;
+namespace Restaurant;
 
-// public class AdminReservations
-// {
-//     private static string reservationPath = @".\dataStorage\Reservations.json";
-//     public static void SeeReservationsA()
-//     {
-//         Console.WriteLine("Showing all reservations...");
-//         string json = File.ReadAllText(reservationPath);
-//         Console.WriteLine(json);
-//     }
-//     /// <summary>
-//     /// make resv change in makeresrevation later
-//     /// </summary>
-//     public static void RemovReservationA()
-//     {
-//         Console.WriteLine("test...");
-//     }
+public class AdminReservations
+{
+    private static string reservationPath = @".\dataStorage\Reservations.json";
+        
+    public static void FormatReservations()
+    {
+        List<Reservations> reservations = JsonUtil.ReadFromJson<Reservations>(reservationPath);
 
-//     public static void ChangeReservationA()
-//     {
-//         Console.WriteLine("test...");
-//     }
+        Console.WriteLine(" ");
+        Console.WriteLine("Reservations:");
+        Console.WriteLine("--------------");
 
-// }
+        foreach (var reservation in reservations)
+        {
+            foreach (var timeSlot in reservation.TimeSlotList)
+            {
+                foreach (var slot in timeSlot.Value)
+                {
+                    
+                    Console.WriteLine($"Reservation date: {slot.reservationDate}");
+                    Console.WriteLine($"Reservation Time: {slot.ReservationTime}");
+                    Console.WriteLine($"Position: {slot.Position}");
+                    Console.WriteLine($"Type: {slot.Type}");
+                    Console.WriteLine("--------------");
+                }
+            }
+        }
+    }
+
+    public static void SeeReservationsA()
+    {
+        FormatReservations();
+        Console.WriteLine("Press enter to go back to change reservation menu");
+        Console.ReadLine();
+        AdminMenu.DisplayChangeResvMenu(); 
+    }
+
+
+
+
+    /// <summary>
+    /// make resv change in makeresrevation later
+    /// </summary>
+    public static void RemovReservationA()
+    {
+        Console.WriteLine("test...");
+    }
+
+    public static void ChangeReservationA()
+    {
+        Console.WriteLine("test...");
+    }
+
+}

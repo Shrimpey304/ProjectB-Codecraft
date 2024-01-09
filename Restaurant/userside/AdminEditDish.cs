@@ -1,172 +1,122 @@
-// namespace Restaurant;
+namespace Restaurant;
 
-// public class AdminEditDish
-// {
-//     private static string dishPath = @".\dataStorage\Dishes.json";
-    
+public class AdminEditDish
+{
+    private static string dishPath = @".\dataStorage\Dishes.json";
+    private static List<Dish> dishes = JsonUtil.ReadFromJson<Dish>(dishPath);
 
-//     public static void ChangeDishName()
-//     {
-//         AdminFood.SeeDishes();
+    private static Dish GetDishById()
+    {
+        Console.WriteLine("Enter the ID of the dish you want to change:");
+        int dishID;
+        if (!int.TryParse(Console.ReadLine(), out dishID))
+        {
+            Console.WriteLine("Invalid input");
+            return null;
+        }
 
-//         Console.WriteLine("Enter the ID of the dish you want to change:");
-//         int dishID;
-//         if (!int.TryParse(Console.ReadLine(), out dishID))
-//         {
-//             Console.WriteLine("Invalid input");
-//             return;
-//         }
+        Dish dishToChange = dishes.FirstOrDefault(d => d.ID == dishID);
 
-//         List<Dish> dishes = JsonUtil.ReadFromJson<Dish>(dishPath)!;
-//         Dish dishToChange = dishes.FirstOrDefault(d => d.ID == dishID)!;
+        if (dishToChange == null)
+        {
+            Console.WriteLine("Dish not found.");
+        }
 
-//         if (dishToChange != null)
-//         {
-//             Console.WriteLine("Enter new dish name:");
-//             string newDishName = Console.ReadLine()!;
+        return dishToChange;
+    }
 
-//             dishToChange.DishName = newDishName;
+    public static void ChangeDishName()
+    {
+        FormatJsonJ.FormatDishes();
+        Dish dishToChange = GetDishById();
 
-//             JsonUtil.UploadToJson(dishes, dishPath);
-//             Console.WriteLine("Dish name changed successfully.");
-//             AdminMenu.DisplayChangeFoodMenu();
-//         }
-//         else
-//         {
-//             Console.WriteLine("Dish not found.");
-//         }
-//     }
+        if (dishToChange != null)
+        {
+            Console.WriteLine("Enter new dish name:");
+            string newDishName = Console.ReadLine();
 
-//     public static void ChangeDescription()
-//     {
-//         AdminFood.SeeDishes();
+             dishToChange.DishName = newDishName;
 
-//         Console.WriteLine("Enter the ID of the dish you want to change:");
-//         int dishID;
-//         if (!int.TryParse(Console.ReadLine(), out dishID))
-//         {
-//             Console.WriteLine("Invalid input");
-//             return;
-//         }
+            JsonUtil.UploadToJson(dishes, dishPath);
+            Console.WriteLine("Dish name changed successfully.");
+            AdminMenu.DisplayChangeFoodMenu();
+        }
+    }
 
-//         List<Dish> dishes = JsonUtil.ReadFromJson<Dish>(dishPath)!;
-//         Dish dishToChange = dishes.FirstOrDefault(d => d.ID == dishID)!;
+    public static void ChangeDishDescription()
+    {
+        FormatJsonJ.FormatDishes();
+        Dish dishToChange = GetDishById();
 
-//         if (dishToChange != null)
-//         {
-//             Console.WriteLine("Enter new description:");
-//             string newDescription = Console.ReadLine()!;
+        if (dishToChange != null)
+        {
+            Console.WriteLine("Enter new description:");
+            string newDescription = Console.ReadLine();
 
-//             dishToChange.Description = newDescription;
+             dishToChange.Description = newDescription;
 
-//             JsonUtil.UploadToJson(dishes, dishPath);
-//             Console.WriteLine("Description changed successfully.");
-//             AdminMenu.DisplayChangeFoodMenu();
-//         }
-//         else
-//         {
-//             Console.WriteLine("Dish not found.");
-//         }
-//     }
+            JsonUtil.UploadToJson(dishes, dishPath);
+            Console.WriteLine("Description changed successfully.");
+            AdminMenu.DisplayChangeFoodMenu();
+        }    
+    }
 
-//     public static void ChangePrice()
-//     {
-//         AdminFood.SeeDishes();
+    public static void ChangeDishPrice()
+    {
+        FormatJsonJ.FormatDishes();
+        Dish dishToChange = GetDishById();
 
-//         Console.WriteLine("Enter the ID of the dish you want to change:");
-//         int dishID;
-//         if (!int.TryParse(Console.ReadLine(), out dishID))
-//         {
-//             Console.WriteLine("Invalid input.");
-//             return;
-//         }
+        if (dishToChange != null)
+        {
+            Console.WriteLine("Enter the new price for dish:");
+            decimal newPrice;
+            if (!decimal.TryParse(Console.ReadLine(), out newPrice))
+            {
+                Console.WriteLine("Invalid input.");
+                return;
+            }
 
-//         List<Dish> dishes = JsonUtil.ReadFromJson<Dish>(dishPath)!;
-//         Dish dishToChange = dishes.FirstOrDefault(d => d.ID == dishID)!;
+             dishToChange.Price = newPrice;
 
-//         if (dishToChange != null)
-//         {
-//             Console.WriteLine("Enter the new price for dish");
-//             decimal newPrice;
-//             if (!decimal.TryParse(Console.ReadLine(), out newPrice))
-//             {
-//                 Console.WriteLine("Invalid input.");
-//                 return;
-//             }
+            JsonUtil.UploadToJson(dishes, dishPath);
+            Console.WriteLine("Price changed successfully.");
+            AdminMenu.DisplayChangeFoodMenu();
+        }
+    }
 
-//             dishToChange.Price = newPrice;
+    public static void ChangeDishAllergens()
+    {
+        FormatJsonJ.FormatDishes();
+        Dish dishToChange = GetDishById();
 
-//             JsonUtil.UploadToJson(dishes, dishPath);
-//             Console.WriteLine("Price changed successfully.");
-//             AdminMenu.DisplayChangeFoodMenu();
-//         }
-//         else
-//         {
-//             Console.WriteLine("Dish not found.");
-//         }
-//     }
+        if (dishToChange != null)
+        {
+            Console.WriteLine("Enter the new allergens:");
+            string newAllergens = Console.ReadLine();
 
-//     public static void ChangeAllergens()
-//     {
-//         AdminFood.SeeDishes();
+            dishToChange.Allergens = newAllergens;
+            
+            JsonUtil.UploadToJson(dishes, dishPath);
+            Console.WriteLine("Allergens changed successfully.");
+            AdminMenu.DisplayChangeFoodMenu();
+        }
+    }
 
-//         Console.WriteLine("Enter the ID of the dish you want to change:");
-//         int dishID;
-//         if (!int.TryParse(Console.ReadLine(), out dishID))
-//         {
-//             Console.WriteLine("Invalid input.");
-//             return;
-//         }
+    public static void ChangeDishType()
+    {
+        FormatJsonJ.FormatDishes();
+        Dish dishToChange = GetDishById();
 
-//         List<Dish> dishes = JsonUtil.ReadFromJson<Dish>(dishPath)!;
-//         Dish dishToChange = dishes.FirstOrDefault(d => d.ID == dishID)!;
-
-//         if (dishToChange != null)
-//         {
-//             Console.WriteLine("Enter the new allergens");
-//             string newAllergens = Console.ReadLine()!;
-
-//             dishToChange.Allergens = newAllergens;
-
-//             JsonUtil.UploadToJson(dishes, dishPath);
-//             Console.WriteLine("Allergens changed successfully.");
-//             AdminMenu.DisplayChangeFoodMenu();
-//         }
-//         else
-//         {
-//             Console.WriteLine("Dish not found.");
-//         }
-//     }
-
-//     public static void ChangeDishType()
-//     {
-//         AdminFood.SeeDishes();
-
-//         Console.WriteLine("Enter the ID of the dish you want to change:");
-//         int dishID;
-//         if (!int.TryParse(Console.ReadLine(), out dishID))
-//         {
-//             Console.WriteLine("Invalid input");
-//             return;
-//         }
-
-//         List<Dish> dishes = JsonUtil.ReadFromJson<Dish>(dishPath)!;
-//         Dish dishToChange = dishes.FirstOrDefault(d => d.ID == dishID)!;
-
-//         if (dishToChange != null)
-//         {
-//             Console.WriteLine("Enter the new dish type for dish");
-//             string newDishType = Console.ReadLine()!;
+        if (dishToChange != null)
+        {
+            Console.WriteLine("Enter the new dish type for dish:");
+            string newDishType = Console.ReadLine();
 
 //             dishToChange.DishType = newDishType;
 
-//             JsonUtil.UploadToJson(dishes, dishPath);
-//             Console.WriteLine("Dish type changed successfully.");
-//             AdminMenu.DisplayChangeFoodMenu();
-//         }
-//         else
-//         {
-//             Console.WriteLine("Dish not found.");
-//         }
-//     }
-// }
+            JsonUtil.UploadToJson(dishes, dishPath);
+            Console.WriteLine("Dish type changed successfully.");
+            AdminMenu.DisplayChangeFoodMenu();
+        }
+    }
+}
