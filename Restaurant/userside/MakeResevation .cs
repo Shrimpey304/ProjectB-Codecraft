@@ -118,7 +118,7 @@ public class MakeReservation : MasterDisplay
             {
                 System.Console.WriteLine(item.GetString());
             }
-            System.Console.WriteLine($"Your Total with tip: {totalWithTip:F2}\nPress ENTER to go back to home menu.");
+            System.Console.WriteLine($"Your Total (with tip): {totalWithTip:F2}\nPress ENTER to go back to home menu.");
             key = Console.ReadKey(false);
         } while (key.Key != ConsoleKey.Enter);
         if(ingelogdmenu.user is null){throw new Exception("user is null when checkout..4");}
