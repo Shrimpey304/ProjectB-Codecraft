@@ -23,7 +23,7 @@ public class Ingelogdmenu
         switch (selectedOption)
         {
             case 0:
-                menuCard.windowInstanceStack.Push(DisplayIngelogdMenu);
+                menuCard.windowInstanceStack.Add(DisplayIngelogdMenu);
                 menuCard.user = user;
                 menuCard.FromMain(false);
                 break;

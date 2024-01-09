@@ -38,6 +38,7 @@ public class TableManager
     private const string timeFormate = "HH:mm tt";
     private const string tablesFileName = @"C:dataStorage\Tables.json";
     private const string reseravtionFileName = @"C:dataStorage\Reservations.json";
+    private const string userFileName = @".\dataStorage\account.json";
 
     public TableManager(User? user)
     {
@@ -63,7 +64,7 @@ public class TableManager
             tables.Add(table);
             ReservationCode = GenerateCode();
             User.tableHistory[ReservationCode] = table;
-            JsonUtil.UpdateSingleObject<User>(User, @".\dataStorage\account.json");
+            JsonUtil.UpdateSingleObject<User>(User, userFileName);
             JsonUtil.UploadToJson<Reservations>(ReservedTable, filename);
             return ReservedTable;
         }
@@ -74,14 +75,23 @@ public class TableManager
         ReservationCode = GenerateCode();
         
         User.tableHistory[ReservationCode] = table;
-        JsonUtil.UpdateSingleObject<User>(User, @".\dataStorage\account.json");
+        JsonUtil.UpdateSingleObject<User>(User,userFileName);
         JsonUtil.UploadToJson<Reservations>(ReservedTable, filename);
         return ReservedTable;
     }
 
-    public void RemoveReservation(DateOnly date, int position, string filename = reseravtionFileName)
-    {
-        
+    public List<string> GetReservationCodes(){
+        return User.tableHistory.Keys.ToList();
+    }
+
+    public void RemoveReservation(string reservationcode){
+        Table table = User.tableHistory[reservationcode];
+        Reservations reservation = GetReservation(table.reservationDate);
+        List<Table> timeslot = reservation.TimeSlotList[table.ReservationTime];
+        timeslot.Remove(table);
+        User.tableHistory.Remove(reservationcode);
+        JsonUtil.UpdateSingleObject<User>(User, userFileName);
+        JsonUtil.UpdateSingleObject<Reservations>(reservation, reseravtionFileName);
     }
 
     public bool AddTable(int position, int type)
@@ -224,10 +234,20 @@ public class TableManager
         return reservation;
     }
 
-    public void UpdateResevationsTablePosition(int currenttableposition, int newtableposition, List<Table> timeslot){
-        Table table = timeslot.Find(item => item.Position == currenttableposition);
+    public Reservations? GetReservation(DateOnly? date){
+        List<Reservations> reservations = JsonUtil.ReadFromJson<Reservations>(reseravtionFileName);
+        Reservations? reservation = reservations.Find(item => item.ReservationDate == date);
+        return reservation is null ? throw new Exception("obj not found") : reservation;
+    }
+
+    public List<Table> UpdateResevedTable(int currenttableinfo, int newtableinfo, List<Table> timeslot, bool seating=false){
+        Table table = timeslot.Find(item => item.Position == currenttableinfo);
         int tableIndex = timeslot.IndexOf(table);
-        timeslot[tableIndex].Position = newtableposition;
-        
+        if (seating){
+            timeslot[tableIndex].Type = newtableinfo;
+            return timeslot;
+        }
+        timeslot[tableIndex].Position = newtableinfo;
+        return timeslot;
     }
 }
