@@ -22,6 +22,25 @@ public static class FoodItems_init_
         }
     }
 
+    public static List<Dessert> LoadDesserts(string fileName){
+        List<Dessert> desserts;
+        try
+        {
+            desserts = JsonUtil.ReadFromJson<Dessert>(fileName);
+            if (desserts is null)
+            {
+                throw new NullReferenceException();
+            }
+            return desserts;
+        }
+        catch (NullReferenceException)
+        {
+            desserts = PopulateDesserts();
+            JsonUtil.UploadToJson<Dessert>(desserts, fileName);
+            return desserts;
+        }
+    }
+
     public static List<Meals> LoadMeals(string fileName)
     {
         List<Meals> meals;
@@ -39,6 +58,25 @@ public static class FoodItems_init_
             meals = PopulateMeals();
             JsonUtil.UploadToJson<Meals>(meals, fileName);
             return meals;
+        }
+    }
+
+    public static List<Wine> LoadWines(string fileName){
+         List<Wine> wines;
+        try
+        {
+            wines = JsonUtil.ReadFromJson<Wine>(fileName);
+            if (wines is null)
+            {
+                throw new NullReferenceException();
+            }
+            return wines;
+        }
+        catch (NullReferenceException)
+        {
+            wines = PopulateWine();
+            JsonUtil.UploadToJson<Wine>(wines, fileName);
+            return wines;
         }
     }
 

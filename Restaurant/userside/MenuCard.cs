@@ -75,7 +75,8 @@ public class MenuCard : MasterDisplay
     private void DishesOptions()
     {
         List<string> option1 = OptionString<Dish>(manager.Dishes);
-        int selectedOption = DisplayUtil.Display(option1);
+        string foodCart = GetCartString(manager.Cart);
+        int selectedOption = DisplayUtil.Display(option1, foodCart);
         if (selectedOption < (option1.Count - 1))
         {
             Menu(option1[selectedOption], true);
@@ -89,7 +90,8 @@ public class MenuCard : MasterDisplay
     private void CoursesOptions()
     {
         List<string> option1 = OptionString<Meals>(manager.Meals);
-        int selectedOption = DisplayUtil.Display(option1);
+        string foodCart = GetCartString(manager.Cart);
+        int selectedOption = DisplayUtil.Display(option1, foodCart);
         if (selectedOption < (option1.Count - 1))
         {
             Menu(option1[selectedOption]);
@@ -144,6 +146,7 @@ public class MenuCard : MasterDisplay
                     Console.ResetColor();
                 }
                 manager.AddToCart(dishes[selectedOption1]);
+                foodCart = GetCartString(manager.Cart);
                 List<string> options = new(){"Go back", "Go to checkout"};
                 int selected = DisplayUtil.Display(options, foodCart);
                 if (selected == 0){
@@ -184,7 +187,7 @@ public class MenuCard : MasterDisplay
                 }
                 System.Console.WriteLine("Item added to cart.");
                 manager.AddToCart(meals[selectedOption]);
-
+                foodCart = GetCartString(manager.Cart);
                 List<string> options = new(){"Go back", "Go to checkout"};
                 int selected = DisplayUtil.Display(options, foodCart);
                 if (selected == 0){
@@ -214,7 +217,7 @@ public class MenuCard : MasterDisplay
             }
             return string.Join("\n", outCart);
         }
-        return "Your cart is empty";
+        return "your cart is empty";
     }
 
     private static List<string> OptionString<T>(List<T> foodItems, bool justname = true) where T : class

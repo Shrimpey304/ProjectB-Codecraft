@@ -10,12 +10,17 @@ public class FoodManager
     public List<Dessert> Desserts { get; set; }
     public List<IFoodItems> Cart = new();
     public User? User { get; set; }
-    private readonly string[] fileNames = { @"C:dataStorage\Dishes.json", @"C:dataStorage\Meals.json", @"C:dataStorage\Wines.json", @"C:dataStorage\Desserts.json"  };
+    private const string dishesFileName = @"C:dataStorage\Dishes.json";
+    private const string dessertFileName = @"C:dataStorage\Desserts.json";
+    private const string mealsFileName = @"C:dataStorage\Meals.json";
+    private const string wineFileName = @"C:dataStorage\Wines.json";
 
     public FoodManager()
     {
-        Dishes = FoodItems_init_.LoadDishes(fileNames[0]);
-        Meals = FoodItems_init_.LoadMeals(fileNames[1]);
+        Dishes = FoodItems_init_.LoadDishes(dishesFileName);
+        Desserts = FoodItems_init_.LoadDesserts(dessertFileName);
+        Meals = FoodItems_init_.LoadMeals(mealsFileName);
+        Wines = FoodItems_init_.LoadWines(wineFileName);
     }
 
     public bool AddDish(int id, string dishname, string name, string description, decimal price, string allergens)
@@ -24,7 +29,7 @@ public class FoodManager
         {
             Dish dish = new(id, name, description, price, allergens);
             Dishes.Add(dish);
-            JsonUtil.UploadToJson(Dishes, fileNames[0]);
+            JsonUtil.UploadToJson(Dishes, dishesFileName);
             return true;
         }
         return false;
@@ -36,7 +41,7 @@ public class FoodManager
         {
             Meals meal = new(id, coursetype, mealtype, mealname, price, coursedescription);
             Meals.Add(meal);
-            JsonUtil.UploadToJson(Meals, fileNames[1]);
+            JsonUtil.UploadToJson(Meals, mealsFileName);
             return true;
         }
         return false;
@@ -48,7 +53,7 @@ public class FoodManager
         {
             Wine wine = new(id, price, alcoholPercentage, wineType, wineName, description);
             Wines.Add(wine);
-            JsonUtil.UploadToJson(Wines, fileNames[2]);
+            JsonUtil.UploadToJson(Wines, wineFileName);
             return true;
         }
         return false;
@@ -60,7 +65,7 @@ public class FoodManager
         {
             Dessert dessert = new(id, desserttypeid, name, description, price, allergens);
             Desserts.Add(dessert);
-            JsonUtil.UploadToJson(Desserts, fileNames[3]);
+            JsonUtil.UploadToJson(Desserts, dessertFileName);
             return true;
         }
         return false;
@@ -72,7 +77,7 @@ public class FoodManager
         {
             Dish dish = Dishes.Find(item => item.ID == id)!;
             Dishes.Remove(dish);
-            JsonUtil.UploadToJson(Dishes, fileNames[0]);
+            JsonUtil.UploadToJson(Dishes, dishesFileName);
             return true;
         }
         return false;
@@ -84,7 +89,7 @@ public class FoodManager
         {
             Meals meal = Meals.Find(item => item.ID == id)!;
             Meals.Remove(meal);
-            JsonUtil.UploadToJson(Meals, fileNames[1]);
+            JsonUtil.UploadToJson(Meals, mealsFileName);
             return true;
         }
         return false;
@@ -96,7 +101,7 @@ public class FoodManager
         {
             Wine wine = Wines.Find(item => item.ID == id)!;
             Wines.Remove(wine);
-            JsonUtil.UploadToJson(Wines, fileNames[2]);
+            JsonUtil.UploadToJson(Wines, wineFileName);
             return true;
         }
         return false;
@@ -108,7 +113,7 @@ public class FoodManager
         {
             Dessert dessert = Desserts.Find(item => item.ID == id)!;
             Desserts.Remove(dessert);
-            JsonUtil.UploadToJson(Desserts, fileNames[3]);
+            JsonUtil.UploadToJson(Desserts, dessertFileName);
             return true;
         }
         return false;

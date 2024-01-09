@@ -21,8 +21,8 @@ public static class DisplayUtil
     {
         Console.Clear();
         Header.DisplayHeader();
-        //Console.WriteLine($"welcome {(foodcart is null ? $"{Login.getUser()}\nyour cart is empty" : $"{Login.getUser()}\n{foodcart}")}\u001B[35m");
         System.Console.WriteLine($"Welcome {Login.getUser()}\n");
+        Console.WriteLine($"{(foodcart is null ? "" : $"{foodcart}")}\u001B[35m");
         Console.CursorVisible = false;
         (int left, int top) = Console.GetCursorPosition();
         int selectedOption = 0;
