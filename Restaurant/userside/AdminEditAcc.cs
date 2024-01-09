@@ -6,7 +6,7 @@ public class AdminEditAccs
     private static List<User> accounts = JsonUtil.ReadFromJson<User>(accountPath)!;
     public static Registration registration = new();
 
-    private static User GetAccByEmail()
+    private static User GetAccByEmail(User user)
     {
         Console.WriteLine("Enter the email of the account you want to change:");
         string currentEmail = Console.ReadLine()!;
@@ -16,6 +16,8 @@ public class AdminEditAccs
         if (userToChange == null)
         {
             Console.WriteLine("Account not found.");
+            Thread.Sleep(2);
+            AdminMenu.DisplayAdminMenu(user);
         }
 
         return userToChange;
@@ -24,7 +26,7 @@ public class AdminEditAccs
     public static void ChangeEmail(User user)
     {
         FormatJsonJ.FormatAccs();;
-        User userToChange = GetAccByEmail();
+        User userToChange = GetAccByEmail(user);
         
         if (userToChange != null)
         {
@@ -55,7 +57,7 @@ public class AdminEditAccs
     public static void ChangePassword(User user)
     {
         FormatJsonJ.FormatAccs();
-        User userToChange = GetAccByEmail();
+        User userToChange = GetAccByEmail(user);
 
         if (userToChange != null)
         {
@@ -76,7 +78,7 @@ public class AdminEditAccs
     public static void ChangePhonenumber(User user)
     {
         FormatJsonJ.FormatAccs();
-        User userToChange = GetAccByEmail();
+        User userToChange = GetAccByEmail(user);
 
         if (userToChange != null)
         {
@@ -94,7 +96,7 @@ public class AdminEditAccs
     public static void ChangeAdminstatus(User user)
     {
         FormatJsonJ.FormatAccs(); 
-        User userToChange = GetAccByEmail();
+        User userToChange = GetAccByEmail(user);
         
         if (userToChange != null)
         {

@@ -28,7 +28,7 @@
     "CourseType": 3,
     "MealType": "Exotic course",
     "MealName": "Exotic course",
-    "Price": 65.99,
+    "Price": 60.0,
     "CourseDescription": "This meal contains 2 diffirent dishes from thailand and argentina"
   }
 ]

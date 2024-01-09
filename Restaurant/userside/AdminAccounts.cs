@@ -42,6 +42,8 @@ public class AdminAccounts
         else
         {
             Console.WriteLine("Account not found.");
+            Thread.Sleep(2000);
+            AdminMenu.DisplayAdminMenu(user);
         }
     }
 }
