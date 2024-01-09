@@ -431,5 +431,13 @@
     "PhoneNumber": "1234567",
     "HasRervering": false,
     "Admin": true
+  },
+  {
+    "tableHistory": {},
+    "Email": "z@z.z",
+    "Password": "ZZZzzz123!",
+    "PhoneNumber": "9184765",
+    "HasRervering": false,
+    "Admin": true
   }
 ]

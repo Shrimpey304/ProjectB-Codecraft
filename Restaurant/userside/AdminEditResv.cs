@@ -10,7 +10,7 @@
 //         TableManager manager = new();
 //         Console.WriteLine("Enter the reservation date (YYYY-MM-DD):");
 //         string resvDateString = Console.ReadLine();
-//         Reservations reservations = 
+//         Reservations reservations =
 
 //         if (DateOnly.TryParse(resvDateString, out DateOnly resvDate))
 //         {
