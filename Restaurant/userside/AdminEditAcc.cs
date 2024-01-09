@@ -1,138 +1,114 @@
-// namespace Restaurant;
+namespace Restaurant;
 
-// public class AdminEditAccs
-// {
-//     private static string accountPath = @".\dataStorage\account.json";
-//     public static Registration registration = new();
-//     public static void ChangeEmail(){
-//     AdminAccounts.SeeAccountsA();
+public class AdminEditAccs
+{
+    private static string accountPath = @".\dataStorage\account.json";
+    private static List<User> accounts = JsonUtil.ReadFromJson<User>(accountPath)!;
+    public static Registration registration = new();
 
-//     Console.WriteLine("Enter the email of the account that you want to change:");
-//     string currentEmail = Console.ReadLine()!;
+    private static User GetAccByEmail()
+    {
+        Console.WriteLine("Enter the email of the account you want to change:");
+        string currentEmail = Console.ReadLine()!;
 
-//     List<User> accounts = JsonUtil.ReadFromJson<User>(accountPath)!;
-//     User userToChange = accounts.FirstOrDefault(acc => acc.Email == currentEmail)!;
+        User userToChange = accounts.FirstOrDefault(acc => acc.Email == currentEmail)!;
 
-//     if (userToChange != null)
-//     {
-//         Console.WriteLine("Enter new email:");
-//         string newEmail = Console.ReadLine()!;
+        if (userToChange == null)
+        {
+            Console.WriteLine("Account not found.");
+        }
 
-//         if (!Registration.CheckEmailRegEx(newEmail))
-//         {
-//             Console.WriteLine("Invalid email format.");
-//             return;
-//         }
+        return userToChange;
+    }
+    
+    public static void ChangeEmail()
+    {
+        FormatJsonJ.FormatAccs();;
+        User userToChange = GetAccByEmail();
+        
+        if (userToChange != null)
+        {
+            Console.WriteLine("Enter new email:");
+            string newEmail = Console.ReadLine()!;
 
-//         if (registration.CheckEmailTaken(newEmail))
-//         {
-//             Console.WriteLine("Email is already taken.");
-//             return;
-//         }
+            if (!Registration.CheckEmailRegEx(newEmail))
+            {
+                Console.WriteLine("Invalid email format.");
+                return;
+            }
 
-//         userToChange.ChangeEmail(newEmail);
+            if (registration.CheckEmailTaken(newEmail))
+            {
+                Console.WriteLine("Email is already taken.");
+                return;
+            }
 
-//         JsonUtil.UploadToJson(accounts, accountPath);
-//         Console.WriteLine("Email changed successfully.");
-//         AdminMenu.DisplayChangeAccMenu();
-//     }
-//     else
-//     {
-//         Console.WriteLine("Account not found.");
-//     }
-// }
+        userToChange.Email = newEmail;
 
-//     public static void ChangePassword()
-// {
-//     AdminAccounts.SeeAccountsA();
+        JsonUtil.UploadToJson(accounts, accountPath);
+        Console.WriteLine("Email changed successfully.");
+        AdminMenu.DisplayChangeAccMenu();
+        }
+    }
+    
 
-//     Console.WriteLine("Enter the email of the account that you want to cahnge:");
-//     string userEmail = Console.ReadLine();
+    public static void ChangePassword()
+    {
+        FormatJsonJ.FormatAccs();
+        User userToChange = GetAccByEmail();
 
-//     List<User> accounts = JsonUtil.ReadFromJson<User>(accountPath);
-//     User userToChange = accounts.FirstOrDefault(acc => acc.Email == userEmail);
+        if (userToChange != null)
+        {
+            Console.WriteLine("Enter new password:");
+            string newPassword = Console.ReadLine();
 
-//     if (userToChange != null)
-//     {
-//         Console.WriteLine($"Enter the new password for {userEmail}:");
-//         string newPassword = Console.ReadLine();
+            if (Registration.CheckPasswordFormat(newPassword))
+            {
+                userToChange.Password = newPassword;
 
-//         if (Registration.CheckPasswordFormat(newPassword))
-//         {
-//             // Change the password using the method from the User class
-//             userToChange.ChangePassword(newPassword);
+                JsonUtil.UploadToJson(accounts, accountPath);
+                Console.WriteLine("Password changed successfully.");
+                AdminMenu.DisplayChangeAccMenu();
+            }
+        }
+    }
 
-//             JsonUtil.UploadToJson(accounts, accountPath);
-//             Console.WriteLine("Password changed successfully.");
-//             AdminMenu.DisplayChangeAccMenu();
-//         }
-//         else
-//         {
-//             Console.WriteLine("Invalid password");
-//         }
-//     }
-//     else
-//     {
-//         Console.WriteLine("Account not found.");
-//     }
-// }
+    public static void ChangePhonenumber()
+    {
+        FormatJsonJ.FormatAccs();
+        User userToChange = GetAccByEmail();
 
-//     public static void ChangePhonenumber()
-//     {
-//         AdminAccounts.SeeAccountsA(); 
+        if (userToChange != null)
+        {
+            Console.WriteLine("Enter new phonenumber:");
+            string newPhoneNumber = Console.ReadLine();
 
-//         Console.WriteLine("Enter the email of the account that you want to change:");
-//         string userEmail = Console.ReadLine();
+            userToChange.PhoneNumber = newPhoneNumber;
 
-//         List<User> accounts = JsonUtil.ReadFromJson<User>(accountPath);
-//         User userToChange = accounts.FirstOrDefault(acc => acc.Email == userEmail);
+            JsonUtil.UploadToJson(accounts, accountPath);
+            Console.WriteLine("Phonenumber changed successfully.");
+            AdminMenu.DisplayChangeAccMenu();
+        }
+    }
 
-//         if (userToChange != null)
-//         {
-//             Console.WriteLine($"Enter the new phonenumber for {userEmail}:");
-//             string newPhoneNumber = Console.ReadLine();
+    public static void ChangeAdminstatus()
+    {
+        FormatJsonJ.FormatAccs(); 
+        User userToChange = GetAccByEmail();
+        
+        if (userToChange != null)
+        {
+            Console.WriteLine("Enter Admin status (type true or else false)");
+            string input = Console.ReadLine().ToLower();
 
-//             // Change the phone number using the extension method
-//             userToChange.ChangePhonenumber(newPhoneNumber);
+             bool newAdminStatus = input == "true";
 
-//             JsonUtil.UploadToJson(accounts, accountPath);
-//             Console.WriteLine("Phonenumber changed successfully.");
-//             AdminMenu.DisplayChangeAccMenu();
-//         }
-//         else
-//         {
-//             Console.WriteLine("Account not found.");
-//         }
-//     }
+            userToChange.Admin = newAdminStatus;
 
-//     public static void ChangeAdminstatus()
-//     {
-//         AdminAccounts.SeeAccountsA(); 
-
-//         Console.WriteLine("Enter the email of the account that you want to change:");
-//         string userEmail = Console.ReadLine();
-
-//         List<User> accounts = JsonUtil.ReadFromJson<User>(accountPath);
-//         User userToChange = accounts.FirstOrDefault(acc => acc.Email == userEmail);
-
-//         if (userToChange != null)
-//         {
-//             Console.WriteLine("Enter Admin status (true or false");
-//             string input = Console.ReadLine().ToLower();
-
-//             bool newAdminStatus = input == "true";
-
-//             // Change the admin status using the method from the User class
-//             userToChange.ChangeAdminstatus(newAdminStatus);
-
-//             JsonUtil.UploadToJson(accounts, accountPath);
-//             Console.WriteLine("Admin status changed successfully.");
-//             AdminMenu.DisplayChangeAccMenu();
-//         }
-//         else
-//         {
-//         Console.WriteLine("Account not found.");
-//         }
-//     }
-// }
+            JsonUtil.UploadToJson(accounts, accountPath);
+            Console.WriteLine("Admin status changed successfully.");
+            AdminMenu.DisplayChangeAccMenu();
+        }
+    }
+}
 

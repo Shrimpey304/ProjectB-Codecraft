@@ -155,17 +155,14 @@ public class Registration{
         }
 
     }
-
-
     public User CreateAccount(string Email, string Password, string PhoneNumber, bool isAdmin){
 
-        string email = Email;
-        string password = Password;
-        string phonenumber = PhoneNumber;
-        bool adminStatus = isAdmin;
+        User newUser = new User(Email, Password, PhoneNumber, isAdmin);
 
-        var account = new User { Email = email, Password = password, PhoneNumber = phonenumber};
-        //JsonUtil.UploadToJson(acc, accountPath);
-        return account;
+        Accounts.Add(newUser);
+
+        JsonUtil.UploadToJson(Accounts, filePath);
+
+        return newUser;
     }
 }

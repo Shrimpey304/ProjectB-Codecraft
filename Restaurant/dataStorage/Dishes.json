@@ -1,7 +1,6 @@
 [
   {
     "ID": 1,
-    "DishType": "Chicken",
     "DishName": "chicken nuggets with fries",
     "Description": "Chicken nuggets and fries for the kids",
     "Price": 12.90,
@@ -9,7 +8,6 @@
   },
   {
     "ID": 2,
-    "DishType": "Fish",
     "DishName": "pangasius filet",
     "Description": "A pangasius filet with rice and a fish sauce",
     "Price": 13.50,
@@ -17,15 +15,13 @@
   },
   {
     "ID": 3,
-    "DishType": "Fish",
     "DishName": "Salmon shrimp",
-    "Description": "A nice dish with Salmon and Shrimp",
+    "Description": "A Salmon dish with Shrimp and tartar sauce on the side",
     "Price": 11.95,
     "Allergens": "Fish, shelfish"
   },
   {
     "ID": 4,
-    "DishType": "Steak",
     "DishName": "New york strip",
     "Description": "A delightfull new york strip with asparagus and fries",
     "Price": 12.85,
