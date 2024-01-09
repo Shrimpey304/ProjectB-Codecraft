@@ -16,7 +16,7 @@ public class AdminEditAccs
         if (userToChange == null)
         {
             Console.WriteLine("Account not found.");
-            Thread.Sleep(2);
+            Thread.Sleep(2000);
             AdminMenu.DisplayAdminMenu(user);
         }
 
@@ -36,12 +36,14 @@ public class AdminEditAccs
             if (!Registration.CheckEmailRegEx(newEmail))
             {
                 Console.WriteLine("Invalid email format.");
+                Thread.Sleep(2000);
                 return;
             }
 
             if (registration.CheckEmailTaken(newEmail))
             {
                 Console.WriteLine("Email is already taken.");
+                Thread.Sleep(2000);
                 return;
             }
 
@@ -49,6 +51,7 @@ public class AdminEditAccs
 
         JsonUtil.UploadToJson(accounts, accountPath);
         Console.WriteLine("Email changed successfully.");
+        Thread.Sleep(2000);
         AdminMenu.DisplayChangeAccMenu(user);
         }
     }
@@ -70,6 +73,7 @@ public class AdminEditAccs
 
                 JsonUtil.UploadToJson(accounts, accountPath);
                 Console.WriteLine("Password changed successfully.");
+                Thread.Sleep(2000);
                 AdminMenu.DisplayChangeAccMenu(user);
             }
         }
@@ -89,6 +93,7 @@ public class AdminEditAccs
 
             JsonUtil.UploadToJson(accounts, accountPath);
             Console.WriteLine("Phonenumber changed successfully.");
+            Thread.Sleep(2000);
             AdminMenu.DisplayChangeAccMenu(user);
         }
     }
@@ -109,6 +114,7 @@ public class AdminEditAccs
 
             JsonUtil.UploadToJson(accounts, accountPath);
             Console.WriteLine("Admin status changed successfully.");
+            Thread.Sleep(2000);
             AdminMenu.DisplayChangeAccMenu(user);
         }
     }

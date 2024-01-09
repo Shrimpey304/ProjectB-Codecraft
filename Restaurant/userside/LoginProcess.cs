@@ -30,7 +30,8 @@ public class LoginProcess
 
     public void LoginProcessPasswordView(string email)
     {
-
+        Console.Clear();
+        Header.DisplayHeader();
         Console.WriteLine($"\u001B[35m" + "\nPlease enter your password\n"); 
         Console.Write(">  ");
         string GivenPW = Registration.HashPassword();

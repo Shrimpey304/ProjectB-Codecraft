@@ -12,6 +12,7 @@ public class AdminEditWines
         if (!int.TryParse(Console.ReadLine(), out wineID))
         {
             Console.WriteLine("Invalid input");
+            Thread.Sleep(2000);
             return null;
         }
 
@@ -20,6 +21,7 @@ public class AdminEditWines
         if (wineToChange == null)
         {
             Console.WriteLine("Wine not found.");
+            Thread.Sleep(2000);
         }
 
         return wineToChange;
@@ -39,6 +41,7 @@ public class AdminEditWines
 
             JsonUtil.UploadToJson(wines, winesPath);
             Console.WriteLine("Wine type changed successfully.");
+            Thread.Sleep(2000);
             AdminMenu.DisplayChangeFoodMenu(user);
         }
     }
@@ -50,13 +53,14 @@ public class AdminEditWines
 
         if (wineToChange != null)
         {
-            Console.WriteLine("Enter new winet name:");
+            Console.WriteLine("Enter new wine name:");
             string newWineName = Console.ReadLine();
 
              wineToChange.WineName = newWineName;
 
             JsonUtil.UploadToJson(wines, winesPath);
             Console.WriteLine("Wine name changed successfully.");
+            Thread.Sleep(2000);
             AdminMenu.DisplayChangeFoodMenu(user);
         }
     }
@@ -75,6 +79,7 @@ public class AdminEditWines
 
             JsonUtil.UploadToJson(wines, winesPath);
             Console.WriteLine("Description changed successfully.");
+            Thread.Sleep(2000);
             AdminMenu.DisplayChangeFoodMenu(user);
         }    
     }
@@ -91,6 +96,7 @@ public class AdminEditWines
             if (!decimal.TryParse(Console.ReadLine(), out newPrice))
             {
                 Console.WriteLine("Invalid input.");
+                Thread.Sleep(2000);
                 return;
             }
 
@@ -98,6 +104,7 @@ public class AdminEditWines
 
             JsonUtil.UploadToJson(wines, winesPath);
             Console.WriteLine("Price changed successfully.");
+            Thread.Sleep(2000);
             AdminMenu.DisplayChangeFoodMenu(user);
         }
     }
@@ -116,6 +123,7 @@ public class AdminEditWines
             
             JsonUtil.UploadToJson(wines, winesPath);
             Console.WriteLine("AlcoholPercentage changed successfully.");
+            Thread.Sleep(2000);
             AdminMenu.DisplayChangeFoodMenu(user);
         }
     }

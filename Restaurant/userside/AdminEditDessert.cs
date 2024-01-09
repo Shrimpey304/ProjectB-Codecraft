@@ -12,6 +12,7 @@ public class AdminEditDessert
         if (!int.TryParse(Console.ReadLine(), out dessertID))
         {
             Console.WriteLine("Invalid input");
+            Thread.Sleep(2000);
             return null;
         }
 
@@ -20,6 +21,7 @@ public class AdminEditDessert
         if (dessertToChange == null)
         {
             Console.WriteLine("Dessert not found.");
+            Thread.Sleep(2000);
         }
 
         return dessertToChange;
@@ -39,6 +41,7 @@ public class AdminEditDessert
 
             JsonUtil.UploadToJson(desserts, dessertPath);
             Console.WriteLine("Dessert type changed successfully.");
+            Thread.Sleep(2000);
             AdminMenu.DisplayChangeFoodMenu(user);
         }
     }
@@ -57,6 +60,7 @@ public class AdminEditDessert
 
             JsonUtil.UploadToJson(desserts, dessertPath);
             Console.WriteLine("Dessert name changed successfully.");
+            Thread.Sleep(2000);
             AdminMenu.DisplayChangeFoodMenu(user);
         }
     }
@@ -75,6 +79,7 @@ public class AdminEditDessert
 
             JsonUtil.UploadToJson(desserts, dessertPath);
             Console.WriteLine("Description changed successfully.");
+            Thread.Sleep(2000);
             AdminMenu.DisplayChangeFoodMenu(user);
         }    
     }
@@ -91,6 +96,7 @@ public class AdminEditDessert
             if (!decimal.TryParse(Console.ReadLine(), out newPrice))
             {
                 Console.WriteLine("Invalid input.");
+                Thread.Sleep(2000);
                 return;
             }
 
@@ -98,6 +104,7 @@ public class AdminEditDessert
 
             JsonUtil.UploadToJson(desserts, dessertPath);
             Console.WriteLine("Price changed successfully.");
+            Thread.Sleep(2000);
             AdminMenu.DisplayChangeFoodMenu(user);
         }
     }
@@ -116,6 +123,7 @@ public class AdminEditDessert
             
             JsonUtil.UploadToJson(desserts, dessertPath);
             Console.WriteLine("Allergens changed successfully.");
+            Thread.Sleep(2000);
             AdminMenu.DisplayChangeFoodMenu(user);
         }
     }

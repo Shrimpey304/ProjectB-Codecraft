@@ -24,9 +24,9 @@ public class Dish : IFoodItems
     {
         if (itemType)
         {
-            return !incart ? $"{DishName}" :  $"{Price}\n {Description}\n Contains:{Allergens}\n   Allergens removed:{(RemovedA is not null ? RemovedA : "No allergens removed")}";
+            return !incart ? $"{DishName}" :  $"{Price}\n{Description}\nContains:{Allergens}\nAllergens removed:{(RemovedA is not null ? RemovedA : "No allergens removed")}\n------------";
         }
-        return $" {DishName}  {Price}\n\n   Description: {Description}\n\n   Contains:{Allergens}\n\n   Allergens removed:{(RemovedA is not null ? RemovedA : "No allergens removed")}";
+        return $" {DishName}  {Price}\nDescription: {Description}\nContains:{Allergens}\nAllergens removed:{(RemovedA is not null ? RemovedA : "No allergens removed")}\n------------";
     }
 
 }

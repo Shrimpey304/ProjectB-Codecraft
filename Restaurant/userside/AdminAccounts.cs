@@ -37,6 +37,7 @@ public class AdminAccounts
             accounts.Remove(userToRemove);
             JsonUtil.UploadToJson(accounts, accountPath);
             Console.WriteLine("Account removed.");
+            Thread.Sleep(2000);
             AdminMenu.DisplayChangeAccMenu(user);
         }
         else
