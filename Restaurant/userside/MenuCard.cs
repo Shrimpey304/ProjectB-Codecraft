@@ -43,6 +43,7 @@ public class MenuCard : MasterDisplay
             "Full-Course Meal",
             "Individual Dishes",
             "See Wine Options",
+            "Desserts",
             "Go Back"
         };
         int selectedOption = DisplayUtil.Display(options);
@@ -57,6 +58,9 @@ public class MenuCard : MasterDisplay
                 AddWine();
                 break;
             case 3:
+                AddDessert();
+                break;
+            case 4:
                 if (toCheckOut == 1){
                     List<string> outOptions = new(){"Go to checkout", "Go back to reservation menu"};
                     int selectedOption2 = DisplayUtil.Display(outOptions);
@@ -98,6 +102,25 @@ public class MenuCard : MasterDisplay
         }
         else
         {
+            Display();
+        }
+    }
+
+    public void AddDessert(){
+        List<string> dessertOption = OptionString<Dessert>(manager.Desserts, false);
+        int selectedOption = DisplayUtil.Display(dessertOption);
+        if(selectedOption < (dessertOption.Count -1) && isLoggedIn){
+            manager.Cart.Add(manager.Wines[selectedOption]);
+            List<string> options = new(){"Go back", "Go to checkout"};
+            int selected = DisplayUtil.Display(options);
+            if (selected == 0){
+                toCheckOut = 1;
+                Display();
+            }else{
+                // this might blowup
+                CheckOut.CheckOut(CheckOut.table, CheckOut.reservationDate, manager.Cart);
+            }
+        }else{
             Display();
         }
     }
