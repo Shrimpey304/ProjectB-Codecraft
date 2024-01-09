@@ -222,7 +222,10 @@ public class MenuCard : MasterDisplay
         List<string> outl = new();
         foreach (IFoodItems item in foodItems)
         {
-            outl.Add(item.GetString(justname));
+            if (item != null)
+            {
+                outl.Add(item.GetString(justname));
+            }
         }
         outl.Add("Go Back");
         return outl;
