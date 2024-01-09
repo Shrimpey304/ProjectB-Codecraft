@@ -28,7 +28,7 @@ public class MakeReservation : MasterDisplay
             "Make Reservation",
             "Remove Reservation",
             "Check Availablity",
-            "press ENTER or click ESC to go back"
+            "Go Back"
         };
         int selectedOption = DisplayUtil.Display(options);  
         switch (selectedOption)

@@ -57,6 +57,7 @@ public class UserChangeOwnAcc
                     ChangeUserPassword(user);
                     break;
                 case 3:
+                    ingelogdmenu.user = user;
                     ingelogdmenu.DisplayIngelogdMenu();
                     break;
                 default:
@@ -87,6 +88,7 @@ public class UserChangeOwnAcc
 
                 JsonUtil.UploadToJson(accounts, accountPath);
                 Console.WriteLine("Email changed successfully.");
+                ingelogdmenu.user = user;
                 ingelogdmenu.DisplayIngelogdMenu();
             }
         }
@@ -104,6 +106,7 @@ public class UserChangeOwnAcc
 
                     JsonUtil.UploadToJson(accounts, accountPath);
                     Console.WriteLine("Password changed successfully.");
+                    ingelogdmenu.user = user;
                     ingelogdmenu.DisplayIngelogdMenu();
                 }
             }
@@ -120,6 +123,7 @@ public class UserChangeOwnAcc
 
                 JsonUtil.UploadToJson(accounts, accountPath);
                 Console.WriteLine("Phonenumber changed successfully.");
+                ingelogdmenu.user = user;
                 ingelogdmenu.DisplayIngelogdMenu();
             }
         }

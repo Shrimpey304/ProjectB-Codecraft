@@ -33,7 +33,7 @@
       }
     },
     "Email": "Kimo.edelbroek@gmail.com",
-    "Password": "Kimo1234!",
+    "Password": "Kimo12345!",
     "PhoneNumber": "0612345",
     "HasRervering": false,
     "Admin": true
@@ -72,7 +72,7 @@
       }
     },
     "Email": "a.a@a.a",
-    "Password": "Kimo1234!",
+    "Password": "Kimo12345!",
     "PhoneNumber": "0143q54",
     "HasRervering": false,
     "Admin": false
@@ -488,6 +488,21 @@
     "Email": "Heeeey@a",
     "Password": "Jay12345",
     "PhoneNumber": "1234567",
+    "HasRervering": false,
+    "Admin": true
+  },
+  {
+    "tableHistory": {
+      "474648": {
+        "Position": 7,
+        "reservationDate": "2024-11-11",
+        "Type": 9,
+        "ReservationTime": "4:00 pm"
+      }
+    },
+    "Email": "asd@asd.asd",
+    "Password": "Kimo1234!",
+    "PhoneNumber": "123456",
     "HasRervering": false,
     "Admin": false
   }
