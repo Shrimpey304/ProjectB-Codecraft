@@ -7,10 +7,10 @@ public class UserChangeOwnAcc
         public static Ingelogdmenu ingelogdmenu = new();
         private static User userToChange;
 
-        public static User SeeAccInfoByPassword()
+        public static User SeeAccInfoByPassword(User user)
         {
             Console.WriteLine("Enter password to see and change account:");
-            string password = Console.ReadLine();
+            string password = Registration.HashPassword();
 
             userToChange = accounts.FirstOrDefault(acc => acc.Password == password);
 
@@ -20,20 +20,22 @@ public class UserChangeOwnAcc
             }
             else
             {
+                Console.WriteLine("------------");
                 Console.WriteLine($"Email: {userToChange.Email}");
                 Console.WriteLine($"Password: {userToChange.Password}");
                 Console.WriteLine($"Phone number: {userToChange.PhoneNumber}");
+                Console.WriteLine("------------");
 
                 Console.WriteLine("Press enter to change");
                 Console.ReadLine();
 
-                DisplayChangeOptions();
+                DisplayChangeOptions(user);
             }
 
             return userToChange;
         }
 
-        private static void DisplayChangeOptions()
+        private static void DisplayChangeOptions(User user)
         {
             List<string> options = new()
             {
@@ -46,13 +48,13 @@ public class UserChangeOwnAcc
             switch (selectedOption)
             {
                 case 0:
-                    ChangeUserEmail();
+                    ChangeUserEmail(user);
                     break;
                 case 1:
-                    ChangeUserPhoneNumber();
+                    ChangeUserPhoneNumber(user);
                     break;
                 case 2:
-                    ChangeUserPassword();
+                    ChangeUserPassword(user);
                     break;
                 case 3:
                     ingelogdmenu.DisplayIngelogdMenu();
@@ -62,7 +64,7 @@ public class UserChangeOwnAcc
             }
         }
 
-        public static void ChangeUserEmail()
+        public static void ChangeUserEmail(User user)
         {
             if (userToChange != null)
             {
@@ -89,7 +91,7 @@ public class UserChangeOwnAcc
             }
         }
 
-        public static void ChangeUserPassword()
+        public static void ChangeUserPassword(User user)
         {
             if (userToChange != null)
             {
@@ -107,7 +109,7 @@ public class UserChangeOwnAcc
             }
         }
 
-        public static void ChangeUserPhoneNumber()
+        public static void ChangeUserPhoneNumber(User user)
         {
             if (userToChange != null)
             {

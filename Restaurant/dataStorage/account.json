@@ -312,8 +312,8 @@
   },
   {
     "tableHistory": {},
-    "Email": "Kimo.edelbroek@doei.mail",
-    "Password": "ABCdef123!",
+    "Email": "KOp@kop",
+    "Password": "Jay123456",
     "PhoneNumber": "1234567890",
     "HasRervering": false,
     "Admin": false
@@ -458,5 +458,13 @@
     "PhoneNumber": "069420666",
     "HasRervering": false,
     "Admin": true
+  },
+  {
+    "tableHistory": {},
+    "Email": "Heeeey@a",
+    "Password": "Jay12345",
+    "PhoneNumber": "1234567",
+    "HasRervering": false,
+    "Admin": false
   }
 ]

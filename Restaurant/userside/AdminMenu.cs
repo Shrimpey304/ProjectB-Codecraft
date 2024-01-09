@@ -493,9 +493,9 @@ public class AdminMenu
         List<string> options = new(){
             "See reservations",
             "See reservation By date",
-            "Add reservation(disabled)",
-            "Remove reservation(disabled)",
-            "Change reservation(disabled)",
+            //"Add reservation(disabled)",
+            //"Remove reservation(disabled)",
+            //"Change reservation(disabled)",
             "Go back to admin menu"
         };
 
@@ -528,10 +528,10 @@ public class AdminMenu
     public static void ChangeResvA(User user)
     {   
         List<string> options = new(){
-            "Change reservation table position(disabled)",
-            "Change reservation table type(disabled)",
-            "Change reservation date(disabled)",
-            "Change reservation time(disabled)",
+            //"Change reservation table position(disabled)",
+            //"Change reservation table type(disabled)",
+            //"Change reservation date(disabled)",
+            //"Change reservation time(disabled)",
             "Go back to admin reservations menu"
         };
         int selectedOption = DisplayUtil.Display(options);

@@ -9,7 +9,7 @@ public class Ingelogdmenu
     {
         MakeReservation makeReservation = new(user);
         MenuCard menuCard = new();
-        PersonalInfoTest personalProcess = new();
+        //PersonalInfoTest personalProcess = new();
         OrderHistoryTest orderHistory = new();
         List<string> LogedInMenuOptions = new(){
             "Menu (food)",
@@ -43,8 +43,7 @@ public class Ingelogdmenu
                 }
                 break;
             case 4:
-                personalProcess.windowInstance.Add(this);
-                personalProcess.DisplayPersonalInfo(user);
+                UserChangeOwnAcc.SeeAccInfoByPassword(user);
                 break;
             case 5:
                 //if (this.logOut.Count == 0){throw new Exception("list = 0 :(");}
