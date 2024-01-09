@@ -98,7 +98,7 @@
     "Password": "pw123",
     "PhoneNumber": "",
     "HasRervering": false,
-    "Admin": false
+    "Admin": true
   },
   {
     "tableHistory": {},

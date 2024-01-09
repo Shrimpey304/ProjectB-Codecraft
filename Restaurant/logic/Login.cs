@@ -25,6 +25,7 @@ public class Login : MasterLogin{
             }
         }
         return false;
+        throw new ArgumentException("this email is not valid");
     }
 
     public User? AccountExists(string password, string mail){

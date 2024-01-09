@@ -62,6 +62,7 @@ public class Registration{
         else
         {
             Console.WriteLine("Phone number stored, registration succesful");
+            Thread.Sleep(1500);
             return true;
         }
     }
@@ -157,6 +158,10 @@ public class Registration{
     }
     public User CreateAccount(string Email, string Password, string PhoneNumber, bool isAdmin){
 
+        if (Accounts == null)
+        {   
+            Accounts = new List<User>();
+        }   
         User newUser = new User(Email, Password, PhoneNumber, isAdmin);
 
         Accounts.Add(newUser);
