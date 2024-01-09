@@ -78,69 +78,52 @@ public class RegisterProcess{
             Console.WriteLine("invalid phone number format");
         }
 
-        User user = REG.CreateAccount(email, pass, phone!, false);
-        ingelogdmenu.user = user;
+
         // ingelogdmenu.logOut.Add(REG);
         if(loggedUser is null){
-            JsonUtil.UpdateSingleObject(user, filePath);
-            Login.IsLoggedIn = true;
-            Login.LoggedinUser = user.Email;
-            ingelogdmenu.DisplayIngelogdMenu();
-        }else{
-            Login.IsLoggedIn = true;
-            Login.LoggedinUser = loggedUser.Email;
-            AdminMenu.DisplayAdminMenu(user);
-        }
-    }
 
-
-    public void RegisterProcessView(){
-
-        Console.WriteLine("welcome to registration (alpha version)");    
-        Console.WriteLine("please enter your Email");
-        string ?GivenEmail = "";
-        while(Registration.CheckEmailRegEx(GivenEmail!) == false){
-            Console.Clear();
-            Console.WriteLine("invalid email format");
-            string mail = Console.ReadLine()!;
-            GivenEmail += mail + "";
-        }
-
-        Console.WriteLine("please enter your password"); 
-        Console.WriteLine("Capital, lower, number");
-        string ?GivenPW = "";
-        while(Registration.CheckPasswordFormat(GivenPW!) == false){
-            string pass = Registration.HashPassword();
-            GivenPW += pass + "";
-        }
-        Console.WriteLine(GivenPW);
-        
-
-        Console.Write("please retype the password\n");
-        string ?RetypePW = Registration.HashPassword();
-        if(Registration.CheckPasswordSimilar(GivenPW!, RetypePW!) == true){
-            Console.WriteLine("registratie succesvol");
-        }else{
-            Console.WriteLine("failed");
-        }
-
-        Console.WriteLine("please write your phone number");
-        string PhoneNR = Console.ReadLine()!;
-        Registration.CheckPhoneNumberFormat(PhoneNR);
-
-        User user = REG.CreateAccount(GivenEmail, GivenPW, PhoneNR!, false);
-        if(loggedUser is null){
+            User user = REG.CreateAccount(email, pass, phone!, false);
             ingelogdmenu.user = user;
-            // ingelogdmenu.logOut.Add(REG);
             JsonUtil.UpdateSingleObject(user, filePath);
             Login.IsLoggedIn = true;
             Login.LoggedinUser = user.Email;
             ingelogdmenu.DisplayIngelogdMenu();
+
         }else{
-            Login.IsLoggedIn = true;
-            Login.LoggedinUser = loggedUser.Email;
-            AdminMenu.DisplayAdminMenu(user);
+            ChangeAdminstatus(email, pass, phone);
+        }
+        
+    }
+    
+    public void ChangeAdminstatus(string email, string password, string phone)
+    {
+        Console.Clear();
+        Header.DisplayHeader();
+        Console.WriteLine($"\u001B[35m" + "if you want this account to have admin permissions type: true\n otherwise type: false");
+        Console.Write(">   ");
+        string makeAdmin = Console.ReadLine();
+
+        if(makeAdmin.ToLower() == "true"){
+
+            Console.WriteLine($"\u001B[35m" + "Registration succesfull with admin permissions");
+            User user = REG.CreateAccount(email, password, phone!, true);
+            JsonUtil.UpdateSingleObject(user, filePath);
+            AdminMenu.DisplayAdminMenu(loggedUser);
+
+
+        }else if(makeAdmin.ToLower() == "false"){
+
+            Console.WriteLine($"\u001B[35m" + "Registration succesfull without admin permissions");
+            User user = REG.CreateAccount(email, password, phone!, false);
+            JsonUtil.UpdateSingleObject(user, filePath);
+            AdminMenu.DisplayAdminMenu(loggedUser);
+
+        }else{
+            ChangeAdminstatus(email, password, phone);
         }
 
+        Login.IsLoggedIn = true;
+        Login.LoggedinUser = loggedUser.Email;
+        AdminMenu.DisplayAdminMenu(loggedUser);
     }
 }

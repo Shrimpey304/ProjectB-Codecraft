@@ -378,5 +378,37 @@
     "PhoneNumber": "12346790",
     "HasRervering": false,
     "Admin": false
+  },
+  {
+    "tableHistory": {},
+    "Email": "asdfg@asdfg.asdfg",
+    "Password": "Asdfg!123",
+    "PhoneNumber": "1234567890",
+    "HasRervering": false,
+    "Admin": false
+  },
+  {
+    "tableHistory": {},
+    "Email": "poiu.poiu@poiu.poiu",
+    "Password": "Poiu123!",
+    "PhoneNumber": "12456789",
+    "HasRervering": false,
+    "Admin": true
+  },
+  {
+    "tableHistory": {},
+    "Email": "lkjh.lkjh@lkjh.lkjh",
+    "Password": "Lkjh1234!",
+    "PhoneNumber": "12346789",
+    "HasRervering": false,
+    "Admin": false
+  },
+  {
+    "tableHistory": {},
+    "Email": "zxcvb@zxcvb.zxcvb",
+    "Password": "Zxcvb123!",
+    "PhoneNumber": "9876543",
+    "HasRervering": false,
+    "Admin": true
   }
 ]
