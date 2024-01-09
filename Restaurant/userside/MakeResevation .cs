@@ -56,7 +56,8 @@ public class MakeReservation : MasterDisplay
             while (reservationDate is null || selectedTime is null || table is null)
         {
             Console.Clear();
-            System.Console.WriteLine("enter your reservation date\n(yyyy-mm-dd)");
+            Header.DisplayHeader();
+            System.Console.WriteLine("\nEnter your reservation date\n(yyyy-mm-dd)");
             string dateSrting = Console.ReadLine();
             reservationDate = TableManager.ValidateDate(dateSrting);
             if (reservationDate is null) {continue;}

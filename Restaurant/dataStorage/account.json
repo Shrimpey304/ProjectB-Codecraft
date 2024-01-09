@@ -372,7 +372,14 @@
     "Admin": false
   },
   {
-    "tableHistory": {},
+    "tableHistory": {
+      "417918": {
+        "Position": 1,
+        "reservationDate": "2030-11-11",
+        "Type": 2,
+        "ReservationTime": "4:00 pm"
+      }
+    },
     "Email": "qwerty@qwerty.qwerty",
     "Password": "Qwerty123!",
     "PhoneNumber": "12346790",
