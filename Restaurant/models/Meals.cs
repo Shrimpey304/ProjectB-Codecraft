@@ -27,9 +27,9 @@ public class Meals : IFoodItems
     {
         if (itemType)
         {
-            return !incart ?  $"{MealType}" : $"{CourseType}-course {MealType} meal €{Price}\nAllergens removed:{(RemovedA is not null ? RemovedA : "No allergens romved")}";
+            return !incart ?  $"{MealType}" : $"{CourseType}-course {MealType} meal €{Price}\nAllergens removed:{(RemovedA is not null ? RemovedA : "No allergens removed")}\n------------";
         }
-        return $"{ID} | {CourseType}-course {MealType} meal €{Price}\n  {CourseDescription}\n   Allergens removed:{(RemovedA is not null ? RemovedA : "No allergens romved")}";
+        return $"{ID} | {CourseType}-course {MealType} meal €{Price}\n{CourseDescription}\nAllergens removed:{(RemovedA is not null ? RemovedA : "No allergens removed")}\n------------";
     }
 
 }
