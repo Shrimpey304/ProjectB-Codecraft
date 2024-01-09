@@ -3,8 +3,32 @@
     "ID": 1,
     "CourseType": 3,
     "MealType": "fish Course",
-    "MealName": "bomama",
+    "MealName": "Sea food course",
     "Price": 56.90,
-    "CourseDescription": "etaboma"
+    "CourseDescription": "This meal contains 3 diffirent fish Dishes made from Salmon, Trout and Lobster"
+  },
+  {
+    "ID": 2,
+    "CourseType": 2,
+    "MealType": "Deer Course",
+    "MealName": "Deer meat course",
+    "Price": 61.20,
+    "CourseDescription": "This meal contains 2 parts of delicious fresh deermeat"
+  },
+  {
+    "ID": 3,
+    "CourseType": 3,
+    "MealType": "Poultry Course",
+    "MealName": "Poultry meat course",
+    "Price": 52.75,
+    "CourseDescription": "This meal contains 3 diffirent delicious chicken, turkey and duck cuts"
+  },
+  {
+    "ID": 4,
+    "CourseType": 3,
+    "MealType": "Exotic course",
+    "MealName": "Exotic course",
+    "Price": 65.99,
+    "CourseDescription": "This meal contains 2 diffirent dishes from thailand and argentina"
   }
 ]

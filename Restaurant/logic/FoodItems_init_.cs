@@ -45,12 +45,12 @@ public static class FoodItems_init_
     internal static List<Dish> PopulateDishes()
     {
         List<Dish> dishes = new(){
-            new Dish(1, "Chicken", "chicken nuggets", "deep fried chicken nuggets cooked in organic oil", 12.90M, "RS"),
-            new Dish(2, "Meat", "Cheeseburger" , "A tasty cheesburger using authentic American cheddar cheese, fresh pickles and onion, A4 waguy beef and homemade brioche buns.", 15.20m, "Gluten, lactose"),
-            new Dish(3, "Chicken", "Chicken Ramen", "Our house delicacy cooked by one of the most famous ramen chefs: Kazumoto Ochiai. This ramen consists of some roasted chicken, ramen noodles, veggies and a soft cooked egg.", 21.50m, ""),
-            new Dish(4, "Vegan", "Coconut rice bowls", "Delicious, vegan Coconut Rice Bowls are healthy and adaptable!  Curried jasmine rice cooked in coconut milk and topped with tofu (or your choice of protein) and seasonal vegetables.  All tossed with a simple, flavorful sauce, fresh cilantro, mint and toasted coconut flakes. A flavorful vegan meal, bursting with so much flavor!", 17.50m, ""),
-            new Dish(5, "Fish", "Fish and chips", "Dive into a British tradition with our Classic Fish and Chips. Enjoy golden, crispy battered fish, paired with thick-cut, perfectly fried potato chips. Served with a side of tartar sauce and a slice of lemon, it's a satisfying, time-honored favorite.", 12.99m, "gluten, fish"),
-            new Dish(6, "Meat", "Moroccan Spice-Rubbed Lamb Tagine", "This exotic dish consists of tender succulent pieces of lamb that are marinated in a blend of North African spices slow-cooked in a traditional tagine, and served with fluffy couscous.", 21.99m, "gluten, nuts")
+            new Dish(1, "Chicken nuggets", "deep fried chicken nuggets cooked in organic oil", 12.90M, "RS"),
+            new Dish(2, "Cheeseburger" , "A tasty cheesburger using authentic American cheddar cheese, fresh pickles and onion, A4 waguy beef and homemade brioche buns.", 15.20m, "Gluten, lactose"),
+            new Dish(3, "Chicken Ramen", "Our house delicacy cooked by one of the most famous ramen chefs: Kazumoto Ochiai. This ramen consists of some roasted chicken, ramen noodles, veggies and a soft cooked egg.", 21.50m, ""),
+            new Dish(4, "Coconut rice bowls", "Delicious, vegan Coconut Rice Bowls are healthy and adaptable!  Curried jasmine rice cooked in coconut milk and topped with tofu (or your choice of protein) and seasonal vegetables.  All tossed with a simple, flavorful sauce, fresh cilantro, mint and toasted coconut flakes. A flavorful vegan meal, bursting with so much flavor!", 17.50m, ""),
+            new Dish(5, "Fish and chips", "Dive into a British tradition with our Classic Fish and Chips. Enjoy golden, crispy battered fish, paired with thick-cut, perfectly fried potato chips. Served with a side of tartar sauce and a slice of lemon, it's a satisfying, time-honored favorite.", 12.99m, "gluten, fish"),
+            new Dish(6, "Moroccan Spice-Rubbed Lamb Tagine", "This exotic dish consists of tender succulent pieces of lamb that are marinated in a blend of North African spices slow-cooked in a traditional tagine, and served with fluffy couscous.", 21.99m, "gluten, nuts")
         };
         return dishes;
     }
@@ -70,8 +70,22 @@ public static class FoodItems_init_
     internal static List<Meals> PopulateMeals()
     {
         List<Meals> meals = new(){
-            new Meals(1, 3, "fish", "salmon", 56.90M, "its smoked...")
+            new Meals(1, 3, "Chicken", "Chicken", 56.90M, "Our 3-course meal starts with a gluten-free Caprese Salad Stack, followed by a succulent Grilled Lemon Herb Chicken breast with a medley of roasted veggies and for dessert a Flourless Chocolate Torte"),
+            new Meals(2, 4, "Fish", "Salmon", 74.99m, "Our 4-course meal consists of an Avocado and Mango Tartare, followed by our Red Pepper and Tomato Bisque. Then for the main course a delicious Seared Salmon fillet, adorned with a dairy-free Lemon Dill Sauce. And for dessert a Coconut Panna Cotta with Mixed Berry Compote"),
+            new Meals(3, 5, "Meat", "Beef", 109.99m, "Our 5-course meal starts with our famed Citrus-Marinated Shrimp Skewers, shortly followed by our Spinach and Strawberry Salad. Then a delicious Butternut Squash and Apple Velouté soup to wash it all down. As for the main course we present an Herb-Crusted Beef Tenderloin. And for dessert you will have the wonderful Raspberry Almond Tart (Nut-Free Version)")
         };
         return meals;
+    }
+
+    internal static List<Wine> PopulateWine()
+    {
+        List<Wine> wine = new()
+        {
+            new Wine(1, 50.99m, 14.7, "Rosé", "Magnum Château", "High quality sweet yet dry rosé wine imported straight from Lyon, France"),
+            new Wine(2, 89.99m, 16.3, "White", "Joseph Drouhin Meursault Porusots", "Luxurious dry white wine hand-harvested from our own vineyard estates in the North-Eastern region of Italy: Friuli-Venezia Giulia."),
+            new Wine(3, 100.00m, 15.3, "White", "Château Suduiraut Sauternes", "This sweet white wine is one of the finest wines in our product range."),
+            new Wine(4, 149.99m, 15.7, "Red", "Cavallotto Barolo Riserva Bricco Boschis Vigna San Giuseppe", "This delicious red whine could be considered a masterpiece by some. The delicate balance of flavours between the sweetness of the grapes and the sourness of the vinegar are unmatched in this classic Italian treasure.")
+        };
+        return wine;
     }
 }

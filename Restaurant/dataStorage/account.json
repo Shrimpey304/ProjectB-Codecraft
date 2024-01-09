@@ -1,37 +1,366 @@
 [
-    {
-      "Email": "Kimo.edelbroek@gmail.com",
-      "Password": "Kimo1234!",
-      "PhoneNumber": "0612345",
-      "HasRervering": false,
-      "TableRes": null
+  {
+    "tableHistory": {
+      "909728": {
+        "Position": 3,
+        "reservationDate": "2024-01-01",
+        "Type": 8,
+        "ReservationTime": "12:00 pm"
+      },
+      "192252": {
+        "Position": 1,
+        "reservationDate": "2030-12-09",
+        "Type": 2,
+        "ReservationTime": "12:00 pm"
+      },
+      "464182": {
+        "Position": 1,
+        "reservationDate": "2029-01-03",
+        "Type": 2,
+        "ReservationTime": "12:00 pm"
+      },
+      "968978": {
+        "Position": 1,
+        "reservationDate": "2025-11-10",
+        "Type": 2,
+        "ReservationTime": "12:00 pm"
+      },
+      "537231": {
+        "Position": 1,
+        "reservationDate": "2025-04-24",
+        "Type": 2,
+        "ReservationTime": "12:00 pm"
+      }
     },
-    {
-      "Email": "a.a@a.a",
-      "Password": "Kimo1234!",
-      "PhoneNumber": "0143q54",
-      "HasRervering": false,
-      "TableRes": null
+    "Email": "Kimo.edelbroek@gmail.com",
+    "Password": "Kimo1234!",
+    "PhoneNumber": "0612345",
+    "HasRervering": false,
+    "Admin": true
+  },
+  {
+    "tableHistory": {
+      "957027": {
+        "Position": 2,
+        "reservationDate": "2029-09-11",
+        "Type": 2,
+        "ReservationTime": "8:00 pm"
+      },
+      "986011": {
+        "Position": 2,
+        "reservationDate": "2029-09-11",
+        "Type": 2,
+        "ReservationTime": "4:00 pm"
+      },
+      "485680": {
+        "Position": 3,
+        "reservationDate": "2029-09-11",
+        "Type": 8,
+        "ReservationTime": "2:00 pm"
+      },
+      "271816": {
+        "Position": 3,
+        "reservationDate": "2029-09-11",
+        "Type": 8,
+        "ReservationTime": "4:00 pm"
+      }
     },
-    {
-      "Email": "kimo.edelbroek@gmail.com",
-      "Password": "Kimo2004!",
-      "PhoneNumber": "012343246",
-      "HasRervering": false,
-      "TableRes": null
+    "Email": "a.a@a.a",
+    "Password": "Kimo1234!",
+    "PhoneNumber": "0143q54",
+    "HasRervering": false,
+    "Admin": false
+  },
+  {
+    "tableHistory": {},
+    "Email": "kimo.edelbroek@gmail.com",
+    "Password": "Kimo2004!",
+    "PhoneNumber": "012343246",
+    "HasRervering": false,
+    "Admin": false
+  },
+  {
+    "tableHistory": {
+      "135335": {
+        "Position": 1,
+        "reservationDate": "2029-09-11",
+        "Type": 2,
+        "ReservationTime": "12:00 pm"
+      },
+      "674631": {
+        "Position": 2,
+        "reservationDate": "2029-09-11",
+        "Type": 2,
+        "ReservationTime": "6:00 pm"
+      }
     },
-    {
-      "Email": "a@a.a",
-      "Password": "pw123",
-      "PhoneNumber": "",
-      "HasRervering": false,
-      "TableRes": null
+    "Email": "a@a.a",
+    "Password": "pw123",
+    "PhoneNumber": "",
+    "HasRervering": false,
+    "Admin": false
+  },
+  {
+    "tableHistory": {},
+    "Email": "a.aa.a@a.a",
+    "Password": "ab123ab123ab123Ab123",
+    "PhoneNumber": "",
+    "HasRervering": false,
+    "Admin": false
+  },
+  {
+    "tableHistory": {
+      "352139": {
+        "Position": 2,
+        "reservationDate": "2028-01-01",
+        "Type": 2,
+        "ReservationTime": "8:00 pm"
+      }
     },
-    {
-      "Email": "a.aa.a@a.a",
-      "Password": "ab123ab123ab123Ab123",
-      "PhoneNumber": "",
-      "HasRervering": false,
-      "TableRes": null
-    }
-  ]
+    "Email": "zaza@trefount.nl",
+    "Password": "Tref0Tref0123456",
+    "PhoneNumber": "56561234",
+    "HasRervering": false,
+    "Admin": false
+  },
+  {
+    "tableHistory": {
+      "809726": {
+        "Position": 1,
+        "reservationDate": "2026-09-09",
+        "Type": 2,
+        "ReservationTime": "12:00 pm"
+      },
+      "214243": {
+        "Position": 3,
+        "reservationDate": "2026-09-09",
+        "Type": 8,
+        "ReservationTime": "12:00 pm"
+      }
+    },
+    "Email": "zamir@fuckvscode.com",
+    "Password": "qAAAA1234",
+    "PhoneNumber": "1234657900",
+    "HasRervering": false,
+    "Admin": false
+  },
+  {
+    "tableHistory": {
+      "407405": {
+        "Position": 1,
+        "reservationDate": "2028-01-01",
+        "Type": 2,
+        "ReservationTime": "12:00 pm"
+      },
+      "377472": {
+        "Position": 2,
+        "reservationDate": "2028-01-01",
+        "Type": 2,
+        "ReservationTime": "6:00 pm"
+      },
+      "744902": {
+        "Position": 2,
+        "reservationDate": "2028-01-01",
+        "Type": 2,
+        "ReservationTime": "2:00 pm"
+      }
+    },
+    "Email": "ass@gmail.com",
+    "Password": "Vis0101vis",
+    "PhoneNumber": "1234567890",
+    "HasRervering": false,
+    "Admin": false
+  },
+  {
+    "tableHistory": {},
+    "Email": "gort@gortium.nl",
+    "Password": "password123Password123",
+    "PhoneNumber": "0612345678fdsf",
+    "HasRervering": false,
+    "Admin": false
+  },
+  {
+    "tableHistory": {},
+    "Email": "Test@test.nl",
+    "Password": "Password123",
+    "PhoneNumber": "0612345678dsadsa",
+    "HasRervering": false,
+    "Admin": false
+  },
+  {
+    "tableHistory": {
+      "0a2b111e": {
+        "Position": 1,
+        "reservationDate": "2025-09-23",
+        "Type": 2,
+        "ReservationTime": "12:00 pm"
+      },
+      "271756": {
+        "Position": 3,
+        "reservationDate": "2028-01-01",
+        "Type": 8,
+        "ReservationTime": "2:00 pm"
+      },
+      "162734": {
+        "Position": 2,
+        "reservationDate": "2028-01-06",
+        "Type": 2,
+        "ReservationTime": "2:00 pm"
+      }
+    },
+    "Email": "zammer@gmail.com",
+    "Password": "Qp12345678",
+    "PhoneNumber": "1234567890",
+    "HasRervering": false,
+    "Admin": false
+  },
+  {
+    "tableHistory": {
+      "9d79b394": {
+        "Position": 1,
+        "reservationDate": "2024-09-11",
+        "Type": 2,
+        "ReservationTime": "4:00 pm"
+      },
+      "f56a761e": {
+        "Position": 1,
+        "reservationDate": "2023-12-23",
+        "Type": 2,
+        "ReservationTime": "12:00 pm"
+      }
+    },
+    "Email": "fffff@ddd.ooo",
+    "Password": "OOpp0909",
+    "PhoneNumber": "34345656",
+    "HasRervering": false,
+    "Admin": false
+  },
+  {
+    "tableHistory": {
+      "820183": {
+        "Position": 1,
+        "reservationDate": "2024-11-10",
+        "Type": 2,
+        "ReservationTime": "2:00 pm"
+      }
+    },
+    "Email": "ass@gmail.com",
+    "Password": "Vis0101vis",
+    "PhoneNumber": "1234567890",
+    "HasRervering": false,
+    "Admin": false
+  },
+  {
+    "tableHistory": {
+      "605841": {
+        "Position": 1,
+        "reservationDate": "2024-11-10",
+        "Type": 2,
+        "ReservationTime": "4:00 pm"
+      }
+    },
+    "Email": "ass@gmail.com",
+    "Password": "Vis0101vis",
+    "PhoneNumber": "1234567890",
+    "HasRervering": false,
+    "Admin": false
+  },
+  {
+    "tableHistory": {
+      "195418": {
+        "Position": 3,
+        "reservationDate": "2024-11-10",
+        "Type": 8,
+        "ReservationTime": "2:00 pm"
+      }
+    },
+    "Email": "ass@gmail.com",
+    "Password": "Vis0101vis",
+    "PhoneNumber": "1234567890",
+    "HasRervering": false,
+    "Admin": false
+  },
+  {
+    "tableHistory": {
+      "521686": {
+        "Position": 3,
+        "reservationDate": "2024-11-10",
+        "Type": 8,
+        "ReservationTime": "4:00 pm"
+      }
+    },
+    "Email": "ass@gmail.com",
+    "Password": "Vis0101vis",
+    "PhoneNumber": "1234567890",
+    "HasRervering": false,
+    "Admin": false
+  },
+  {
+    "tableHistory": {
+      "958185": {
+        "Position": 2,
+        "reservationDate": "2024-11-10",
+        "Type": 2,
+        "ReservationTime": "8:00 pm"
+      }
+    },
+    "Email": "ass@gmail.com",
+    "Password": "Vis0101vis",
+    "PhoneNumber": "1234567890",
+    "HasRervering": false,
+    "Admin": false
+  },
+  {
+    "tableHistory": {},
+    "Email": "Kimo.edelbroek@doei.mail",
+    "Password": "ABCdef123!",
+    "PhoneNumber": "1234567890",
+    "HasRervering": false,
+    "Admin": false
+  },
+  {
+    "tableHistory": {
+      "837304": {
+        "Position": 3,
+        "reservationDate": "2025-06-01",
+        "Type": 8,
+        "ReservationTime": "2:00 pm"
+      }
+    },
+    "Email": "Kimo.edelbroek@hoi.mail",
+    "Password": "ABCdef123!",
+    "PhoneNumber": "09876543",
+    "HasRervering": false,
+    "Admin": false
+  },
+  {
+    "tableHistory": {
+      "329011": {
+        "Position": 1,
+        "reservationDate": "2026-05-30",
+        "Type": 2,
+        "ReservationTime": "2:00 pm"
+      }
+    },
+    "Email": "Kimo.edelbroek@hoi.mail",
+    "Password": "ABCdef123!",
+    "PhoneNumber": "1234567890",
+    "HasRervering": false,
+    "Admin": false
+  },
+  {
+    "tableHistory": {
+      "686214": {
+        "Position": 2,
+        "reservationDate": "2025-04-24",
+        "Type": 2,
+        "ReservationTime": "4:00 pm"
+      }
+    },
+    "Email": "qwerty.asdfg@qwerty.asdfg",
+    "Password": "YoinkySploinky123!",
+    "PhoneNumber": "123456789",
+    "HasRervering": false,
+    "Admin": false
+  }
+]

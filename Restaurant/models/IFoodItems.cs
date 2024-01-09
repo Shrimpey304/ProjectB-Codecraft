@@ -4,5 +4,5 @@ public interface IFoodItems
 {
     decimal GetPrice();
 
-    string GetString(bool itemType=false);
+    string GetString(bool itemType=false, bool incart=false);
 }

@@ -3,7 +3,7 @@ namespace Restaurant;
 public class Dessert : IFoodItems
 {
     public int ID { get; set; }
-    public string DessertType { get; set; }
+    public int DessertType { get; set; }
     public string DessertName { get; set; }
     public string Description { get; set; }
     public decimal Price { get; set; }
@@ -12,6 +12,7 @@ public class Dessert : IFoodItems
     public Dessert(int id, int desserttypeid, string name, string description, decimal price, string allergens)
     {
         ID = id;
+        DessertType = desserttypeid;
         DessertName = name;
         Description = description;
         Price = price;
@@ -20,7 +21,7 @@ public class Dessert : IFoodItems
 
     public decimal GetPrice() => Price;
 
-    public string GetString(bool itemType)
+    public string GetString(bool itemType=false, bool incart=false)
     {
         if (itemType)
         {

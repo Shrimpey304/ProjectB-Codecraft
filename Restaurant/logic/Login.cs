@@ -2,51 +2,45 @@ using Newtonsoft.Json;
 
 namespace Restaurant;
 
-public class Login
-{
+public class Login : MasterLogin{
 
+    public List<User> Accounts;
     public static string LoggedinUser = "";
     public static bool IsLoggedIn = false;
 
-    private static string accountPath = @".\dataStorage\account.json";
+    
 
-    public static bool MailMatches(string mail){
-        
-        List<User> accounts = JsonUtil.ReadFromJson<User>(accountPath)!;
-        User mailExist = accounts.FirstOrDefault(account => account.Email == mail)!;
-
-        if(mailExist != null){
-            return true;
-        }else{
-            return false;
-        }
-
+    public Login(){
+        Accounts = JsonUtil.ReadFromJson<User>(filePath);
     }
 
-    public static bool AccountExists(string password, string mail){
+    public bool MailMatches(string mail)
+    {
+        List<User> accounts = JsonUtil.ReadFromJson<User>(filePath)!;
+        if (accounts != null) //added null check
+        {
+            User mailExist = accounts.FirstOrDefault(account => account.Email == mail)!;
+            if(mailExist != null){
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public User? AccountExists(string password, string mail){
         string key = mail;
         string val = password;
 
-        List<User> accounts = JsonUtil.ReadFromJson<User>(accountPath)!;
-
-        User account = accounts.FirstOrDefault(acc => acc.Email == mail && acc.Password == password)!;
-        Console.WriteLine(account);
-
+        User? account = Accounts.FirstOrDefault(acc => acc.Email == mail && acc.Password == password)!;
         LoggedinUser = key;
+        return account;
 
-        if(account != null){
-            return true;
-        }else{
-            return false;
-        }
     }
 
-    public static User getUserData(string mail){
+    public User getUserData(string mail){
 
         if(IsLoggedIn && MailMatches(mail)){
-            List<User> accounts = JsonUtil.ReadFromJson<User>(accountPath)!;
-
-            User account = accounts.FirstOrDefault(acc => acc.Email == mail)!;
+            User account = Accounts.FirstOrDefault(acc => acc.Email == mail)!;
             return account;
         }
         return null!;
@@ -62,5 +56,19 @@ public class Login
         }else{
             return "Guest";
         }
+    }
+
+    public static bool IsAdmin(string password, string mail)
+        {
+            List<User> accounts = JsonUtil.ReadFromJson<User>(filePath);
+            User account = accounts.FirstOrDefault(acc => acc.Email == mail && acc.Password == password && acc.Admin);
+
+            return account != null;
+        }
+
+    public override void LogOut()
+    {
+        LoggedinUser = "";
+        IsLoggedIn = false;
     }
 }

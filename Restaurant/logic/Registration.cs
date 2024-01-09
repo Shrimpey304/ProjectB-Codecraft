@@ -6,6 +6,12 @@ using System.Globalization;
 
 
 public class Registration{
+    public List<User> Accounts;
+    protected const string filePath = @".\dataStorage\account.json";
+
+    public Registration(){
+        Accounts = JsonUtil.ReadFromJson<User>(filePath)!;
+    }
 
     public static bool CheckPasswordSimilar(string password, string retypePassword){
 
@@ -46,6 +52,45 @@ public class Registration{
         return true;
     }
 
+    public static bool CheckPhoneNumberFormat(string PhoneNR)
+    {
+        if (PhoneNR.Length < 8)
+        {
+            Console.WriteLine("Invalid. Phone number must be longer than 8 characters.");
+            return false;
+        }
+        else
+        {
+            Console.WriteLine("Phone number stored, registration succesful");
+            return true;
+        }
+    }
+
+    public static string HashPassword()
+    {
+        ConsoleKeyInfo key;
+        string password = "";
+        do
+        {
+            key = Console.ReadKey(true);
+            if (key.Key != ConsoleKey.Backspace && key.Key != ConsoleKey.Enter)
+            {
+                password += key.KeyChar;
+                Console.Write(key.KeyChar);
+                Thread.Sleep(200); 
+                Console.Write("\b*");
+            }
+            else if (key.Key == ConsoleKey.Backspace && password.Length > 0)
+            {
+                password = password.Substring(0, (password.Length - 1));
+                Console.Write("\b \b");
+            }
+
+        }while (key.Key != ConsoleKey.Enter);
+        Console.WriteLine();
+        return password;
+    }
+
     static bool ContainsUpperCase(string password)
     {
         foreach (char c in password)
@@ -81,12 +126,10 @@ public class Registration{
         }
         return false;
     }
-    private static string accountPath = @".\dataStorage\account.json";
 
-    public static bool CheckEmailTaken(string email){
+    public bool CheckEmailTaken(string email){
 
-        List<User> accounts = JsonUtil.ReadFromJson<User>(accountPath)!;
-        User mailExist = accounts.FirstOrDefault(account => account.Email == email)!;
+        User mailExist = Accounts.FirstOrDefault(account => account.Email == email)!;
 
         if(mailExist != null){
             return true; //email is taken
@@ -112,17 +155,14 @@ public class Registration{
         }
 
     }
+    public User CreateAccount(string Email, string Password, string PhoneNumber, bool isAdmin){
 
+        User newUser = new User(Email, Password, PhoneNumber, isAdmin);
 
-    public void CreateAccount(string Email, string Password, string PhoneNumber){
+        Accounts.Add(newUser);
 
-        string email = Email;
-        string password = Password;
-        string phonenumber = PhoneNumber;
+        JsonUtil.UploadToJson(Accounts, filePath);
 
-        List<User> acc = JsonUtil.ReadFromJson<User>(accountPath)!;
-        var account = new User { Email = email, Password = password, PhoneNumber = phonenumber};
-        acc.Add(account);
-        JsonUtil.UploadToJson(acc, accountPath);
+        return newUser;
     }
 }

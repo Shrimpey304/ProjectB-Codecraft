@@ -1,30 +1,53 @@
 namespace Restaurant;
 
-public class MainMenu
+public class MainMenu : MasterDisplay
 {
+    public Stack<Action> windowInstanceStack = new();
     public static void DisplayMainMenu()
     {
+        MenuCard menuCard = new();
+        LoginProcess loginProcess = new();
+        RegisterProcess registerProcess = new();
         List<string> options = new(){
             "Menu",
-            "Reservation",
             "Log in",
             "Register",
-            "Quit Application"
+            "Restaurant information"
         };
         List<Action> actions = new(){
-            MenuCard.FromMain,
-            MakeReservation.Display,
-            LoginProcess.LoginProcessMailView,
-            RegisterProcess.RegisterProcessView,
-            Quit
+            //menuCard.FromMain,
+            loginProcess.LoginProcessMailView,
+            registerProcess.RegisterMail,
         };
+
         int selectedOption = DisplayUtil.Display(options);
-        actions[selectedOption]();
+        switch (selectedOption)
+        {
+            case 0:
+                menuCard.windowInstanceStack.Push(DisplayMainMenu);
+                menuCard.FromMain(false);
+                break;
+            case 1: 
+                loginProcess.LoginProcessMailView();
+                break;
+            case 2:
+                registerProcess.RegisterMail();
+                break;
+            
+            case 3:
+                RestaurantInfo.DisplayRestaurantInfo();
+                break;
+            default:
+                throw new Exception("un-expected main menu error");
+
+        }
     }
 
-    private static void Quit()
-    {
-        Console.WriteLine("Quitting application...");
-        return;
-    }
+    // private static void Quit()
+    // {
+    //     Console.WriteLine("Quitting application...");
+    //     System.Environment.Exit(1);
+    // }
 }
+    
+
