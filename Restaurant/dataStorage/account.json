@@ -362,5 +362,21 @@
     "PhoneNumber": "123456789",
     "HasRervering": false,
     "Admin": false
+  },
+  {
+    "tableHistory": {},
+    "Email": "qwert.asdf@qwert.asdf",
+    "Password": "Hallo123!",
+    "PhoneNumber": "1235467890",
+    "HasRervering": false,
+    "Admin": false
+  },
+  {
+    "tableHistory": {},
+    "Email": "qwerty@qwerty.qwerty",
+    "Password": "Qwerty123!",
+    "PhoneNumber": "12346790",
+    "HasRervering": false,
+    "Admin": false
   }
 ]

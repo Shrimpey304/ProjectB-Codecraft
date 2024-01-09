@@ -81,10 +81,16 @@ public class RegisterProcess{
         User user = REG.CreateAccount(email, pass, phone!, false);
         ingelogdmenu.user = user;
         // ingelogdmenu.logOut.Add(REG);
-        JsonUtil.UpdateSingleObject(user, filePath);
-        Login.IsLoggedIn = true;
-        Login.LoggedinUser = user.Email;
-        ingelogdmenu.DisplayIngelogdMenu();
+        if(loggedUser is null){
+            JsonUtil.UpdateSingleObject(user, filePath);
+            Login.IsLoggedIn = true;
+            Login.LoggedinUser = user.Email;
+            ingelogdmenu.DisplayIngelogdMenu();
+        }else{
+            Login.IsLoggedIn = true;
+            Login.LoggedinUser = loggedUser.Email;
+            AdminMenu.DisplayAdminMenu(user);
+        }
     }
 
 
