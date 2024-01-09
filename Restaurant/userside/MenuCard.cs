@@ -94,7 +94,7 @@ public class MenuCard : MasterDisplay
         int selectedOption = DisplayUtil.Display(option1);
         if (selectedOption < (option1.Count - 1))
         {
-            Menu(option1[selectedOption], true);
+            Menu(option1[selectedOption]);
         }
         else
         {
@@ -193,7 +193,6 @@ public class MenuCard : MasterDisplay
         else
         {
             List<IFoodItems> meals = manager.GetMeals(itemType);
-            System.Console.WriteLine($"{itemType}, {meals.Count}");
             List<string> option2 = OptionString(meals, false);
             string foodCart = GetCartString(manager.Cart);
             int selectedOption = DisplayUtil.Display(option2, foodCart);
@@ -260,7 +259,10 @@ public class MenuCard : MasterDisplay
         List<string> outl = new();
         foreach (IFoodItems item in foodItems)
         {
-            outl.Add(item.GetString(justname));
+            if (item != null)
+            {
+                outl.Add(item.GetString(justname));
+            }   
         }
         outl.Add("Go Back");
         return outl;
