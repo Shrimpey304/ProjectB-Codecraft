@@ -98,10 +98,10 @@ public class AdminEditAccs
         
         if (userToChange != null)
         {
-            Console.WriteLine("Enter Admin status (type true or else false)");
+            Console.WriteLine("Enter Admin status (type y/n)");
             string input = Console.ReadLine().ToLower();
 
-             bool newAdminStatus = input == "true";
+             bool newAdminStatus = input.ToUpper() == "Y";
 
             userToChange.Admin = newAdminStatus;
 

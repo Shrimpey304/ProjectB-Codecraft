@@ -51,11 +51,11 @@ public class FormatJsonJ
         foreach (var dessert in desserts)
             {
                 Console.WriteLine($"ID: {dessert.ID}");
-                Console.WriteLine($"Dish type: {dessert.DessertType}");
-                Console.WriteLine($"Dish name: {dessert.DessertName}");
-                Console.WriteLine($"Dish description: {dessert.Description}");
-                Console.WriteLine($"Dish price: {dessert.Price}");
-                Console.WriteLine($"Dish allergens: {dessert.Allergens}");
+                Console.WriteLine($"Dessert type: {dessert.DessertType}");
+                Console.WriteLine($"Dessert name: {dessert.DessertName}");
+                Console.WriteLine($"Dessert description: {dessert.Description}");
+                Console.WriteLine($"Dessert price: {dessert.Price}");
+                Console.WriteLine($"Dessert allergens: {dessert.Allergens}");
                 Console.WriteLine("--------------");
             }
     }
@@ -68,11 +68,11 @@ public class FormatJsonJ
         foreach (var wine in wines)
             {
                 Console.WriteLine($"ID: {wine.ID}");
-                Console.WriteLine($"Dish type: {wine.Price}");
-                Console.WriteLine($"Dish allergens: {wine.AlcoholPercentage}");
-                Console.WriteLine($"Dish name: {wine.WineType}");
-                Console.WriteLine($"Dish description: {wine.WineName}");
-                Console.WriteLine($"Dish price: {wine.Description}");
+                Console.WriteLine($"Wine price: {wine.Price}");
+                Console.WriteLine($"Dish alcoholpercentage: {wine.AlcoholPercentage}");
+                Console.WriteLine($"Wine type: {wine.WineType}");
+                Console.WriteLine($"Wine name: {wine.WineName}");
+                Console.WriteLine($"Wine description: {wine.Description}");
                 Console.WriteLine("--------------");
             }
     }

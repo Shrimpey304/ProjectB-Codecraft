@@ -139,7 +139,7 @@ public class AdminFood
 
         if (wineAdded)
         {
-            Console.WriteLine("Meal added successfully!");
+            Console.WriteLine("Wine added successfully!");
             AdminMenu.DisplayChangeFoodMenu(user);
         }
         else
@@ -231,22 +231,22 @@ public class AdminFood
 
     public static void RemoveWineA(User user)
     {
-        SeeMeals(user); 
+        SeeWines(user); 
         FoodManager foodManager = new FoodManager();
 
-        Console.WriteLine("Enter the ID of the meal you want to remove:");
+        Console.WriteLine("Enter the ID of the wine you want to remove:");
         int id = Convert.ToInt32(Console.ReadLine());
 
-        bool mealRemoved = foodManager.RemoveMeal(id);
+        bool wineRemoved = foodManager.RemoveWine(id);
 
-        if (mealRemoved)
+        if (wineRemoved)
         {
-            Console.WriteLine("Meal removed successfully!");
+            Console.WriteLine("Wine removed successfully!");
             AdminMenu.DisplayChangeFoodMenu(user);
         }
         else
         {
-            Console.WriteLine("Meal not found");
+            Console.WriteLine("Wine not found");
         }
     }
     public static void RemoveDessertA(User user)
@@ -254,19 +254,19 @@ public class AdminFood
         SeeMeals(user); 
         FoodManager foodManager = new FoodManager();
 
-        Console.WriteLine("Enter the ID of the meal you want to remove:");
+        Console.WriteLine("Enter the ID of the dessert you want to remove:");
         int id = Convert.ToInt32(Console.ReadLine());
 
-        bool mealRemoved = foodManager.RemoveMeal(id);
+        bool dessertRemoved = foodManager.RemoveDessert(id);
 
-        if (mealRemoved)
+        if (dessertRemoved)
         {
-            Console.WriteLine("Meal removed successfully!");
+            Console.WriteLine("Dessert removed successfully!");
             AdminMenu.DisplayChangeFoodMenu(user);
         }
         else
         {
-            Console.WriteLine("Meal not found");
+            Console.WriteLine("Dessert not found");
         }
     }
 
@@ -276,6 +276,33 @@ public class AdminFood
         foodManager.Dishes.Clear();
         JsonUtil.UploadToJson(foodManager.Dishes, dishesPath);
         Console.WriteLine("All dishes removed successfully!");
+        AdminMenu.DisplayChangeFoodMenu(user);
+    }
+
+    public static void RemAllMeals(User user)
+    {
+        FoodManager foodManager = new FoodManager();
+        foodManager.Meals.Clear();
+        JsonUtil.UploadToJson(foodManager.Meals, mealsPath);
+        Console.WriteLine("All dishes removed successfully!");
+        AdminMenu.DisplayChangeFoodMenu(user);
+    }
+
+    public static void RemAllDesserts(User user)
+    {
+        FoodManager foodManager = new FoodManager();
+        foodManager.Desserts.Clear();
+        JsonUtil.UploadToJson(foodManager.Desserts, dessertsPath);
+        Console.WriteLine("All desserts removed successfully!");
+        AdminMenu.DisplayChangeFoodMenu(user);
+    }
+
+    public static void RemAllWine(User user)
+    {
+        FoodManager foodManager = new FoodManager();
+        foodManager.Wines.Clear();
+        JsonUtil.UploadToJson(foodManager.Wines, winesPath);
+        Console.WriteLine("All Wines removed successfully!");
         AdminMenu.DisplayChangeFoodMenu(user);
     }
 
