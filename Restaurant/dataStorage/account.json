@@ -426,8 +426,8 @@
   },
   {
     "tableHistory": {},
-    "Email": "jay@gmail",
-    "Password": "Jay12345",
+    "Email": "Jay@gmail",
+    "Password": "Jay12345!",
     "PhoneNumber": "1234567",
     "HasRervering": false,
     "Admin": true
@@ -457,6 +457,6 @@
     "Password": "Outhere01!",
     "PhoneNumber": "069420666",
     "HasRervering": false,
-    "Admin": false
+    "Admin": true
   }
 ]

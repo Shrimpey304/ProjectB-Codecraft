@@ -17,7 +17,7 @@
     "ID": 3,
     "DishName": "Salmon shrimp",
     "Description": "A Salmon dish with Shrimp and tartar sauce on the side",
-    "Price": 11.95,
+    "Price": 12.99,
     "Allergens": "Fish, shelfish"
   },
   {
@@ -26,5 +26,12 @@
     "Description": "A delightfull new york strip with asparagus and fries",
     "Price": 12.85,
     "Allergens": "Potato"
+  },
+  {
+    "ID": 5,
+    "DishName": "Spahetti with meatballs",
+    "Description": "This is an authentic itallian spaghetti made with meatballs from freshly ground meat",
+    "Price": 13.5,
+    "Allergens": "wheat"
   }
 ]

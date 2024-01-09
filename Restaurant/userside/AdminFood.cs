@@ -40,7 +40,8 @@ public class AdminFood
 
     public static void AddDishA(User user)
     {
-        SeeDishes(user);
+        FormatJsonJ.FormatDishes();
+
         FoodManager foodManager = new FoodManager();
 
         Console.WriteLine("Enter dish ID:");
@@ -76,7 +77,7 @@ public class AdminFood
 
     public static void AddMealA(User user)
     {
-        SeeMeals(user); 
+        FormatJsonJ.FormatMeals();
     
         FoodManager foodManager = new FoodManager();
 
@@ -113,7 +114,7 @@ public class AdminFood
 
     public static void AddWineA(User user)
     {
-        SeeWines(user); 
+        FormatJsonJ.FormatWines();
     
         FoodManager foodManager = new FoodManager();
 
@@ -150,7 +151,7 @@ public class AdminFood
 
     public static void AddDessertA(User user)
     {
-        SeeDesserts(user); 
+        FormatJsonJ.FormatDesserts();
     
         FoodManager foodManager = new FoodManager();
 
@@ -187,7 +188,7 @@ public class AdminFood
 
     public static void RemoveDishA(User user)
     {
-        SeeDishes(user);
+        FormatJsonJ.FormatDishes();
         FoodManager foodManager = new FoodManager();
 
         Console.WriteLine("Enter the ID of the dish that you want to remove:");
@@ -210,7 +211,7 @@ public class AdminFood
 
     public static void RemoveMealA(User user)
     {
-        SeeMeals(user); 
+        FormatJsonJ.FormatMeals();
         FoodManager foodManager = new FoodManager();
 
         Console.WriteLine("Enter the ID of the meal you want to remove:");
@@ -231,7 +232,7 @@ public class AdminFood
 
     public static void RemoveWineA(User user)
     {
-        SeeWines(user); 
+        FormatJsonJ.FormatWines();
         FoodManager foodManager = new FoodManager();
 
         Console.WriteLine("Enter the ID of the wine you want to remove:");
@@ -251,7 +252,7 @@ public class AdminFood
     }
     public static void RemoveDessertA(User user)
     {
-        SeeMeals(user); 
+        FormatJsonJ.FormatDesserts();
         FoodManager foodManager = new FoodManager();
 
         Console.WriteLine("Enter the ID of the dessert you want to remove:");

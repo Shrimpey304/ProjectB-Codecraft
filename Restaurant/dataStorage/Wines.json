@@ -1,12 +1,18 @@
 [
-    {
-      "ID": 1,
-      "Price": 50.99,
-      "AlcoholPercentage": 14.7,
-      "WineType": "Rosé",
-      "WineName": "Magnum Château",
-      "Description": "High quality sweet yet dry rosé wine imported straight from Lyon, France"
-
-    }
+  {
+    "ID": 1,
+    "Price": 50.99,
+    "AlcoholPercentage": 14.7,
+    "WineType": "Rosé",
+    "WineName": "Magnum Château",
+    "Description": "High quality sweet yet dry rosé wine imported straight from Lyon, France"
+  },
+  {
+    "ID": 2,
+    "Price": 65.70,
+    "AlcoholPercentage": 13.2,
+    "WineType": "Red",
+    "WineName": "Penfolds St Henri Shiraz 2019",
+    "Description": "A beautiful Dry red wine bursting of dark fruit flavor from southern Australia"
+  }
 ]
-
