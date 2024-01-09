@@ -13,8 +13,10 @@ public class FormatJsonJ
     public static void FormatDishes()
     {
         List<Dish> dishes = JsonUtil.ReadFromJson<Dish>(dishesPath);
+
+        Console.Clear();
         Console.WriteLine("Dishes:");
-        Console.WriteLine("--------------");
+        Console.WriteLine("-----------------------------------");
         foreach (var dish in dishes)
             {
                 Console.WriteLine($"ID: {dish.ID}");
@@ -22,15 +24,16 @@ public class FormatJsonJ
                 Console.WriteLine($"Dish description: {dish.Description}");
                 Console.WriteLine($"Dish price: {dish.Price}");
                 Console.WriteLine($"Dish allergens: {dish.Allergens}");
-                Console.WriteLine("--------------");
+                Console.WriteLine("-----------------------------------");
             }
     }
 
     public static void FormatMeals()
     {
         List<Meals> meals = JsonUtil.ReadFromJson<Meals>(mealsPath);
+        Console.Clear();
         Console.WriteLine("Meals:");
-        Console.WriteLine("--------------");
+        Console.WriteLine("-----------------------------------");
         foreach (var meal in meals)
             {
                 Console.WriteLine($"ID: {meal.ID}");
@@ -39,15 +42,16 @@ public class FormatJsonJ
                 Console.WriteLine($"Dish description: {meal.MealName}");
                 Console.WriteLine($"Dish price: {meal.Price}");
                 Console.WriteLine($"Dish allergens: {meal.CourseDescription}");
-                Console.WriteLine("--------------");
+                Console.WriteLine("-----------------------------------");
             }
     }
 
     public static void FormatDesserts()
     {
         List<Dessert> desserts = JsonUtil.ReadFromJson<Dessert>(dessertsPath);
+        Console.Clear();
         Console.WriteLine("Desserts:");
-        Console.WriteLine("--------------");
+        Console.WriteLine("-----------------------------------");
         foreach (var dessert in desserts)
             {
                 Console.WriteLine($"ID: {dessert.ID}");
@@ -56,52 +60,55 @@ public class FormatJsonJ
                 Console.WriteLine($"Dessert description: {dessert.Description}");
                 Console.WriteLine($"Dessert price: {dessert.Price}");
                 Console.WriteLine($"Dessert allergens: {dessert.Allergens}");
-                Console.WriteLine("--------------");
+                Console.WriteLine("-----------------------------------");
             }
     }
 
     public static void FormatWines()
     {
         List<Wine> wines = JsonUtil.ReadFromJson<Wine>(winesPath);
+        Console.Clear();
         Console.WriteLine("Wines:");
-        Console.WriteLine("--------------");
+        Console.WriteLine("-----------------------------------");
         foreach (var wine in wines)
             {
                 Console.WriteLine($"ID: {wine.ID}");
                 Console.WriteLine($"Wine price: {wine.Price}");
-                Console.WriteLine($"Dish alcoholpercentage: {wine.AlcoholPercentage}");
+                Console.WriteLine($"Wine alcoholpercentage: {wine.AlcoholPercentage}");
                 Console.WriteLine($"Wine type: {wine.WineType}");
                 Console.WriteLine($"Wine name: {wine.WineName}");
                 Console.WriteLine($"Wine description: {wine.Description}");
-                Console.WriteLine("--------------");
+                Console.WriteLine("-----------------------------------");
             }
     }
 
     public static void FormatTables()
     {
         List<Table> tables = JsonUtil.ReadFromJson<Table>(tablesPath);
+        Console.Clear();
         Console.WriteLine("Tables:");
-        Console.WriteLine("--------------");
+        Console.WriteLine("-----------------------------------");
         foreach (var table in tables)
         {
             Console.WriteLine($"Position: {table.Position}");
             Console.WriteLine($"Type: {table.Type}");
-            Console.WriteLine("--------------");
+            Console.WriteLine("-----------------------------------");
         }
     }
 
     public static void FormatAccs()
     {
         List<User> users = JsonUtil.ReadFromJson<User>(accountPath);
+        Console.Clear();
         Console.WriteLine("Accounts:");
-        Console.WriteLine("--------------");
+        Console.WriteLine("-----------------------------------");
         foreach (var user in users)
             {
                 Console.WriteLine($"Email: {user.Email}");
                 Console.WriteLine($"Password: {user.Password}");
                 Console.WriteLine($"Phone Number: {user.PhoneNumber}");
                 Console.WriteLine($"Admin: {(user.Admin ? "True" : "False")}");
-                Console.WriteLine("--------------");
+                Console.WriteLine("-----------------------------------");
             }
     }
 

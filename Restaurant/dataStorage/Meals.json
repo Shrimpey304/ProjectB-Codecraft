@@ -33,10 +33,10 @@
   },
   {
     "ID": 5,
-    "CourseType": 2,
-    "MealType": "Exotic course",
-    "MealName": "Exotic course",
-    "Price": 55.00,
-    "CourseDescription": "A delightfull bami goreng with sate and a tasting of several meats"
+    "CourseType": 3,
+    "MealType": "Deer Course",
+    "MealName": "Deer loin",
+    "Price": 60.0,
+    "CourseDescription": "This meal contains 2 diffirent dishes from Canada"
   }
 ]

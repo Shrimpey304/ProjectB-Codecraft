@@ -35,7 +35,7 @@ public class AdminEditDessert
             Console.WriteLine("Enter the new dessert type for dessert:");
             int newDessertType = Convert.ToInt32(Console.ReadLine());
 
-             dessertToChange.DessertType = newDessertType;
+            //dessertToChange.DessertType = newDessertType;
 
             JsonUtil.UploadToJson(desserts, dessertPath);
             Console.WriteLine("Dessert type changed successfully.");
