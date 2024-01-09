@@ -103,7 +103,7 @@ public class MenuCard : MasterDisplay
     }
     public void AddWine()
     {
-        List<string> wineOption = OptionString<Wine>(manager.Wines);
+        List<string> wineOption = OptionString<Wine>(manager.Wines, false);
         int selectedOption = DisplayUtil.Display(wineOption);
         if(selectedOption < (wineOption.Count -1) && isLoggedIn){
             manager.Cart.Add(manager.Wines[selectedOption]);
@@ -215,9 +215,9 @@ public class MenuCard : MasterDisplay
             {
                 outCart.Add(item.GetString(true, true));
             }
-            return string.Join("\n", outCart);
+            return string.Join("\n\n", outCart);
         }
-        return "your cart is empty";
+        return "your cart is empty\n";
     }
 
     private static List<string> OptionString<T>(List<T> foodItems, bool justname = true) where T : class
@@ -225,7 +225,10 @@ public class MenuCard : MasterDisplay
         List<string> outl = new();
         foreach (IFoodItems item in foodItems)
         {
-            outl.Add(item.GetString(justname));
+            string option = item.GetString(justname);
+            if(!outl.Contains(option)){
+                outl.Add(option);
+            }
         }
         outl.Add("Go Back");
         return outl;

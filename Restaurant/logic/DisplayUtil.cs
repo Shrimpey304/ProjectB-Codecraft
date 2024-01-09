@@ -22,7 +22,7 @@ public static class DisplayUtil
         Console.Clear();
         Header.DisplayHeader();
         System.Console.WriteLine($"Welcome {Login.getUser()}\n");
-        Console.WriteLine($"{(foodcart is null ? "" : $"{foodcart}")}\u001B[35m");
+        Console.WriteLine($"\n{(foodcart is null ? "" : $"{foodcart}")}\u001B[35m\n");
         Console.CursorVisible = false;
         (int left, int top) = Console.GetCursorPosition();
         int selectedOption = 0;

@@ -30,5 +30,13 @@
     "MealName": "Exotic course",
     "Price": 60.0,
     "CourseDescription": "This meal contains 2 diffirent dishes from thailand and argentina"
+  },
+  {
+    "ID": 5,
+    "CourseType": 3,
+    "MealType": "Deer Course",
+    "MealName": "Deer loin",
+    "Price": 60.0,
+    "CourseDescription": "This meal contains 2 diffirent dishes from Canada"
   }
 ]

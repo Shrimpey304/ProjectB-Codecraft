@@ -65,7 +65,7 @@ public class TableManager
             ReservationCode = GenerateCode();
             User.tableHistory[ReservationCode] = table;
             JsonUtil.UpdateSingleObject<User>(User, userFileName);
-            JsonUtil.UploadToJson<Reservations>(ReservedTable, filename);
+            JsonUtil.UpdateSingleObject<Reservations>(reservations, filename);
             return ReservedTable;
         }
         Reservations reservations1 = new(date);

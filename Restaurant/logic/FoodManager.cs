@@ -124,8 +124,11 @@ public class FoodManager
         List<IFoodItems> dishes = new();
         if (Dishes.Any(item => item.DishName == name))
         {
-            Dish dish = Dishes.Find(item => item.DishName == name)!;
-            dishes.Add(dish);
+            List<Dish> dishes1 = Dishes.FindAll(item => item.DishName == name)!;
+            foreach (Dish dish in dishes1)
+            {
+                dishes.Add(dish);
+            }
             return dishes;
         }
         return dishes;
@@ -136,8 +139,11 @@ public class FoodManager
         List<IFoodItems> meals = new();
         if (Meals.Exists(item => item.MealType == type))
         {
-            Meals meal = Meals.Find(item => item.MealType == type)!;
-            meals.Add(meal);
+            List<Meals> meals1 = Meals.FindAll(item => item.MealType == type)!;
+            foreach (Meals meal in meals1)
+            {
+                meals.Add(meal);
+            }
             return meals;
         }
         return meals;
@@ -166,5 +172,4 @@ public class FoodManager
         }
         return total;
     }
-    
 }

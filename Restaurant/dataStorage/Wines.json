@@ -1,12 +1,34 @@
 [
-    {
-      "ID": 1,
-      "Price": 50.99,
-      "AlcoholPercentage": 14.7,
-      "WineType": "Rosé",
-      "WineName": "Magnum Château",
-      "Description": "High quality sweet yet dry rosé wine imported straight from Lyon, France"
-
-    }
+  {
+    "ID": 1,
+    "Price": 50.99,
+    "AlcoholPercentage": 14.7,
+    "WineType": "Rosé",
+    "WineName": "Magnum Château",
+    "Description": "High quality sweet yet dry rosé wine imported straight from Lyon, France"
+  },
+  {
+    "ID": 2,
+    "Price": 89.99,
+    "AlcoholPercentage": 16.3,
+    "WineType": "White",
+    "WineName": "Joseph Drouhin Meursault Porusots",
+    "Description": "Luxurious dry white wine hand-harvested from our own vineyard estates in the North-Eastern region of Italy: Friuli-Venezia Giulia."
+  },
+  {
+    "ID": 3,
+    "Price": 100.00,
+    "AlcoholPercentage": 15.3,
+    "WineType": "White",
+    "WineName": "Château Suduiraut Sauternes",
+    "Description": "This sweet white wine is one of the finest wines in our product range."
+  },
+  {
+    "ID": 4,
+    "Price": 149.99,
+    "AlcoholPercentage": 15.7,
+    "WineType": "Red",
+    "WineName": "Cavallotto Barolo Riserva Bricco Boschis Vigna San Giuseppe",
+    "Description": "This delicious red whine could be considered a masterpiece by some. The delicate balance of flavours between the sweetness of the grapes and the sourness of the vinegar are unmatched in this classic Italian treasure."
+  }
 ]
-
