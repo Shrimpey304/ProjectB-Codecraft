@@ -33,7 +33,7 @@ public class LoginProcess
 
         Console.WriteLine($"\u001B[35m" + "\nPlease enter your password\n"); 
         Console.Write(">  ");
-        string GivenPW = Console.ReadLine()!;
+        string GivenPW = Registration.HashPassword();
         User? user = login.AccountExists(GivenPW, email);
 
         if(user is not null)
