@@ -27,7 +27,7 @@ public class Wine : IFoodItems
     {
         if (itemType)
         {
-            return $"{WineType}";
+            return !incart ? $"{WineType}" : $"{ID} | {WineType}\n  {WineName}  {Price}\n   {Description}\n";
         }
         return $"{ID} | {WineType}\n  {WineName}  {Price}\n   {Description}\n";
     }

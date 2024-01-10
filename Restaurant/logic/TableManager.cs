@@ -166,7 +166,7 @@ public class TableManager
         
     }
 
-    public static DateOnly? ValidateDate(string datestring)
+    public DateOnly? ValidateDate(string datestring)
     {
         string[] dateFormate = {"yyyy-MM-dd"};
         try

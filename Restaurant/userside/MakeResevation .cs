@@ -75,7 +75,7 @@ public class MakeReservation : MasterDisplay
             Header.DisplayHeader();
             System.Console.WriteLine("enter your reservation date\n(yyyy-mm-dd)");
             string dateSrting = Console.ReadLine();
-            reservationDate = TableManager.ValidateDate(dateSrting);
+            reservationDate = tableManager.ValidateDate(dateSrting);
             if (reservationDate is null) {continue;}
             IEnumerable<string> timeSlots = tableManager.GetAvailableTimeSlots(reservationDate);
             if (timeSlots.Count() == 0) {continue;}
@@ -142,21 +142,22 @@ public class MakeReservation : MasterDisplay
         }
     }
 
-    private static void CheckAvailablity()
+    private void CheckAvailablity()
     {
-        // Console.Clear();
-        // System.Console.WriteLine("what date do you want to check");
-        // DateOnly date1 = (DateOnly)ValidateDate()!;
-        // List<string> tables = tableManager.CheckDateAvailability(date1);
-        // foreach (string item in tables)
-        // {
-        //     System.Console.WriteLine(item);
-        // }
-        // System.Console.WriteLine("press ENTER to go back");
-        // if (Console.ReadKey(false).Key == ConsoleKey.Enter)
-        // {
-        //     Display();
-        // }
+        Console.Clear();
+        System.Console.WriteLine("what date do you want to check");
+        string datestring = Console.ReadLine();
+        DateOnly date1 = (DateOnly)tableManager.ValidateDate(datestring)!;
+        IEnumerable<string> tables = tableManager.GetAvailableTimeSlots(date1);
+        foreach (string item in tables)
+        {
+            System.Console.WriteLine(item);
+        }
+        System.Console.WriteLine("press ENTER to go back");
+        if (Console.ReadKey(false).Key == ConsoleKey.Enter)
+        {
+            Display();
+        }
     }
 
 }

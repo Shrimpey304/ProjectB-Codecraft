@@ -25,7 +25,7 @@ public class Dessert : IFoodItems
     {
         if (itemType)
         {
-            return $"{DessertType}";
+            return !incart ? $"{DessertType}" : $"{ID} | {DessertType}-course {DessertName} meal €{Price}\n  {Description}";
         }
         return $"{ID} | {DessertType}-course {DessertName} meal €{Price}\n  {Description}";
     }
