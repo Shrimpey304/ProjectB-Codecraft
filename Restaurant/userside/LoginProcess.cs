@@ -44,6 +44,7 @@ public class LoginProcess
             if (isAdmin)
             {
                 Console.WriteLine("Login is successful, heading to admin panel.");
+                Thread.Sleep(2000);
                 AdminMenu.DisplayAdminMenu(user); 
             }
             else

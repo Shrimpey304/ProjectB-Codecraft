@@ -12,7 +12,9 @@ public class AdminEditWines
         if (!int.TryParse(Console.ReadLine(), out wineID))
         {
             Console.WriteLine("Invalid input");
+            Console.WriteLine("Heading back to admin menu");
             Thread.Sleep(2000);
+            AdminMenu.DisplayAdminMenu(user);
             return null;
         }
 
