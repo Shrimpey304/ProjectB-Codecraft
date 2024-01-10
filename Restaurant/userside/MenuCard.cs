@@ -16,6 +16,7 @@ public class MenuCard : MasterDisplay
 
     public void FromMain(bool loggedin)
     {
+        if(manager.Cart.Count > 0){manager.Cart.Clear();}
         if (user is null){
             isLoggedIn = loggedin;
             toCheckOut = 0;
@@ -118,7 +119,7 @@ public class MenuCard : MasterDisplay
         List<string> dessertOption = OptionString<Dessert>(manager.Desserts, false);
         int selectedOption = DisplayUtil.Display(dessertOption);
         if(selectedOption < (dessertOption.Count -1) && isLoggedIn){
-            manager.Cart.Add(manager.Wines[selectedOption]);
+            manager.Cart.Add(manager.Desserts[selectedOption]);
             List<string> options = new(){"Go back", "Go to checkout"};
             int selected = DisplayUtil.Display(options);
             if (selected == 0){
