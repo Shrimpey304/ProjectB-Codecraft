@@ -25,6 +25,9 @@ public class AdminTable
         if (!int.TryParse(Console.ReadLine(), out int position))
         {
             Console.WriteLine("Invalid input for position.");
+            Console.WriteLine("Heading back to admin menu");
+            Thread.Sleep(2000);
+            AdminMenu.DisplayAdminMenu(user);
             return;
         }
 
@@ -32,6 +35,9 @@ public class AdminTable
         if (!int.TryParse(Console.ReadLine(), out int type))
         {
             Console.WriteLine("Invalid input for type.");
+            Console.WriteLine("Heading back to admin menu");
+            Thread.Sleep(2000);
+            AdminMenu.DisplayAdminMenu(user);
             return;
         }
 
@@ -59,6 +65,9 @@ public class AdminTable
         if (!int.TryParse(Console.ReadLine(), out int position))
         {
             Console.WriteLine("Invalid input for position.");
+            Console.WriteLine("Heading back to admin menu");
+            Thread.Sleep(2000);
+            AdminMenu.DisplayAdminMenu(user);
             return;
         }
 

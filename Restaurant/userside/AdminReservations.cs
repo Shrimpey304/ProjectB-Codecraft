@@ -34,7 +34,7 @@ public class AdminReservations
         FormatReservations();
         Console.WriteLine("Press enter to go back to change reservation menu");
         Console.ReadLine();
-        //AdminMenu.DisplayChangeResvMenu(user); 
+        AdminMenu.DisplayChangeResvMenu(user); 
     }
 
 
