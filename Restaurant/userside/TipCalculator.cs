@@ -5,7 +5,7 @@ public static class TipCalculator
 
     public static decimal AddTip(decimal total)
     {
-        Console.WriteLine("Would you like to add a tip?");
+        Console.WriteLine("Would you like to add a tip?(yes/no)");
         string answer = Console.ReadLine();
         if (answer.ToLower() == "yes")
         {

@@ -11,7 +11,7 @@ public class OrderHistoryTest
         do{
             if (user.tableHistory.Count > 0){
                 foreach (var reservation in user.tableHistory){
-                    System.Console.WriteLine($"Resevation code: {reservation.Key}\ntable number: {reservation.Value.Position}\nseats: {reservation.Value.Type}\nDate {reservation.Value.reservationDate}\n");
+                    System.Console.WriteLine($"Resevation code: {reservation.Key}\ntable number: {reservation.Value.Position}\nseats: {reservation.Value.Type}\nDate {reservation.Value.reservationDate}\nTime {reservation.Value.ReservationTime}\n");
                     Console.WriteLine("----------------------------");
                 }
             }else{
