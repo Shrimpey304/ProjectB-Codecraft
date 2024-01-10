@@ -33,8 +33,8 @@
       }
     },
     "Email": "Kimo.edelbroek@gmail.com",
-    "Password": "Kimo12345!",
-    "PhoneNumber": "0612345",
+    "Password": "Kimo1234!",
+    "PhoneNumber": "2345676",
     "HasRervering": false,
     "Admin": true
   },
@@ -69,11 +69,59 @@
         "reservationDate": "2024-11-11",
         "Type": 2,
         "ReservationTime": "2:00 pm"
+      },
+      "272621": {
+        "Position": 3,
+        "reservationDate": "2024-11-11",
+        "Type": 8,
+        "ReservationTime": "2:00 pm"
+      },
+      "514826": {
+        "Position": 1,
+        "reservationDate": "2024-10-10",
+        "Type": 2,
+        "ReservationTime": "12:00 pm"
+      },
+      "777893": {
+        "Position": 4,
+        "reservationDate": "2024-12-12",
+        "Type": 4,
+        "ReservationTime": "4:00 pm"
+      },
+      "446335": {
+        "Position": 1,
+        "reservationDate": "2024-12-10",
+        "Type": 2,
+        "ReservationTime": "2:00 pm"
+      },
+      "641756": {
+        "Position": 2,
+        "reservationDate": "2024-12-10",
+        "Type": 2,
+        "ReservationTime": "2:00 pm"
+      },
+      "540495": {
+        "Position": 3,
+        "reservationDate": "2024-09-09",
+        "Type": 8,
+        "ReservationTime": "4:00 pm"
+      },
+      "433817": {
+        "Position": 1,
+        "reservationDate": "2024-10-09",
+        "Type": 2,
+        "ReservationTime": "4:00 pm"
+      },
+      "735441": {
+        "Position": 2,
+        "reservationDate": "2024-02-12",
+        "Type": 2,
+        "ReservationTime": "4:00 pm"
       }
     },
     "Email": "a.a@a.a",
     "Password": "Kimo12345!",
-    "PhoneNumber": "0143q54",
+    "PhoneNumber": "13453623",
     "HasRervering": false,
     "Admin": false
   },

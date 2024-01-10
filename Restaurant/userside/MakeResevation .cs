@@ -64,6 +64,7 @@ public class MakeReservation : MasterDisplay
         if (User == null)
         {
             Console.WriteLine("You need to be registered to make a reservation.");
+            Thread.Sleep(2000);
             register.RegisterMail();
         }
         else
@@ -71,6 +72,7 @@ public class MakeReservation : MasterDisplay
             while (reservationDate is null || selectedTime is null || table is null)
         {
             Console.Clear();
+            Header.DisplayHeader();
             System.Console.WriteLine("enter your reservation date\n(yyyy-mm-dd)");
             string dateSrting = Console.ReadLine();
             reservationDate = TableManager.ValidateDate(dateSrting);
@@ -113,12 +115,13 @@ public class MakeReservation : MasterDisplay
         do
         {
             Console.Clear();
-            System.Console.WriteLine($"Your reservation is set on {date}\nwith a party size of {table.Type} people.\nYour order:");
+            System.Console.WriteLine($"Your reservation is set on {date}\n\nwith a party size of {table.Type} people.\n\nYour order:");
             foreach (var item in order)
             {
                 System.Console.WriteLine(item.GetString());
+                Console.WriteLine("--------------------");
             }
-            System.Console.WriteLine($"Your Total (with tip): {totalWithTip:F2}\nPress ENTER to go back to home menu.");
+            System.Console.WriteLine($"Your Total (with tip): {totalWithTip:F2}\n\nPress ENTER to go back to home menu.");
             key = Console.ReadKey(false);
         } while (key.Key != ConsoleKey.Enter);
         if(ingelogdmenu.user is null){throw new Exception("user is null when checkout..4");}

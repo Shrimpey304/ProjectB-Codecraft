@@ -13,7 +13,7 @@ public class Ingelogdmenu
         OrderHistoryTest orderHistory = new();
         List<string> LogedInMenuOptions = new(){
             "Menu (food)",
-            "Restaurant informatie",
+            "Restaurant information",
             "Make reservation",
             "Reservation history",
             "Personal information",

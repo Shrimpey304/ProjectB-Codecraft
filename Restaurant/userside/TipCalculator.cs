@@ -26,12 +26,14 @@ public static class TipCalculator
             {
                 decimal tipAmount = total * (percentage / 100m);
                 decimal newTotal = total + tipAmount;
-                Console.WriteLine($"Tip of {percentage}% added succesfully");
+                Console.WriteLine($"\nTip of {percentage}% added succesfully");
+                Thread.Sleep(2000);
                 return newTotal;
             }
         else
             {
                 Console.WriteLine("Percentage rate invalid. Enter a value between 0-100");
+                Thread.Sleep(2000);
                 return total;
             }
     }

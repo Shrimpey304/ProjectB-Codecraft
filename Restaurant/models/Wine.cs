@@ -29,6 +29,6 @@ public class Wine : IFoodItems
         {
             return $"{WineType}";
         }
-        return $"{ID} | {WineType}\n  {WineName}  €{Price}\n   {Description}";
+        return $"{ID} | {WineType}\n  {WineName}  {Price}\n   {Description}\n";
     }
 }

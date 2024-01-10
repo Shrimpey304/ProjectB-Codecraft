@@ -70,7 +70,15 @@ public class MenuCard : MasterDisplay
                         CheckOut.Display();
                     }
                 }else{
-                    windowInstanceStack[0]();
+                    try
+                    {
+                        windowInstanceStack[0]();
+                    }catch{
+                        Console.WriteLine("an error occured, please try again");
+                        Ingelogdmenu INL = new();
+                        INL.user = user;
+                        INL.DisplayIngelogdMenu();
+                    }
                 }
                 break;
         }
@@ -155,9 +163,9 @@ public class MenuCard : MasterDisplay
             if (selectedOption1 < (option3.Count - 1) && isLoggedIn)
             {
                 Dish dish1 = (Dish)dishes[selectedOption1];
-                Console.WriteLine("Are there any allergens you would like to remove?(y/n) ");
+                Console.WriteLine("Are there any allergens you would like to remove?(yes/no) ");
                 string answer = Console.ReadLine();
-                if (answer.ToLower() == "y")
+                if (answer.ToLower() == "yes")
                 {
                     Console.WriteLine("Input allergy you want to remove: ");
                     string allergy = Console.ReadLine();
@@ -165,7 +173,7 @@ public class MenuCard : MasterDisplay
                     FoodManager.RemoveAllergens(allergy);
                     Console.ForegroundColor = ConsoleColor.Green;
                     Console.WriteLine($"We have removed {allergy} from your meal(s)");
-                    Thread.Sleep(4000);
+                    Thread.Sleep(2000);
                     Console.ResetColor();
                 }
                 manager.AddToCart(dishes[selectedOption1]);
@@ -195,9 +203,9 @@ public class MenuCard : MasterDisplay
             if (selectedOption < (option2.Count - 1) && isLoggedIn)
             {
                 Meals meal = (Meals)meals[selectedOption];
-                Console.WriteLine("Are there any allergens you would like to remove?(y/n) ");
+                Console.WriteLine("Are there any allergens you would like to remove?(yes/no) ");
                 string answer = Console.ReadLine();
-                if (answer.ToLower() == "y")
+                if (answer.ToLower() == "yes")
                 {
                     Console.WriteLine("Input allergy you want to remove: ");
                     string allergy = Console.ReadLine();
@@ -205,7 +213,7 @@ public class MenuCard : MasterDisplay
                     FoodManager.RemoveAllergens(allergy);
                     Console.ForegroundColor = ConsoleColor.Green;
                     Console.WriteLine($"We have removed {allergy} from your meal(s)");
-                    Thread.Sleep(4000);
+                    Thread.Sleep(2000);
                     Console.ResetColor();
                 }
                 System.Console.WriteLine("Item added to cart.");
