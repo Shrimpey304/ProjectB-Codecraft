@@ -125,6 +125,7 @@ public class MakeReservation : MasterDisplay
             key = Console.ReadKey(false);
         } while (key.Key != ConsoleKey.Enter);
         if(ingelogdmenu.user is null){throw new Exception("user is null when checkout..4");}
+        tableManager.OrderInJson(table, date, order);
         ingelogdmenu.DisplayIngelogdMenu();
     }
 

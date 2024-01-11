@@ -493,6 +493,8 @@ public class AdminMenu
         List<string> options = new(){
             "See reservations",
             "See reservation By date",
+            "See reservations with food orders",
+            "See reservation with food order by date",
             //"Add reservation(disabled)",
             //"Remove reservation(disabled)",
             //"Change reservation(disabled)",
@@ -509,15 +511,21 @@ public class AdminMenu
                 AdminEditResv.SeeReservationsDateA(user);
                 break;
             case 2: 
-                DisplayAdminMenu(user);
+                AdminReservations.SeeReservationsOrders(user);
                 break;
             case 3:
-                DisplayAdminMenu(user);
+                AdminEditResv.SeeResvOrdersByDate(user);
                 break;
             case 4:
-                 ChangeResvA(user);
+                DisplayAdminMenu(user);
                 break;
             case 5:
+                DisplayAdminMenu(user);
+                break;
+            case 6:
+                DisplayAdminMenu(user);
+                break;
+            case 7:
                 DisplayAdminMenu(user);
                 break;
             default:

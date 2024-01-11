@@ -32,7 +32,15 @@ public class AdminReservations
     public static void SeeReservationsA(User user)
     {
         FormatReservations();
-        Console.WriteLine("Press enter to go back to change reservation menu");
+        Console.WriteLine("Press enter to go back to reservation menu");
+        Console.ReadLine();
+        AdminMenu.DisplayChangeResvMenu(user); 
+    }
+
+    public static void SeeReservationsOrders(User user)
+    {
+        FormatJsonJ.FormatResvOrders();
+        Console.WriteLine("Press enter to go back to reservation menu");
         Console.ReadLine();
         AdminMenu.DisplayChangeResvMenu(user); 
     }

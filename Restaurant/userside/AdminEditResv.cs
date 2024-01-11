@@ -4,8 +4,10 @@ public class AdminEditResv
 {
     public User User;
     private static string reservationsPath = @".\dataStorage\Reservations.json";
+    private static string ordersPath = @".\dataStorage\Orders.json";
     private static List<Table> tables = JsonUtil.ReadFromJson<Table>(reservationsPath)!;
     private static List<Reservations> reservations = JsonUtil.ReadFromJson<Reservations>(reservationsPath)!;
+    private static List<ResvFoodOrder> orders = JsonUtil.ReadFromJson<ResvFoodOrder>(ordersPath);
 //     private (Reservations reservation, Table table) GetReservationByDetails()
 //     {
 //         TableManager manager = new(User);
@@ -117,6 +119,7 @@ public class AdminEditResv
                             Console.WriteLine($"Position: {slot.Position}");
                             Console.WriteLine($"Type: {slot.Type}");
                             Console.WriteLine("---------------------------");
+                            reservationsFound = true;
                         }
                     }
                 }
@@ -138,9 +141,64 @@ public class AdminEditResv
     public static void SeeReservationsDateA(User user)
     {
         FormatReservationsByDate(user);
-        Console.WriteLine("Press enter to go back to change reservation menu");
+        Console.WriteLine("Press enter to go back to reservation menu");
         Console.ReadLine();
         AdminMenu.DisplayChangeResvMenu(user); 
     }
+
+    public static void SeeResvOrdersByDate(User user)
+    {
+        FormatResvOrdersByDate(user);
+        Console.WriteLine("Press enter to go back to reservation menu");
+        Console.ReadLine();
+        AdminMenu.DisplayChangeResvMenu(user); 
+    }
+
+    public static void FormatResvOrdersByDate(User user)
+    {
+        Console.WriteLine("Enter the reservation date (YYYY-MM-DD):");
+        string resvDateString = Console.ReadLine();
+
+        if (DateOnly.TryParse(resvDateString, out DateOnly resvDate))
+        {
+            Console.WriteLine(" ");
+            Console.WriteLine($"Reservations with ordered food for {resvDate}");
+            Console.WriteLine("---------------------------");
+
+            bool reservationsFound = false;
+
+            foreach (var order in orders)
+            {
+                if (DateOnly.TryParse(order.ReservationDate?.ToString(), out DateOnly orderDate) && orderDate == resvDate)
+                {
+                    Console.WriteLine($"Reservation date: {order.ReservationDate}");
+                    Console.WriteLine($"Reservation Time: {order.ReservationTime}");
+                    Console.WriteLine($"Position: {order.Position}");
+                    Console.WriteLine($"Type: {order.Type}");
+                    Console.WriteLine("");
+                    Console.WriteLine("Ordered food items:");
+                    Console.WriteLine("");
+
+                    foreach (var item in order.OrderedFood)
+                    {
+                        Console.WriteLine(item);
+                    }
+                    Console.WriteLine("---------------------------");
+                    reservationsFound = true;
+                }
+            }
+            if (!reservationsFound)
+            {
+                Console.WriteLine("No reservations found for the entered date.");
+                Thread.Sleep(2000);
+            }
+        }
+        else
+        {
+            Console.WriteLine("Invalid date format.");
+            Thread.Sleep(2000);
+        }
+    }
+
 }
  

@@ -8,6 +8,8 @@ public class FormatJsonJ
     private static string winesPath = @".\dataStorage\Wines.json";
     private static string tablesPath = @".\dataStorage\Tables.json";
     private static string accountPath = @".\dataStorage\account.json";
+    private static string OrdersPath = @".\dataStorage\Orders.json";
+
     private static string reservationPath = @".\dataStorage\Reservations.json";
 
     public static void FormatDishes()
@@ -110,6 +112,29 @@ public class FormatJsonJ
                 Console.WriteLine($"Admin: {(user.Admin ? "True" : "False")}");
                 Console.WriteLine("-----------------------------------");
             }
+    }
+
+        public static void FormatResvOrders()
+    {
+        List<ResvFoodOrder> orders = JsonUtil.ReadFromJson<ResvFoodOrder>(OrdersPath);
+        Console.Clear();
+        Console.WriteLine("Reservation with food order:");
+        Console.WriteLine("-----------------------------------");
+        foreach (var order in orders)
+        {
+            Console.WriteLine($"Reservation datel: {order.ReservationDate}");
+            Console.WriteLine($"Reservation time: {order.ReservationTime}");
+            Console.WriteLine($"Table position: {order.Position}");
+            Console.WriteLine($"Table type: {order.Type}");
+            Console.WriteLine("");
+            Console.WriteLine("Ordered food items:");
+            Console.WriteLine("");
+            foreach (var item in order.OrderedFood)
+                {
+                    Console.WriteLine(item);
+                }
+                Console.WriteLine("-----------------------------------");
+        }
     }
 
 }

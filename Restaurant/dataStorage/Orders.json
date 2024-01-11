@@ -1,0 +1,12 @@
+[
+  {
+    "Position": 1,
+    "ReservationDate": "2030-12-12",
+    "Type": 2,
+    "ReservationTime": "12:00 pm",
+    "OrderedFood": [
+      "1 | 3-course fish Course meal €56,90\nThis meal contains 3 diffirent fish Dishes made from Salmon, Trout and Lobster\nAllergens removed:No allergens removed\n",
+      " chicken nuggets with fries  12,90\nDescription: Chicken nuggets and fries for the kids\nContains:wheat\nAllergens removed:No allergens removed\n"
+    ]
+  }
+]

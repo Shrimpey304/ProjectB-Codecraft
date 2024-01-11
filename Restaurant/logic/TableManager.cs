@@ -38,6 +38,7 @@ public class TableManager
     private const string timeFormate = "HH:mm tt";
     private const string tablesFileName = @"C:dataStorage\Tables.json";
     private const string reseravtionFileName = @"C:dataStorage\Reservations.json";
+    private const string ordersFileName = @"C:dataStorage\Orders.json";
     private const string userFileName = @".\dataStorage\account.json";
 
     public TableManager(User? user)
@@ -250,4 +251,19 @@ public class TableManager
         timeslot[tableIndex].Position = newtableinfo;
         return timeslot;
     }
+
+    public void OrderInJson(Table table, DateOnly? date, IEnumerable<IFoodItems> order)
+    {
+        ResvFoodOrder reservationInfo = new()
+        {
+            Position = table.Position,
+            ReservationDate = date,
+            Type = table.Type,
+            ReservationTime = table.ReservationTime,
+            OrderedFood = order.Select(item => item.GetString()).ToList(),
+        };
+
+        JsonUtil.UploadToJson<ResvFoodOrder>(new List<ResvFoodOrder> { reservationInfo }, ordersFileName);
+    }
+
 }
