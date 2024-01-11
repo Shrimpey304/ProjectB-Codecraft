@@ -27,6 +27,7 @@ uses:
 */
 public class TableManager 
 {
+    private static List<ResvFoodOrder> resvfoodorder = JsonUtil.ReadFromJson<ResvFoodOrder>(ordersFileName);
     public List<Table> Tables {get;set;}
     private List<Reservations> _reseravtions;
     public List<Reservations>? ReservedTable {
@@ -262,8 +263,8 @@ public class TableManager
             ReservationTime = table.ReservationTime,
             OrderedFood = order.Select(item => item.GetString()).ToList(),
         };
+        resvfoodorder.Add(reservationInfo);
 
-        JsonUtil.UploadToJson<ResvFoodOrder>(new List<ResvFoodOrder> { reservationInfo }, ordersFileName);
+        JsonUtil.UploadToJson(resvfoodorder, ordersFileName);
     }
-
 }
