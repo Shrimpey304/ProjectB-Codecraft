@@ -19,6 +19,7 @@ public class LoginProcess
         if(!login.MailMatches(GivenEmail)){
 
             Console.Clear();
+            Header.DisplayHeader();
             Console.WriteLine("Invalid email, please stick to the following format: your_email@your_webmail.com");
             Thread.Sleep(3000);
 
@@ -62,6 +63,7 @@ public class LoginProcess
         else
         {
             Console.Clear();
+            Header.DisplayHeader();
             Console.WriteLine("incorrect password email combination");
             Thread.Sleep(3000);
             LoginProcessPasswordView(email);
