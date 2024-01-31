@@ -681,6 +681,6 @@
     "Password": "Jay12345",
     "PhoneNumber": "1234567",
     "HasRervering": false,
-    "Admin": true
+    "Admin": false
   }
 ]

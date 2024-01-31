@@ -138,7 +138,7 @@ public class UserChangeOwnAcc
                 Console.WriteLine("Enter new phonenumber:");
                 string newPhoneNumber = Console.ReadLine();
 
-                if (Registration.CheckPasswordFormat(newPhoneNumber))
+                if (Registration.CheckPhoneNumberFormat(newPhoneNumber))
                 {
                     userToChange.PhoneNumber = newPhoneNumber;
 
