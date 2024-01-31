@@ -16,5 +16,25 @@
     "OrderedFood": [
       " Spahetti with meatballs  13,5\nDescription: This is an authentic itallian spaghetti made with meatballs from freshly ground meat\nContains:wheat\nAllergens removed:No allergens removed\n"
     ]
+  },
+  {
+    "Position": 2,
+    "ReservationDate": "2024-01-31",
+    "Type": 2,
+    "ReservationTime": "8:00 pm",
+    "OrderedFood": [
+      "1 | 3-course fish Course meal €56,90\nThis meal contains 3 diffirent fish Dishes made from Salmon, Trout and Lobster\nAllergens removed:No allergens removed\n",
+      "2 | White\n  Joseph Drouhin Meursault Porusots  89,99\n   Luxurious dry white wine hand-harvested from our own vineyard estates in the North-Eastern region of Italy: Friuli-Venezia Giulia.\n",
+      "2 | 1-course Apfel strudel meal €6,70\n  A nice warm apple pie with whipped cream and apricot marmalade originating out of germany."
+    ]
+  },
+  {
+    "Position": 4,
+    "ReservationDate": "2024-02-01",
+    "Type": 4,
+    "ReservationTime": "4:00 pm",
+    "OrderedFood": [
+      "1 | 2-course Chocolate meal €7,99\n  Indulge in the ultimate chocolate lover's dream with our Chocolate Lava Cake. Crack open the delicate shell to reveal a warm, oozing center of rich dark chocolate. Served with a scoop of vanilla bean ice cream and a sprinkle of powdered sugar, it's the perfect balance of warm, cold, and sweet, making each bite a heavenly indulgence"
+    ]
   }
 ]

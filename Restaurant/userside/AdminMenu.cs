@@ -495,6 +495,8 @@ public class AdminMenu
             "See reservation By date",
             "See reservations with food orders",
             "See reservation with food order by date",
+            "See reservations with food order of today",
+            "See reservations with food order of tommorow",
             //"Add reservation(disabled)",
             //"Remove reservation(disabled)",
             //"Change reservation(disabled)",
@@ -517,15 +519,12 @@ public class AdminMenu
                 AdminEditResv.SeeResvOrdersByDate(user);
                 break;
             case 4:
-                DisplayAdminMenu(user);
+                AdminEditResv.FormatResvOrdersToday(user);
                 break;
             case 5:
-                DisplayAdminMenu(user);
+                AdminEditResv.FormatResvOrdersTomorrow(user);
                 break;
             case 6:
-                DisplayAdminMenu(user);
-                break;
-            case 7:
                 DisplayAdminMenu(user);
                 break;
             default:
@@ -567,6 +566,7 @@ public class AdminMenu
 
     private static void LogoutA()
     {
+        Login.LoggedinUser = "";
         MainMenu.DisplayMainMenu();
     }
 }

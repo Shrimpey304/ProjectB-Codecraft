@@ -156,6 +156,9 @@ public class AdminEditResv
 
     public static void FormatResvOrdersByDate(User user)
     {
+        Console.Clear();
+        Header.DisplayHeader();
+
         Console.WriteLine("Enter the reservation date (YYYY-MM-DD):");
         string resvDateString = Console.ReadLine();
 
@@ -185,6 +188,15 @@ public class AdminEditResv
                     }
                     Console.WriteLine("---------------------------");
                     reservationsFound = true;
+
+                    System.Console.WriteLine($"\x1B[4m" +"\n\nPRESS ENTER TO GO BACK" + $"\x1B[0m");
+                    string outl = Console.ReadLine();
+
+                    AdminMenu.DisplayAdminMenu(user);
+
+                    if (outl is not null && user is not null){
+                        AdminMenu.DisplayAdminMenu(user);
+                    }
                 }
             }
             if (!reservationsFound)
@@ -200,5 +212,102 @@ public class AdminEditResv
         }
     }
 
+    public static void FormatResvOrdersToday(User user)
+    {
+        Console.Clear();
+        Header.DisplayHeader();
+
+        DateTime resvDate = DateTime.Today;
+
+        Console.WriteLine(" ");
+        Console.WriteLine($"Reservations with ordered food for {resvDate}");
+        Console.WriteLine("---------------------------");
+
+        bool reservationsFound = false;
+
+        foreach (var order in orders)
+        {
+            if (DateTime.TryParse(order.ReservationDate?.ToString(), out DateTime orderDate) && orderDate == resvDate)
+            {
+                Console.WriteLine($"Reservation date: {order.ReservationDate}");
+                Console.WriteLine($"Reservation Time: {order.ReservationTime}");
+                Console.WriteLine($"Position: {order.Position}");
+                Console.WriteLine($"Type: {order.Type}");
+                Console.WriteLine("");
+                Console.WriteLine("Ordered food items:");
+                Console.WriteLine("");
+
+                foreach (var item in order.OrderedFood)
+                {
+                    Console.WriteLine(item);
+                }
+                Console.WriteLine("---------------------------");
+                reservationsFound = true;
+
+                System.Console.WriteLine($"\x1B[4m" +"\n\nPRESS ENTER TO GO BACK" + $"\x1B[0m");
+                string outl = Console.ReadLine();
+
+                AdminMenu.DisplayAdminMenu(user);
+
+                if (outl is not null && user is not null){
+                    AdminMenu.DisplayAdminMenu(user);
+                }
+            }
+        }
+        if (!reservationsFound)
+        {
+            Console.WriteLine("No reservations found for the entered date.");
+            Thread.Sleep(2000);
+        }
+    }
+
+    public static void FormatResvOrdersTomorrow(User user)
+    {
+        Console.Clear();
+        Header.DisplayHeader();
+
+        DateTime resvDate = DateTime.Today.AddDays(1);
+
+        Console.WriteLine(" ");
+        Console.WriteLine($"Reservations with ordered food for {resvDate}");
+        Console.WriteLine("---------------------------");
+
+        bool reservationsFound = false;
+
+        foreach (var order in orders)
+        {
+            if (DateTime.TryParse(order.ReservationDate?.ToString(), out DateTime orderDate) && orderDate == resvDate)
+            {
+                Console.WriteLine($"Reservation date: {order.ReservationDate}");
+                Console.WriteLine($"Reservation Time: {order.ReservationTime}");
+                Console.WriteLine($"Position: {order.Position}");
+                Console.WriteLine($"Type: {order.Type}");
+                Console.WriteLine("");
+                Console.WriteLine("Ordered food items:");
+                Console.WriteLine("");
+
+                foreach (var item in order.OrderedFood)
+                {
+                    Console.WriteLine(item);
+                }
+                Console.WriteLine("---------------------------");
+                reservationsFound = true;
+
+                System.Console.WriteLine($"\x1B[4m" +"\n\nPRESS ENTER TO GO BACK" + $"\x1B[0m");
+                string outl = Console.ReadLine();
+
+                AdminMenu.DisplayAdminMenu(user);
+
+                if (outl is not null && user is not null){
+                    AdminMenu.DisplayAdminMenu(user);
+                }
+            }
+        }
+        if (!reservationsFound)
+        {
+            Console.WriteLine("No reservations found for the entered date.");
+            Thread.Sleep(2000);
+        }
+    }
 }
  
