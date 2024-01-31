@@ -36,5 +36,14 @@
     "OrderedFood": [
       "1 | 2-course Chocolate meal €7,99\n  Indulge in the ultimate chocolate lover's dream with our Chocolate Lava Cake. Crack open the delicate shell to reveal a warm, oozing center of rich dark chocolate. Served with a scoop of vanilla bean ice cream and a sprinkle of powdered sugar, it's the perfect balance of warm, cold, and sweet, making each bite a heavenly indulgence"
     ]
+  },
+  {
+    "Position": 1,
+    "ReservationDate": "2027-12-12",
+    "Type": 2,
+    "ReservationTime": "12:00 pm",
+    "OrderedFood": [
+      "1 | 3-course fish Course meal €56,90\nThis meal contains 3 diffirent fish Dishes made from Salmon, Trout and Lobster\nAllergens removed:No allergens removed\n"
+    ]
   }
 ]

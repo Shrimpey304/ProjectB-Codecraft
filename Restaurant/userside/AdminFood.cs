@@ -44,8 +44,17 @@ public class AdminFood
 
         FoodManager foodManager = new FoodManager();
 
+        int id;
+    while (true)
+    {
         Console.WriteLine("Enter dish ID:");
-        int id = Convert.ToInt32(Console.ReadLine());
+        if (!int.TryParse(Console.ReadLine(), out id))
+        {
+            Console.WriteLine("Invalid input. Please enter a valid numeric ID.");
+            continue;
+        }
+        break;
+    }
 
         Console.WriteLine("Enter dish type:");
         string dishType = Console.ReadLine();
@@ -56,8 +65,17 @@ public class AdminFood
         Console.WriteLine("Enter dish description:");
         string description = Console.ReadLine();
 
+        decimal price;
+    while (true)
+    {
         Console.WriteLine("Enter dish price:");
-        decimal price = Convert.ToDecimal(Console.ReadLine());
+        if (!decimal.TryParse(Console.ReadLine(), out price))
+        {
+            Console.WriteLine("Invalid input. Please enter a valid numeric price.");
+            continue; 
+        }
+        break; 
+    }
 
         Console.WriteLine("Enter dish allergens:");
         string allergens = Console.ReadLine();
@@ -85,11 +103,29 @@ public class AdminFood
     
         FoodManager foodManager = new FoodManager();
 
+        int id;
+    while (true)
+    {
         Console.WriteLine("Enter meal ID:");
-        int id = Convert.ToInt32(Console.ReadLine());
+        if (!int.TryParse(Console.ReadLine(), out id))
+        {
+            Console.WriteLine("Invalid input. Please enter a valid numeric ID.");
+            continue; 
+        }
+        break; 
+    }
 
+        int courseType;
+    while (true)
+    {
         Console.WriteLine("Enter course type:");
-        int courseType = Convert.ToInt32(Console.ReadLine());
+        if (!int.TryParse(Console.ReadLine(), out courseType))
+        {
+            Console.WriteLine("Invalid input. Please enter a valid numeric course type.");
+            continue; 
+        }
+        break;
+    }
 
         Console.WriteLine("Enter meal type:");
         string mealType = Console.ReadLine();
@@ -100,8 +136,17 @@ public class AdminFood
         Console.WriteLine("Enter meal description:");
         string mealDescription = Console.ReadLine();
 
+        decimal price;
+    while (true)
+    {
         Console.WriteLine("Enter meal price:");
-        decimal price = Convert.ToDecimal(Console.ReadLine());
+        if (!decimal.TryParse(Console.ReadLine(), out price))
+        {
+            Console.WriteLine("Invalid input. Please enter a valid numeric price.");
+            continue; 
+        }
+        break; 
+    }
 
         bool mealAdded = foodManager.AddMeal(id, courseType, mealType, mealName, price, mealDescription);
 
@@ -126,14 +171,41 @@ public class AdminFood
     
         FoodManager foodManager = new FoodManager();
 
+        int id;
+    while (true)
+    {
         Console.WriteLine("Enter wine ID:");
-        int id = Convert.ToInt32(Console.ReadLine());
+        if (!int.TryParse(Console.ReadLine(), out id))
+        {
+            Console.WriteLine("Invalid input. Please enter a valid numeric ID.");
+            continue;
+        }
+        break; 
+    }
 
+        decimal price;
+    while (true)
+    {
         Console.WriteLine("Enter wine price:");
-        decimal price = Convert.ToDecimal(Console.ReadLine());
+        if (!decimal.TryParse(Console.ReadLine(), out price))
+        {
+            Console.WriteLine("Invalid input. Please enter a valid numeric price.");
+            continue; 
+        }
+        break; 
+    }
 
-        Console.WriteLine("Enter alcoholPercentage:");
-        double alcoholPercentage = Convert.ToDouble(Console.ReadLine());
+        double alcoholPercentage;
+    while (true)
+    {
+        Console.WriteLine("Enter alcohol percentage:");
+        if (!double.TryParse(Console.ReadLine(), out alcoholPercentage))
+        {
+            Console.WriteLine("Invalid input. Please enter a valid numeric alcohol percentage.");
+            continue; 
+        }
+        break; 
+    }
 
         Console.WriteLine("Enter wine type:");
         string wineType = Console.ReadLine();
@@ -162,53 +234,88 @@ public class AdminFood
     }
 
     public static void AddDessertA(User user)
-    {
-        FormatJsonJ.FormatDesserts();
+{
+    FormatJsonJ.FormatDesserts();
     
-        FoodManager foodManager = new FoodManager();
+    FoodManager foodManager = new FoodManager();
 
+    int id;
+    while (true)
+    {
         Console.WriteLine("Enter dessert ID:");
-        int id = Convert.ToInt32(Console.ReadLine());
-
-        Console.WriteLine("Enter dessert type:");
-        int desserttypeid = Convert.ToInt32(Console.ReadLine());
-
-        Console.WriteLine("Enter dessert name:");
-        string name = Console.ReadLine();
-
-        Console.WriteLine("Enter dessert description:");
-        string description = Console.ReadLine();
-
-        Console.WriteLine("Enter dessert price:");
-        decimal price = Convert.ToDecimal(Console.ReadLine());
-
-        Console.WriteLine("Enter dessert allergens:");
-        string allergens = Console.ReadLine();
-
-        bool dessertAdded = foodManager.AddDessert(id, desserttypeid, name, description, price, allergens);
-
-        if (dessertAdded)
+        if (!int.TryParse(Console.ReadLine(), out id))
         {
-            Console.WriteLine("Meal added successfully!");
-            Thread.Sleep(2000);
-            AdminMenu.DisplayChangeFoodMenu(user);
+            Console.WriteLine("Invalid input. Please enter a valid numeric ID.");
+            continue; 
         }
-        else
-        {
-            Console.WriteLine("Invalid");
-            Console.WriteLine("Heading back to admin menu");
-            Thread.Sleep(2000);
-            AdminMenu.DisplayAdminMenu(user);
-        }
+        break; 
     }
 
+    int dessertTypeId;
+    while (true)
+    {
+        Console.WriteLine("Enter dessert type:");
+        if (!int.TryParse(Console.ReadLine(), out dessertTypeId))
+        {
+            Console.WriteLine("Invalid input. Please enter a valid numeric dessert type.");
+            continue;
+        }
+        break; 
+    }
+
+    Console.WriteLine("Enter dessert name:");
+    string name = Console.ReadLine();
+
+    Console.WriteLine("Enter dessert description:");
+    string description = Console.ReadLine();
+
+    decimal price;
+    while (true)
+    {
+        Console.WriteLine("Enter dessert price:");
+        if (!decimal.TryParse(Console.ReadLine(), out price))
+        {
+            Console.WriteLine("Invalid input. Please enter a valid numeric price.");
+            continue; 
+        }
+        break;
+    }
+
+    Console.WriteLine("Enter dessert allergens:");
+    string allergens = Console.ReadLine();
+
+    bool dessertAdded = foodManager.AddDessert(id, dessertTypeId, name, description, price, allergens);
+
+    if (dessertAdded)
+    {
+        Console.WriteLine("Dessert added successfully!");
+        Thread.Sleep(2000);
+        AdminMenu.DisplayChangeFoodMenu(user);
+    }
+    else
+    {
+        Console.WriteLine("Invalid");
+        Console.WriteLine("Heading back to admin menu");
+        Thread.Sleep(2000);
+        AdminMenu.DisplayAdminMenu(user);
+    }
+}
     public static void RemoveDishA(User user)
     {
         FormatJsonJ.FormatDishes();
         FoodManager foodManager = new FoodManager();
 
+        int id;
+    while (true)
+    {
         Console.WriteLine("Enter the ID of the dish that you want to remove:");
-        int id = Convert.ToInt32(Console.ReadLine());
+        if (!int.TryParse(Console.ReadLine(), out id))
+        {
+            Console.WriteLine("Invalid input. Please enter a valid numeric ID.");
+            continue;
+        }
+        break; 
+    }
 
 
         bool dishRemoved = foodManager.RemoveDish(id);
@@ -234,8 +341,17 @@ public class AdminFood
         FormatJsonJ.FormatMeals();
         FoodManager foodManager = new FoodManager();
 
-        Console.WriteLine("Enter the ID of the meal you want to remove:");
-        int id = Convert.ToInt32(Console.ReadLine());
+        int id;
+    while (true)
+    {
+        Console.WriteLine("Enter the ID of the meal that you want to remove:");
+        if (!int.TryParse(Console.ReadLine(), out id))
+        {
+            Console.WriteLine("Invalid input. Please enter a valid numeric ID.");
+            continue; 
+        }
+        break; 
+    }
 
         bool mealRemoved = foodManager.RemoveMeal(id);
 
@@ -259,8 +375,17 @@ public class AdminFood
         FormatJsonJ.FormatWines();
         FoodManager foodManager = new FoodManager();
 
-        Console.WriteLine("Enter the ID of the wine you want to remove:");
-        int id = Convert.ToInt32(Console.ReadLine());
+        int id;
+    while (true)
+    {
+        Console.WriteLine("Enter the ID of the wine that you want to remove:");
+        if (!int.TryParse(Console.ReadLine(), out id))
+        {
+            Console.WriteLine("Invalid input. Please enter a valid numeric ID.");
+            continue; 
+        }
+        break;
+    }
 
         bool wineRemoved = foodManager.RemoveWine(id);
 
@@ -283,8 +408,17 @@ public class AdminFood
         FormatJsonJ.FormatDesserts();
         FoodManager foodManager = new FoodManager();
 
-        Console.WriteLine("Enter the ID of the dessert you want to remove:");
-        int id = Convert.ToInt32(Console.ReadLine());
+        int id;
+    while (true)
+    {
+        Console.WriteLine("Enter the ID of the dessert that you want to remove:");
+        if (!int.TryParse(Console.ReadLine(), out id))
+        {
+            Console.WriteLine("Invalid input. Please enter a valid numeric ID.");
+            continue; 
+        }
+        break; 
+    }
 
         bool dessertRemoved = foodManager.RemoveDessert(id);
 

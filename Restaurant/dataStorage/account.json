@@ -619,7 +619,7 @@
     "tableHistory": {},
     "Email": "Heeeey@a",
     "Password": "Jay12345",
-    "PhoneNumber": "1234567",
+    "PhoneNumber": "2",
     "HasRervering": false,
     "Admin": true
   },
@@ -669,12 +669,18 @@
         "reservationDate": "2050-12-12",
         "Type": 2,
         "ReservationTime": "12:00 pm"
+      },
+      "336688": {
+        "Position": 1,
+        "reservationDate": "2027-12-12",
+        "Type": 2,
+        "ReservationTime": "12:00 pm"
       }
     },
     "Email": "jay@gmail",
     "Password": "Jay12345",
     "PhoneNumber": "1234567",
     "HasRervering": false,
-    "Admin": false
+    "Admin": true
   }
 ]

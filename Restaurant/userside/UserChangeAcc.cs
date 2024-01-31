@@ -18,7 +18,7 @@ public class UserChangeOwnAcc
 
             if (userToChange == null)
             {
-                Console.WriteLine("Account not found.");
+                Console.WriteLine("Incorrect password, back to main screen.");
                 Thread.Sleep(2000);
                 ingelogdmenu.user = user;
                 ingelogdmenu.DisplayIngelogdMenu();
@@ -121,6 +121,13 @@ public class UserChangeOwnAcc
                     ingelogdmenu.user = user;
                     ingelogdmenu.DisplayIngelogdMenu();
                 }
+                else{
+                    Console.WriteLine("Invalid new password back to main screen.");
+                    Thread.Sleep(2000);
+                    ingelogdmenu.user = user;
+                    ingelogdmenu.DisplayIngelogdMenu();
+                    return;
+                }
             }
         }
 
@@ -131,12 +138,22 @@ public class UserChangeOwnAcc
                 Console.WriteLine("Enter new phonenumber:");
                 string newPhoneNumber = Console.ReadLine();
 
-                userToChange.PhoneNumber = newPhoneNumber;
+                if (Registration.CheckPasswordFormat(newPhoneNumber))
+                {
+                    userToChange.PhoneNumber = newPhoneNumber;
 
-                JsonUtil.UploadToJson(accounts, accountPath);
-                Console.WriteLine("Phonenumber changed successfully.");
-                ingelogdmenu.user = user;
-                ingelogdmenu.DisplayIngelogdMenu();
+                    JsonUtil.UploadToJson(accounts, accountPath);
+                    Console.WriteLine("Phonenumber changed successfully.");
+                    ingelogdmenu.user = user;
+                    ingelogdmenu.DisplayIngelogdMenu();
+                }
+                else{
+                    Console.WriteLine("Invalid phonenumber back to main screen.");
+                    Thread.Sleep(2000);
+                    ingelogdmenu.user = user;
+                    ingelogdmenu.DisplayIngelogdMenu();
+                    return;
+                }
             }
         }
     }
