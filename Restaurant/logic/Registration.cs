@@ -6,11 +6,20 @@ using System.Globalization;
 
 
 public class Registration{
-    public List<User> Accounts;
+    public List<User> Accounts { get; set; }
     protected const string filePath = @".\dataStorage\account.json";
 
-    public Registration(){
-        Accounts = JsonUtil.ReadFromJson<User>(filePath)!;
+    public Registration()
+    {
+        try
+        {
+            Accounts = JsonUtil.ReadFromJson<User>(filePath) ?? new List<User>();
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error loading accounts from JSON: {ex.Message}");
+            Accounts = new List<User>();
+        }
     }
 
     public static bool CheckPasswordSimilar(string password, string retypePassword){
@@ -28,24 +37,28 @@ public class Registration{
         if (Password.Length < 8)
         {
             Console.WriteLine("Password must be at least 8 characters long.");
+            Thread.Sleep(3000);
             return false;
         }
 
         if (!ContainsUpperCase(Password))
         {
             Console.WriteLine("Password must contain at least one uppercase letter.");
+            Thread.Sleep(3000);
             return false;
         }
 
         if (!ContainsLowerCase(Password))
         {
             Console.WriteLine("Password must contain at least one lowercase letter.");
+            Thread.Sleep(3000);
             return false;
         }
 
         if (!ContainsDigit(Password))
         {
-            Console.WriteLine("Password must contain at least one digit.");
+            Console.WriteLine("Password must contain at least one numeric digit.");
+            Thread.Sleep(3000);
             return false;
         }
 
@@ -57,11 +70,13 @@ public class Registration{
         if (PhoneNR.Length < 8)
         {
             Console.WriteLine("Invalid. Phone number must be longer than 8 characters.");
+            Thread.Sleep(3000);
             return false;
         }
         else
         {
-            Console.WriteLine("Phone number stored, registration succesful");
+            Console.WriteLine("Phone number stored, registration successful");
+            Thread.Sleep(2000);
             return true;
         }
     }
@@ -128,6 +143,10 @@ public class Registration{
     }
 
     public bool CheckEmailTaken(string email){
+        if (Accounts == null)
+        {
+            throw new ArgumentNullException(nameof(Accounts), "Accounts collection is not initialized");
+        }
 
         User mailExist = Accounts.FirstOrDefault(account => account.Email == email)!;
 
@@ -147,6 +166,8 @@ public class Registration{
 
         if(!Regex.IsMatch(Email, RegEx))
         {
+            Console.WriteLine("Invalid email, please stick to the following format: your_email@your_webmail.com");
+            Thread.Sleep(3000);
             return false;
         }
         else

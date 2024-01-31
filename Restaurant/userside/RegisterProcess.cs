@@ -76,6 +76,7 @@ public class RegisterProcess{
 
         if(!Registration.CheckPhoneNumberFormat(phone)){
             Console.WriteLine("invalid phone number format");
+            RegisterPhone(email, pass);
         }
 
 

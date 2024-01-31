@@ -49,8 +49,8 @@ public class LoginProcess
             }
             else
             {
-                Console.WriteLine("Login is succesfull heading to mainscreen.");
-                Thread.Sleep(2);
+                Console.WriteLine("Login is succesful heading to mainscreen.");
+                Thread.Sleep(2000);
                 ingelogdmenu.user = user;
                 ingelogdmenu.logOut.Add(login);
                 ingelogdmenu.DisplayIngelogdMenu();

@@ -22,6 +22,7 @@ public class RegistrationTest
             Assert.AreEqual(expectedResult, result);
         }
     }
+    [TestMethod]
     public void CheckPhoneNumberFormat_ValidNUmber_ReturnsTrue()
     {
         string validPhoneNumber = "12345678";
@@ -37,6 +38,7 @@ public class RegistrationTest
         }
     }
 
+    [TestMethod]
     public void CheckPasswordFormat_PasswordIsInvalid_ReturnsFalse()
     {
         string invalidPassword = "this is an invalid password";
@@ -50,6 +52,7 @@ public class RegistrationTest
             Assert.AreEqual(expectedResult, result);
         }
     }
+    [TestMethod]
     public void CheckPasswordFormat_PasswordIsValid_ReturnsTrue()
     {
         string validPassword = "ValidPassword123";

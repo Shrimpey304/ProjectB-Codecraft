@@ -11,6 +11,8 @@ public class UserChangeOwnAcc
         {
             Console.WriteLine("Enter password to see and change account:");
             string password = Registration.HashPassword();
+            Console.Clear();
+            Header.DisplayHeader();
 
             userToChange = accounts.FirstOrDefault(acc => acc.Password == password);
 
@@ -97,6 +99,7 @@ public class UserChangeOwnAcc
 
                 JsonUtil.UploadToJson(accounts, accountPath);
                 Console.WriteLine("Email changed successfully.");
+                Thread.Sleep(2000);
                 ingelogdmenu.user = user;
                 ingelogdmenu.DisplayIngelogdMenu();
             }
