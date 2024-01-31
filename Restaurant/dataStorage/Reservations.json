@@ -687,6 +687,7 @@
         {
           "Position": 3,
           "reservationDate": "2030-11-11",
+          "Type": 0,
           "ReservationTime": "2:00 pm"
         }
       ],
@@ -710,6 +711,115 @@
           "Position": 1,
           "reservationDate": "2030-12-12",
           "Type": 2,
+          "ReservationTime": "12:00 pm"
+        }
+      ],
+      "2:00 pm": [],
+      "4:00 pm": [],
+      "6:00 pm": [],
+      "8:00 pm": []
+    }
+  },
+  {
+    "ReservationDate": "2029-01-01",
+    "TimeSlotList": {
+      "12:00 pm": [
+        {
+          "Position": 1,
+          "reservationDate": "2029-01-01",
+          "Type": 2,
+          "ReservationTime": "12:00 pm"
+        }
+      ],
+      "2:00 pm": [],
+      "4:00 pm": [],
+      "6:00 pm": [],
+      "8:00 pm": []
+    }
+  },
+  {
+    "ReservationDate": "2029-01-01",
+    "TimeSlotList": {
+      "12:00 pm": [
+        {
+          "Position": 1,
+          "reservationDate": "2029-01-01",
+          "Type": 2,
+          "ReservationTime": "12:00 pm"
+        },
+        {
+          "Position": 4,
+          "reservationDate": "2029-01-01",
+          "Type": 4,
+          "ReservationTime": "12:00 pm"
+        }
+      ],
+      "2:00 pm": [],
+      "4:00 pm": [],
+      "6:00 pm": [],
+      "8:00 pm": []
+    }
+  },
+  {
+    "ReservationDate": "2029-01-01",
+    "TimeSlotList": {
+      "12:00 pm": [
+        {
+          "Position": 1,
+          "reservationDate": "2029-01-01",
+          "Type": 2,
+          "ReservationTime": "12:00 pm"
+        },
+        {
+          "Position": 5,
+          "reservationDate": "2029-01-01",
+          "Type": 4,
+          "ReservationTime": "12:00 pm"
+        }
+      ],
+      "2:00 pm": [],
+      "4:00 pm": [],
+      "6:00 pm": [],
+      "8:00 pm": []
+    }
+  },
+  {
+    "ReservationDate": "2029-01-01",
+    "TimeSlotList": {
+      "12:00 pm": [
+        {
+          "Position": 1,
+          "reservationDate": "2029-01-01",
+          "Type": 2,
+          "ReservationTime": "12:00 pm"
+        },
+        {
+          "Position": 4,
+          "reservationDate": "2029-01-01",
+          "Type": 4,
+          "ReservationTime": "12:00 pm"
+        }
+      ],
+      "2:00 pm": [],
+      "4:00 pm": [],
+      "6:00 pm": [],
+      "8:00 pm": []
+    }
+  },
+  {
+    "ReservationDate": "2028-01-01",
+    "TimeSlotList": {
+      "12:00 pm": [
+        {
+          "Position": 4,
+          "reservationDate": "2028-01-01",
+          "Type": 4,
+          "ReservationTime": "12:00 pm"
+        },
+        {
+          "Position": 3,
+          "reservationDate": "2028-01-01",
+          "Type": 8,
           "ReservationTime": "12:00 pm"
         }
       ],

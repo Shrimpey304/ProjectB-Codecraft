@@ -16,5 +16,51 @@
     "OrderedFood": [
       " Spahetti with meatballs  13,5\nDescription: This is an authentic itallian spaghetti made with meatballs from freshly ground meat\nContains:wheat\nAllergens removed:No allergens removed\n"
     ]
+  },
+  {
+    "Position": 1,
+    "ReservationDate": "2029-01-01",
+    "Type": 2,
+    "ReservationTime": "12:00 pm",
+    "OrderedFood": [
+      " chicken nuggets with fries  12.90\nDescription: Chicken nuggets and fries for the kids\nContains:wheat\nAllergens removed:No allergens removed\n"
+    ]
+  },
+  {
+    "Position": 4,
+    "ReservationDate": "2029-01-01",
+    "Type": 4,
+    "ReservationTime": "12:00 pm",
+    "OrderedFood": [
+      "1 | 3-course fish Course meal €56.90\nThis meal contains 3 diffirent fish Dishes made from Salmon, Trout and Lobster\nAllergens removed:No allergens removed\n"
+    ]
+  },
+  {
+    "Position": 5,
+    "ReservationDate": "2029-01-01",
+    "Type": 4,
+    "ReservationTime": "12:00 pm",
+    "OrderedFood": [
+      "1 | 3-course fish Course meal €56.90\nThis meal contains 3 diffirent fish Dishes made from Salmon, Trout and Lobster\nAllergens removed:No allergens removed\n"
+    ]
+  },
+  {
+    "Position": 4,
+    "ReservationDate": "2028-01-01",
+    "Type": 4,
+    "ReservationTime": "12:00 pm",
+    "OrderedFood": [
+      "1 | 3-course fish Course meal €56.90\nThis meal contains 3 diffirent fish Dishes made from Salmon, Trout and Lobster\nAllergens removed:No allergens removed\n"
+    ]
+  },
+  {
+    "Position": 3,
+    "ReservationDate": "2028-01-01",
+    "Type": 8,
+    "ReservationTime": "12:00 pm",
+    "OrderedFood": [
+      " chicken nuggets with fries  12.90\nDescription: Chicken nuggets and fries for the kids\nContains:wheat\nAllergens removed:No allergens removed\n",
+      "1 | 3-course fish Course meal €56.90\nThis meal contains 3 diffirent fish Dishes made from Salmon, Trout and Lobster\nAllergens removed:No allergens removed\n"
+    ]
   }
 ]
