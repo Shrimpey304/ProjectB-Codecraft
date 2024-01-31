@@ -125,6 +125,7 @@ public class TableManager
     public IEnumerable<Table> GetAvailableTables(DateOnly? date, string timeslot)
     {
         List<Table> availableTables = new();
+        
         IEnumerable<Reservations>? reservations = ReservedTable.Count > 0 ? ReservedTable.Where(item => item.ReservationDate == date) : null;
         if (reservations is not null && reservations.ToList().Count > 0){
             List<Table>? timeSlotTables = reservations?.ToList()[0].TimeSlotList[timeslot];
